@@ -1,0 +1,12 @@
+html,body{
+    height:100%;
+    margin:0;
+    padding:0;
+}
+
+#web-container{
+    display: grid;
+    grid-template-columns: minmax(20px, auto) 700px minmax(20px, auto);
+    grid-template-rows: 100px 250px auto;
+}
+
