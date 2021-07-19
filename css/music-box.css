@@ -15,9 +15,10 @@
 
 .grid-container:hover{
     background: transparent;
-    background-image: url(../img/black-note.png);
+    background-image: url(../img/pointer.png);
     background-size: contain;
     background-repeat: no-repeat;
+    background-position: center;
 }
 
 .note {
@@ -30,4 +31,8 @@
 
 .quarter{
     content: url(../img/quarter.png);
+}
+
+.quarter.line{
+    content: url(../img/quarter-line.png);
 }

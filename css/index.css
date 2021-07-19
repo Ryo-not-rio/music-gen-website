@@ -7,6 +7,6 @@ html,body{
 #web-container{
     display: grid;
     grid-template-columns: minmax(20px, auto) 700px minmax(20px, auto);
-    grid-template-rows: 100px 250px auto;
+    grid-template-rows: 100px 200px auto;
 }
 
