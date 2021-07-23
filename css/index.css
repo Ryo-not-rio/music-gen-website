@@ -4,9 +4,35 @@ html,body{
     padding:0;
 }
 
+button{
+    background-color: #7fffd4;
+    color: black;
+    text-align: center;
+    border-radius: 2px;
+    border: 1px #4d8673 solid;
+}
+
+button:hover{
+    background-color: #6cd8b4;
+}
+
 #web-container{
     display: grid;
     grid-template-columns: minmax(20px, auto) 700px minmax(20px, auto);
-    grid-template-rows: 100px 200px auto;
+    grid-template-rows: 100px 200px 30px auto;
+    row-gap: 2px;
 }
 
+#btn-row-container{
+    display: grid;
+    width: 100%;
+    height: 100%;
+    grid-row: 3/4;
+    grid-column: 2/3;
+    grid-template-columns: repeat(5, 1fr);
+    column-gap: 5px;
+}
+
+#generate-btn{
+    grid-column: 5/6;
+}

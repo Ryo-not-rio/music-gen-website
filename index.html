@@ -11,13 +11,27 @@
     <link href="css/index.css" rel="stylesheet">
     <link href="css/music-box.css" rel="stylesheet">
 
-    <script src="js/music-box.js"></script>
+    <!-- Set global variables -->
+    <script>
+      const gridWidth = 35;
+      const numRows = 15;
+      const notes = ["B2", "C3", "D3", "E3", "F3", "G3", "A3", 
+                 "B3", "C4", "D4", "E4", "F4", "G4", "A4", "B4"];
+    </script>
+
+    <script src="js/out/model.js"></script>
+    <script src="js/out/music-box.js"></script>
+    <script src="js/out/parse.js"></script>
+    
   </head>
 
   <body onload="onDocLoad();">
     <div id="web-container">
       <div id="music-box">
-    
+      </div>
+
+      <div id="btn-row-container">
+        <button id="generate-btn" onclick="generate();">Generate</button>
       </div>
     </div>
 

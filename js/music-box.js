@@ -1,37 +1,58 @@
+import * as Tone from 'tone'
 
-const gridWidth = 35;
-const numRows = 15;
+window.onDocLoad = onDocLoad;
 
-function placeNote(event) {
+const synth = new Tone.MonoSynth().toDestination();
+var startedTone = false;
+
+async function playNote(pitch) {
+  if (!startedTone) {
+    await Tone.start();
+    startedTone = true;
+  }
+
+  synth.triggerAttackRelease(pitch, "8n");
+}
+
+function placeNote(grid) {
   const box = document.getElementById("music-box");
-  const grid = event.currentTarget;
-  console.log(grid.id);
+
   let [i, j] = grid.id.split("-");
   [i, j] = [parseInt(i), parseInt(j)];
   const rowStart = j+1;
 
   const note = document.createElement("div");
-  note.className = 'note quarter';
-  if (j==0 || j==numRows-1) {
-    note.className += ' line';
-  }
-  const addNum = 4; // Additional spaces to occupy to render note
-  if (j < 6) {
-    // Upside-down
-    note.style.gridRow = rowStart.toString() + '/' + (rowStart+addNum).toString();
-    note.style.transform = "scaleY(-1) scaleX(-1) translate(0px,0px)";
-  } else {
-    note.style.gridRow = (rowStart-addNum).toString() + '/' + rowStart.toString();
-    note.style.transform = "translate(0px,15px)";
-  }
+  const pitch = notes[numRows - j - 1];
+  note.className = 'note quarter ' + pitch;
+  note.id = 'note ' + grid.id;
 
-  note.style.gridColumn = (i+1).toString() + '/' + (i+2).toString();
-  box.append(note);
+  if (!document.getElementById(note.id)) {
+    playNote(pitch)
+
+    if (j==1 || j==numRows-2) {
+      note.className += ' line';
+    }
+    const addNum = 4; // Additional spaces to occupy to render note
+    if (j < 6) {
+      // Upside-down
+      note.style.gridRow = rowStart.toString() + '/' + (rowStart+addNum).toString();
+      note.style.transform = "scaleY(-1) scaleX(-1) translate(0px,0px)";
+    } else {
+      note.style.gridRow = (rowStart-addNum).toString() + '/' + rowStart.toString();
+      note.style.transform = "translate(0px,15px)";
+    }
+  
+    note.style.gridColumn = (i+1).toString() + '/' + (i+2).toString();
+    box.append(note);
+  }
+}
+
+function noteClickEvents(event) {
+  placeNote(event.currentTarget);
 }
 
 function makeGrid() {
   const box = document.getElementById("music-box");
-  
   const numCols = Math.floor(box.offsetWidth/gridWidth);
 
   box.style.gridTemplateColumns = 'repeat(' + numCols.toString() + ', 1fr)'
@@ -44,13 +65,14 @@ function makeGrid() {
       gridContainer.id = i.toString() + '-' + j.toString();
       gridContainer.style.gridColumn = (i+1).toString() + '/' + (i+2).toString();
       gridContainer.style.gridRow = (j+1).toString() + '/' + (j+2).toString();
-      gridContainer.addEventListener("click", placeNote, true);
+
+      gridContainer.addEventListener("click", noteClickEvents);
       
       const grid = document.createElement("canvas");
       grid.className = 'grid-square';
       
       if (j > 2 && j < 12 && j%2 == 1) {
-        ctx = grid.getContext("2d");
+        const ctx = grid.getContext("2d");
         ctx.lineWidth = 10;
         ctx.beginPath();
         ctx.moveTo(0, Math.floor(grid.height/2));
