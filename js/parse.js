@@ -20,7 +20,8 @@ function readMusicBox() {
   return loadedNotes;
 }
 
-function generate() {
+async function generate() {
   const notes = readMusicBox();
-  model.predict(notes);
+  const prediction = await model.predict(notes);
+  console.log(prediction)
 }

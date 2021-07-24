@@ -1,4 +1,7 @@
 {
     "git.ignoreLimitWarning": true,
-    "python.pythonPath": "C:\\Users\\moter\\AppData\\Local\\Programs\\Python\\Python38\\python.exe"
+    "python.pythonPath": "C:\\Users\\moter\\AppData\\Local\\Programs\\Python\\Python38\\python.exe",
+    "cSpell.words": [
+        "multinomial"
+    ]
 }
