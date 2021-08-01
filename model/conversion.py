@@ -9,8 +9,8 @@ import tensorflowjs as tfjs
 import pickle
 import json
 
-model_name = "categorical_model"
-vocab_dir = "ai3_vels_vocab.pkl"
+model_name = "Ai3_model"
+vocab_dir = "vocabs/ai3_vocab.pkl"
 
 model = models.load_model(model_name)
 tfjs.converters.save_keras_model(model, "js-model")

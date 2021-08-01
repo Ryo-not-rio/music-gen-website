@@ -19,15 +19,26 @@ button:hover{
 #web-container{
     display: grid;
     grid-template-columns: minmax(20px, auto) 700px minmax(20px, auto);
-    grid-template-rows: 100px 200px 30px auto;
+    grid-template-rows: 100px 40px 200px 30px auto;
     row-gap: 2px;
 }
+
+#top-btn-row-container{
+    display: grid;
+    width: 100%;
+    height: 100%;
+    grid-row: 2/3;
+    grid-column: 2/3;
+    grid-template-columns: repeat(5, 1fr);
+    column-gap: 5px;
+}
+
 
 #btn-row-container{
     display: grid;
     width: 100%;
     height: 100%;
-    grid-row: 3/4;
+    grid-row: 4/5;
     grid-column: 2/3;
     grid-template-columns: repeat(5, 1fr);
     column-gap: 5px;
