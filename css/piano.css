@@ -1,9 +1,12 @@
+#piano {
+    display: grid;
+}
+
 .piano-key.white-key {
     background-color: white;
     border-bottom: 1px solid black;
 }
 .piano-key.black-key {
-    display: grid;
+    background-color: black;
     border-bottom: 1px solid white;
-    grid-template-columns: 50% 50%;
 }

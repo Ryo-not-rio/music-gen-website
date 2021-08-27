@@ -1,0 +1,1 @@
+start watchify js/model.js -p esmify -o js/out/model.js && start watchify js/music-box.js -p esmify -o js/out/music-box.js && start watchify js/parse.js -p esmify -o js/out/parse.js && start watchify js/navbar.js -p esmify -o js/out/navbar.js

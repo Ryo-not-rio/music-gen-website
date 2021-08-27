@@ -22,7 +22,7 @@ function translate(arr) {
   return matrix;
 }
 
-async function predict(startArr, num=1, temp=0.8) {
+async function predict(startArr, num=1, temp=0.7) {
   const vocabs = require('../model/vocab.json');
   const model = await tf.loadLayersModel("../model/js-model/model.json");
 

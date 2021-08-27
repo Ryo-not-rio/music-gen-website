@@ -570,31 +570,47 @@ var piano = new _piano.Piano({
   velocities: 5
 });
 piano.toDestination();
-var startedTone = false;
-var loadPiano = piano.load();
+
+function loadTone() {
+  return _loadTone.apply(this, arguments);
+}
+
+function _loadTone() {
+  _loadTone = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee() {
+    return _regenerator["default"].wrap(function _callee$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            _context.next = 2;
+            return Tone.start();
+
+          case 2:
+            _context.next = 4;
+            return piano.load();
+
+          case 4:
+            document.getElementById("loading-overlay").style.display = "none";
+
+          case 5:
+          case "end":
+            return _context.stop();
+        }
+      }
+    }, _callee);
+  }));
+  return _loadTone.apply(this, arguments);
+}
 
 function playNote(_x, _x2) {
   return _playNote.apply(this, arguments);
 }
 
 function _playNote() {
-  _playNote = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee(pitch, length) {
-    return _regenerator["default"].wrap(function _callee$(_context) {
+  _playNote = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee2(pitch, length) {
+    return _regenerator["default"].wrap(function _callee2$(_context2) {
       while (1) {
-        switch (_context.prev = _context.next) {
+        switch (_context2.prev = _context2.next) {
           case 0:
-            if (startedTone) {
-              _context.next = 4;
-              break;
-            }
-
-            _context.next = 3;
-            return Tone.start();
-
-          case 3:
-            startedTone = true;
-
-          case 4:
             piano.keyDown({
               note: pitch
             });
@@ -603,63 +619,91 @@ function _playNote() {
               time: length
             });
 
-          case 6:
+          case 2:
           case "end":
-            return _context.stop();
+            return _context2.stop();
         }
       }
-    }, _callee);
+    }, _callee2);
   }));
   return _playNote.apply(this, arguments);
 }
 
-function placeNote(grid) {
+function noteOnEvents(grid) {
   var _grid$id$split = grid.id.split("-"),
       _grid$id$split2 = (0, _slicedToArray2["default"])(_grid$id$split, 2),
       i = _grid$id$split2[0],
-      j = _grid$id$split2[1];
+      note = _grid$id$split2[1];
 
-  var _ref = [parseInt(i), parseInt(j)];
+  var _ref = [parseInt(i), parseInt(note)];
   i = _ref[0];
-  j = _ref[1];
+  note = _ref[1];
 
   if (!grid.classList.contains("placed")) {
-    playNote(notes[j], "+1");
+    playNote(notes[87 - note], "+0.5");
     grid.style.backgroundColor = "#fca103";
-  } else {
-    grid.style.backgroundColor = "";
   }
 
-  grid.classList.toggle("placed");
+  grid.classList.add("placed");
+}
+
+function noteOffEvents(grid) {
+  var _grid$id$split3 = grid.id.split("-"),
+      _grid$id$split4 = (0, _slicedToArray2["default"])(_grid$id$split3, 2),
+      i = _grid$id$split4[0],
+      j = _grid$id$split4[1];
+
+  var _ref2 = [parseInt(i), parseInt(j)];
+  i = _ref2[0];
+  j = _ref2[1];
+  grid.style.backgroundColor = "";
+  grid.classList.remove("placed");
 }
 
 function noteClickEvents(event) {
-  placeNote(event.currentTarget);
+  if (event.buttons == 1) {
+    noteOnEvents(event.currentTarget);
+  } else if (event.buttons == 2) {
+    noteOffEvents(event.currentTarget);
+  }
 }
 
 function makePiano() {
   var box = document.getElementById("piano");
+  box.style.gridTemplateRows = 'repeat(' + numRows.toString() + ', 1fr)';
   var shift = 0;
 
-  for (var i = 0; i < numRows; i++) {
-    var keyContainer = document.createElement("div");
-    keyContainer.className = "piano-key";
+  for (var noteNum = 0; noteNum < 88; noteNum++) {
+    var id = "piano-key-" + noteNum.toString();
+    var keyContainer = document.getElementById(id);
 
-    if (i != 0) {
-      if (i == 5 || i == 12 || i == 17 || i == 24) {
-        shift += 1;
+    if ([1, 8, 13, 20, 25, 32, 37, 42, 47, 54, 61, 66, 73, 78, 85].includes(noteNum)) {
+      shift += 1;
+    }
+
+    if (noteNum >= noteOffset && noteNum < noteOffset + numRows) {
+      if (keyContainer) {
+        keyContainer.style.display = "block";
+      } else {
+        keyContainer = document.createElement("div");
+        keyContainer.className = "piano-key";
+        keyContainer.id = id;
+
+        if ((noteNum + shift) % 2 == 0) {
+          keyContainer.classList.add("white-key");
+        } else {
+          keyContainer.classList.add("black-key");
+        }
+
+        box.appendChild(keyContainer);
+      }
+
+      keyContainer.style.gridRow = (noteNum - noteOffset + 1).toString() + '/' + (noteNum - noteOffset + 2).toString();
+    } else {
+      if (keyContainer) {
+        keyContainer.style.display = "none";
       }
     }
-
-    if ((i + shift) % 2 == 0) {
-      keyContainer.classList.add("white-key");
-    } else {
-      keyContainer.classList.add("black-key");
-    }
-
-    keyContainer.id = "piano-key-" + i.toString();
-    keyContainer.gridRow = (i + 1).toString() + '/' + (i + 2).toString();
-    box.appendChild(keyContainer);
   }
 }
 
@@ -670,27 +714,42 @@ function makeEditorGrid() {
   box.style.gridTemplateRows = 'repeat(' + numRows.toString() + ', 1fr)';
 
   for (var i = 0; i < numCols; i++) {
-    for (var j = 0; j < numRows; j++) {
-      var gridContainer = document.createElement("div");
-      gridContainer.className = "grid-container";
-      gridContainer.id = i.toString() + '-' + j.toString();
-      gridContainer.style.gridColumn = (i + 1).toString() + '/' + (i + 2).toString();
-      gridContainer.style.gridRow = (j + 1).toString() + '/' + (j + 2).toString();
-      gridContainer.addEventListener("mousedown", noteClickEvents);
-      gridContainer.addEventListener("mouseover", function (e) {
-        if (e.buttons == 1 || e.buttons == 3) {
-          noteClickEvents(e);
+    for (var noteNum = 0; noteNum < 88; noteNum++) {
+      var j = noteNum - noteOffset;
+      var id = i.toString() + '-' + noteNum.toString();
+      var gridContainer = document.getElementById(id);
+
+      if (j >= 0 && j < numRows) {
+        if (gridContainer) {
+          gridContainer.style.display = "block";
+        } else {
+          gridContainer = document.createElement("div");
+          gridContainer.className = "grid-container";
+          gridContainer.id = id;
+          gridContainer.addEventListener("mousedown", noteClickEvents);
+          gridContainer.addEventListener("mouseover", noteClickEvents);
+          box.appendChild(gridContainer);
         }
-      });
-      box.appendChild(gridContainer);
+
+        gridContainer.style.gridColumn = (i + 1).toString() + '/' + (i + 2).toString();
+        gridContainer.style.gridRow = (j + 1).toString() + '/' + (j + 2).toString();
+      } else if (gridContainer) {
+        gridContainer.style.display = "none";
+      }
     }
   }
 }
 
 function onDocLoad() {
+  loadTone();
   makePiano();
   makeEditorGrid();
 }
+
+module.exports = {
+  makePiano: makePiano,
+  makeEditorGrid: makeEditorGrid
+};
 
 },{"@babel/runtime/helpers/asyncToGenerator":5,"@babel/runtime/helpers/interopRequireDefault":6,"@babel/runtime/helpers/slicedToArray":9,"@babel/runtime/helpers/typeof":10,"@babel/runtime/regenerator":12,"@tonejs/piano":13,"tone":899}],3:[function(require,module,exports){
 function _arrayLikeToArray(arr, len) {

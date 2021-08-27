@@ -14,26 +14,49 @@
 
     <!-- Set global variables -->
     <script>
+      const noteSequence = ["A", "Bb", "B", "C", "C#", "D", "Eb", "E", "F", "F#", "G", "Ab"]
+      let number = 0;
+      let notes = []
+      for (i=0; i<88; i++) {
+        note = noteSequence[i%noteSequence.length]
+        if (note == "C") {
+          number++;
+        }
+        notes.push(note + number.toString())
+      }
+
       const gridWidth = 35;
-      const numRows = 25;
-      const notes = ["E5", "Eb5", "D5", "C#5", "C5", "B4", "Bb4", "A4", "Ab4", "G4", "F#4", "F4", "E4", "Eb4", "D4","C#4",
-        "C4", "B3", "Bb3", "A3", "Ab3", "G3", "F#3", "F3", "E3"];
+      let noteOffset = 32;
+      let numRows = 25;
+      
     </script>
 
     <script src="js/out/model.js"></script>
     <script src="js/out/music-box.js"></script>
     <script src="js/out/parse.js"></script>
+    <script src="js/out/navbar.js"></script>
     
   </head>
 
   <body onload="onDocLoad()">
+    <div id="loading-overlay">
+      <div id="loading-text">
+        loading...
+      </div>
+    </div>
+
     <nav id="navbar">
-      <button id="generate-btn">Generate</button>
+      <div id="size-slider-container">
+        <img id="zoom-out-icon" src="img/zoom-out.png" onclick="updateSlider(-1);">
+        <input type="range" min="5" max="88" value="63" class="slider" id="size-slider" oninput="sliderChange(this.value);" onchange="sliderChange(this.value);">
+        <img id="zoom-in-icon" src="img/zoom-in.png" onclick="updateSlider(1);">
+      </div>
+      <button id="generate-btn" onclick="generate()">Generate</button>
     </nav>
     <div id="music-box">
       <div id="piano">
       </div>
-      <div id="editor">
+      <div id="editor" oncontextmenu="return false;">
       </div>
     </div>
 
