@@ -28,7 +28,8 @@ async function predict(startArr, num=1, temp=0.8) {
 
   let inputEval = translate(startArr);
   inputEval = tf.tensor([inputEval], undefined,'float32')
-  let generated = [];
+  let generated = startArr;
+  
   for (let i=0; i<num; i++) {
     const predictions = model.predict(inputEval);
 

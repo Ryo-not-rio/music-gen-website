@@ -4,46 +4,32 @@ html,body{
     padding:0;
 }
 
-button{
-    background-color: #7fffd4;
-    color: black;
-    text-align: center;
-    border-radius: 2px;
-    border: 1px #4d8673 solid;
-}
-
-button:hover{
-    background-color: #6cd8b4;
-}
-
-#web-container{
+#music-box{
     display: grid;
-    grid-template-columns: minmax(20px, auto) 700px minmax(20px, auto);
-    grid-template-rows: 100px 40px 200px 30px auto;
-    row-gap: 2px;
-}
-
-#top-btn-row-container{
-    display: grid;
+    background-color: rgb(41, 41, 41);
     width: 100%;
     height: 100%;
-    grid-row: 2/3;
-    grid-column: 2/3;
-    grid-template-columns: repeat(5, 1fr);
-    column-gap: 5px;
+    grid-template-columns: 150px auto;
 }
 
-
-#btn-row-container{
+#piano {
     display: grid;
+    grid-column: 1/2;
+}
+
+#editor {
+    display: grid;
+    grid-column: 2/3;
+    border-left: 2px solid rgb(126, 126, 126);
+}
+
+.grid-container{
     width: 100%;
     height: 100%;
-    grid-row: 4/5;
-    grid-column: 2/3;
-    grid-template-columns: repeat(5, 1fr);
-    column-gap: 5px;
+    border-top: 1px solid rgb(126, 126, 126);
+    border-bottom: 1px solid rgb(126, 126, 126);
 }
 
-#generate-btn{
-    grid-column: 5/6;
+.grid-container:hover {
+    background-color: rgb(143, 143, 143);
 }
