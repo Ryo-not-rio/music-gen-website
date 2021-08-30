@@ -16,7 +16,7 @@ async function loadTone() {
 }
 
 async function playNote(pitch, length) {
-  piano.keyDown({note: pitch});
+  piano.keyDown({note: pitch, velocity: "0.5"});
   piano.keyUp({note: pitch, time: length})
 }
 
@@ -98,11 +98,13 @@ function makeEditorGrid() {
           gridContainer.style.display = "block";
         } else {
           gridContainer = document.createElement("div");
-
+          if (i > 0 && i % 4 == 0) {
+            gridContainer.style.borderLeft = "2px solid rgba(160, 160, 160, 0.5)";
+          }
           gridContainer.className = "grid-container";
           gridContainer.id = id;
 
-          gridContainer.addEventListener("mousedown", noteClickEvents)
+          gridContainer.addEventListener("mousedown", noteClickEvents);
           gridContainer.addEventListener("mouseover", noteClickEvents);
           
           box.appendChild(gridContainer);

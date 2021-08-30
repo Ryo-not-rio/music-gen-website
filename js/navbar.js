@@ -2,6 +2,7 @@ const musicBox = require("./music-box.js");
 
 window.sliderChange = sliderChange;
 window.updateSlider = updateSlider;
+window.tempChange = tempChange;
 
 function sliderChange(value) {
   value = parseInt(value);
@@ -31,4 +32,9 @@ function updateSlider(value) {
     slider.setAttribute("value", current+value);
     sliderChange(slider.value);
   }
+}
+
+function tempChange(value, textId) {
+  const textDiv = document.getElementById(textId);
+  textDiv.innerText = value;
 }

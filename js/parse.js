@@ -16,14 +16,17 @@ const loadPiano = piano.load();
 function readMusicBox() {
   let loadedNotes = [] // array of [pitch, time, length] where 0.25 indicates a quarter note
   const numCols = Math.floor(document.getElementById("editor").offsetWidth/gridWidth);
+  let prevTime = 0;
   for (let col=0; col<numCols; col++) {
+    let placed = false;
     for (let row=0; row<88; row++) {
       const note = document.getElementById(col.toString() + "-" + row.toString());
       if (note && note.classList.contains("placed")) {
         const pitch = 21 + 87-row;
         if (col > 0) {
           const prevNote = document.getElementById((col-1).toString()+"-"+row.toString());
-          if (prevNote.classList.contains("placed")) {
+          if (prevNote.classList.contains("placed")) { // if extending an existing note
+            // find the actual previous note in loadedNotes array and increase length
             for (let i=loadedNotes.length-1; i>=0; i--) {
               if (loadedNotes[i][0] == pitch) {
                 loadedNotes[i][2] += 0.0625;
@@ -31,12 +34,23 @@ function readMusicBox() {
               }
             }
           } else {
-            loadedNotes.push([pitch, col*0.0625, 0.0625]);
+            loadedNotes.push([pitch, prevTime, 0.0625]);
+            placed = true;
           }
         } else {
-          loadedNotes.push([pitch, col*0.0625, 0.0625]);
+          loadedNotes.push([pitch, prevTime, 0.0625]);
+          placed = true;
         }
-      }      
+      }
+    }
+    if (placed) {
+      prevTime = 0;
+    } else {
+      if (prevTime == 0) {
+        prevTime += 0.125
+      } else {
+        prevTime += 0.0625;
+      }
     }
   }
   return loadedNotes;
@@ -51,6 +65,10 @@ function convertTime(time) {
 }
 
 function playPrediction(prediction) {
+  Tone.Transport.stop();
+  Tone.Transport.cancel();
+  Tone.Transport.position = 0;
+  
   let prevTime = 0;
   let musicOns = []
   let musicOffs = []
@@ -79,14 +97,24 @@ function playPrediction(prediction) {
   keyDownEvents.start(1);
   keyUpEvents.start(1);
 
-  Tone.setContext(new Tone.Context({ latencyHint : "playback" }))
+  // Tone.setContext(new Tone.Context({ latencyHint : "playback" }))
   Tone.Transport.timeSignature = 4;
   Tone.Transport.bpm.value = 120;
-  Tone.Transport.start("+1");
+  Tone.Transport.start();
 }
 
 async function generate() {
+  const noteTemp = parseFloat(document.getElementById("note-temp-slider").value);
+  const timeTemp = parseFloat(document.getElementById("time-temp-slider").value);
+  const lengthTemp = parseFloat(document.getElementById("length-temp-slider").value);
+
+  const overlay = document.getElementById("loading-overlay");
+  const overlayText = document.getElementById("loading-text");
+  overlayText.innerText = "Generating...";
+  overlay.style.display = "grid";
+
   const notes = readMusicBox();
-  const prediction = await model.predict(notes, 1000);
+  const prediction = await model.predict(notes, 200, noteTemp, timeTemp, lengthTemp);
+  overlay.style.display = "none";
   playPrediction(prediction)
 }

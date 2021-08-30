@@ -22,7 +22,7 @@ function translate(arr) {
   return matrix;
 }
 
-async function predict(startArr, num=1, temp=0.7) {
+async function predict(startArr, num=1, noteTemp=0.7, timeTemp=0.8, lengthTemp=0.8) {
   const vocabs = require('../model/vocab.json');
   const model = await tf.loadLayersModel("../model/js-model/model.json");
 
@@ -36,9 +36,9 @@ async function predict(startArr, num=1, temp=0.7) {
     let notePredict, timePredict, lengthPredict;
     [notePredict, timePredict, lengthPredict] = predictions;
     
-    notePredict = tf.squeeze(notePredict, 0).div(temp);
-    timePredict = tf.squeeze(timePredict, 0).div(temp);
-    lengthPredict = tf.squeeze(lengthPredict, 0).div(temp);
+    notePredict = tf.squeeze(notePredict, 0).div(noteTemp);
+    timePredict = tf.squeeze(timePredict, 0).div(timeTemp);
+    lengthPredict = tf.squeeze(lengthPredict, 0).div(lengthTemp);
     
     let noteId = tf.multinomial(notePredict, 1).arraySync();
     let timeId = tf.multinomial(timePredict, 1).arraySync();

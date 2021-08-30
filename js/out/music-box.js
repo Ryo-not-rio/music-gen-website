@@ -612,7 +612,8 @@ function _playNote() {
         switch (_context2.prev = _context2.next) {
           case 0:
             piano.keyDown({
-              note: pitch
+              note: pitch,
+              velocity: "0.5"
             });
             piano.keyUp({
               note: pitch,
@@ -724,6 +725,11 @@ function makeEditorGrid() {
           gridContainer.style.display = "block";
         } else {
           gridContainer = document.createElement("div");
+
+          if (i > 0 && i % 4 == 0) {
+            gridContainer.style.borderLeft = "2px solid rgba(160, 160, 160, 0.5)";
+          }
+
           gridContainer.className = "grid-container";
           gridContainer.id = id;
           gridContainer.addEventListener("mousedown", noteClickEvents);

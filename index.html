@@ -11,6 +11,7 @@
     <link href="css/index.css" rel="stylesheet">
     <link href="css/piano.css" rel="stylesheet">
     <link href="css/navbar.css" rel="stylesheet">
+    <link href="css/sidebar.css" rel="stylesheet">
 
     <!-- Set global variables -->
     <script>
@@ -48,7 +49,7 @@
     <nav id="navbar">
       <div id="size-slider-container">
         <img id="zoom-out-icon" src="img/zoom-out.png" onclick="updateSlider(-1);">
-        <input type="range" min="5" max="88" value="63" class="slider" id="size-slider" oninput="sliderChange(this.value);" onchange="sliderChange(this.value);">
+        <input type="range" min="40" max="80" value="63" class="slider" id="size-slider" oninput="sliderChange(this.value);" onchange="sliderChange(this.value);">
         <img id="zoom-in-icon" src="img/zoom-in.png" onclick="updateSlider(1);">
       </div>
       <button id="generate-btn" onclick="generate()">Generate</button>
@@ -57,6 +58,18 @@
       <div id="piano">
       </div>
       <div id="editor" oncontextmenu="return false;">
+      </div>
+      <div id="sidebar">
+        <br />
+        Note Temp: <div id="note-temp-text">0.8</div>
+        <input type="range" min="0.1" max="2.0" value="0.8" step="0.01" class="slider" id="note-temp-slider" oninput='tempChange(this.value, "note-temp-text")' onchange='tempChange(this.value, "note-temp-text")'>
+        <br />
+        Time Temp: <div id="time-temp-text">0.8</div>
+        <input type="range" min="0.1" max="2.0" value="0.8" step="0.01" class="slider" id="time-temp-slider" oninput='tempChange(this.value, "time-temp-text")' onchange='tempChange(this.value, "time-temp-text")'>
+        <br />
+        Length Temp: <div id="length-temp-text">0.8</div>
+        <input type="range" min="0.1" max="2.0" value="0.8" step="0.01" class="slider" id="length-temp-slider" oninput='tempChange(this.value, "length-temp-text")' onchange='tempChange(this.value, "length-temp-text")'>
+        <br />
       </div>
     </div>
 

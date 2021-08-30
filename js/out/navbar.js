@@ -612,7 +612,8 @@ function _playNote() {
         switch (_context2.prev = _context2.next) {
           case 0:
             piano.keyDown({
-              note: pitch
+              note: pitch,
+              velocity: "0.5"
             });
             piano.keyUp({
               note: pitch,
@@ -724,6 +725,11 @@ function makeEditorGrid() {
           gridContainer.style.display = "block";
         } else {
           gridContainer = document.createElement("div");
+
+          if (i > 0 && i % 4 == 0) {
+            gridContainer.style.borderLeft = "2px solid rgba(160, 160, 160, 0.5)";
+          }
+
           gridContainer.className = "grid-container";
           gridContainer.id = id;
           gridContainer.addEventListener("mousedown", noteClickEvents);
@@ -758,6 +764,7 @@ var musicBox = require("./music-box.js");
 
 window.sliderChange = sliderChange;
 window.updateSlider = updateSlider;
+window.tempChange = tempChange;
 
 function sliderChange(value) {
   value = parseInt(value);
@@ -788,6 +795,11 @@ function updateSlider(value) {
     slider.setAttribute("value", current + value);
     sliderChange(slider.value);
   }
+}
+
+function tempChange(value, textId) {
+  var textDiv = document.getElementById(textId);
+  textDiv.innerText = value;
 }
 
 },{"./music-box.js":2}],4:[function(require,module,exports){
