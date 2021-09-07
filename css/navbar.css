@@ -30,6 +30,14 @@
     grid-column: 8/9;
 }
 
+#play-btn {
+    grid-column: 7/8;
+    background-image: url("../img/play.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
 #navbar button {
     color: white;
     font-size: large;

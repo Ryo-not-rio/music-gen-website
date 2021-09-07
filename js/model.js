@@ -1,5 +1,7 @@
 import * as tf from '@tensorflow/tfjs';
 
+module.exports = {predict};
+
 function translate(arr) {
   const matrix = [Array(128).fill(-1)];
   for (let i=0; i<arr.length; i++) {
@@ -31,6 +33,8 @@ async function predict(startArr, num=1, noteTemp=0.7, timeTemp=0.8, lengthTemp=0
   let generated = startArr;
   
   for (let i=0; i<num; i++) {
+    // console.log(i);
+    // console.log(inputEval.dataSync());
     const predictions = model.predict(inputEval);
 
     let notePredict, timePredict, lengthPredict;
@@ -48,7 +52,10 @@ async function predict(startArr, num=1, noteTemp=0.7, timeTemp=0.8, lengthTemp=0
     timeId = timeId[timeId.length-1][0];
     lengthId = lengthId[lengthId.length-1][0];
 
-    const note = vocabs[0][noteId], time=vocabs[1][timeId], length=vocabs[2][lengthId];
+    const note = vocabs[0][noteId];
+    const time = vocabs[1][timeId];
+    let length = Math.max(Math.min(vocabs[2][lengthId], 16), 1/4);
+    length = Math.round(length/(1/4))*(1/4)
 
     inputEval = tf.squeeze(inputEval, 0).arraySync();
     inputEval = inputEval[inputEval.length - 1];
@@ -62,10 +69,9 @@ async function predict(startArr, num=1, noteTemp=0.7, timeTemp=0.8, lengthTemp=0
     }
     
     inputEval[note] = Math.max(inputEval[note], length);
-
     inputEval = tf.expandDims(tf.tensor([inputEval]), 0);
 
-    const add = [note, time, length]
+    const add = [note, time/4, length/4] // Time and length divided by 4 as 1 time = 1 beat here
     if (!add.includes(-1)) {
       generated.push(add)
     } else {
@@ -74,5 +80,3 @@ async function predict(startArr, num=1, noteTemp=0.7, timeTemp=0.8, lengthTemp=0
   }
   return generated;
 }
-
-module.exports = {predict};

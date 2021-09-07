@@ -3,6 +3,14 @@ import * as Tone from 'tone'
 
 window.onDocLoad = onDocLoad;
 
+module.exports = {makePiano, makeEditorGrid, drawGenerated};
+
+function onDocLoad() {
+  loadTone();
+  makePiano();
+  makeEditorGrid();
+}
+
 // create the piano and load 5 velocity steps
 const piano = new Piano({
   velocities: 5
@@ -20,15 +28,19 @@ async function playNote(pitch, length) {
   piano.keyUp({note: pitch, time: length})
 }
 
+function drawNote(grid) {
+  grid.style.backgroundColor = "#fca103";
+  grid.classList.add("placed");
+}
+
 function noteOnEvents(grid) {
   let [i, note] = grid.id.split("-");
   [i, note] = [parseInt(i), parseInt(note)];
 
   if (!grid.classList.contains("placed")) {
     playNote(notes[87-note], "+0.5")
-    grid.style.backgroundColor = "#fca103"
+    drawNote(grid)
   }
-  grid.classList.add("placed")
 }
 
 function noteOffEvents(grid) {
@@ -49,12 +61,13 @@ function noteClickEvents(event) {
 
 function makePiano() {
   const box = document.getElementById("piano");
+  box.innerHTML = "";
   box.style.gridTemplateRows = 'repeat(' + numRows.toString() + ', 1fr)';
   let shift = 0;
   for (let noteNum=0; noteNum<88; noteNum++) {
     const id = "piano-key-" + noteNum.toString();
     const keyContainer = document.getElementById(id)
-    if ([1, 8, 13, 20, 25, 32, 37, 42, 47, 54, 61, 66, 73, 78, 85].includes(noteNum)) {
+    if ([1, 8, 13, 20, 25, 32, 37, 44, 49, 56, 61, 68, 73, 80, 85].includes(noteNum)) {
       shift += 1
     }
     if (noteNum >= noteOffset && noteNum < noteOffset + numRows) {
@@ -84,7 +97,7 @@ function makePiano() {
 
 function makeEditorGrid() {
   const box = document.getElementById("editor");
-  const numCols = Math.floor(box.offsetWidth/gridWidth);
+  numCols = Math.floor(box.offsetWidth/gridWidth);
 
   box.style.gridTemplateColumns = 'repeat(' + numCols.toString() + ', 1fr)'
   box.style.gridTemplateRows = 'repeat(' + numRows.toString() + ', 1fr)'
@@ -118,11 +131,60 @@ function makeEditorGrid() {
   }
 }
 
-function onDocLoad() {
-  loadTone();
-  makePiano();
+function makeGeneratedGrid(generated) {
+  let currentTime = 0;
+  let rows = [];
+  for (i=0; i<generated.length; i++) {
+    let note, time, length;
+    [note, time, length] = generated[i];
+    currentTime += time;
+    const column = Math.floor(currentTime/precision);
+    if (column >= numCols) {
+      break;
+    }
+    const row = 87 - (note - 21);
+    rows.push(row);
+  }
+  rows.sort();
+  const middleC = 44;
+  // Reduce the range of rows to draw
+  while (rows[rows.length-1]-rows[0] > maxNumRows) {
+    console.log(rows);
+    if (rows[rows.length-1] - middleC < rows[0] - middleC) {
+      rows = rows.slice(1);
+    } else {
+      rows = rows.slice(0, -1);
+    }
+  }
+  numRows = Math.max(rows[rows.length-1] - rows[0] + 1, 25);
+  noteOffset = rows[0];
   makeEditorGrid();
+  makePiano();
+  return rows;
 }
 
-module.exports = {makePiano, makeEditorGrid};
+function drawGenerated(generated) {
+  const rows = makeGeneratedGrid(generated);
+  let note, time, length;
+  let currentTime = 0;
+  for (let i=0; i<generated.length; i++) {
+    [note, time, length] = generated[i];
+    currentTime += time;
+    const row = 87 - (note - 21);
+    const column = Math.floor(currentTime/precision);
+    if (column >= numCols) {
+      break;
+    }
+    if (rows[0] <= row && row <= rows[rows.length-1]) {
+      while (length > 0 && column < numCols) {
+        const grid = document.getElementById(column.toString() + "-" + row.toString());
+        drawNote(grid);
+        length -= 1/16;
+        column += 1;
+      }
+    }
+  }
+  makeEditorGrid();
+  makePiano();
+}
 
