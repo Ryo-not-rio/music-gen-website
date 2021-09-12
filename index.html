@@ -12,6 +12,7 @@
     <link href="css/piano.css" rel="stylesheet">
     <link href="css/navbar.css" rel="stylesheet">
     <link href="css/sidebar.css" rel="stylesheet">
+    <link href="css/music-box.css" rel="stylesheet">
 
     <!-- Set global variables -->
     <script>
@@ -29,9 +30,14 @@
       const precision = 0.0625;
       const gridWidth = 35;
       let noteOffset = 32; // If 0, the top row is the highest note on the piano
+      let columnOffset = 0; // The first column to be shown
       let numRows = 25;
-      let maxNumRows = 44;
+      let maxNumRows = 35;
       let numCols;
+      const gridMap = new Map();
+
+      let verticalScrollY = 0;
+      let horizontalScrollX = 0;
       
     </script>
 
@@ -42,24 +48,28 @@
     
   </head>
 
-  <body onload="onDocLoad()">
+  <body onload="onDocLoad()" onmouseUp="releaseScroll();">
     <div id="loading-overlay">
       <div id="loading-text">
         loading...
       </div>
     </div>
 
-    <nav id="navbar">
+    <nav id="navbar" onmouseUp="releaseScroll();">
       <div id="size-slider-container">
-        <img id="zoom-out-icon" src="img/zoom-out.png" onclick="updateSlider(-1);">
+        <img id="zoom-out-icon" src="img/zoom-out.png" onclick="updateSlider(-1);" draggable="false">
         <input type="range" min="40" max="80" value="63" class="slider" id="size-slider" oninput="sliderChange(this.value);" onchange="sliderChange(this.value);">
-        <img id="zoom-in-icon" src="img/zoom-in.png" onclick="updateSlider(1);">
+        <img id="zoom-in-icon" src="img/zoom-in.png" onclick="updateSlider(1);" draggable="false">
       </div>
   
       <button id="play-btn" onclick="playBox()"></button>
       <button id="generate-btn" onclick="generate()">Generate</button>
     </nav>
-    <div id="music-box">
+    <div id="music-box" onmousemove="mouseMove(event);" onwheel="mouseScroll(event);">
+      <div id="vertical-scroller" class="scroller" onmousedown="verticalScrollY = event.clientY;">
+      </div>
+      <div id="horizontal-scroller" class="scroller" onmousedown="horizontalScrollX = event.clientX;">
+      </div>
       <div id="piano">
       </div>
       <div id="editor" oncontextmenu="return false;">

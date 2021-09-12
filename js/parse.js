@@ -53,7 +53,7 @@ function readMusicBox() {
       }
     }
   }
-  console.log("LOADED: ", loadedNotes)
+  // console.log("LOADED: ", loadedNotes)
   return loadedNotes;
 }
 
@@ -101,6 +101,7 @@ function playNotes(notes) {
   }
   // console.log(musicOns);
   // console.log(musicOffs);
+
   let keyDownEvents = new Tone.Part(function(time, value){
       piano.keyDown({note: value.note, time: time, velocity: 0.4});
   }, musicOns)
@@ -108,13 +109,13 @@ function playNotes(notes) {
   let keyUpEvents = new Tone.Part(function(time, value) {
     piano.keyUp({note: value.note, time: time});
   }, musicOffs)
-  keyDownEvents.start(1);
-  keyUpEvents.start(1);
+  keyDownEvents.start("+1");
+  keyUpEvents.start("+1");
 
   // Tone.setContext(new Tone.Context({ latencyHint : "playback" }))
   Tone.Transport.timeSignature = 4;
   Tone.Transport.bpm.value = 120;
-  Tone.Transport.start();
+  Tone.Transport.start("+2");
 }
 
 async function generate() {

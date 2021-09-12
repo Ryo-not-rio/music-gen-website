@@ -33,8 +33,6 @@ async function predict(startArr, num=1, noteTemp=0.7, timeTemp=0.8, lengthTemp=0
   let generated = startArr;
   
   for (let i=0; i<num; i++) {
-    // console.log(i);
-    // console.log(inputEval.dataSync());
     const predictions = model.predict(inputEval);
 
     let notePredict, timePredict, lengthPredict;

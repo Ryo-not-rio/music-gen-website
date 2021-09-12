@@ -565,6 +565,9 @@ function _interopRequireWildcard(obj, nodeInterop) {
 }
 
 window.onDocLoad = onDocLoad;
+window.mouseMove = mouseMove;
+window.releaseScroll = releaseScroll;
+window.mouseScroll = mouseScroll;
 module.exports = {
   makePiano: makePiano,
   makeEditorGrid: makeEditorGrid,
@@ -573,7 +576,6 @@ module.exports = {
 
 function onDocLoad() {
   loadTone();
-  makePiano();
   makeEditorGrid();
 } // create the piano and load 5 velocity steps
 
@@ -677,14 +679,19 @@ function noteOffEvents(grid) {
 }
 
 function noteClickEvents(event) {
-  if (event.buttons == 1) {
-    noteOnEvents(event.currentTarget);
-  } else if (event.buttons == 2) {
-    noteOffEvents(event.currentTarget);
+  if (!horizontalScrollX && !verticalScrollY) {
+    if (event.buttons == 1) {
+      noteOnEvents(event.currentTarget);
+      gridMap.set(event.currentTarget.id, true);
+    } else if (event.buttons == 2) {
+      noteOffEvents(event.currentTarget);
+      gridMap.set(event.currentTarget.id, false);
+    }
   }
 }
 
 function makePiano() {
+  var cIndexes = [0, 12, 24, 36, 48, 60, 72, 84];
   var box = document.getElementById("piano");
   box.innerHTML = "";
   box.style.gridTemplateRows = 'repeat(' + numRows.toString() + ', 1fr)';
@@ -692,7 +699,7 @@ function makePiano() {
 
   for (var noteNum = 0; noteNum < 88; noteNum++) {
     var id = "piano-key-" + noteNum.toString();
-    var keyContainer = document.getElementById(id);
+    var keyContainer = document.getElementById(id); // Correct the spacing of black and white keys
 
     if ([1, 8, 13, 20, 25, 32, 37, 44, 49, 56, 61, 68, 73, 80, 85].includes(noteNum)) {
       shift += 1;
@@ -712,6 +719,10 @@ function makePiano() {
           keyContainer.classList.add("black-key");
         }
 
+        if (cIndexes.includes(noteNum)) {
+          keyContainer.innerText = "C" + (8 - cIndexes.indexOf(noteNum)).toString();
+        }
+
         box.appendChild(keyContainer);
       }
 
@@ -724,16 +735,39 @@ function makePiano() {
   }
 }
 
+function cleanEditorGrid() {
+  var col, noteNum;
+  var box = document.getElementById("editor");
+  var length = box.children.length;
+
+  for (var _i = 0; _i < length; _i++) {
+    var child = box.children[_i];
+
+    var _child$id$split = child.id.split("-");
+
+    var _child$id$split2 = (0, _slicedToArray2["default"])(_child$id$split, 2);
+
+    col = _child$id$split2[0];
+    noteNum = _child$id$split2[1];
+
+    if (col >= columnOffset + numCols || col < columnOffset || noteNum < noteOffset || noteNum >= noteOffset + numRows) {
+      box.removeChild(child);
+      _i--;
+      length--;
+    }
+  }
+}
+
 function makeEditorGrid() {
   var box = document.getElementById("editor");
   numCols = Math.floor(box.offsetWidth / gridWidth);
   box.style.gridTemplateColumns = 'repeat(' + numCols.toString() + ', 1fr)';
   box.style.gridTemplateRows = 'repeat(' + numRows.toString() + ', 1fr)';
 
-  for (var _i = 0; _i < numCols; _i++) {
+  for (var _i2 = columnOffset; _i2 < columnOffset + numCols; _i2++) {
     for (var noteNum = 0; noteNum < 88; noteNum++) {
       var j = noteNum - noteOffset;
-      var id = _i.toString() + '-' + noteNum.toString();
+      var id = _i2.toString() + '-' + noteNum.toString();
       var gridContainer = document.getElementById(id);
 
       if (j >= 0 && j < numRows) {
@@ -742,7 +776,7 @@ function makeEditorGrid() {
         } else {
           gridContainer = document.createElement("div");
 
-          if (_i > 0 && _i % 4 == 0) {
+          if (_i2 > 0 && _i2 % 4 == 0) {
             gridContainer.style.borderLeft = "2px solid rgba(160, 160, 160, 0.5)";
           }
 
@@ -753,14 +787,24 @@ function makeEditorGrid() {
           box.appendChild(gridContainer);
         }
 
-        gridContainer.style.gridColumn = (_i + 1).toString() + '/' + (_i + 2).toString();
+        if (gridMap.get(id)) {
+          drawNote(gridContainer);
+        } // Setting the horizontal borders
+
+
+        gridContainer.style.borderTop = "1px solid var(--editor-bg-colour)";
+        gridContainer.style.gridColumn = (_i2 - columnOffset + 1).toString() + '/' + (_i2 - columnOffset + 2).toString();
         gridContainer.style.gridRow = (j + 1).toString() + '/' + (j + 2).toString();
       } else if (gridContainer) {
         gridContainer.style.display = "none";
       }
     }
   }
-}
+
+  makePiano();
+  cleanEditorGrid();
+} // Adjust the grid shown
+
 
 function makeGeneratedGrid(generated) {
   var currentTime = 0;
@@ -791,8 +835,6 @@ function makeGeneratedGrid(generated) {
   var middleC = 44; // Reduce the range of rows to draw
 
   while (rows[rows.length - 1] - rows[0] > maxNumRows) {
-    console.log(rows);
-
     if (rows[rows.length - 1] - middleC < rows[0] - middleC) {
       rows = rows.slice(1);
     } else {
@@ -802,18 +844,17 @@ function makeGeneratedGrid(generated) {
 
   numRows = Math.max(rows[rows.length - 1] - rows[0] + 1, 25);
   noteOffset = rows[0];
-  makeEditorGrid();
-  makePiano();
   return rows;
-}
+} // Draw the generated notes onto the grid
+
 
 function drawGenerated(generated) {
   var rows = makeGeneratedGrid(generated);
   var note, time, length;
   var currentTime = 0;
 
-  for (var _i2 = 0; _i2 < generated.length; _i2++) {
-    var _generated$_i = (0, _slicedToArray2["default"])(generated[_i2], 3);
+  for (var _i3 = 0; _i3 < generated.length; _i3++) {
+    var _generated$_i = (0, _slicedToArray2["default"])(generated[_i3], 3);
 
     note = _generated$_i[0];
     time = _generated$_i[1];
@@ -822,14 +863,10 @@ function drawGenerated(generated) {
     var row = 87 - (note - 21);
     var column = Math.floor(currentTime / precision);
 
-    if (column >= numCols) {
-      break;
-    }
-
     if (rows[0] <= row && row <= rows[rows.length - 1]) {
-      while (length > 0 && column < numCols) {
-        var grid = document.getElementById(column.toString() + "-" + row.toString());
-        drawNote(grid);
+      while (length > 0) {
+        var id = column.toString() + "-" + row.toString();
+        gridMap.set(id, true);
         length -= 1 / 16;
         column += 1;
       }
@@ -837,7 +874,73 @@ function drawGenerated(generated) {
   }
 
   makeEditorGrid();
-  makePiano();
+}
+
+function scrollVertically(event) {
+  var rowHeight = Math.round(document.getElementById("editor").offsetHeight / numRows);
+  var changeRows = Math.floor((event.clientY - verticalScrollY) / rowHeight);
+
+  if (changeRows != 0) {
+    if (changeRows > 0) {
+      // Dragged down
+      noteOffset = Math.max(0, noteOffset - changeRows);
+    } else if (changeRows < 0) {
+      // Dragged up
+      noteOffset = Math.min(87 - numRows + 1, noteOffset - changeRows);
+    }
+
+    verticalScrollY = event.clientY;
+    document.body.style.cursor = "ns-resize";
+    makeEditorGrid();
+  }
+}
+
+function scrollHorizontally(event) {
+  var precision = gridWidth;
+  var changeCols = Math.floor((event.clientX - horizontalScrollX) / precision);
+
+  if (changeCols != 0) {
+    if (changeCols > 0) {
+      // Dragged right
+      columnOffset = Math.max(0, columnOffset - changeCols);
+    } else if (changeCols < 0) {
+      // Dragged left
+      columnOffset -= changeCols;
+    }
+
+    horizontalScrollX = event.clientX;
+    document.body.style.cursor = "ew-resize";
+    makeEditorGrid();
+  }
+}
+
+function mouseMove(event) {
+  if (verticalScrollY != 0) scrollVertically(event);
+  if (horizontalScrollX != 0) scrollHorizontally(event);
+}
+
+function mouseScroll(event) {
+  if (event.deltaX == 0 && event.deltaY == 0) return;
+
+  if (Math.sign(event.deltaX) > 0) {
+    // Scroll left
+    columnOffset++;
+  } else if (Math.sign(event.deltaX) < 0) {
+    // right
+    if (columnOffset > 0) columnOffset--;
+  } else if (Math.sign(event.deltaY) > 0) {
+    // Scroll down
+    if (noteOffset + numRows - 1 < 87) noteOffset++;
+  } else if (Math.sign(event.deltaY) < 0) noteOffset--; // up
+
+
+  makeEditorGrid();
+}
+
+function releaseScroll() {
+  verticalScrollY = 0;
+  horizontalScrollX = 0;
+  document.body.style.cursor = null;
 }
 
 },{"@babel/runtime/helpers/asyncToGenerator":6,"@babel/runtime/helpers/interopRequireDefault":7,"@babel/runtime/helpers/slicedToArray":10,"@babel/runtime/helpers/typeof":11,"@babel/runtime/regenerator":13,"@tonejs/piano":14,"tone":900}],3:[function(require,module,exports){
@@ -852,21 +955,24 @@ window.tempChange = tempChange;
 function sliderChange(value) {
   value = parseInt(value);
   var rowsChange = 88 - value - numRows;
+  numRows = 88 - value;
 
   if (Math.abs(rowsChange) == 1) {
     if (numRows % 2 == 0) {
       if (rowsChange > 0) {
-        noteOffset--;
+        if (noteOffset > 0) {
+          noteOffset--;
+        }
       } else {
-        noteOffset++;
+        if (noteOffset + numRows - 1 < 87) {
+          noteOffset++;
+        }
       }
     }
   } else {
-    noteOffset = noteOffset - Math.floor(rowsChange / 2);
+    noteOffset = Math.max(0, Math.min(87 - numRows + 1, noteOffset - Math.floor(rowsChange / 2)));
   }
 
-  numRows = 88 - value;
-  musicBox.makePiano();
   musicBox.makeEditorGrid();
 }
 
@@ -875,7 +981,7 @@ function updateSlider(value) {
   var current = parseInt(slider.value);
 
   if (5 <= current + value <= 88) {
-    slider.setAttribute("value", current + value);
+    slider.value = (current + value).toString();
     sliderChange(slider.value);
   }
 }
