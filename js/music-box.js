@@ -21,8 +21,8 @@ const piano = new Piano({
 piano.toDestination()
 
 async function loadTone() {
-  await Tone.start();
-  await piano.load();
+  Tone.start();
+  piano.load();
   document.getElementById("loading-overlay").style.display = "none";
 }
 
