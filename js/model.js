@@ -26,7 +26,7 @@ function translate(arr) {
 
 async function predict(startArr, num=1, noteTemp=0.7, timeTemp=0.8, lengthTemp=0.8) {
   const vocabs = require('../model/vocab.json');
-  const model = await tf.loadLayersModel("../model/js-model/model.json");
+  const model = await tf.loadLayersModel("/model/js-model/model.json");
 
   let inputEval = translate(startArr);
   inputEval = tf.tensor([inputEval], undefined,'float32')
