@@ -1,6 +1,5 @@
 import * as Tone from 'tone'
 import { Piano } from '@tonejs/piano'
-import { math } from '@tensorflow/tfjs-core';
 
 window.generate = generate;
 window.playBox = playBox;
@@ -9,17 +8,17 @@ const musicBox = require("./music-box.js");
 const model = require("./model");
 const to_string = require("../utils/to_string.json")
 
-// create the piano and load 5 velocity steps
+// create the piano
 const piano = new Piano({
   maxPolyphony: 30
 })
 piano.toDestination()
 const loadPiano = piano.load();
 
-
-// TODO :: FIX
+// TODO :: FIX with map
 function readMusicBox() {
   let loadedNotes = [] // array of [pitch, time, length] where 0.25 indicates a quarter note
+
   let prevTime = 0;
   for (let col=0; col<numCols; col++) {
     let placed = false;
@@ -57,7 +56,19 @@ function readMusicBox() {
   return loadedNotes;
 }
 
+function resetBox() {
+  const overlay = document.getElementById("play-overlay");
+  columnOffset = 0;
+  overlay.style.display = "none";
+  overlay.style.gridColumnStart = 1;
+  overlay.style.gridColumnEnd = 2;
+  musicBox.makeEditorGrid();
+}
+
 function playBox() {
+  Tone.Transport.stop();
+  Tone.Transport.cancel();
+  resetBox();
   const notes = readMusicBox();
   playNotes(notes);
 }
@@ -66,11 +77,28 @@ function convertTime(time) {
   return "0:0:"+Math.round(time*16).toString();
 }
 
-function playNotes(notes) {
+function loopEvent(count) {
+  if (count > 0) {
+    if (count < 7) {
+      const overlay = document.getElementById("play-overlay");
+      overlay.style.gridColumnStart++;
+      overlay.style.gridColumnEnd++;
+    } else {
+      columnOffset++;
+      musicBox.makeEditorGrid();
+    }
+  }
+}
+
+function playNotes(notes) {  
+  playing = true;
+
+  Tone.Transport.timeSignature = 4;
+  Tone.Transport.bpm.value = 120;
   Tone.Transport.stop();
   Tone.Transport.cancel();
   Tone.Transport.position = 0;
-  
+
   let prevTime = 0;
   let musicOns = [];
   let musicOffs = [];
@@ -102,6 +130,12 @@ function playNotes(notes) {
   // console.log(musicOns);
   // console.log(musicOffs);
 
+  let loopCount = 0;
+  let shiftLoop = new Tone.Loop((time) => {
+    loopEvent(loopCount);
+    loopCount++;
+  }, "16n");
+
   let keyDownEvents = new Tone.Part(function(time, value){
       piano.keyDown({note: value.note, time: time, velocity: 0.4});
   }, musicOns)
@@ -109,13 +143,21 @@ function playNotes(notes) {
   let keyUpEvents = new Tone.Part(function(time, value) {
     piano.keyUp({note: value.note, time: time});
   }, musicOffs)
+
+  shiftLoop.start("+1");
   keyDownEvents.start("+1");
   keyUpEvents.start("+1");
 
-  // Tone.setContext(new Tone.Context({ latencyHint : "playback" }))
-  Tone.Transport.timeSignature = 4;
-  Tone.Transport.bpm.value = 120;
-  Tone.Transport.start("+2");
+  // clean up
+  Tone.Transport.schedule((time) => {
+    shiftLoop.stop();
+    resetBox();
+  }, Tone.Time(musicOffs[musicOffs.length-1]["time"]).toSeconds()+1);
+
+  Tone.Transport.start("+1");
+
+  columnOffset = 0;
+  document.getElementById("play-overlay").style.display = "block";
 }
 
 async function generate() {
@@ -130,7 +172,6 @@ async function generate() {
 
   const notes = readMusicBox();
   const prediction = await model.predict(notes, 500, noteTemp, timeTemp, lengthTemp);
-  console.log(prediction);
   overlay.style.display = "none";
   musicBox.drawGenerated(prediction);
   playNotes(prediction);

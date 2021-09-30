@@ -28,13 +28,14 @@
       }
 
       const precision = 0.0625;
-      const gridWidth = 35;
+      const gridWidth = 30;
       let noteOffset = 32; // If 0, the top row is the highest note on the piano
       let columnOffset = 0; // The first column to be shown
       let numRows = 25;
       let maxNumRows = 35;
       let numCols;
-      const gridMap = new Map();
+      let gridMap = new Map();
+      let playing = false;
 
       let verticalScrollY = 0;
       let horizontalScrollX = 0;
@@ -61,7 +62,8 @@
         <input type="range" min="40" max="80" value="63" class="slider" id="size-slider" oninput="sliderChange(this.value);" onchange="sliderChange(this.value);">
         <img id="zoom-in-icon" src="img/zoom-in.png" onclick="updateSlider(1);" draggable="false">
       </div>
-  
+
+      <button id="clear-btn" onclick="clearBox()">Clear</button>
       <button id="play-btn" onclick="playBox()"></button>
       <button id="generate-btn" onclick="generate()">Generate</button>
     </nav>
@@ -73,18 +75,37 @@
       <div id="piano">
       </div>
       <div id="editor" oncontextmenu="return false;">
+        <div id="play-overlay" style="display: none;">
+        </div>
       </div>
       <div id="sidebar">
-        <br />
-        Note Temp: <div id="note-temp-text">0.8</div>
-        <input type="range" min="0.1" max="2.0" value="0.8" step="0.01" class="slider" id="note-temp-slider" oninput='tempChange(this.value, "note-temp-text")' onchange='tempChange(this.value, "note-temp-text")'>
-        <br />
-        Time Temp: <div id="time-temp-text">0.8</div>
-        <input type="range" min="0.1" max="2.0" value="0.8" step="0.01" class="slider" id="time-temp-slider" oninput='tempChange(this.value, "time-temp-text")' onchange='tempChange(this.value, "time-temp-text")'>
-        <br />
-        Length Temp: <div id="length-temp-text">0.8</div>
-        <input type="range" min="0.1" max="2.0" value="0.8" step="0.01" class="slider" id="length-temp-slider" oninput='tempChange(this.value, "length-temp-text")' onchange='tempChange(this.value, "length-temp-text")'>
-        <br />
+        <div class="sidebar-row" style="grid-row: 1/2;">
+          <div class="question">
+            <p>Adjust the randomness of each note. A greater number makes each note more random.</p>
+          </div>
+          <div style="grid-column: 2/-1;">
+            Note Temp:  <span id="note-temp-text">0.8</span>
+          </div>
+          <input type="range" min="0.01" max="1.5" value="0.8" step="0.01" class="slider" id="note-temp-slider" oninput='tempChange(this.value, "note-temp-text")' onchange='tempChange(this.value, "note-temp-text")'>
+        </div>
+        <div class="sidebar-row" style="grid-row: 2/3;">
+          <div class="question">
+            <p>Adjust the randomness of the timing of each note. A greater number makes each note's timing more random.</p>
+          </div>
+          <div style="grid-column: 2/-1;">
+            Time Temp:  <span id="time-temp-text">0.8</span>
+          </div>
+          <input type="range" min="0.01" max="1.5" value="0.8" step="0.01" class="slider" id="time-temp-slider" oninput='tempChange(this.value, "time-temp-text")' onchange='tempChange(this.value, "time-temp-text")'>
+        </div>
+        <div class="sidebar-row" style="grid-row: 3/4;">
+          <div class="question">
+            <p>Adjust the randomness of the length of each note. A greater number makes each note's length become more random.</p>
+          </div>
+          <div style="grid-column: 2/-1;">
+            Length Temp:  <span id="length-temp-text">0.8</sp>
+          </div>
+          <input type="range" min="0.01" max="1.5" value="0.8" step="0.01" class="slider" id="length-temp-slider" oninput='tempChange(this.value, "length-temp-text")' onchange='tempChange(this.value, "length-temp-text")'>
+        </div>
       </div>
     </div>
 

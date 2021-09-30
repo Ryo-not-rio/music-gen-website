@@ -5,8 +5,9 @@ window.onDocLoad = onDocLoad;
 window.mouseMove = mouseMove;
 window.releaseScroll = releaseScroll;
 window.mouseScroll = mouseScroll;
+window.clearBox = clearBox;
 
-module.exports = {makePiano, makeEditorGrid, drawGenerated};
+module.exports = {makeEditorGrid, drawGenerated};
 
 function onDocLoad() {
   loadTone();
@@ -30,18 +31,13 @@ async function playNote(pitch, length) {
   piano.keyUp({note: pitch, time: length})
 }
 
-function drawNote(grid) {
-  grid.style.backgroundColor = "#fca103";
-  grid.classList.add("placed");
-}
-
 function noteOnEvents(grid) {
   let [i, note] = grid.id.split("-");
   [i, note] = [parseInt(i), parseInt(note)];
 
   if (!grid.classList.contains("placed")) {
     playNote(notes[87-note], "+0.5")
-    drawNote(grid)
+    grid.classList.add("placed");
   }
 }
 
@@ -124,12 +120,22 @@ function cleanEditorGrid() {
 }
 
 
+function clearBox() {
+  gridMap = new Map();
+  const box = document.getElementById("editor");
+  for (let i=0; i<box.children.length; i++) {
+    const child = box.children[i];
+    child.classList.remove("placed");
+  }
+}
+
 function makeEditorGrid() {
   const box = document.getElementById("editor");
   numCols = Math.floor(box.offsetWidth/gridWidth);
 
   box.style.gridTemplateColumns = 'repeat(' + numCols.toString() + ', 1fr)'
   box.style.gridTemplateRows = 'repeat(' + numRows.toString() + ', 1fr)'
+
   for (let i=columnOffset; i<columnOffset+numCols; i++) {
     for (let noteNum=0; noteNum<88; noteNum++) {
       let j = noteNum - noteOffset;
@@ -152,7 +158,7 @@ function makeEditorGrid() {
           box.appendChild(gridContainer);
         }
         if (gridMap.get(id)) {
-          drawNote(gridContainer);
+          gridContainer.classList.add("placed");
         }
 
         // Setting the horizontal borders
@@ -199,6 +205,7 @@ function makeGeneratedGrid(generated) {
   return rows;
 }
 
+
 // Draw the generated notes onto the grid
 function drawGenerated(generated) {
   const rows = makeGeneratedGrid(generated);
@@ -209,13 +216,11 @@ function drawGenerated(generated) {
     currentTime += time;
     const row = 87 - (note - 21);
     let column = Math.floor(currentTime/precision);
-    if (rows[0] <= row && row <= rows[rows.length-1]) {
-      while (length > 0) {
-        const id = column.toString() + "-" + row.toString();
-        gridMap.set(id, true);
-        length -= 1/16;
-        column += 1;
-      }
+    while (length > 0) {
+      const id = column.toString() + "-" + row.toString();
+      gridMap.set(id, true);
+      length -= 1/16;
+      column += 1;
     }
   }
   makeEditorGrid();
@@ -269,7 +274,7 @@ function mouseScroll(event) {
   } else if(Math.sign(event.deltaY) > 0) { // Scroll down
     if (noteOffset + numRows - 1 < 87) noteOffset++;
 
-  } else if(Math.sign(event.deltaY) < 0) noteOffset--; // up
+  } else if(Math.sign(event.deltaY) < 0 && noteOffset > 0) noteOffset--; // up
   makeEditorGrid();
 }
 

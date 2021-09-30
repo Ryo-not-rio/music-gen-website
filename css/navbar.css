@@ -36,9 +36,13 @@
 #play-btn {
     grid-column: 7/8;
     background-image: url("../img/play.png");
-    background-size: contain;
+    background-size: auto 80%;
     background-repeat: no-repeat;
     background-position: center;
+}
+
+#clear-btn {
+    grid-column: 6/7;
 }
 
 #navbar button {
