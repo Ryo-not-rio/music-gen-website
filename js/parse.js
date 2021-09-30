@@ -66,6 +66,7 @@ function resetBox() {
 }
 
 function playBox() {
+  Tone.Context.resume();
   Tone.Transport.stop();
   Tone.Transport.cancel();
   resetBox();
