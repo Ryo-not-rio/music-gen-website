@@ -595,17 +595,12 @@ function _loadTone() {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
-            _context.next = 2;
-            return Tone.start();
-
-          case 2:
-            _context.next = 4;
-            return piano.load();
-
-          case 4:
+            Tone.start();
+            piano.load();
+            console.log("Removing overlay");
             document.getElementById("loading-overlay").style.display = "none";
 
-          case 5:
+          case 4:
           case "end":
             return _context.stop();
         }
@@ -939,6 +934,8 @@ function mouseScroll(event) {
 
   makeEditorGrid();
 }
+
+a;
 
 function releaseScroll() {
   verticalScrollY = 0;
