@@ -48,10 +48,11 @@
     
   </head>
 
-  <body onload="onDocLoad()" onmouseUp="releaseScroll();">
+  <body onmouseUp="releaseScroll();">
     <div id="loading-overlay">
       <div id="loading-text">
-        loading...
+        <span style="grid-column: 1/-1; grid-row: 1/3;">Left click to place notes, right click to erase.</span>
+        <button onclick="onDocLoad()" style="color: white;">Ready!</button>
       </div>
     </div>
 

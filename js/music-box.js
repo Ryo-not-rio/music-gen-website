@@ -10,6 +10,7 @@ window.clearBox = clearBox;
 module.exports = {makeEditorGrid, drawGenerated};
 
 function onDocLoad() {
+  document.getElementById("loading-text").innerHTML = "Loading...";
   loadTone();
   makeEditorGrid();
 }
@@ -21,8 +22,8 @@ const piano = new Piano({
 piano.toDestination()
 
 async function loadTone() {
-  Tone.start();
-  piano.load();
+  await Tone.start();
+  await piano.load();
   console.log("Removing overlay");
   document.getElementById("loading-overlay").style.display = "none";
 }

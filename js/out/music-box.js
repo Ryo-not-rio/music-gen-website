@@ -575,6 +575,7 @@ module.exports = {
 };
 
 function onDocLoad() {
+  document.getElementById("loading-text").innerHTML = "Loading...";
   loadTone();
   makeEditorGrid();
 } // create the piano and load 5 velocity steps
@@ -595,12 +596,18 @@ function _loadTone() {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
-            Tone.start();
-            piano.load();
+            _context.next = 2;
+            return Tone.start();
+
+          case 2:
+            _context.next = 4;
+            return piano.load();
+
+          case 4:
             console.log("Removing overlay");
             document.getElementById("loading-overlay").style.display = "none";
 
-          case 4:
+          case 6:
           case "end":
             return _context.stop();
         }
