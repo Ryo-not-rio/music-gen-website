@@ -23,6 +23,7 @@ piano.toDestination()
 async function loadTone() {
   Tone.start();
   piano.load();
+  console.log("Removing overlay");
   document.getElementById("loading-overlay").style.display = "none";
 }
 
