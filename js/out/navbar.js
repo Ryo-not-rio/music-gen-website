@@ -935,8 +935,6 @@ function mouseScroll(event) {
   makeEditorGrid();
 }
 
-a;
-
 function releaseScroll() {
   verticalScrollY = 0;
   horizontalScrollX = 0;

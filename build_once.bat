@@ -1,0 +1,1 @@
+browserify js/model.js -p esmify -o js/out/model.js && browserify js/music-box.js -p esmify -o js/out/music-box.js && browserify js/parse.js -p esmify -o js/out/parse.js && browserify js/navbar.js -p esmify -o js/out/navbar.js

@@ -46,18 +46,18 @@ function noteOffEvents(grid) {
   let [i, j] = grid.id.split("-");
   [i, j] = [parseInt(i), parseInt(j)];
 
-  grid.style.backgroundColor = ""
-  grid.classList.remove("placed")
+  grid.style.backgroundColor = "";
+  grid.classList.remove("placed");
 }
 
 function noteClickEvents(event) {
   if (!horizontalScrollX && !verticalScrollY) {
     if (event.buttons == 1) {
-      noteOnEvents(event.currentTarget)
-      gridMap.set(event.currentTarget.id, true)
+      noteOnEvents(event.currentTarget);
+      gridMap.set(event.currentTarget.id, true);
     } else if (event.buttons == 2) {
-      noteOffEvents(event.currentTarget)
-      gridMap.set(event.currentTarget.id, false)
+      noteOffEvents(event.currentTarget);
+      gridMap.set(event.currentTarget.id, false);
     } 
   }
 }
@@ -70,11 +70,11 @@ function makePiano() {
   let shift = 0;
   for (let noteNum=0; noteNum<88; noteNum++) {
     const id = "piano-key-" + noteNum.toString();
-    const keyContainer = document.getElementById(id)
+    const keyContainer = document.getElementById(id);
 
     // Correct the spacing of black and white keys
     if ([1, 8, 13, 20, 25, 32, 37, 44, 49, 56, 61, 68, 73, 80, 85].includes(noteNum)) {
-      shift += 1
+      shift += 1;
     }
     if (noteNum >= noteOffset && noteNum < noteOffset + numRows) {
       if (keyContainer) {
@@ -87,14 +87,14 @@ function makePiano() {
         if ((noteNum + shift) % 2 == 0) {
           keyContainer.classList.add("white-key");
         } else {
-          keyContainer.classList.add("black-key")
+          keyContainer.classList.add("black-key");
         }
 
         if (cIndexes.includes(noteNum)) {
           keyContainer.innerText = "C" + (8 - cIndexes.indexOf(noteNum)).toString();
         }
     
-        box.appendChild(keyContainer)
+        box.appendChild(keyContainer);
       }
       keyContainer.style.gridRow = (noteNum - noteOffset + 1).toString() + '/' + (noteNum - noteOffset +2).toString();
     } else {
@@ -134,8 +134,8 @@ function makeEditorGrid() {
   const box = document.getElementById("editor");
   numCols = Math.floor(box.offsetWidth/gridWidth);
 
-  box.style.gridTemplateColumns = 'repeat(' + numCols.toString() + ', 1fr)'
-  box.style.gridTemplateRows = 'repeat(' + numRows.toString() + ', 1fr)'
+  box.style.gridTemplateColumns = 'repeat(' + numCols.toString() + ', 1fr)';
+  box.style.gridTemplateRows = 'repeat(' + numRows.toString() + ', 1fr)';
 
   for (let i=columnOffset; i<columnOffset+numCols; i++) {
     for (let noteNum=0; noteNum<88; noteNum++) {
