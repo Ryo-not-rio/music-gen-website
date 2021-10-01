@@ -66,7 +66,6 @@ function resetBox() {
 }
 
 function playBox() {
-  Tone.Context.resume();
   Tone.Transport.stop();
   Tone.Transport.cancel();
   resetBox();
@@ -145,6 +144,8 @@ function playNotes(notes) {
     piano.keyUp({note: value.note, time: time});
   }, musicOffs)
 
+  keyDownEvents.context._context.resume();
+  keyUpEvents.context._context.resume();
   shiftLoop.start("+1");
   keyDownEvents.start("+1");
   keyUpEvents.start("+1");
