@@ -575,9 +575,12 @@ module.exports = {
 };
 
 function onDocLoad() {
-  document.getElementById("loading-text").innerHTML = "Loading...";
+  var readyButton = document.getElementById("ready-button");
+  readyButton.disabled = "disabled";
   loadTone();
   makeEditorGrid();
+  readyButton.innerHTML = "Ready!";
+  readyButton.disabled = "";
 } // create the piano and load 5 velocity steps
 
 
@@ -604,10 +607,6 @@ function _loadTone() {
             return piano.load();
 
           case 4:
-            console.log("Removing overlay");
-            document.getElementById("loading-overlay").style.display = "none";
-
-          case 6:
           case "end":
             return _context.stop();
         }

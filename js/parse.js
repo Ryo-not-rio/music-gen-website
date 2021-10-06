@@ -90,7 +90,8 @@ function loopEvent(count) {
   }
 }
 
-function playNotes(notes) {  
+function playNotes(notes) {
+  Tone.start();
   playing = true;
 
   Tone.Transport.timeSignature = 4;

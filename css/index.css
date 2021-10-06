@@ -31,12 +31,16 @@ body{
 
 #loading-text {
     display: grid;
+    padding: 30px;
+    background-color: rgb(95, 95, 95);
+    border-radius: 30px;
     text-align: justify;
-    font-size: 5vw;
+    font-size: 3vw;
     grid-column: 2/-2;
     grid-row: 2/-2;
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: repeat(5, 1fr);
+    row-gap: 10px;
 }
 
 #loading-text button {

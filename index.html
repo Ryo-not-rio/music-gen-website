@@ -48,11 +48,14 @@
     
   </head>
 
-  <body onmouseUp="releaseScroll();">
+  <body onmouseUp="releaseScroll();" onload="onDocLoad()">
     <div id="loading-overlay">
       <div id="loading-text">
-        <span style="grid-column: 1/-1; grid-row: 1/3;">Left click to place notes, right click to erase.</span>
-        <button onclick="onDocLoad()" style="color: white;">Ready!</button>
+        <img src="img/mouse-left.svg" style="grid-column: 1/3; grid-row: 1/3;"/>
+        <span style="grid-column: 1/3; grid-row: 3/5;">Left click to place notes</span>
+        <img src="img/mouse-right.svg" style="grid-column: 4/6; grid-row: 1/3;"/>
+        <span style="grid-column: 4/6; grid-row: 3/5;">Right click to delete notes</span>
+        <button style="color: white; grid-row: 5/6;" id="ready-button" onclick='document.getElementById("loading-overlay").style.display="none";'>Loading...</button>
       </div>
     </div>
 

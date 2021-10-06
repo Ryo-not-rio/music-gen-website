@@ -10,9 +10,12 @@ window.clearBox = clearBox;
 module.exports = {makeEditorGrid, drawGenerated};
 
 function onDocLoad() {
-  document.getElementById("loading-text").innerHTML = "Loading...";
+  const readyButton = document.getElementById("ready-button");
+  readyButton.disabled = "disabled";
   loadTone();
   makeEditorGrid();
+  readyButton.innerHTML = "Ready!";
+  readyButton.disabled = "";
 }
 
 // create the piano and load 5 velocity steps
@@ -24,8 +27,6 @@ piano.toDestination()
 async function loadTone() {
   await Tone.start();
   await piano.load();
-  console.log("Removing overlay");
-  document.getElementById("loading-overlay").style.display = "none";
 }
 
 async function playNote(pitch, length) {
