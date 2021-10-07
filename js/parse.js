@@ -3,6 +3,7 @@ import { Piano } from '@tonejs/piano'
 
 window.generate = generate;
 window.playBox = playBox;
+window.clearBox = clearBox;
 
 const musicBox = require("./music-box.js");
 const model = require("./model");
@@ -14,6 +15,27 @@ const piano = new Piano({
 })
 piano.toDestination()
 const loadPiano = piano.load();
+
+function resetBox() {
+  Tone.Transport.stop();
+  Tone.Transport.cancel();
+  const overlay = document.getElementById("play-overlay");
+  columnOffset = 0;
+  overlay.style.display = "none";
+  overlay.style.gridColumnStart = 1;
+  overlay.style.gridColumnEnd = 2;
+  musicBox.makeEditorGrid();
+}
+
+function clearBox() {
+  resetBox();
+  gridMap = new Map();
+  const box = document.getElementById("editor");
+  for (let i=0; i<box.children.length; i++) {
+    const child = box.children[i];
+    child.classList.remove("placed");
+  }
+}
 
 // TODO :: FIX with map
 function readMusicBox() {
@@ -31,7 +53,7 @@ function readMusicBox() {
         const pitch = 21 + 87-row;
         if (col > 0) {
           const prevNote = document.getElementById((col-1).toString()+"-"+row.toString());
-          if (prevNote.classList.contains("placed")) { // if extending an existing note
+          if (prevNote && prevNote.classList.contains("placed")) { // if extending an existing note
             // find the actual previous note in loadedNotes array and increase length
             for (let i=loadedNotes.length-1; i>=0; i--) {
               if (loadedNotes[i][0] == pitch) {
@@ -56,18 +78,7 @@ function readMusicBox() {
   return loadedNotes;
 }
 
-function resetBox() {
-  const overlay = document.getElementById("play-overlay");
-  columnOffset = 0;
-  overlay.style.display = "none";
-  overlay.style.gridColumnStart = 1;
-  overlay.style.gridColumnEnd = 2;
-  musicBox.makeEditorGrid();
-}
-
 function playBox() {
-  Tone.Transport.stop();
-  Tone.Transport.cancel();
   resetBox();
   const notes = readMusicBox();
   playNotes(notes);

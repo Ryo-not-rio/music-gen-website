@@ -568,21 +568,41 @@ window.onDocLoad = onDocLoad;
 window.mouseMove = mouseMove;
 window.releaseScroll = releaseScroll;
 window.mouseScroll = mouseScroll;
-window.clearBox = clearBox;
 module.exports = {
   makeEditorGrid: makeEditorGrid,
   drawGenerated: drawGenerated
 };
 
 function onDocLoad() {
-  var readyButton = document.getElementById("ready-button");
-  readyButton.disabled = "disabled";
-  loadTone();
-  makeEditorGrid();
-  readyButton.innerHTML = "Ready!";
-  readyButton.disabled = "";
+  return _onDocLoad.apply(this, arguments);
 } // create the piano and load 5 velocity steps
 
+
+function _onDocLoad() {
+  _onDocLoad = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee() {
+    var readyButton;
+    return _regenerator["default"].wrap(function _callee$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            readyButton = document.getElementById("ready-button");
+            readyButton.disabled = "disabled";
+            _context.next = 4;
+            return loadTone();
+
+          case 4:
+            readyButton.innerHTML = "Ready!";
+            readyButton.disabled = "";
+
+          case 6:
+          case "end":
+            return _context.stop();
+        }
+      }
+    }, _callee);
+  }));
+  return _onDocLoad.apply(this, arguments);
+}
 
 var piano = new _piano.Piano({
   velocities: 5
@@ -594,24 +614,24 @@ function loadTone() {
 }
 
 function _loadTone() {
-  _loadTone = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee() {
-    return _regenerator["default"].wrap(function _callee$(_context) {
+  _loadTone = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee2() {
+    return _regenerator["default"].wrap(function _callee2$(_context2) {
       while (1) {
-        switch (_context.prev = _context.next) {
+        switch (_context2.prev = _context2.next) {
           case 0:
-            _context.next = 2;
+            _context2.next = 2;
             return Tone.start();
 
           case 2:
-            _context.next = 4;
+            _context2.next = 4;
             return piano.load();
 
           case 4:
           case "end":
-            return _context.stop();
+            return _context2.stop();
         }
       }
-    }, _callee);
+    }, _callee2);
   }));
   return _loadTone.apply(this, arguments);
 }
@@ -621,10 +641,10 @@ function playNote(_x, _x2) {
 }
 
 function _playNote() {
-  _playNote = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee2(pitch, length) {
-    return _regenerator["default"].wrap(function _callee2$(_context2) {
+  _playNote = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee3(pitch, length) {
+    return _regenerator["default"].wrap(function _callee3$(_context3) {
       while (1) {
-        switch (_context2.prev = _context2.next) {
+        switch (_context3.prev = _context3.next) {
           case 0:
             piano.keyDown({
               note: pitch,
@@ -637,10 +657,10 @@ function _playNote() {
 
           case 2:
           case "end":
-            return _context2.stop();
+            return _context3.stop();
         }
       }
-    }, _callee2);
+    }, _callee3);
   }));
   return _playNote.apply(this, arguments);
 }
@@ -754,26 +774,16 @@ function cleanEditorGrid() {
   }
 }
 
-function clearBox() {
-  gridMap = new Map();
-  var box = document.getElementById("editor");
-
-  for (var _i2 = 0; _i2 < box.children.length; _i2++) {
-    var child = box.children[_i2];
-    child.classList.remove("placed");
-  }
-}
-
 function makeEditorGrid() {
   var box = document.getElementById("editor");
   numCols = Math.floor(box.offsetWidth / gridWidth);
   box.style.gridTemplateColumns = 'repeat(' + numCols.toString() + ', 1fr)';
   box.style.gridTemplateRows = 'repeat(' + numRows.toString() + ', 1fr)';
 
-  for (var _i3 = columnOffset; _i3 < columnOffset + numCols; _i3++) {
+  for (var _i2 = columnOffset; _i2 < columnOffset + numCols; _i2++) {
     for (var noteNum = 0; noteNum < 88; noteNum++) {
       var j = noteNum - noteOffset;
-      var id = _i3.toString() + '-' + noteNum.toString();
+      var id = _i2.toString() + '-' + noteNum.toString();
       var gridContainer = document.getElementById(id);
 
       if (j >= 0 && j < numRows) {
@@ -782,7 +792,7 @@ function makeEditorGrid() {
         } else {
           gridContainer = document.createElement("div");
 
-          if (_i3 > 0 && _i3 % 4 == 0) {
+          if (_i2 > 0 && _i2 % 4 == 0) {
             gridContainer.style.borderLeft = "2px solid rgba(160, 160, 160, 0.5)";
           }
 
@@ -799,7 +809,7 @@ function makeEditorGrid() {
 
 
         gridContainer.style.borderTop = "1px solid var(--editor-bg-colour)";
-        gridContainer.style.gridColumn = (_i3 - columnOffset + 1).toString() + '/' + (_i3 - columnOffset + 2).toString();
+        gridContainer.style.gridColumn = (_i2 - columnOffset + 1).toString() + '/' + (_i2 - columnOffset + 2).toString();
         gridContainer.style.gridRow = (j + 1).toString() + '/' + (j + 2).toString();
       } else if (gridContainer) {
         gridContainer.style.display = "none";
@@ -859,8 +869,8 @@ function drawGenerated(generated) {
   var note, time, length;
   var currentTime = 0;
 
-  for (var _i4 = 0; _i4 < generated.length; _i4++) {
-    var _generated$_i = (0, _slicedToArray2["default"])(generated[_i4], 3);
+  for (var _i3 = 0; _i3 < generated.length; _i3++) {
+    var _generated$_i = (0, _slicedToArray2["default"])(generated[_i3], 3);
 
     note = _generated$_i[0];
     time = _generated$_i[1];

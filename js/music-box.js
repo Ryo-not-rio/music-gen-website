@@ -5,15 +5,14 @@ window.onDocLoad = onDocLoad;
 window.mouseMove = mouseMove;
 window.releaseScroll = releaseScroll;
 window.mouseScroll = mouseScroll;
-window.clearBox = clearBox;
 
 module.exports = {makeEditorGrid, drawGenerated};
 
-function onDocLoad() {
+async function onDocLoad() {
   const readyButton = document.getElementById("ready-button");
   readyButton.disabled = "disabled";
-  loadTone();
   makeEditorGrid();
+  await loadTone();
   readyButton.innerHTML = "Ready!";
   readyButton.disabled = "";
 }
@@ -122,15 +121,6 @@ function cleanEditorGrid() {
   }
 }
 
-
-function clearBox() {
-  gridMap = new Map();
-  const box = document.getElementById("editor");
-  for (let i=0; i<box.children.length; i++) {
-    const child = box.children[i];
-    child.classList.remove("placed");
-  }
-}
 
 function makeEditorGrid() {
   const box = document.getElementById("editor");
