@@ -585,17 +585,18 @@ function _onDocLoad() {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
+            Tone.start();
             readyButton = document.getElementById("ready-button");
             readyButton.disabled = "disabled";
             makeEditorGrid();
-            _context.next = 5;
+            _context.next = 6;
             return loadTone();
 
-          case 5:
+          case 6:
             readyButton.innerHTML = "Ready!";
             readyButton.disabled = "";
 
-          case 7:
+          case 8:
           case "end":
             return _context.stop();
         }

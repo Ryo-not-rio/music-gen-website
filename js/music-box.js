@@ -9,6 +9,7 @@ window.mouseScroll = mouseScroll;
 module.exports = {makeEditorGrid, drawGenerated};
 
 async function onDocLoad() {
+  Tone.start();
   const readyButton = document.getElementById("ready-button");
   readyButton.disabled = "disabled";
   makeEditorGrid();
