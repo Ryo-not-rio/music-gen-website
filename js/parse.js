@@ -181,7 +181,7 @@ async function generate() {
 
   const overlay = document.getElementById("loading-overlay");
   const overlayText = document.getElementById("loading-text");
-  overlayText.innerText = "Generating...";
+  overlayText.innerHTML = '<div style="font-size: 5vw; color:#00ccff; grid-row: 2/-2; grid-column: 1/-1;">Generating...</div>';
   overlay.style.display = "grid";
 
   const notes = readMusicBox();
