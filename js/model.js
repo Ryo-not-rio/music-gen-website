@@ -25,6 +25,7 @@ function translate(arr) {
 }
 
 async function predict(startArr, num=1, noteTemp=0.7, timeTemp=0.8, lengthTemp=0.8) {
+  const start = new Date().getTime() / 1000;
   const vocabs = require('../model/vocab.json');
   const model = await tf.loadLayersModel("../model/js-model/model.json");
   // const model = await tf.loadLayersModel("/music-gen-website/model/js-model/model.json");
@@ -75,6 +76,10 @@ async function predict(startArr, num=1, noteTemp=0.7, timeTemp=0.8, lengthTemp=0
       generated.push(add)
     } else {
       num++;
+    }
+
+    if (new Date().getTime() / 1000 - start > 30) {
+      break;
     }
   }
   return generated;

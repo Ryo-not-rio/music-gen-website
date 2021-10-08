@@ -574,37 +574,15 @@ module.exports = {
 };
 
 function onDocLoad() {
-  return _onDocLoad.apply(this, arguments);
+  Tone.start();
+  var readyButton = document.getElementById("ready-button");
+  readyButton.disabled = "disabled";
+  makeEditorGrid();
+  loadTone();
+  readyButton.innerHTML = "Ready!";
+  readyButton.disabled = "";
 } // create the piano and load 5 velocity steps
 
-
-function _onDocLoad() {
-  _onDocLoad = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee() {
-    var readyButton;
-    return _regenerator["default"].wrap(function _callee$(_context) {
-      while (1) {
-        switch (_context.prev = _context.next) {
-          case 0:
-            Tone.start();
-            readyButton = document.getElementById("ready-button");
-            readyButton.disabled = "disabled";
-            makeEditorGrid();
-            _context.next = 6;
-            return loadTone();
-
-          case 6:
-            readyButton.innerHTML = "Ready!";
-            readyButton.disabled = "";
-
-          case 8:
-          case "end":
-            return _context.stop();
-        }
-      }
-    }, _callee);
-  }));
-  return _onDocLoad.apply(this, arguments);
-}
 
 var piano = new _piano.Piano({
   velocities: 5
@@ -616,24 +594,24 @@ function loadTone() {
 }
 
 function _loadTone() {
-  _loadTone = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee2() {
-    return _regenerator["default"].wrap(function _callee2$(_context2) {
+  _loadTone = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee() {
+    return _regenerator["default"].wrap(function _callee$(_context) {
       while (1) {
-        switch (_context2.prev = _context2.next) {
+        switch (_context.prev = _context.next) {
           case 0:
-            _context2.next = 2;
+            _context.next = 2;
             return Tone.start();
 
           case 2:
-            _context2.next = 4;
+            _context.next = 4;
             return piano.load();
 
           case 4:
           case "end":
-            return _context2.stop();
+            return _context.stop();
         }
       }
-    }, _callee2);
+    }, _callee);
   }));
   return _loadTone.apply(this, arguments);
 }
@@ -643,10 +621,10 @@ function playNote(_x, _x2) {
 }
 
 function _playNote() {
-  _playNote = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee3(pitch, length) {
-    return _regenerator["default"].wrap(function _callee3$(_context3) {
+  _playNote = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee2(pitch, length) {
+    return _regenerator["default"].wrap(function _callee2$(_context2) {
       while (1) {
-        switch (_context3.prev = _context3.next) {
+        switch (_context2.prev = _context2.next) {
           case 0:
             piano.keyDown({
               note: pitch,
@@ -659,10 +637,10 @@ function _playNote() {
 
           case 2:
           case "end":
-            return _context3.stop();
+            return _context2.stop();
         }
       }
-    }, _callee3);
+    }, _callee2);
   }));
   return _playNote.apply(this, arguments);
 }
