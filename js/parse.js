@@ -42,7 +42,7 @@ function readMusicBox() {
 
   let prevTime = 0;
   console.log(gridMap)
-  for (let col=0; col<=Math.max(...[...gridMap.keys()].map(key => parseInt(key.split("-")[0])), numCols); col++) {
+  for (let col=0; col<=Math.max(...[...gridMap.keys()].map(key => parseInt(key.split("-")[0]))); col++) {
     let placed = false;
     if (col > 0) {
       prevTime += precision;
