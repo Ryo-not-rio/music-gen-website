@@ -37,12 +37,10 @@ function clearBox() {
   }
 }
 
-// TODO :: FIX with map
 function readMusicBox() {
   let loadedNotes = [] // array of [pitch, time, length] where 0.25 indicates a quarter note
 
   let prevTime = 0;
-  console.log([...gridMap.keys()].map(key => parseInt(key.split("-")[0])))
   for (let col=0; col<=Math.max([...gridMap.keys()].map(key => parseInt(key.split("-")[0]))); col++) {
     let placed = false;
     if (col > 0) {
@@ -82,6 +80,7 @@ function readMusicBox() {
 function playBox() {
   resetBox();
   const notes = readMusicBox();
+  console.log(notes)
   playNotes(notes);
 }
 
@@ -140,8 +139,6 @@ function playNotes(notes) {
   for (let j=0; j<musicOffs.length; j++) {
     musicOffs[j]["time"] = convertTime(musicOffs[j]["time"])
   }
-  // console.log(musicOns);
-  // console.log(musicOffs);
 
   let loopCount = 0;
   let shiftLoop = new Tone.Loop((time) => {
