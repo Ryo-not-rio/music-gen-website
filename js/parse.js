@@ -42,8 +42,8 @@ function readMusicBox() {
   let loadedNotes = [] // array of [pitch, time, length] where 0.25 indicates a quarter note
 
   let prevTime = 0;
-  console.log(Math.max([...gridMap.keys()].map(key => key.split("-")[0])))
-  for (let col=0; col<=Math.max([...gridMap.keys()].map(key => key.split("-")[0])); col++) {
+  console.log([...gridMap.keys()].map(key => parseInt(key.split("-")[0])))
+  for (let col=0; col<=Math.max([...gridMap.keys()].map(key => parseInt(key.split("-")[0]))); col++) {
     let placed = false;
     if (col > 0) {
       prevTime += precision;
