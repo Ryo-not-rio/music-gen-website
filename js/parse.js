@@ -50,8 +50,8 @@ function readMusicBox() {
     }
     for (let row=0; row<88; row++) {
       const note = document.getElementById(col.toString() + "-" + row.toString());
-      console.log(col.toString() + "-" + row.toString())
       if (note && note.classList.contains("placed")) {
+        console.log(col.toString() + "-" + row.toString())
         const pitch = 21 + 87-row;
         if (col > 0) {
           const prevNote = document.getElementById((col-1).toString()+"-"+row.toString());
