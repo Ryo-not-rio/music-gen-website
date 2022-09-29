@@ -41,7 +41,6 @@ function readMusicBox() {
   let loadedNotes = [] // array of [pitch, time, length] where 0.25 indicates a quarter note
 
   let prevTime = 0;
-  console.log(gridMap)
   for (let col=0; col<=Math.max(...[...gridMap.keys()].map(key => parseInt(key.split("-")[0]))); col++) {
     let placed = false;
     if (col > 0) {
@@ -49,7 +48,6 @@ function readMusicBox() {
     }
     for (let row=0; row<88; row++) {
       if (gridMap.has(col.toString() + "-" + row.toString())) {
-        console.log(col.toString() + "-" + row.toString())
         const pitch = 21 + 87-row;
         if (col > 0) {
           if (gridMap.has((col-1).toString()+"-"+row.toString())) { // if extending an existing note

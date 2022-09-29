@@ -57,6 +57,7 @@ function noteOffEvents(grid) {
 function noteClickEvents(event) {
   if (!horizontalScrollX && !verticalScrollY) {
     if (event.buttons == 1) {
+      Tone.start()
       noteOnEvents(event.currentTarget);
       gridMap.set(event.currentTarget.id, true);
     } else if (event.buttons == 2) {
