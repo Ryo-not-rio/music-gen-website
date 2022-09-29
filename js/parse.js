@@ -41,6 +41,7 @@ function readMusicBox() {
   let loadedNotes = [] // array of [pitch, time, length] where 0.25 indicates a quarter note
 
   let prevTime = 0;
+  console.log(gridMap)
   for (let col=0; col<=Math.max(...[...gridMap.keys()].map(key => parseInt(key.split("-")[0]))); col++) {
     let placed = false;
     if (col > 0) {
@@ -49,10 +50,11 @@ function readMusicBox() {
     for (let row=0; row<88; row++) {
       const note = document.getElementById(col.toString() + "-" + row.toString());
       if (note && gridMap.has(col.toString() + "-" + row.toString())) {
+        console.log(col.toString() + "-" + row.toString())
         const pitch = 21 + 87-row;
         if (col > 0) {
           const prevNote = document.getElementById((col-1).toString()+"-"+row.toString());
-          if (prevNote && prevNote.classList.contains("placed")) { // if extending an existing note
+          if (prevNote && gridMap.has((col-1).toString()+"-"+row.toString())) { // if extending an existing note
             // find the actual previous note in loadedNotes array and increase length
             for (let i=loadedNotes.length-1; i>=0; i--) {
               if (loadedNotes[i][0] == pitch) {
@@ -182,7 +184,7 @@ async function generate() {
   overlay.style.display = "grid";
 
   const notes = readMusicBox();
-  const prediction = await model.predict(notes, 250, noteTemp, timeTemp, lengthTemp);
+  const prediction = await model.predict(notes, 350, noteTemp, timeTemp, lengthTemp);
   overlay.style.display = "none";
   musicBox.drawGenerated(prediction);
   playNotes(prediction);
