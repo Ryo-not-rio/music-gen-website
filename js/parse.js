@@ -48,13 +48,11 @@ function readMusicBox() {
       prevTime += precision;
     }
     for (let row=0; row<88; row++) {
-      const note = document.getElementById(col.toString() + "-" + row.toString());
-      if (note && gridMap.has(col.toString() + "-" + row.toString())) {
+      if (gridMap.has(col.toString() + "-" + row.toString())) {
         console.log(col.toString() + "-" + row.toString())
         const pitch = 21 + 87-row;
         if (col > 0) {
-          const prevNote = document.getElementById((col-1).toString()+"-"+row.toString());
-          if (prevNote && gridMap.has((col-1).toString()+"-"+row.toString())) { // if extending an existing note
+          if (gridMap.has((col-1).toString()+"-"+row.toString())) { // if extending an existing note
             // find the actual previous note in loadedNotes array and increase length
             for (let i=loadedNotes.length-1; i>=0; i--) {
               if (loadedNotes[i][0] == pitch) {

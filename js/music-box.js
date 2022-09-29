@@ -11,11 +11,13 @@ module.exports = {makeEditorGrid, drawGenerated};
 function onDocLoad() {
   Tone.start();
   const readyButton = document.getElementById("ready-button");
-  readyButton.disabled = "disabled";
-  makeEditorGrid();
-  loadTone();
+  
   readyButton.innerHTML = "Ready!";
   readyButton.disabled = "";
+  makeEditorGrid();
+  readyButton.addEventListener("click", () => {
+    loadTone();
+  })
 }
 
 // create the piano and load 5 velocity steps
