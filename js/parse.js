@@ -42,7 +42,8 @@ function readMusicBox() {
   let loadedNotes = [] // array of [pitch, time, length] where 0.25 indicates a quarter note
 
   let prevTime = 0;
-  for (let col=0; col<numCols; col++) {
+  console.log(Math.max([...gridMap.keys()].map(key => key.split("-")[0])))
+  for (let col=0; col<=Math.max([...gridMap.keys()].map(key => key.split("-")[0])); col++) {
     let placed = false;
     if (col > 0) {
       prevTime += precision;
@@ -185,7 +186,7 @@ async function generate() {
   overlay.style.display = "grid";
 
   const notes = readMusicBox();
-  const prediction = await model.predict(notes, 500, noteTemp, timeTemp, lengthTemp);
+  const prediction = await model.predict(notes, 250, noteTemp, timeTemp, lengthTemp);
   overlay.style.display = "none";
   musicBox.drawGenerated(prediction);
   playNotes(prediction);
