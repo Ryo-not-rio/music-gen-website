@@ -937,7 +937,7 @@ function releaseScroll() {
   document.body.style.cursor = null;
 }
 
-},{"@babel/runtime/helpers/asyncToGenerator":6,"@babel/runtime/helpers/interopRequireDefault":7,"@babel/runtime/helpers/slicedToArray":10,"@babel/runtime/helpers/typeof":11,"@babel/runtime/regenerator":13,"@tonejs/piano":14,"tone":900}],3:[function(require,module,exports){
+},{"@babel/runtime/helpers/asyncToGenerator":6,"@babel/runtime/helpers/interopRequireDefault":9,"@babel/runtime/helpers/slicedToArray":13,"@babel/runtime/helpers/typeof":14,"@babel/runtime/regenerator":16,"@tonejs/piano":17,"tone":894}],3:[function(require,module,exports){
 "use strict";
 
 var musicBox = require("./music-box.js");
@@ -996,15 +996,13 @@ function _arrayLikeToArray(arr, len) {
   return arr2;
 }
 
-module.exports = _arrayLikeToArray;
-module.exports["default"] = module.exports, module.exports.__esModule = true;
+module.exports = _arrayLikeToArray, module.exports.__esModule = true, module.exports["default"] = module.exports;
 },{}],5:[function(require,module,exports){
 function _arrayWithHoles(arr) {
   if (Array.isArray(arr)) return arr;
 }
 
-module.exports = _arrayWithHoles;
-module.exports["default"] = module.exports, module.exports.__esModule = true;
+module.exports = _arrayWithHoles, module.exports.__esModule = true, module.exports["default"] = module.exports;
 },{}],6:[function(require,module,exports){
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
   try {
@@ -1042,18 +1040,45 @@ function _asyncToGenerator(fn) {
   };
 }
 
-module.exports = _asyncToGenerator;
-module.exports["default"] = module.exports, module.exports.__esModule = true;
+module.exports = _asyncToGenerator, module.exports.__esModule = true, module.exports["default"] = module.exports;
 },{}],7:[function(require,module,exports){
+function _classCallCheck(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+}
+
+module.exports = _classCallCheck, module.exports.__esModule = true, module.exports["default"] = module.exports;
+},{}],8:[function(require,module,exports){
+function _defineProperties(target, props) {
+  for (var i = 0; i < props.length; i++) {
+    var descriptor = props[i];
+    descriptor.enumerable = descriptor.enumerable || false;
+    descriptor.configurable = true;
+    if ("value" in descriptor) descriptor.writable = true;
+    Object.defineProperty(target, descriptor.key, descriptor);
+  }
+}
+
+function _createClass(Constructor, protoProps, staticProps) {
+  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
+  if (staticProps) _defineProperties(Constructor, staticProps);
+  Object.defineProperty(Constructor, "prototype", {
+    writable: false
+  });
+  return Constructor;
+}
+
+module.exports = _createClass, module.exports.__esModule = true, module.exports["default"] = module.exports;
+},{}],9:[function(require,module,exports){
 function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : {
     "default": obj
   };
 }
 
-module.exports = _interopRequireDefault;
-module.exports["default"] = module.exports, module.exports.__esModule = true;
-},{}],8:[function(require,module,exports){
+module.exports = _interopRequireDefault, module.exports.__esModule = true, module.exports["default"] = module.exports;
+},{}],10:[function(require,module,exports){
 function _iterableToArrayLimit(arr, i) {
   var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"];
 
@@ -1084,16 +1109,369 @@ function _iterableToArrayLimit(arr, i) {
   return _arr;
 }
 
-module.exports = _iterableToArrayLimit;
-module.exports["default"] = module.exports, module.exports.__esModule = true;
-},{}],9:[function(require,module,exports){
+module.exports = _iterableToArrayLimit, module.exports.__esModule = true, module.exports["default"] = module.exports;
+},{}],11:[function(require,module,exports){
 function _nonIterableRest() {
   throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
 }
 
-module.exports = _nonIterableRest;
-module.exports["default"] = module.exports, module.exports.__esModule = true;
-},{}],10:[function(require,module,exports){
+module.exports = _nonIterableRest, module.exports.__esModule = true, module.exports["default"] = module.exports;
+},{}],12:[function(require,module,exports){
+var _typeof = require("./typeof.js")["default"];
+
+function _regeneratorRuntime() {
+  "use strict";
+  /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */
+
+  module.exports = _regeneratorRuntime = function _regeneratorRuntime() {
+    return exports;
+  }, module.exports.__esModule = true, module.exports["default"] = module.exports;
+  var exports = {},
+      Op = Object.prototype,
+      hasOwn = Op.hasOwnProperty,
+      $Symbol = "function" == typeof Symbol ? Symbol : {},
+      iteratorSymbol = $Symbol.iterator || "@@iterator",
+      asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator",
+      toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag";
+
+  function define(obj, key, value) {
+    return Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: !0,
+      configurable: !0,
+      writable: !0
+    }), obj[key];
+  }
+
+  try {
+    define({}, "");
+  } catch (err) {
+    define = function define(obj, key, value) {
+      return obj[key] = value;
+    };
+  }
+
+  function wrap(innerFn, outerFn, self, tryLocsList) {
+    var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator,
+        generator = Object.create(protoGenerator.prototype),
+        context = new Context(tryLocsList || []);
+    return generator._invoke = function (innerFn, self, context) {
+      var state = "suspendedStart";
+      return function (method, arg) {
+        if ("executing" === state) throw new Error("Generator is already running");
+
+        if ("completed" === state) {
+          if ("throw" === method) throw arg;
+          return doneResult();
+        }
+
+        for (context.method = method, context.arg = arg;;) {
+          var delegate = context.delegate;
+
+          if (delegate) {
+            var delegateResult = maybeInvokeDelegate(delegate, context);
+
+            if (delegateResult) {
+              if (delegateResult === ContinueSentinel) continue;
+              return delegateResult;
+            }
+          }
+
+          if ("next" === context.method) context.sent = context._sent = context.arg;else if ("throw" === context.method) {
+            if ("suspendedStart" === state) throw state = "completed", context.arg;
+            context.dispatchException(context.arg);
+          } else "return" === context.method && context.abrupt("return", context.arg);
+          state = "executing";
+          var record = tryCatch(innerFn, self, context);
+
+          if ("normal" === record.type) {
+            if (state = context.done ? "completed" : "suspendedYield", record.arg === ContinueSentinel) continue;
+            return {
+              value: record.arg,
+              done: context.done
+            };
+          }
+
+          "throw" === record.type && (state = "completed", context.method = "throw", context.arg = record.arg);
+        }
+      };
+    }(innerFn, self, context), generator;
+  }
+
+  function tryCatch(fn, obj, arg) {
+    try {
+      return {
+        type: "normal",
+        arg: fn.call(obj, arg)
+      };
+    } catch (err) {
+      return {
+        type: "throw",
+        arg: err
+      };
+    }
+  }
+
+  exports.wrap = wrap;
+  var ContinueSentinel = {};
+
+  function Generator() {}
+
+  function GeneratorFunction() {}
+
+  function GeneratorFunctionPrototype() {}
+
+  var IteratorPrototype = {};
+  define(IteratorPrototype, iteratorSymbol, function () {
+    return this;
+  });
+  var getProto = Object.getPrototypeOf,
+      NativeIteratorPrototype = getProto && getProto(getProto(values([])));
+  NativeIteratorPrototype && NativeIteratorPrototype !== Op && hasOwn.call(NativeIteratorPrototype, iteratorSymbol) && (IteratorPrototype = NativeIteratorPrototype);
+  var Gp = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(IteratorPrototype);
+
+  function defineIteratorMethods(prototype) {
+    ["next", "throw", "return"].forEach(function (method) {
+      define(prototype, method, function (arg) {
+        return this._invoke(method, arg);
+      });
+    });
+  }
+
+  function AsyncIterator(generator, PromiseImpl) {
+    function invoke(method, arg, resolve, reject) {
+      var record = tryCatch(generator[method], generator, arg);
+
+      if ("throw" !== record.type) {
+        var result = record.arg,
+            value = result.value;
+        return value && "object" == _typeof(value) && hasOwn.call(value, "__await") ? PromiseImpl.resolve(value.__await).then(function (value) {
+          invoke("next", value, resolve, reject);
+        }, function (err) {
+          invoke("throw", err, resolve, reject);
+        }) : PromiseImpl.resolve(value).then(function (unwrapped) {
+          result.value = unwrapped, resolve(result);
+        }, function (error) {
+          return invoke("throw", error, resolve, reject);
+        });
+      }
+
+      reject(record.arg);
+    }
+
+    var previousPromise;
+
+    this._invoke = function (method, arg) {
+      function callInvokeWithMethodAndArg() {
+        return new PromiseImpl(function (resolve, reject) {
+          invoke(method, arg, resolve, reject);
+        });
+      }
+
+      return previousPromise = previousPromise ? previousPromise.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg();
+    };
+  }
+
+  function maybeInvokeDelegate(delegate, context) {
+    var method = delegate.iterator[context.method];
+
+    if (undefined === method) {
+      if (context.delegate = null, "throw" === context.method) {
+        if (delegate.iterator["return"] && (context.method = "return", context.arg = undefined, maybeInvokeDelegate(delegate, context), "throw" === context.method)) return ContinueSentinel;
+        context.method = "throw", context.arg = new TypeError("The iterator does not provide a 'throw' method");
+      }
+
+      return ContinueSentinel;
+    }
+
+    var record = tryCatch(method, delegate.iterator, context.arg);
+    if ("throw" === record.type) return context.method = "throw", context.arg = record.arg, context.delegate = null, ContinueSentinel;
+    var info = record.arg;
+    return info ? info.done ? (context[delegate.resultName] = info.value, context.next = delegate.nextLoc, "return" !== context.method && (context.method = "next", context.arg = undefined), context.delegate = null, ContinueSentinel) : info : (context.method = "throw", context.arg = new TypeError("iterator result is not an object"), context.delegate = null, ContinueSentinel);
+  }
+
+  function pushTryEntry(locs) {
+    var entry = {
+      tryLoc: locs[0]
+    };
+    1 in locs && (entry.catchLoc = locs[1]), 2 in locs && (entry.finallyLoc = locs[2], entry.afterLoc = locs[3]), this.tryEntries.push(entry);
+  }
+
+  function resetTryEntry(entry) {
+    var record = entry.completion || {};
+    record.type = "normal", delete record.arg, entry.completion = record;
+  }
+
+  function Context(tryLocsList) {
+    this.tryEntries = [{
+      tryLoc: "root"
+    }], tryLocsList.forEach(pushTryEntry, this), this.reset(!0);
+  }
+
+  function values(iterable) {
+    if (iterable) {
+      var iteratorMethod = iterable[iteratorSymbol];
+      if (iteratorMethod) return iteratorMethod.call(iterable);
+      if ("function" == typeof iterable.next) return iterable;
+
+      if (!isNaN(iterable.length)) {
+        var i = -1,
+            next = function next() {
+          for (; ++i < iterable.length;) {
+            if (hasOwn.call(iterable, i)) return next.value = iterable[i], next.done = !1, next;
+          }
+
+          return next.value = undefined, next.done = !0, next;
+        };
+
+        return next.next = next;
+      }
+    }
+
+    return {
+      next: doneResult
+    };
+  }
+
+  function doneResult() {
+    return {
+      value: undefined,
+      done: !0
+    };
+  }
+
+  return GeneratorFunction.prototype = GeneratorFunctionPrototype, define(Gp, "constructor", GeneratorFunctionPrototype), define(GeneratorFunctionPrototype, "constructor", GeneratorFunction), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, toStringTagSymbol, "GeneratorFunction"), exports.isGeneratorFunction = function (genFun) {
+    var ctor = "function" == typeof genFun && genFun.constructor;
+    return !!ctor && (ctor === GeneratorFunction || "GeneratorFunction" === (ctor.displayName || ctor.name));
+  }, exports.mark = function (genFun) {
+    return Object.setPrototypeOf ? Object.setPrototypeOf(genFun, GeneratorFunctionPrototype) : (genFun.__proto__ = GeneratorFunctionPrototype, define(genFun, toStringTagSymbol, "GeneratorFunction")), genFun.prototype = Object.create(Gp), genFun;
+  }, exports.awrap = function (arg) {
+    return {
+      __await: arg
+    };
+  }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, asyncIteratorSymbol, function () {
+    return this;
+  }), exports.AsyncIterator = AsyncIterator, exports.async = function (innerFn, outerFn, self, tryLocsList, PromiseImpl) {
+    void 0 === PromiseImpl && (PromiseImpl = Promise);
+    var iter = new AsyncIterator(wrap(innerFn, outerFn, self, tryLocsList), PromiseImpl);
+    return exports.isGeneratorFunction(outerFn) ? iter : iter.next().then(function (result) {
+      return result.done ? result.value : iter.next();
+    });
+  }, defineIteratorMethods(Gp), define(Gp, toStringTagSymbol, "Generator"), define(Gp, iteratorSymbol, function () {
+    return this;
+  }), define(Gp, "toString", function () {
+    return "[object Generator]";
+  }), exports.keys = function (object) {
+    var keys = [];
+
+    for (var key in object) {
+      keys.push(key);
+    }
+
+    return keys.reverse(), function next() {
+      for (; keys.length;) {
+        var key = keys.pop();
+        if (key in object) return next.value = key, next.done = !1, next;
+      }
+
+      return next.done = !0, next;
+    };
+  }, exports.values = values, Context.prototype = {
+    constructor: Context,
+    reset: function reset(skipTempReset) {
+      if (this.prev = 0, this.next = 0, this.sent = this._sent = undefined, this.done = !1, this.delegate = null, this.method = "next", this.arg = undefined, this.tryEntries.forEach(resetTryEntry), !skipTempReset) for (var name in this) {
+        "t" === name.charAt(0) && hasOwn.call(this, name) && !isNaN(+name.slice(1)) && (this[name] = undefined);
+      }
+    },
+    stop: function stop() {
+      this.done = !0;
+      var rootRecord = this.tryEntries[0].completion;
+      if ("throw" === rootRecord.type) throw rootRecord.arg;
+      return this.rval;
+    },
+    dispatchException: function dispatchException(exception) {
+      if (this.done) throw exception;
+      var context = this;
+
+      function handle(loc, caught) {
+        return record.type = "throw", record.arg = exception, context.next = loc, caught && (context.method = "next", context.arg = undefined), !!caught;
+      }
+
+      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+        var entry = this.tryEntries[i],
+            record = entry.completion;
+        if ("root" === entry.tryLoc) return handle("end");
+
+        if (entry.tryLoc <= this.prev) {
+          var hasCatch = hasOwn.call(entry, "catchLoc"),
+              hasFinally = hasOwn.call(entry, "finallyLoc");
+
+          if (hasCatch && hasFinally) {
+            if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0);
+            if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc);
+          } else if (hasCatch) {
+            if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0);
+          } else {
+            if (!hasFinally) throw new Error("try statement without catch or finally");
+            if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc);
+          }
+        }
+      }
+    },
+    abrupt: function abrupt(type, arg) {
+      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+        var entry = this.tryEntries[i];
+
+        if (entry.tryLoc <= this.prev && hasOwn.call(entry, "finallyLoc") && this.prev < entry.finallyLoc) {
+          var finallyEntry = entry;
+          break;
+        }
+      }
+
+      finallyEntry && ("break" === type || "continue" === type) && finallyEntry.tryLoc <= arg && arg <= finallyEntry.finallyLoc && (finallyEntry = null);
+      var record = finallyEntry ? finallyEntry.completion : {};
+      return record.type = type, record.arg = arg, finallyEntry ? (this.method = "next", this.next = finallyEntry.finallyLoc, ContinueSentinel) : this.complete(record);
+    },
+    complete: function complete(record, afterLoc) {
+      if ("throw" === record.type) throw record.arg;
+      return "break" === record.type || "continue" === record.type ? this.next = record.arg : "return" === record.type ? (this.rval = this.arg = record.arg, this.method = "return", this.next = "end") : "normal" === record.type && afterLoc && (this.next = afterLoc), ContinueSentinel;
+    },
+    finish: function finish(finallyLoc) {
+      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+        var entry = this.tryEntries[i];
+        if (entry.finallyLoc === finallyLoc) return this.complete(entry.completion, entry.afterLoc), resetTryEntry(entry), ContinueSentinel;
+      }
+    },
+    "catch": function _catch(tryLoc) {
+      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+        var entry = this.tryEntries[i];
+
+        if (entry.tryLoc === tryLoc) {
+          var record = entry.completion;
+
+          if ("throw" === record.type) {
+            var thrown = record.arg;
+            resetTryEntry(entry);
+          }
+
+          return thrown;
+        }
+      }
+
+      throw new Error("illegal catch attempt");
+    },
+    delegateYield: function delegateYield(iterable, resultName, nextLoc) {
+      return this.delegate = {
+        iterator: values(iterable),
+        resultName: resultName,
+        nextLoc: nextLoc
+      }, "next" === this.method && (this.arg = undefined), ContinueSentinel;
+    }
+  }, exports;
+}
+
+module.exports = _regeneratorRuntime, module.exports.__esModule = true, module.exports["default"] = module.exports;
+},{"./typeof.js":14}],13:[function(require,module,exports){
 var arrayWithHoles = require("./arrayWithHoles.js");
 
 var iterableToArrayLimit = require("./iterableToArrayLimit.js");
@@ -1106,32 +1484,20 @@ function _slicedToArray(arr, i) {
   return arrayWithHoles(arr) || iterableToArrayLimit(arr, i) || unsupportedIterableToArray(arr, i) || nonIterableRest();
 }
 
-module.exports = _slicedToArray;
-module.exports["default"] = module.exports, module.exports.__esModule = true;
-},{"./arrayWithHoles.js":5,"./iterableToArrayLimit.js":8,"./nonIterableRest.js":9,"./unsupportedIterableToArray.js":12}],11:[function(require,module,exports){
+module.exports = _slicedToArray, module.exports.__esModule = true, module.exports["default"] = module.exports;
+},{"./arrayWithHoles.js":5,"./iterableToArrayLimit.js":10,"./nonIterableRest.js":11,"./unsupportedIterableToArray.js":15}],14:[function(require,module,exports){
 function _typeof(obj) {
   "@babel/helpers - typeof";
 
-  if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
-    module.exports = _typeof = function _typeof(obj) {
-      return typeof obj;
-    };
-
-    module.exports["default"] = module.exports, module.exports.__esModule = true;
-  } else {
-    module.exports = _typeof = function _typeof(obj) {
-      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
-    };
-
-    module.exports["default"] = module.exports, module.exports.__esModule = true;
-  }
-
-  return _typeof(obj);
+  return (module.exports = _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) {
+    return typeof obj;
+  } : function (obj) {
+    return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+  }, module.exports.__esModule = true, module.exports["default"] = module.exports), _typeof(obj);
 }
 
-module.exports = _typeof;
-module.exports["default"] = module.exports, module.exports.__esModule = true;
-},{}],12:[function(require,module,exports){
+module.exports = _typeof, module.exports.__esModule = true, module.exports["default"] = module.exports;
+},{}],15:[function(require,module,exports){
 var arrayLikeToArray = require("./arrayLikeToArray.js");
 
 function _unsupportedIterableToArray(o, minLen) {
@@ -1143,22 +1509,29 @@ function _unsupportedIterableToArray(o, minLen) {
   if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return arrayLikeToArray(o, minLen);
 }
 
-module.exports = _unsupportedIterableToArray;
-module.exports["default"] = module.exports, module.exports.__esModule = true;
-},{"./arrayLikeToArray.js":4}],13:[function(require,module,exports){
-module.exports = require("regenerator-runtime");
+module.exports = _unsupportedIterableToArray, module.exports.__esModule = true, module.exports["default"] = module.exports;
+},{"./arrayLikeToArray.js":4}],16:[function(require,module,exports){
+// TODO(Babel 8): Remove this file.
 
-},{"regenerator-runtime":34}],14:[function(require,module,exports){
+var runtime = require("../helpers/regeneratorRuntime")();
+module.exports = runtime;
+
+// Copied from https://github.com/facebook/regenerator/blob/main/packages/runtime/runtime.js#L736=
+try {
+  regeneratorRuntime = runtime;
+} catch (accidentalStrictMode) {
+  if (typeof globalThis === "object") {
+    globalThis.regeneratorRuntime = runtime;
+  } else {
+    Function("r", "regeneratorRuntime = r")(runtime);
+  }
+}
+
+},{"../helpers/regeneratorRuntime":12}],17:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
-});
-Object.defineProperty(exports, "Piano", {
-  enumerable: true,
-  get: function () {
-    return _Piano.Piano;
-  }
 });
 Object.defineProperty(exports, "MidiInput", {
   enumerable: true,
@@ -1166,12 +1539,18 @@ Object.defineProperty(exports, "MidiInput", {
     return _MidiInput.MidiInput;
   }
 });
+Object.defineProperty(exports, "Piano", {
+  enumerable: true,
+  get: function () {
+    return _Piano.Piano;
+  }
+});
 
 var _Piano = require("./piano/Piano");
 
 var _MidiInput = require("./midi/MidiInput");
 
-},{"./midi/MidiInput":15,"./piano/Piano":20}],15:[function(require,module,exports){
+},{"./midi/MidiInput":18,"./piano/Piano":23}],18:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1364,7 +1743,7 @@ exports.MidiInput = MidiInput;
 MidiInput.connectedDevices = new Map();
 MidiInput._isEnabled = false;
 
-},{"events":1,"webmidi":956}],16:[function(require,module,exports){
+},{"events":1,"webmidi":950}],19:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1464,7 +1843,7 @@ class PianoComponent extends _tone.ToneAudioNode {
 
 exports.PianoComponent = PianoComponent;
 
-},{"tone":900}],17:[function(require,module,exports){
+},{"tone":894}],20:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1511,7 +1890,7 @@ class Harmonics extends _Component.PianoComponent {
 
 exports.Harmonics = Harmonics;
 
-},{"./Component":16,"./Salamander":21,"./Util":24,"tone":900}],18:[function(require,module,exports){
+},{"./Component":19,"./Salamander":24,"./Util":27,"tone":894}],21:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1562,7 +1941,7 @@ class Keybed extends _Component.PianoComponent {
 
 exports.Keybed = Keybed;
 
-},{"./Component":16,"./Salamander":21,"./Util":24,"tone":900}],19:[function(require,module,exports){
+},{"./Component":19,"./Salamander":24,"./Util":27,"tone":894}],22:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1657,7 +2036,7 @@ class Pedal extends _Component.PianoComponent {
 
 exports.Pedal = Pedal;
 
-},{"./Component":16,"./Util":24,"tone":900}],20:[function(require,module,exports){
+},{"./Component":19,"./Util":27,"tone":894}],23:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1947,19 +2326,21 @@ class Piano extends _tone.ToneAudioNode {
 
 exports.Piano = Piano;
 
-},{"./Harmonics":17,"./Keybed":18,"./Pedal":19,"./Strings":23,"tone":900}],21:[function(require,module,exports){
+},{"./Harmonics":20,"./Keybed":21,"./Pedal":22,"./Strings":26,"tone":894}],24:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.getReleasesUrl = getReleasesUrl;
-exports.getHarmonicsUrl = getHarmonicsUrl;
-exports.getNotesUrl = getNotesUrl;
-exports.getNotesInRange = getNotesInRange;
+exports.allNotes = void 0;
 exports.getHarmonicsInRange = getHarmonicsInRange;
+exports.getHarmonicsUrl = getHarmonicsUrl;
+exports.getNotesInRange = getNotesInRange;
+exports.getNotesUrl = getNotesUrl;
+exports.getReleasesUrl = getReleasesUrl;
+exports.githubURL = void 0;
 exports.inHarmonicsRange = inHarmonicsRange;
-exports.allNotes = exports.velocitiesMap = exports.githubURL = void 0;
+exports.velocitiesMap = void 0;
 
 var _Util = require("./Util");
 
@@ -2026,7 +2407,7 @@ function inHarmonicsRange(note) {
   return harmonics[0] <= note && note <= harmonics[harmonics.length - 1];
 }
 
-},{"./Util":24}],22:[function(require,module,exports){
+},{"./Util":27}],25:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -2077,7 +2458,7 @@ class PianoString extends _tone.ToneAudioNode {
 
 exports.PianoString = PianoString;
 
-},{"./Salamander":21,"tone":900}],23:[function(require,module,exports){
+},{"./Salamander":24,"tone":894}],26:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -2195,14 +2576,14 @@ class PianoStrings extends _Component.PianoComponent {
 
 exports.PianoStrings = PianoStrings;
 
-},{"./Component":16,"./Salamander":21,"./String":22,"tone":900}],24:[function(require,module,exports){
+},{"./Component":19,"./Salamander":24,"./String":25,"tone":894}],27:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.noteToMidi = noteToMidi;
 exports.midiToNote = midiToNote;
+exports.noteToMidi = noteToMidi;
 exports.randomBetween = randomBetween;
 
 var _tone = require("tone");
@@ -2239,12 +2620,12 @@ function randomBetween(low, high) {
   return Math.random() * (high - low) + low;
 }
 
-},{"tone":900}],25:[function(require,module,exports){
+},{"tone":894}],28:[function(require,module,exports){
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@babel/runtime/helpers/slicedToArray'), require('@babel/runtime/helpers/classCallCheck'), require('@babel/runtime/helpers/createClass')) :
     typeof define === 'function' && define.amd ? define(['exports', '@babel/runtime/helpers/slicedToArray', '@babel/runtime/helpers/classCallCheck', '@babel/runtime/helpers/createClass'], factory) :
     (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.automationEvents = {}, global._slicedToArray, global._classCallCheck, global._createClass));
-}(this, (function (exports, _slicedToArray, _classCallCheck, _createClass) { 'use strict';
+})(this, (function (exports, _slicedToArray, _classCallCheck, _createClass) { 'use strict';
 
     function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
 
@@ -2389,14 +2770,14 @@ function randomBetween(low, high) {
 
     var AutomationEventList = /*#__PURE__*/function (_Symbol$iterator) {
       function AutomationEventList(defaultValue) {
-        _classCallCheck__default['default'](this, AutomationEventList);
+        _classCallCheck__default["default"](this, AutomationEventList);
 
         this._automationEvents = [];
         this._currenTime = 0;
         this._defaultValue = defaultValue;
       }
 
-      _createClass__default['default'](AutomationEventList, [{
+      _createClass__default["default"](AutomationEventList, [{
         key: _Symbol$iterator,
         value: function value() {
           return this._automationEvents[Symbol.iterator]();
@@ -2527,7 +2908,7 @@ function randomBetween(low, high) {
 
           if (nextAutomationEvent !== undefined && isExponentialRampToValueAutomationEvent(nextAutomationEvent)) {
             var _getEndTimeAndValueOf = getEndTimeAndValueOfPreviousAutomationEvent(this._automationEvents, indexOfCurrentEvent, currentAutomationEvent, nextAutomationEvent, this._defaultValue),
-                _getEndTimeAndValueOf2 = _slicedToArray__default['default'](_getEndTimeAndValueOf, 2),
+                _getEndTimeAndValueOf2 = _slicedToArray__default["default"](_getEndTimeAndValueOf, 2),
                 startTime = _getEndTimeAndValueOf2[0],
                 value = _getEndTimeAndValueOf2[1];
 
@@ -2536,7 +2917,7 @@ function randomBetween(low, high) {
 
           if (nextAutomationEvent !== undefined && isLinearRampToValueAutomationEvent(nextAutomationEvent)) {
             var _getEndTimeAndValueOf3 = getEndTimeAndValueOfPreviousAutomationEvent(this._automationEvents, indexOfCurrentEvent, currentAutomationEvent, nextAutomationEvent, this._defaultValue),
-                _getEndTimeAndValueOf4 = _slicedToArray__default['default'](_getEndTimeAndValueOf3, 2),
+                _getEndTimeAndValueOf4 = _slicedToArray__default["default"](_getEndTimeAndValueOf3, 2),
                 _startTime = _getEndTimeAndValueOf4[0],
                 _value = _getEndTimeAndValueOf4[1];
 
@@ -2600,799 +2981,9 @@ function randomBetween(low, high) {
 
     Object.defineProperty(exports, '__esModule', { value: true });
 
-})));
+}));
 
-},{"@babel/runtime/helpers/classCallCheck":28,"@babel/runtime/helpers/createClass":29,"@babel/runtime/helpers/slicedToArray":32}],26:[function(require,module,exports){
-arguments[4][4][0].apply(exports,arguments)
-},{"dup":4}],27:[function(require,module,exports){
-arguments[4][5][0].apply(exports,arguments)
-},{"dup":5}],28:[function(require,module,exports){
-function _classCallCheck(instance, Constructor) {
-  if (!(instance instanceof Constructor)) {
-    throw new TypeError("Cannot call a class as a function");
-  }
-}
-
-module.exports = _classCallCheck;
-module.exports["default"] = module.exports, module.exports.__esModule = true;
-},{}],29:[function(require,module,exports){
-function _defineProperties(target, props) {
-  for (var i = 0; i < props.length; i++) {
-    var descriptor = props[i];
-    descriptor.enumerable = descriptor.enumerable || false;
-    descriptor.configurable = true;
-    if ("value" in descriptor) descriptor.writable = true;
-    Object.defineProperty(target, descriptor.key, descriptor);
-  }
-}
-
-function _createClass(Constructor, protoProps, staticProps) {
-  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
-  if (staticProps) _defineProperties(Constructor, staticProps);
-  return Constructor;
-}
-
-module.exports = _createClass;
-module.exports["default"] = module.exports, module.exports.__esModule = true;
-},{}],30:[function(require,module,exports){
-arguments[4][8][0].apply(exports,arguments)
-},{"dup":8}],31:[function(require,module,exports){
-arguments[4][9][0].apply(exports,arguments)
-},{"dup":9}],32:[function(require,module,exports){
-arguments[4][10][0].apply(exports,arguments)
-},{"./arrayWithHoles.js":27,"./iterableToArrayLimit.js":30,"./nonIterableRest.js":31,"./unsupportedIterableToArray.js":33,"dup":10}],33:[function(require,module,exports){
-arguments[4][12][0].apply(exports,arguments)
-},{"./arrayLikeToArray.js":26,"dup":12}],34:[function(require,module,exports){
-/**
- * Copyright (c) 2014-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
-var runtime = (function (exports) {
-  "use strict";
-
-  var Op = Object.prototype;
-  var hasOwn = Op.hasOwnProperty;
-  var undefined; // More compressible than void 0.
-  var $Symbol = typeof Symbol === "function" ? Symbol : {};
-  var iteratorSymbol = $Symbol.iterator || "@@iterator";
-  var asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator";
-  var toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag";
-
-  function define(obj, key, value) {
-    Object.defineProperty(obj, key, {
-      value: value,
-      enumerable: true,
-      configurable: true,
-      writable: true
-    });
-    return obj[key];
-  }
-  try {
-    // IE 8 has a broken Object.defineProperty that only works on DOM objects.
-    define({}, "");
-  } catch (err) {
-    define = function(obj, key, value) {
-      return obj[key] = value;
-    };
-  }
-
-  function wrap(innerFn, outerFn, self, tryLocsList) {
-    // If outerFn provided and outerFn.prototype is a Generator, then outerFn.prototype instanceof Generator.
-    var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator;
-    var generator = Object.create(protoGenerator.prototype);
-    var context = new Context(tryLocsList || []);
-
-    // The ._invoke method unifies the implementations of the .next,
-    // .throw, and .return methods.
-    generator._invoke = makeInvokeMethod(innerFn, self, context);
-
-    return generator;
-  }
-  exports.wrap = wrap;
-
-  // Try/catch helper to minimize deoptimizations. Returns a completion
-  // record like context.tryEntries[i].completion. This interface could
-  // have been (and was previously) designed to take a closure to be
-  // invoked without arguments, but in all the cases we care about we
-  // already have an existing method we want to call, so there's no need
-  // to create a new function object. We can even get away with assuming
-  // the method takes exactly one argument, since that happens to be true
-  // in every case, so we don't have to touch the arguments object. The
-  // only additional allocation required is the completion record, which
-  // has a stable shape and so hopefully should be cheap to allocate.
-  function tryCatch(fn, obj, arg) {
-    try {
-      return { type: "normal", arg: fn.call(obj, arg) };
-    } catch (err) {
-      return { type: "throw", arg: err };
-    }
-  }
-
-  var GenStateSuspendedStart = "suspendedStart";
-  var GenStateSuspendedYield = "suspendedYield";
-  var GenStateExecuting = "executing";
-  var GenStateCompleted = "completed";
-
-  // Returning this object from the innerFn has the same effect as
-  // breaking out of the dispatch switch statement.
-  var ContinueSentinel = {};
-
-  // Dummy constructor functions that we use as the .constructor and
-  // .constructor.prototype properties for functions that return Generator
-  // objects. For full spec compliance, you may wish to configure your
-  // minifier not to mangle the names of these two functions.
-  function Generator() {}
-  function GeneratorFunction() {}
-  function GeneratorFunctionPrototype() {}
-
-  // This is a polyfill for %IteratorPrototype% for environments that
-  // don't natively support it.
-  var IteratorPrototype = {};
-  IteratorPrototype[iteratorSymbol] = function () {
-    return this;
-  };
-
-  var getProto = Object.getPrototypeOf;
-  var NativeIteratorPrototype = getProto && getProto(getProto(values([])));
-  if (NativeIteratorPrototype &&
-      NativeIteratorPrototype !== Op &&
-      hasOwn.call(NativeIteratorPrototype, iteratorSymbol)) {
-    // This environment has a native %IteratorPrototype%; use it instead
-    // of the polyfill.
-    IteratorPrototype = NativeIteratorPrototype;
-  }
-
-  var Gp = GeneratorFunctionPrototype.prototype =
-    Generator.prototype = Object.create(IteratorPrototype);
-  GeneratorFunction.prototype = Gp.constructor = GeneratorFunctionPrototype;
-  GeneratorFunctionPrototype.constructor = GeneratorFunction;
-  GeneratorFunction.displayName = define(
-    GeneratorFunctionPrototype,
-    toStringTagSymbol,
-    "GeneratorFunction"
-  );
-
-  // Helper for defining the .next, .throw, and .return methods of the
-  // Iterator interface in terms of a single ._invoke method.
-  function defineIteratorMethods(prototype) {
-    ["next", "throw", "return"].forEach(function(method) {
-      define(prototype, method, function(arg) {
-        return this._invoke(method, arg);
-      });
-    });
-  }
-
-  exports.isGeneratorFunction = function(genFun) {
-    var ctor = typeof genFun === "function" && genFun.constructor;
-    return ctor
-      ? ctor === GeneratorFunction ||
-        // For the native GeneratorFunction constructor, the best we can
-        // do is to check its .name property.
-        (ctor.displayName || ctor.name) === "GeneratorFunction"
-      : false;
-  };
-
-  exports.mark = function(genFun) {
-    if (Object.setPrototypeOf) {
-      Object.setPrototypeOf(genFun, GeneratorFunctionPrototype);
-    } else {
-      genFun.__proto__ = GeneratorFunctionPrototype;
-      define(genFun, toStringTagSymbol, "GeneratorFunction");
-    }
-    genFun.prototype = Object.create(Gp);
-    return genFun;
-  };
-
-  // Within the body of any async function, `await x` is transformed to
-  // `yield regeneratorRuntime.awrap(x)`, so that the runtime can test
-  // `hasOwn.call(value, "__await")` to determine if the yielded value is
-  // meant to be awaited.
-  exports.awrap = function(arg) {
-    return { __await: arg };
-  };
-
-  function AsyncIterator(generator, PromiseImpl) {
-    function invoke(method, arg, resolve, reject) {
-      var record = tryCatch(generator[method], generator, arg);
-      if (record.type === "throw") {
-        reject(record.arg);
-      } else {
-        var result = record.arg;
-        var value = result.value;
-        if (value &&
-            typeof value === "object" &&
-            hasOwn.call(value, "__await")) {
-          return PromiseImpl.resolve(value.__await).then(function(value) {
-            invoke("next", value, resolve, reject);
-          }, function(err) {
-            invoke("throw", err, resolve, reject);
-          });
-        }
-
-        return PromiseImpl.resolve(value).then(function(unwrapped) {
-          // When a yielded Promise is resolved, its final value becomes
-          // the .value of the Promise<{value,done}> result for the
-          // current iteration.
-          result.value = unwrapped;
-          resolve(result);
-        }, function(error) {
-          // If a rejected Promise was yielded, throw the rejection back
-          // into the async generator function so it can be handled there.
-          return invoke("throw", error, resolve, reject);
-        });
-      }
-    }
-
-    var previousPromise;
-
-    function enqueue(method, arg) {
-      function callInvokeWithMethodAndArg() {
-        return new PromiseImpl(function(resolve, reject) {
-          invoke(method, arg, resolve, reject);
-        });
-      }
-
-      return previousPromise =
-        // If enqueue has been called before, then we want to wait until
-        // all previous Promises have been resolved before calling invoke,
-        // so that results are always delivered in the correct order. If
-        // enqueue has not been called before, then it is important to
-        // call invoke immediately, without waiting on a callback to fire,
-        // so that the async generator function has the opportunity to do
-        // any necessary setup in a predictable way. This predictability
-        // is why the Promise constructor synchronously invokes its
-        // executor callback, and why async functions synchronously
-        // execute code before the first await. Since we implement simple
-        // async functions in terms of async generators, it is especially
-        // important to get this right, even though it requires care.
-        previousPromise ? previousPromise.then(
-          callInvokeWithMethodAndArg,
-          // Avoid propagating failures to Promises returned by later
-          // invocations of the iterator.
-          callInvokeWithMethodAndArg
-        ) : callInvokeWithMethodAndArg();
-    }
-
-    // Define the unified helper method that is used to implement .next,
-    // .throw, and .return (see defineIteratorMethods).
-    this._invoke = enqueue;
-  }
-
-  defineIteratorMethods(AsyncIterator.prototype);
-  AsyncIterator.prototype[asyncIteratorSymbol] = function () {
-    return this;
-  };
-  exports.AsyncIterator = AsyncIterator;
-
-  // Note that simple async functions are implemented on top of
-  // AsyncIterator objects; they just return a Promise for the value of
-  // the final result produced by the iterator.
-  exports.async = function(innerFn, outerFn, self, tryLocsList, PromiseImpl) {
-    if (PromiseImpl === void 0) PromiseImpl = Promise;
-
-    var iter = new AsyncIterator(
-      wrap(innerFn, outerFn, self, tryLocsList),
-      PromiseImpl
-    );
-
-    return exports.isGeneratorFunction(outerFn)
-      ? iter // If outerFn is a generator, return the full iterator.
-      : iter.next().then(function(result) {
-          return result.done ? result.value : iter.next();
-        });
-  };
-
-  function makeInvokeMethod(innerFn, self, context) {
-    var state = GenStateSuspendedStart;
-
-    return function invoke(method, arg) {
-      if (state === GenStateExecuting) {
-        throw new Error("Generator is already running");
-      }
-
-      if (state === GenStateCompleted) {
-        if (method === "throw") {
-          throw arg;
-        }
-
-        // Be forgiving, per 25.3.3.3.3 of the spec:
-        // https://people.mozilla.org/~jorendorff/es6-draft.html#sec-generatorresume
-        return doneResult();
-      }
-
-      context.method = method;
-      context.arg = arg;
-
-      while (true) {
-        var delegate = context.delegate;
-        if (delegate) {
-          var delegateResult = maybeInvokeDelegate(delegate, context);
-          if (delegateResult) {
-            if (delegateResult === ContinueSentinel) continue;
-            return delegateResult;
-          }
-        }
-
-        if (context.method === "next") {
-          // Setting context._sent for legacy support of Babel's
-          // function.sent implementation.
-          context.sent = context._sent = context.arg;
-
-        } else if (context.method === "throw") {
-          if (state === GenStateSuspendedStart) {
-            state = GenStateCompleted;
-            throw context.arg;
-          }
-
-          context.dispatchException(context.arg);
-
-        } else if (context.method === "return") {
-          context.abrupt("return", context.arg);
-        }
-
-        state = GenStateExecuting;
-
-        var record = tryCatch(innerFn, self, context);
-        if (record.type === "normal") {
-          // If an exception is thrown from innerFn, we leave state ===
-          // GenStateExecuting and loop back for another invocation.
-          state = context.done
-            ? GenStateCompleted
-            : GenStateSuspendedYield;
-
-          if (record.arg === ContinueSentinel) {
-            continue;
-          }
-
-          return {
-            value: record.arg,
-            done: context.done
-          };
-
-        } else if (record.type === "throw") {
-          state = GenStateCompleted;
-          // Dispatch the exception by looping back around to the
-          // context.dispatchException(context.arg) call above.
-          context.method = "throw";
-          context.arg = record.arg;
-        }
-      }
-    };
-  }
-
-  // Call delegate.iterator[context.method](context.arg) and handle the
-  // result, either by returning a { value, done } result from the
-  // delegate iterator, or by modifying context.method and context.arg,
-  // setting context.delegate to null, and returning the ContinueSentinel.
-  function maybeInvokeDelegate(delegate, context) {
-    var method = delegate.iterator[context.method];
-    if (method === undefined) {
-      // A .throw or .return when the delegate iterator has no .throw
-      // method always terminates the yield* loop.
-      context.delegate = null;
-
-      if (context.method === "throw") {
-        // Note: ["return"] must be used for ES3 parsing compatibility.
-        if (delegate.iterator["return"]) {
-          // If the delegate iterator has a return method, give it a
-          // chance to clean up.
-          context.method = "return";
-          context.arg = undefined;
-          maybeInvokeDelegate(delegate, context);
-
-          if (context.method === "throw") {
-            // If maybeInvokeDelegate(context) changed context.method from
-            // "return" to "throw", let that override the TypeError below.
-            return ContinueSentinel;
-          }
-        }
-
-        context.method = "throw";
-        context.arg = new TypeError(
-          "The iterator does not provide a 'throw' method");
-      }
-
-      return ContinueSentinel;
-    }
-
-    var record = tryCatch(method, delegate.iterator, context.arg);
-
-    if (record.type === "throw") {
-      context.method = "throw";
-      context.arg = record.arg;
-      context.delegate = null;
-      return ContinueSentinel;
-    }
-
-    var info = record.arg;
-
-    if (! info) {
-      context.method = "throw";
-      context.arg = new TypeError("iterator result is not an object");
-      context.delegate = null;
-      return ContinueSentinel;
-    }
-
-    if (info.done) {
-      // Assign the result of the finished delegate to the temporary
-      // variable specified by delegate.resultName (see delegateYield).
-      context[delegate.resultName] = info.value;
-
-      // Resume execution at the desired location (see delegateYield).
-      context.next = delegate.nextLoc;
-
-      // If context.method was "throw" but the delegate handled the
-      // exception, let the outer generator proceed normally. If
-      // context.method was "next", forget context.arg since it has been
-      // "consumed" by the delegate iterator. If context.method was
-      // "return", allow the original .return call to continue in the
-      // outer generator.
-      if (context.method !== "return") {
-        context.method = "next";
-        context.arg = undefined;
-      }
-
-    } else {
-      // Re-yield the result returned by the delegate method.
-      return info;
-    }
-
-    // The delegate iterator is finished, so forget it and continue with
-    // the outer generator.
-    context.delegate = null;
-    return ContinueSentinel;
-  }
-
-  // Define Generator.prototype.{next,throw,return} in terms of the
-  // unified ._invoke helper method.
-  defineIteratorMethods(Gp);
-
-  define(Gp, toStringTagSymbol, "Generator");
-
-  // A Generator should always return itself as the iterator object when the
-  // @@iterator function is called on it. Some browsers' implementations of the
-  // iterator prototype chain incorrectly implement this, causing the Generator
-  // object to not be returned from this call. This ensures that doesn't happen.
-  // See https://github.com/facebook/regenerator/issues/274 for more details.
-  Gp[iteratorSymbol] = function() {
-    return this;
-  };
-
-  Gp.toString = function() {
-    return "[object Generator]";
-  };
-
-  function pushTryEntry(locs) {
-    var entry = { tryLoc: locs[0] };
-
-    if (1 in locs) {
-      entry.catchLoc = locs[1];
-    }
-
-    if (2 in locs) {
-      entry.finallyLoc = locs[2];
-      entry.afterLoc = locs[3];
-    }
-
-    this.tryEntries.push(entry);
-  }
-
-  function resetTryEntry(entry) {
-    var record = entry.completion || {};
-    record.type = "normal";
-    delete record.arg;
-    entry.completion = record;
-  }
-
-  function Context(tryLocsList) {
-    // The root entry object (effectively a try statement without a catch
-    // or a finally block) gives us a place to store values thrown from
-    // locations where there is no enclosing try statement.
-    this.tryEntries = [{ tryLoc: "root" }];
-    tryLocsList.forEach(pushTryEntry, this);
-    this.reset(true);
-  }
-
-  exports.keys = function(object) {
-    var keys = [];
-    for (var key in object) {
-      keys.push(key);
-    }
-    keys.reverse();
-
-    // Rather than returning an object with a next method, we keep
-    // things simple and return the next function itself.
-    return function next() {
-      while (keys.length) {
-        var key = keys.pop();
-        if (key in object) {
-          next.value = key;
-          next.done = false;
-          return next;
-        }
-      }
-
-      // To avoid creating an additional object, we just hang the .value
-      // and .done properties off the next function object itself. This
-      // also ensures that the minifier will not anonymize the function.
-      next.done = true;
-      return next;
-    };
-  };
-
-  function values(iterable) {
-    if (iterable) {
-      var iteratorMethod = iterable[iteratorSymbol];
-      if (iteratorMethod) {
-        return iteratorMethod.call(iterable);
-      }
-
-      if (typeof iterable.next === "function") {
-        return iterable;
-      }
-
-      if (!isNaN(iterable.length)) {
-        var i = -1, next = function next() {
-          while (++i < iterable.length) {
-            if (hasOwn.call(iterable, i)) {
-              next.value = iterable[i];
-              next.done = false;
-              return next;
-            }
-          }
-
-          next.value = undefined;
-          next.done = true;
-
-          return next;
-        };
-
-        return next.next = next;
-      }
-    }
-
-    // Return an iterator with no values.
-    return { next: doneResult };
-  }
-  exports.values = values;
-
-  function doneResult() {
-    return { value: undefined, done: true };
-  }
-
-  Context.prototype = {
-    constructor: Context,
-
-    reset: function(skipTempReset) {
-      this.prev = 0;
-      this.next = 0;
-      // Resetting context._sent for legacy support of Babel's
-      // function.sent implementation.
-      this.sent = this._sent = undefined;
-      this.done = false;
-      this.delegate = null;
-
-      this.method = "next";
-      this.arg = undefined;
-
-      this.tryEntries.forEach(resetTryEntry);
-
-      if (!skipTempReset) {
-        for (var name in this) {
-          // Not sure about the optimal order of these conditions:
-          if (name.charAt(0) === "t" &&
-              hasOwn.call(this, name) &&
-              !isNaN(+name.slice(1))) {
-            this[name] = undefined;
-          }
-        }
-      }
-    },
-
-    stop: function() {
-      this.done = true;
-
-      var rootEntry = this.tryEntries[0];
-      var rootRecord = rootEntry.completion;
-      if (rootRecord.type === "throw") {
-        throw rootRecord.arg;
-      }
-
-      return this.rval;
-    },
-
-    dispatchException: function(exception) {
-      if (this.done) {
-        throw exception;
-      }
-
-      var context = this;
-      function handle(loc, caught) {
-        record.type = "throw";
-        record.arg = exception;
-        context.next = loc;
-
-        if (caught) {
-          // If the dispatched exception was caught by a catch block,
-          // then let that catch block handle the exception normally.
-          context.method = "next";
-          context.arg = undefined;
-        }
-
-        return !! caught;
-      }
-
-      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
-        var entry = this.tryEntries[i];
-        var record = entry.completion;
-
-        if (entry.tryLoc === "root") {
-          // Exception thrown outside of any try block that could handle
-          // it, so set the completion value of the entire function to
-          // throw the exception.
-          return handle("end");
-        }
-
-        if (entry.tryLoc <= this.prev) {
-          var hasCatch = hasOwn.call(entry, "catchLoc");
-          var hasFinally = hasOwn.call(entry, "finallyLoc");
-
-          if (hasCatch && hasFinally) {
-            if (this.prev < entry.catchLoc) {
-              return handle(entry.catchLoc, true);
-            } else if (this.prev < entry.finallyLoc) {
-              return handle(entry.finallyLoc);
-            }
-
-          } else if (hasCatch) {
-            if (this.prev < entry.catchLoc) {
-              return handle(entry.catchLoc, true);
-            }
-
-          } else if (hasFinally) {
-            if (this.prev < entry.finallyLoc) {
-              return handle(entry.finallyLoc);
-            }
-
-          } else {
-            throw new Error("try statement without catch or finally");
-          }
-        }
-      }
-    },
-
-    abrupt: function(type, arg) {
-      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
-        var entry = this.tryEntries[i];
-        if (entry.tryLoc <= this.prev &&
-            hasOwn.call(entry, "finallyLoc") &&
-            this.prev < entry.finallyLoc) {
-          var finallyEntry = entry;
-          break;
-        }
-      }
-
-      if (finallyEntry &&
-          (type === "break" ||
-           type === "continue") &&
-          finallyEntry.tryLoc <= arg &&
-          arg <= finallyEntry.finallyLoc) {
-        // Ignore the finally entry if control is not jumping to a
-        // location outside the try/catch block.
-        finallyEntry = null;
-      }
-
-      var record = finallyEntry ? finallyEntry.completion : {};
-      record.type = type;
-      record.arg = arg;
-
-      if (finallyEntry) {
-        this.method = "next";
-        this.next = finallyEntry.finallyLoc;
-        return ContinueSentinel;
-      }
-
-      return this.complete(record);
-    },
-
-    complete: function(record, afterLoc) {
-      if (record.type === "throw") {
-        throw record.arg;
-      }
-
-      if (record.type === "break" ||
-          record.type === "continue") {
-        this.next = record.arg;
-      } else if (record.type === "return") {
-        this.rval = this.arg = record.arg;
-        this.method = "return";
-        this.next = "end";
-      } else if (record.type === "normal" && afterLoc) {
-        this.next = afterLoc;
-      }
-
-      return ContinueSentinel;
-    },
-
-    finish: function(finallyLoc) {
-      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
-        var entry = this.tryEntries[i];
-        if (entry.finallyLoc === finallyLoc) {
-          this.complete(entry.completion, entry.afterLoc);
-          resetTryEntry(entry);
-          return ContinueSentinel;
-        }
-      }
-    },
-
-    "catch": function(tryLoc) {
-      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
-        var entry = this.tryEntries[i];
-        if (entry.tryLoc === tryLoc) {
-          var record = entry.completion;
-          if (record.type === "throw") {
-            var thrown = record.arg;
-            resetTryEntry(entry);
-          }
-          return thrown;
-        }
-      }
-
-      // The context.catch method must only be called with a location
-      // argument that corresponds to a known catch block.
-      throw new Error("illegal catch attempt");
-    },
-
-    delegateYield: function(iterable, resultName, nextLoc) {
-      this.delegate = {
-        iterator: values(iterable),
-        resultName: resultName,
-        nextLoc: nextLoc
-      };
-
-      if (this.method === "next") {
-        // Deliberately forget the last sent value so that we don't
-        // accidentally pass it on to the delegate.
-        this.arg = undefined;
-      }
-
-      return ContinueSentinel;
-    }
-  };
-
-  // Regardless of whether this script is executing as a CommonJS module
-  // or not, return the runtime object so that we can declare the variable
-  // regeneratorRuntime in the outer scope, which allows this module to be
-  // injected easily by `bin/regenerator --include-runtime script.js`.
-  return exports;
-
-}(
-  // If this script is executing as a CommonJS module, use module.exports
-  // as the regeneratorRuntime namespace. Otherwise create a new empty
-  // object. Either way, the resulting object will be used to initialize
-  // the regeneratorRuntime variable at the top of this file.
-  typeof module === "object" ? module.exports : {}
-));
-
-try {
-  regeneratorRuntime = runtime;
-} catch (accidentalStrictMode) {
-  // This module should not be running in strict mode, so the above
-  // assignment should always work unless something is misconfigured. Just
-  // in case runtime.js accidentally runs in strict mode, we can escape
-  // strict mode using a global Function call. This could conceivably fail
-  // if a Content Security Policy forbids using Function, but in that case
-  // the proper solution is to fix the accidental strict mode problem. If
-  // you've misconfigured your bundler to force strict mode and applied a
-  // CSP to forbid Function, and you're not willing to fix either of those
-  // problems, please detail your unique predicament in a GitHub issue.
-  Function("r", "regeneratorRuntime = r")(runtime);
-}
-
-},{}],35:[function(require,module,exports){
+},{"@babel/runtime/helpers/classCallCheck":7,"@babel/runtime/helpers/createClass":8,"@babel/runtime/helpers/slicedToArray":13}],29:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -3404,7 +2995,7 @@ exports.MOST_NEGATIVE_SINGLE_FLOAT = MOST_NEGATIVE_SINGLE_FLOAT;
 const MOST_POSITIVE_SINGLE_FLOAT = -MOST_NEGATIVE_SINGLE_FLOAT;
 exports.MOST_POSITIVE_SINGLE_FLOAT = MOST_POSITIVE_SINGLE_FLOAT;
 
-},{}],36:[function(require,module,exports){
+},{}],30:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -3416,7 +3007,7 @@ const createAbortError = () => new DOMException('', 'AbortError');
 
 exports.createAbortError = createAbortError;
 
-},{}],37:[function(require,module,exports){
+},{}],31:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -3432,7 +3023,7 @@ const createAddActiveInputConnectionToAudioNode = insertElementInSet => {
 
 exports.createAddActiveInputConnectionToAudioNode = createAddActiveInputConnectionToAudioNode;
 
-},{}],38:[function(require,module,exports){
+},{}],32:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -3459,7 +3050,7 @@ const createAddAudioNodeConnections = audioNodeConnectionsStore => {
 
 exports.createAddAudioNodeConnections = createAddAudioNodeConnections;
 
-},{}],39:[function(require,module,exports){
+},{}],33:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -3479,7 +3070,7 @@ const createAddAudioParamConnections = audioParamConnectionsStore => {
 
 exports.createAddAudioParamConnections = createAddAudioParamConnections;
 
-},{}],40:[function(require,module,exports){
+},{}],34:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -3558,7 +3149,7 @@ const createAddAudioWorkletModule = (cacheTestResult, createNotSupportedError, e
       const evaluateAudioWorkletGlobalScope = window._AWGS.pop();
 
       if (evaluateAudioWorkletGlobalScope === undefined) {
-        // Bug #182 Chrome, Edge and Opera do throw an instance of a SyntaxError instead of a DOMException.
+        // Bug #182 Chrome and Edge do throw an instance of a SyntaxError instead of a DOMException.
         throw new SyntaxError();
       }
 
@@ -3672,7 +3263,7 @@ const createAddAudioWorkletModule = (cacheTestResult, createNotSupportedError, e
       return nativeContext.audioWorklet.addModule(url, options).then(() => {
         if (isNativeOfflineAudioContext(nativeContext)) {
           return nativeContext;
-        } // Bug #186: Chrome, Edge and Opera do not allow to create an AudioWorkletNode on a closed AudioContext.
+        } // Bug #186: Chrome and Edge do not allow to create an AudioWorkletNode on a closed AudioContext.
 
 
         const backupOfflineAudioContext = getOrCreateBackupOfflineAudioContext(nativeContext);
@@ -3718,7 +3309,7 @@ const createAddAudioWorkletModule = (cacheTestResult, createNotSupportedError, e
 
 exports.createAddAudioWorkletModule = createAddAudioWorkletModule;
 
-},{"../globals":200,"../helpers/is-constructible":247,"../helpers/split-import-statements":262}],41:[function(require,module,exports){
+},{"../globals":194,"../helpers/is-constructible":241,"../helpers/split-import-statements":256}],35:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -3807,7 +3398,7 @@ const createAddConnectionToAudioNode = (addActiveInputConnectionToAudioNode, add
 
 exports.createAddConnectionToAudioNode = createAddConnectionToAudioNode;
 
-},{"../helpers/delete-passive-input-connection-to-audio-node":231,"../helpers/set-internal-state-to-active":258,"../helpers/set-internal-state-to-passive-when-necessary":259}],42:[function(require,module,exports){
+},{"../helpers/delete-passive-input-connection-to-audio-node":225,"../helpers/set-internal-state-to-active":252,"../helpers/set-internal-state-to-passive-when-necessary":253}],36:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -3829,7 +3420,7 @@ const createAddPassiveInputConnectionToAudioNode = insertElementInSet => {
 
 exports.createAddPassiveInputConnectionToAudioNode = createAddPassiveInputConnectionToAudioNode;
 
-},{}],43:[function(require,module,exports){
+},{}],37:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -3859,7 +3450,7 @@ const createAddSilentConnection = createNativeGainNode => {
 
 exports.createAddSilentConnection = createAddSilentConnection;
 
-},{}],44:[function(require,module,exports){
+},{}],38:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -3875,7 +3466,7 @@ const createAddUnrenderedAudioWorkletNode = getUnrenderedAudioWorkletNodes => {
 
 exports.createAddUnrenderedAudioWorkletNode = createAddUnrenderedAudioWorkletNode;
 
-},{}],45:[function(require,module,exports){
+},{}],39:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -3976,7 +3567,7 @@ const createAnalyserNodeConstructor = (audionNodeConstructor, createAnalyserNode
 
 exports.createAnalyserNodeConstructor = createAnalyserNodeConstructor;
 
-},{}],46:[function(require,module,exports){
+},{}],40:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -3990,7 +3581,7 @@ const createAnalyserNodeRendererFactory = (createNativeAnalyserNode, getNativeAu
   return () => {
     const renderedNativeAnalyserNodes = new WeakMap();
 
-    const createAnalyserNode = async (proxy, nativeOfflineAudioContext, trace) => {
+    const createAnalyserNode = async (proxy, nativeOfflineAudioContext) => {
       let nativeAnalyserNode = getNativeAudioNode(proxy); // If the initially used nativeAnalyserNode was not constructed on the same OfflineAudioContext it needs to be created again.
 
       const nativeAnalyserNodeIsOwnedByContext = (0, _isOwnedByContext.isOwnedByContext)(nativeAnalyserNode, nativeOfflineAudioContext);
@@ -4009,19 +3600,19 @@ const createAnalyserNodeRendererFactory = (createNativeAnalyserNode, getNativeAu
       }
 
       renderedNativeAnalyserNodes.set(nativeOfflineAudioContext, nativeAnalyserNode);
-      await renderInputsOfAudioNode(proxy, nativeOfflineAudioContext, nativeAnalyserNode, trace);
+      await renderInputsOfAudioNode(proxy, nativeOfflineAudioContext, nativeAnalyserNode);
       return nativeAnalyserNode;
     };
 
     return {
-      render(proxy, nativeOfflineAudioContext, trace) {
+      render(proxy, nativeOfflineAudioContext) {
         const renderedNativeAnalyserNode = renderedNativeAnalyserNodes.get(nativeOfflineAudioContext);
 
         if (renderedNativeAnalyserNode !== undefined) {
           return Promise.resolve(renderedNativeAnalyserNode);
         }
 
-        return createAnalyserNode(proxy, nativeOfflineAudioContext, trace);
+        return createAnalyserNode(proxy, nativeOfflineAudioContext);
       }
 
     };
@@ -4030,7 +3621,7 @@ const createAnalyserNodeRendererFactory = (createNativeAnalyserNode, getNativeAu
 
 exports.createAnalyserNodeRendererFactory = createAnalyserNodeRendererFactory;
 
-},{"../helpers/is-owned-by-context":249}],47:[function(require,module,exports){
+},{"../helpers/is-owned-by-context":243}],41:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -4108,7 +3699,7 @@ const createAudioBufferConstructor = (audioBufferStore, cacheTestResult, createN
 
 exports.createAudioBufferConstructor = createAudioBufferConstructor;
 
-},{"../helpers/test-audio-buffer-copy-channel-methods-out-of-bounds-support":264,"../helpers/wrap-audio-buffer-get-channel-data-method":279}],48:[function(require,module,exports){
+},{"../helpers/test-audio-buffer-copy-channel-methods-out-of-bounds-support":258,"../helpers/wrap-audio-buffer-get-channel-data-method":273}],42:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -4165,7 +3756,7 @@ const createAudioBufferSourceNodeConstructor = (audioNodeConstructor, createAudi
     }
 
     set buffer(value) {
-      this._nativeAudioBufferSourceNode.buffer = value; // Bug #72: Only Chrome, Edge & Opera do not allow to reassign the buffer yet.
+      this._nativeAudioBufferSourceNode.buffer = value; // Bug #72: Only Chrome & Edge do not allow to reassign the buffer yet.
 
       if (value !== null) {
         if (this._isBufferSet) {
@@ -4250,7 +3841,7 @@ const createAudioBufferSourceNodeConstructor = (audioNodeConstructor, createAudi
 
 exports.createAudioBufferSourceNodeConstructor = createAudioBufferSourceNodeConstructor;
 
-},{"../constants":35,"../helpers/is-active-audio-node":246,"../helpers/set-internal-state-to-active":258,"../helpers/set-internal-state-to-passive":260}],49:[function(require,module,exports){
+},{"../constants":29,"../helpers/is-active-audio-node":240,"../helpers/set-internal-state-to-active":252,"../helpers/set-internal-state-to-passive":254}],43:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -4266,7 +3857,7 @@ const createAudioBufferSourceNodeRendererFactory = (connectAudioParam, createNat
     let start = null;
     let stop = null;
 
-    const createAudioBufferSourceNode = async (proxy, nativeOfflineAudioContext, trace) => {
+    const createAudioBufferSourceNode = async (proxy, nativeOfflineAudioContext) => {
       let nativeAudioBufferSourceNode = getNativeAudioNode(proxy);
       /*
        * If the initially used nativeAudioBufferSourceNode was not constructed on the same OfflineAudioContext it needs to be created
@@ -4302,13 +3893,13 @@ const createAudioBufferSourceNodeRendererFactory = (connectAudioParam, createNat
 
       if (!nativeAudioBufferSourceNodeIsOwnedByContext) {
         // Bug #149: Safari does not yet support the detune AudioParam.
-        await renderAutomation(nativeOfflineAudioContext, proxy.playbackRate, nativeAudioBufferSourceNode.playbackRate, trace);
+        await renderAutomation(nativeOfflineAudioContext, proxy.playbackRate, nativeAudioBufferSourceNode.playbackRate);
       } else {
         // Bug #149: Safari does not yet support the detune AudioParam.
-        await connectAudioParam(nativeOfflineAudioContext, proxy.playbackRate, nativeAudioBufferSourceNode.playbackRate, trace);
+        await connectAudioParam(nativeOfflineAudioContext, proxy.playbackRate, nativeAudioBufferSourceNode.playbackRate);
       }
 
-      await renderInputsOfAudioNode(proxy, nativeOfflineAudioContext, nativeAudioBufferSourceNode, trace);
+      await renderInputsOfAudioNode(proxy, nativeOfflineAudioContext, nativeAudioBufferSourceNode);
       return nativeAudioBufferSourceNode;
     };
 
@@ -4321,14 +3912,14 @@ const createAudioBufferSourceNodeRendererFactory = (connectAudioParam, createNat
         stop = value;
       },
 
-      render(proxy, nativeOfflineAudioContext, trace) {
+      render(proxy, nativeOfflineAudioContext) {
         const renderedNativeAudioBufferSourceNode = renderedNativeAudioBufferSourceNodes.get(nativeOfflineAudioContext);
 
         if (renderedNativeAudioBufferSourceNode !== undefined) {
           return Promise.resolve(renderedNativeAudioBufferSourceNode);
         }
 
-        return createAudioBufferSourceNode(proxy, nativeOfflineAudioContext, trace);
+        return createAudioBufferSourceNode(proxy, nativeOfflineAudioContext);
       }
 
     };
@@ -4337,7 +3928,7 @@ const createAudioBufferSourceNodeRendererFactory = (connectAudioParam, createNat
 
 exports.createAudioBufferSourceNodeRendererFactory = createAudioBufferSourceNodeRendererFactory;
 
-},{"../helpers/is-owned-by-context":249}],50:[function(require,module,exports){
+},{"../helpers/is-owned-by-context":243}],44:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -4372,7 +3963,7 @@ const createAudioContextConstructor = (baseAudioContextConstructor, createInvali
 
       if (nativeAudioContext === null) {
         throw createUnknownError();
-      } // Bug #51 Only Chrome, Edge and Opera throw an error if the given latencyHint is invalid.
+      } // Bug #51 Only Chrome and Edge throw an error if the given latencyHint is invalid.
 
 
       if (!(0, _isValidLatencyHint.isValidLatencyHint)(options.latencyHint)) {
@@ -4415,8 +4006,8 @@ const createAudioContextConstructor = (baseAudioContextConstructor, createInvali
 
       this._state = null;
       /*
-       * Bug #34: Chrome, Edge and Opera pretend to be running right away, but fire an onstatechange event when the state actually
-       * changes to 'running'.
+       * Bug #34: Chrome and Edge pretend to be running right away, but fire an onstatechange event when the state actually changes
+       * to 'running'.
        */
 
       if (nativeAudioContext.state === 'running') {
@@ -4508,7 +4099,7 @@ const createAudioContextConstructor = (baseAudioContextConstructor, createInvali
       }
 
       return this._nativeAudioContext.resume().catch(err => {
-        // Bug #55: Chrome, Edge and Opera do throw an InvalidAccessError instead of an InvalidStateError.
+        // Bug #55: Chrome and Edge do throw an InvalidAccessError instead of an InvalidStateError.
         // Bug #56: Safari invokes the catch handler but without an error.
         if (err === undefined || err.code === 15) {
           throw createInvalidStateError();
@@ -4534,7 +4125,7 @@ const createAudioContextConstructor = (baseAudioContextConstructor, createInvali
 
 exports.createAudioContextConstructor = createAudioContextConstructor;
 
-},{"../helpers/deactivate-audio-graph":227,"../helpers/is-valid-latency-hint":252}],51:[function(require,module,exports){
+},{"../helpers/deactivate-audio-graph":221,"../helpers/is-valid-latency-hint":246}],45:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -4559,7 +4150,7 @@ const createAudioDestinationNodeConstructor = (audioNodeConstructor, createAudio
     }
 
     set channelCount(value) {
-      // Bug #52: Chrome, Edge, Opera & Safari do not throw an exception at all.
+      // Bug #52: Chrome, Edge & Safari do not throw an exception at all.
       // Bug #54: Firefox does throw an IndexSizeError.
       if (this._isNodeOfNativeOfflineAudioContext) {
         throw createInvalidStateError();
@@ -4595,7 +4186,7 @@ const createAudioDestinationNodeConstructor = (audioNodeConstructor, createAudio
 
 exports.createAudioDestinationNodeConstructor = createAudioDestinationNodeConstructor;
 
-},{}],52:[function(require,module,exports){
+},{}],46:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -4604,21 +4195,24 @@ Object.defineProperty(exports, "__esModule", {
 exports.createAudioDestinationNodeRenderer = void 0;
 
 const createAudioDestinationNodeRenderer = renderInputsOfAudioNode => {
-  let nativeAudioDestinationNodePromise = null;
+  const renderedNativeAudioDestinationNodes = new WeakMap();
 
-  const createAudioDestinationNode = async (proxy, nativeOfflineAudioContext, trace) => {
+  const createAudioDestinationNode = async (proxy, nativeOfflineAudioContext) => {
     const nativeAudioDestinationNode = nativeOfflineAudioContext.destination;
-    await renderInputsOfAudioNode(proxy, nativeOfflineAudioContext, nativeAudioDestinationNode, trace);
+    renderedNativeAudioDestinationNodes.set(nativeOfflineAudioContext, nativeAudioDestinationNode);
+    await renderInputsOfAudioNode(proxy, nativeOfflineAudioContext, nativeAudioDestinationNode);
     return nativeAudioDestinationNode;
   };
 
   return {
-    render(proxy, nativeOfflineAudioContext, trace) {
-      if (nativeAudioDestinationNodePromise === null) {
-        nativeAudioDestinationNodePromise = createAudioDestinationNode(proxy, nativeOfflineAudioContext, trace);
+    render(proxy, nativeOfflineAudioContext) {
+      const renderedNativeAudioDestinationNode = renderedNativeAudioDestinationNodes.get(nativeOfflineAudioContext);
+
+      if (renderedNativeAudioDestinationNode !== undefined) {
+        return Promise.resolve(renderedNativeAudioDestinationNode);
       }
 
-      return nativeAudioDestinationNodePromise;
+      return createAudioDestinationNode(proxy, nativeOfflineAudioContext);
     }
 
   };
@@ -4626,7 +4220,7 @@ const createAudioDestinationNodeRenderer = renderInputsOfAudioNode => {
 
 exports.createAudioDestinationNodeRenderer = createAudioDestinationNodeRenderer;
 
-},{}],53:[function(require,module,exports){
+},{}],47:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -4638,7 +4232,7 @@ var _constants = require("../constants");
 
 const createAudioListenerFactory = (createAudioParam, createNativeChannelMergerNode, createNativeConstantSourceNode, createNativeScriptProcessorNode, createNotSupportedError, getFirstSample, isNativeOfflineAudioContext, overwriteAccessors) => {
   return (context, nativeContext) => {
-    const nativeListener = nativeContext.listener; // Bug #117: Only Chrome, Edge & Opera support the new interface already.
+    const nativeListener = nativeContext.listener; // Bug #117: Only Chrome & Edge support the new interface already.
 
     const createFakeAudioParams = () => {
       const buffer = new Float32Array(1);
@@ -4907,7 +4501,7 @@ const createAudioListenerFactory = (createAudioParam, createNativeChannelMergerN
 
 exports.createAudioListenerFactory = createAudioListenerFactory;
 
-},{"../constants":35}],54:[function(require,module,exports){
+},{"../constants":29}],48:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -5126,7 +4720,7 @@ const deleteConnectionToDestination = (source, isOffline, destination, output, i
   });
 };
 
-const createAudioNodeConstructor = (addAudioNodeConnections, addConnectionToAudioNode, cacheTestResult, createIncrementCycleCounter, createIndexSizeError, createInvalidAccessError, createNotSupportedError, decrementCycleCounter, detectCycles, eventTargetConstructor, getNativeContext, isNativeAudioContext, isNativeAudioNode, isNativeAudioParam, isNativeOfflineAudioContext) => {
+const createAudioNodeConstructor = (addAudioNodeConnections, addConnectionToAudioNode, cacheTestResult, createIncrementCycleCounter, createIndexSizeError, createInvalidAccessError, createNotSupportedError, decrementCycleCounter, detectCycles, eventTargetConstructor, getNativeContext, isNativeAudioContext, isNativeAudioNode, isNativeAudioParam, isNativeOfflineAudioContext, nativeAudioWorkletNodeConstructor) => {
   return class AudioNode extends eventTargetConstructor {
     constructor(context, isActive, nativeAudioNode, audioNodeRenderer) {
       super(nativeAudioNode);
@@ -5135,7 +4729,7 @@ const createAudioNodeConstructor = (addAudioNodeConnections, addConnectionToAudi
       const nativeContext = getNativeContext(context); // Bug #12: Safari does not support to disconnect a specific destination.
 
       if (isNativeAudioContext(nativeContext) && true !== cacheTestResult(_testAudioNodeDisconnectMethodSupport.testAudioNodeDisconnectMethodSupport, () => {
-        return (0, _testAudioNodeDisconnectMethodSupport.testAudioNodeDisconnectMethodSupport)(nativeContext);
+        return (0, _testAudioNodeDisconnectMethodSupport.testAudioNodeDisconnectMethodSupport)(nativeContext, nativeAudioWorkletNodeConstructor);
       })) {
         (0, _wrapAudioNodeDisconnectMethod.wrapAudioNodeDisconnectMethod)(nativeAudioNode);
       }
@@ -5252,7 +4846,7 @@ const createAudioNodeConstructor = (addAudioNodeConnections, addConnectionToAudi
           this._nativeAudioNode.disconnect(nativeAudioParam, output);
         }
       } catch (err) {
-        // Bug #58: Only Firefox does throw an InvalidAccessError yet.
+        // Bug #58: Safari doesn't throw an InvalidAccessError yet.
         if (err.code === 12) {
           throw createInvalidAccessError();
         }
@@ -5309,7 +4903,7 @@ const createAudioNodeConstructor = (addAudioNodeConnections, addConnectionToAudi
 
 exports.createAudioNodeConstructor = createAudioNodeConstructor;
 
-},{"../globals":200,"../guards/audio-node":203,"../guards/audio-node-output-connection":202,"../helpers/add-active-input-connection-to-audio-param":213,"../helpers/add-passive-input-connection-to-audio-param":214,"../helpers/connect-native-audio-node-to-native-audio-node":220,"../helpers/delete-active-input-connection":229,"../helpers/delete-active-input-connection-to-audio-param":228,"../helpers/delete-event-listeners-of-audio-node":230,"../helpers/delete-passive-input-connection-to-audio-node":231,"../helpers/delete-passive-input-connection-to-audio-param":232,"../helpers/disconnect-native-audio-node-from-native-audio-node":234,"../helpers/get-audio-node-connections":236,"../helpers/get-audio-param-connections":237,"../helpers/get-event-listeners-of-audio-node":239,"../helpers/get-native-audio-node":241,"../helpers/get-native-audio-param":242,"../helpers/insert-element-in-set":244,"../helpers/is-active-audio-node":246,"../helpers/is-part-of-a-cycle":250,"../helpers/is-passive-audio-node":251,"../helpers/set-internal-state-to-active":258,"../helpers/set-internal-state-to-passive-when-necessary":259,"../helpers/test-audio-node-disconnect-method-support":268,"../helpers/visit-each-audio-node-once":277,"../helpers/wrap-audio-node-disconnect-method":282}],55:[function(require,module,exports){
+},{"../globals":194,"../guards/audio-node":197,"../guards/audio-node-output-connection":196,"../helpers/add-active-input-connection-to-audio-param":207,"../helpers/add-passive-input-connection-to-audio-param":208,"../helpers/connect-native-audio-node-to-native-audio-node":214,"../helpers/delete-active-input-connection":223,"../helpers/delete-active-input-connection-to-audio-param":222,"../helpers/delete-event-listeners-of-audio-node":224,"../helpers/delete-passive-input-connection-to-audio-node":225,"../helpers/delete-passive-input-connection-to-audio-param":226,"../helpers/disconnect-native-audio-node-from-native-audio-node":228,"../helpers/get-audio-node-connections":230,"../helpers/get-audio-param-connections":231,"../helpers/get-event-listeners-of-audio-node":233,"../helpers/get-native-audio-node":235,"../helpers/get-native-audio-param":236,"../helpers/insert-element-in-set":238,"../helpers/is-active-audio-node":240,"../helpers/is-part-of-a-cycle":244,"../helpers/is-passive-audio-node":245,"../helpers/set-internal-state-to-active":252,"../helpers/set-internal-state-to-passive-when-necessary":253,"../helpers/test-audio-node-disconnect-method-support":262,"../helpers/visit-each-audio-node-once":271,"../helpers/wrap-audio-node-disconnect-method":276}],49:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -5501,7 +5095,7 @@ const createAudioParamFactory = (addAudioParamConnections, audioParamAudioNodeSt
 
 exports.createAudioParamFactory = createAudioParamFactory;
 
-},{"automation-events":25}],56:[function(require,module,exports){
+},{"automation-events":28}],50:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -5556,7 +5150,7 @@ const createAudioParamRenderer = automationEventList => {
 
 exports.createAudioParamRenderer = createAudioParamRenderer;
 
-},{}],57:[function(require,module,exports){
+},{}],51:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -5594,7 +5188,7 @@ const createAudioWorkletNodeConstructor = (addUnrenderedAudioWorkletNode, audioN
 
       const nodeNameToProcessorConstructorMap = _globals.NODE_NAME_TO_PROCESSOR_CONSTRUCTOR_MAPS.get(nativeContext);
 
-      const processorConstructor = nodeNameToProcessorConstructorMap === null || nodeNameToProcessorConstructorMap === void 0 ? void 0 : nodeNameToProcessorConstructorMap.get(name); // Bug #186: Chrome, Edge and Opera do not allow to create an AudioWorkletNode on a closed AudioContext.
+      const processorConstructor = nodeNameToProcessorConstructorMap === null || nodeNameToProcessorConstructorMap === void 0 ? void 0 : nodeNameToProcessorConstructorMap.get(name); // Bug #186: Chrome and Edge do not allow to create an AudioWorkletNode on a closed AudioContext.
 
       const nativeContextOrBackupOfflineAudioContext = isOffline || nativeContext.state !== 'closed' ? nativeContext : (_a = getBackupOfflineAudioContext(nativeContext)) !== null && _a !== void 0 ? _a : nativeContext;
       const nativeAudioWorkletNode = createNativeAudioWorkletNode(nativeContextOrBackupOfflineAudioContext, isOffline ? null : context.baseLatency, nativeAudioWorkletNodeConstructor, name, processorConstructor, mergedOptions);
@@ -5657,7 +5251,7 @@ const createAudioWorkletNodeConstructor = (addUnrenderedAudioWorkletNode, audioN
 
 exports.createAudioWorkletNodeConstructor = createAudioWorkletNodeConstructor;
 
-},{"../globals":200,"../read-only-map":375}],58:[function(require,module,exports){
+},{"../globals":194,"../read-only-map":369}],52:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -5765,11 +5359,11 @@ const createAudioWorkletNodeRendererFactory = (connectAudioParam, connectMultipl
     const renderedNativeAudioNodes = new WeakMap();
     let processedBufferPromise = null;
 
-    const createAudioNode = async (proxy, nativeOfflineAudioContext, trace) => {
+    const createAudioNode = async (proxy, nativeOfflineAudioContext) => {
       let nativeAudioWorkletNode = getNativeAudioNode(proxy);
       let nativeOutputNodes = null;
       const nativeAudioWorkletNodeIsOwnedByContext = (0, _isOwnedByContext.isOwnedByContext)(nativeAudioWorkletNode, nativeOfflineAudioContext);
-      const outputChannelCount = Array.isArray(options.outputChannelCount) ? options.outputChannelCount : Array.from(options.outputChannelCount); // Bug #61: Only Chrome, Edge, Firefox & Opera have an implementation of the AudioWorkletNode yet.
+      const outputChannelCount = Array.isArray(options.outputChannelCount) ? options.outputChannelCount : Array.from(options.outputChannelCount); // Bug #61: Only Chrome, Edge & Firefox have an implementation of the AudioWorkletNode yet.
 
       if (nativeAudioWorkletNodeConstructor === null) {
         const numberOfOutputChannels = outputChannelCount.reduce((sum, value) => sum + value, 0);
@@ -5849,7 +5443,7 @@ const createAudioWorkletNodeRendererFactory = (connectAudioParam, connectMultipl
                 channelInterpretation: 'discrete',
                 offset: audioParam.value
               });
-              await renderAutomation(partialOfflineAudioContext, audioParam, constantSourceNode.offset, trace);
+              await renderAutomation(partialOfflineAudioContext, audioParam, constantSourceNode.offset);
               return constantSourceNode;
             }));
             const inputChannelMergerNode = createNativeChannelMergerNode(partialOfflineAudioContext, {
@@ -5873,7 +5467,7 @@ const createAudioWorkletNodeRendererFactory = (connectAudioParam, connectMultipl
             }
 
             inputChannelMergerNode.connect(partialOfflineAudioContext.destination);
-            await Promise.all(gainNodes.map(gainNode => renderInputsOfAudioNode(proxy, partialOfflineAudioContext, gainNode, trace)));
+            await Promise.all(gainNodes.map(gainNode => renderInputsOfAudioNode(proxy, partialOfflineAudioContext, gainNode)));
             return renderNativeOfflineAudioContext(partialOfflineAudioContext);
           };
 
@@ -5916,21 +5510,21 @@ const createAudioWorkletNodeRendererFactory = (connectAudioParam, connectMultipl
       if (!nativeAudioWorkletNodeIsOwnedByContext) {
         for (const [nm, audioParam] of proxy.parameters.entries()) {
           await renderAutomation(nativeOfflineAudioContext, audioParam, // @todo The definition that TypeScript uses of the AudioParamMap is lacking many methods.
-          nativeAudioWorkletNode.parameters.get(nm), trace);
+          nativeAudioWorkletNode.parameters.get(nm));
         }
       } else {
         for (const [nm, audioParam] of proxy.parameters.entries()) {
           await connectAudioParam(nativeOfflineAudioContext, audioParam, // @todo The definition that TypeScript uses of the AudioParamMap is lacking many methods.
-          nativeAudioWorkletNode.parameters.get(nm), trace);
+          nativeAudioWorkletNode.parameters.get(nm));
         }
       }
 
-      await renderInputsOfAudioNode(proxy, nativeOfflineAudioContext, nativeAudioWorkletNode, trace);
+      await renderInputsOfAudioNode(proxy, nativeOfflineAudioContext, nativeAudioWorkletNode);
       return nativeAudioWorkletNode;
     };
 
     return {
-      render(proxy, nativeOfflineAudioContext, trace) {
+      render(proxy, nativeOfflineAudioContext) {
         deleteUnrenderedAudioWorkletNode(nativeOfflineAudioContext, proxy);
         const renderedNativeAudioWorkletNodeOrGainNode = renderedNativeAudioNodes.get(nativeOfflineAudioContext);
 
@@ -5938,7 +5532,7 @@ const createAudioWorkletNodeRendererFactory = (connectAudioParam, connectMultipl
           return Promise.resolve(renderedNativeAudioWorkletNodeOrGainNode);
         }
 
-        return createAudioNode(proxy, nativeOfflineAudioContext, trace);
+        return createAudioNode(proxy, nativeOfflineAudioContext);
       }
 
     };
@@ -5947,7 +5541,7 @@ const createAudioWorkletNodeRendererFactory = (connectAudioParam, connectMultipl
 
 exports.createAudioWorkletNodeRendererFactory = createAudioWorkletNodeRendererFactory;
 
-},{"../helpers/copy-from-channel":221,"../helpers/copy-to-channel":222,"../helpers/create-nested-arrays":225,"../helpers/get-audio-node-connections":236,"../helpers/get-audio-worklet-processor":238,"../helpers/is-owned-by-context":249}],59:[function(require,module,exports){
+},{"../helpers/copy-from-channel":215,"../helpers/copy-to-channel":216,"../helpers/create-nested-arrays":219,"../helpers/get-audio-node-connections":230,"../helpers/get-audio-worklet-processor":232,"../helpers/is-owned-by-context":243}],53:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -6078,7 +5672,7 @@ const createBaseAudioContextConstructor = (addAudioWorkletModule, analyserNodeCo
 
 exports.createBaseAudioContextConstructor = createBaseAudioContextConstructor;
 
-},{}],60:[function(require,module,exports){
+},{}],54:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -6170,7 +5764,7 @@ const createBiquadFilterNodeConstructor = (audioNodeConstructor, createAudioPara
 
 exports.createBiquadFilterNodeConstructor = createBiquadFilterNodeConstructor;
 
-},{"../constants":35}],61:[function(require,module,exports){
+},{"../constants":29}],55:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -6184,7 +5778,7 @@ const createBiquadFilterNodeRendererFactory = (connectAudioParam, createNativeBi
   return () => {
     const renderedNativeBiquadFilterNodes = new WeakMap();
 
-    const createBiquadFilterNode = async (proxy, nativeOfflineAudioContext, trace) => {
+    const createBiquadFilterNode = async (proxy, nativeOfflineAudioContext) => {
       let nativeBiquadFilterNode = getNativeAudioNode(proxy);
       /*
        * If the initially used nativeBiquadFilterNode was not constructed on the same OfflineAudioContext it needs to be created
@@ -6210,30 +5804,30 @@ const createBiquadFilterNodeRendererFactory = (connectAudioParam, createNativeBi
       renderedNativeBiquadFilterNodes.set(nativeOfflineAudioContext, nativeBiquadFilterNode);
 
       if (!nativeBiquadFilterNodeIsOwnedByContext) {
-        await renderAutomation(nativeOfflineAudioContext, proxy.Q, nativeBiquadFilterNode.Q, trace);
-        await renderAutomation(nativeOfflineAudioContext, proxy.detune, nativeBiquadFilterNode.detune, trace);
-        await renderAutomation(nativeOfflineAudioContext, proxy.frequency, nativeBiquadFilterNode.frequency, trace);
-        await renderAutomation(nativeOfflineAudioContext, proxy.gain, nativeBiquadFilterNode.gain, trace);
+        await renderAutomation(nativeOfflineAudioContext, proxy.Q, nativeBiquadFilterNode.Q);
+        await renderAutomation(nativeOfflineAudioContext, proxy.detune, nativeBiquadFilterNode.detune);
+        await renderAutomation(nativeOfflineAudioContext, proxy.frequency, nativeBiquadFilterNode.frequency);
+        await renderAutomation(nativeOfflineAudioContext, proxy.gain, nativeBiquadFilterNode.gain);
       } else {
-        await connectAudioParam(nativeOfflineAudioContext, proxy.Q, nativeBiquadFilterNode.Q, trace);
-        await connectAudioParam(nativeOfflineAudioContext, proxy.detune, nativeBiquadFilterNode.detune, trace);
-        await connectAudioParam(nativeOfflineAudioContext, proxy.frequency, nativeBiquadFilterNode.frequency, trace);
-        await connectAudioParam(nativeOfflineAudioContext, proxy.gain, nativeBiquadFilterNode.gain, trace);
+        await connectAudioParam(nativeOfflineAudioContext, proxy.Q, nativeBiquadFilterNode.Q);
+        await connectAudioParam(nativeOfflineAudioContext, proxy.detune, nativeBiquadFilterNode.detune);
+        await connectAudioParam(nativeOfflineAudioContext, proxy.frequency, nativeBiquadFilterNode.frequency);
+        await connectAudioParam(nativeOfflineAudioContext, proxy.gain, nativeBiquadFilterNode.gain);
       }
 
-      await renderInputsOfAudioNode(proxy, nativeOfflineAudioContext, nativeBiquadFilterNode, trace);
+      await renderInputsOfAudioNode(proxy, nativeOfflineAudioContext, nativeBiquadFilterNode);
       return nativeBiquadFilterNode;
     };
 
     return {
-      render(proxy, nativeOfflineAudioContext, trace) {
+      render(proxy, nativeOfflineAudioContext) {
         const renderedNativeBiquadFilterNode = renderedNativeBiquadFilterNodes.get(nativeOfflineAudioContext);
 
         if (renderedNativeBiquadFilterNode !== undefined) {
           return Promise.resolve(renderedNativeBiquadFilterNode);
         }
 
-        return createBiquadFilterNode(proxy, nativeOfflineAudioContext, trace);
+        return createBiquadFilterNode(proxy, nativeOfflineAudioContext);
       }
 
     };
@@ -6242,7 +5836,7 @@ const createBiquadFilterNodeRendererFactory = (connectAudioParam, createNativeBi
 
 exports.createBiquadFilterNodeRendererFactory = createBiquadFilterNodeRendererFactory;
 
-},{"../helpers/is-owned-by-context":249}],62:[function(require,module,exports){
+},{"../helpers/is-owned-by-context":243}],56:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -6287,7 +5881,7 @@ const createCacheTestResult = (ongoingTests, testResults) => {
 
 exports.createCacheTestResult = createCacheTestResult;
 
-},{}],63:[function(require,module,exports){
+},{}],57:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -6318,7 +5912,7 @@ const createChannelMergerNodeConstructor = (audioNodeConstructor, createChannelM
 
 exports.createChannelMergerNodeConstructor = createChannelMergerNodeConstructor;
 
-},{}],64:[function(require,module,exports){
+},{}],58:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -6332,7 +5926,7 @@ const createChannelMergerNodeRendererFactory = (createNativeChannelMergerNode, g
   return () => {
     const renderedNativeAudioNodes = new WeakMap();
 
-    const createAudioNode = async (proxy, nativeOfflineAudioContext, trace) => {
+    const createAudioNode = async (proxy, nativeOfflineAudioContext) => {
       let nativeAudioNode = getNativeAudioNode(proxy); // If the initially used nativeAudioNode was not constructed on the same OfflineAudioContext it needs to be created again.
 
       const nativeAudioNodeIsOwnedByContext = (0, _isOwnedByContext.isOwnedByContext)(nativeAudioNode, nativeOfflineAudioContext);
@@ -6348,19 +5942,19 @@ const createChannelMergerNodeRendererFactory = (createNativeChannelMergerNode, g
       }
 
       renderedNativeAudioNodes.set(nativeOfflineAudioContext, nativeAudioNode);
-      await renderInputsOfAudioNode(proxy, nativeOfflineAudioContext, nativeAudioNode, trace);
+      await renderInputsOfAudioNode(proxy, nativeOfflineAudioContext, nativeAudioNode);
       return nativeAudioNode;
     };
 
     return {
-      render(proxy, nativeOfflineAudioContext, trace) {
+      render(proxy, nativeOfflineAudioContext) {
         const renderedNativeAudioNode = renderedNativeAudioNodes.get(nativeOfflineAudioContext);
 
         if (renderedNativeAudioNode !== undefined) {
           return Promise.resolve(renderedNativeAudioNode);
         }
 
-        return createAudioNode(proxy, nativeOfflineAudioContext, trace);
+        return createAudioNode(proxy, nativeOfflineAudioContext);
       }
 
     };
@@ -6369,7 +5963,7 @@ const createChannelMergerNodeRendererFactory = (createNativeChannelMergerNode, g
 
 exports.createChannelMergerNodeRendererFactory = createChannelMergerNodeRendererFactory;
 
-},{"../helpers/is-owned-by-context":249}],65:[function(require,module,exports){
+},{"../helpers/is-owned-by-context":243}],59:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -6400,7 +5994,7 @@ const createChannelSplitterNodeConstructor = (audioNodeConstructor, createChanne
 
 exports.createChannelSplitterNodeConstructor = createChannelSplitterNodeConstructor;
 
-},{}],66:[function(require,module,exports){
+},{}],60:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -6414,7 +6008,7 @@ const createChannelSplitterNodeRendererFactory = (createNativeChannelSplitterNod
   return () => {
     const renderedNativeAudioNodes = new WeakMap();
 
-    const createAudioNode = async (proxy, nativeOfflineAudioContext, trace) => {
+    const createAudioNode = async (proxy, nativeOfflineAudioContext) => {
       let nativeAudioNode = getNativeAudioNode(proxy); // If the initially used nativeAudioNode was not constructed on the same OfflineAudioContext it needs to be created again.
 
       const nativeAudioNodeIsOwnedByContext = (0, _isOwnedByContext.isOwnedByContext)(nativeAudioNode, nativeOfflineAudioContext);
@@ -6430,19 +6024,19 @@ const createChannelSplitterNodeRendererFactory = (createNativeChannelSplitterNod
       }
 
       renderedNativeAudioNodes.set(nativeOfflineAudioContext, nativeAudioNode);
-      await renderInputsOfAudioNode(proxy, nativeOfflineAudioContext, nativeAudioNode, trace);
+      await renderInputsOfAudioNode(proxy, nativeOfflineAudioContext, nativeAudioNode);
       return nativeAudioNode;
     };
 
     return {
-      render(proxy, nativeOfflineAudioContext, trace) {
+      render(proxy, nativeOfflineAudioContext) {
         const renderedNativeAudioNode = renderedNativeAudioNodes.get(nativeOfflineAudioContext);
 
         if (renderedNativeAudioNode !== undefined) {
           return Promise.resolve(renderedNativeAudioNode);
         }
 
-        return createAudioNode(proxy, nativeOfflineAudioContext, trace);
+        return createAudioNode(proxy, nativeOfflineAudioContext);
       }
 
     };
@@ -6451,7 +6045,7 @@ const createChannelSplitterNodeRendererFactory = (createNativeChannelSplitterNod
 
 exports.createChannelSplitterNodeRendererFactory = createChannelSplitterNodeRendererFactory;
 
-},{"../helpers/is-owned-by-context":249}],67:[function(require,module,exports){
+},{"../helpers/is-owned-by-context":243}],61:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -6460,14 +6054,14 @@ Object.defineProperty(exports, "__esModule", {
 exports.createConnectAudioParam = void 0;
 
 const createConnectAudioParam = renderInputsOfAudioParam => {
-  return (nativeOfflineAudioContext, audioParam, nativeAudioParam, trace) => {
-    return renderInputsOfAudioParam(audioParam, nativeOfflineAudioContext, nativeAudioParam, trace);
+  return (nativeOfflineAudioContext, audioParam, nativeAudioParam) => {
+    return renderInputsOfAudioParam(audioParam, nativeOfflineAudioContext, nativeAudioParam);
   };
 };
 
 exports.createConnectAudioParam = createConnectAudioParam;
 
-},{}],68:[function(require,module,exports){
+},{}],62:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -6495,7 +6089,7 @@ const createConnectMultipleOutputs = createIndexSizeError => {
 
 exports.createConnectMultipleOutputs = createConnectMultipleOutputs;
 
-},{"../guards/native-audio-node":210}],69:[function(require,module,exports){
+},{"../guards/native-audio-node":204}],63:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -6529,7 +6123,7 @@ const createConnectedNativeAudioBufferSourceNodeFactory = createNativeAudioBuffe
 
 exports.createConnectedNativeAudioBufferSourceNodeFactory = createConnectedNativeAudioBufferSourceNodeFactory;
 
-},{}],70:[function(require,module,exports){
+},{}],64:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -6624,7 +6218,7 @@ const createConstantSourceNodeConstructor = (audioNodeConstructor, createAudioPa
 
 exports.createConstantSourceNodeConstructor = createConstantSourceNodeConstructor;
 
-},{"../constants":35,"../helpers/is-active-audio-node":246,"../helpers/set-internal-state-to-active":258,"../helpers/set-internal-state-to-passive":260}],71:[function(require,module,exports){
+},{"../constants":29,"../helpers/is-active-audio-node":240,"../helpers/set-internal-state-to-active":252,"../helpers/set-internal-state-to-passive":254}],65:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -6640,7 +6234,7 @@ const createConstantSourceNodeRendererFactory = (connectAudioParam, createNative
     let start = null;
     let stop = null;
 
-    const createConstantSourceNode = async (proxy, nativeOfflineAudioContext, trace) => {
+    const createConstantSourceNode = async (proxy, nativeOfflineAudioContext) => {
       let nativeConstantSourceNode = getNativeAudioNode(proxy);
       /*
        * If the initially used nativeConstantSourceNode was not constructed on the same OfflineAudioContext it needs to be created
@@ -6670,12 +6264,12 @@ const createConstantSourceNodeRendererFactory = (connectAudioParam, createNative
       renderedNativeConstantSourceNodes.set(nativeOfflineAudioContext, nativeConstantSourceNode);
 
       if (!nativeConstantSourceNodeIsOwnedByContext) {
-        await renderAutomation(nativeOfflineAudioContext, proxy.offset, nativeConstantSourceNode.offset, trace);
+        await renderAutomation(nativeOfflineAudioContext, proxy.offset, nativeConstantSourceNode.offset);
       } else {
-        await connectAudioParam(nativeOfflineAudioContext, proxy.offset, nativeConstantSourceNode.offset, trace);
+        await connectAudioParam(nativeOfflineAudioContext, proxy.offset, nativeConstantSourceNode.offset);
       }
 
-      await renderInputsOfAudioNode(proxy, nativeOfflineAudioContext, nativeConstantSourceNode, trace);
+      await renderInputsOfAudioNode(proxy, nativeOfflineAudioContext, nativeConstantSourceNode);
       return nativeConstantSourceNode;
     };
 
@@ -6688,14 +6282,14 @@ const createConstantSourceNodeRendererFactory = (connectAudioParam, createNative
         stop = value;
       },
 
-      render(proxy, nativeOfflineAudioContext, trace) {
+      render(proxy, nativeOfflineAudioContext) {
         const renderedNativeConstantSourceNode = renderedNativeConstantSourceNodes.get(nativeOfflineAudioContext);
 
         if (renderedNativeConstantSourceNode !== undefined) {
           return Promise.resolve(renderedNativeConstantSourceNode);
         }
 
-        return createConstantSourceNode(proxy, nativeOfflineAudioContext, trace);
+        return createConstantSourceNode(proxy, nativeOfflineAudioContext);
       }
 
     };
@@ -6704,7 +6298,7 @@ const createConstantSourceNodeRendererFactory = (connectAudioParam, createNative
 
 exports.createConstantSourceNodeRendererFactory = createConstantSourceNodeRendererFactory;
 
-},{"../helpers/is-owned-by-context":249}],72:[function(require,module,exports){
+},{"../helpers/is-owned-by-context":243}],66:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -6721,7 +6315,7 @@ const createConvertNumberToUnsignedLong = unit32Array => {
 
 exports.createConvertNumberToUnsignedLong = createConvertNumberToUnsignedLong;
 
-},{}],73:[function(require,module,exports){
+},{}],67:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -6768,7 +6362,7 @@ const createConvolverNodeConstructor = (audioNodeConstructor, createConvolverNod
 
       if (value === null && this._nativeConvolverNode.buffer !== null) {
         const nativeContext = this._nativeConvolverNode.context;
-        this._nativeConvolverNode.buffer = nativeContext.createBuffer(1, 1, 44100);
+        this._nativeConvolverNode.buffer = nativeContext.createBuffer(1, 1, nativeContext.sampleRate);
         this._isBufferNullified = true;
         setAudioNodeTailTime(this, 0);
       } else {
@@ -6790,7 +6384,7 @@ const createConvolverNodeConstructor = (audioNodeConstructor, createConvolverNod
 
 exports.createConvolverNodeConstructor = createConvolverNodeConstructor;
 
-},{}],74:[function(require,module,exports){
+},{}],68:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -6806,7 +6400,7 @@ const createConvolverNodeRendererFactory = (createNativeConvolverNode, getNative
   return () => {
     const renderedNativeConvolverNodes = new WeakMap();
 
-    const createConvolverNode = async (proxy, nativeOfflineAudioContext, trace) => {
+    const createConvolverNode = async (proxy, nativeOfflineAudioContext) => {
       let nativeConvolverNode = getNativeAudioNode(proxy); // If the initially used nativeConvolverNode was not constructed on the same OfflineAudioContext it needs to be created again.
 
       const nativeConvolverNodeIsOwnedByContext = (0, _isOwnedByContext.isOwnedByContext)(nativeConvolverNode, nativeOfflineAudioContext);
@@ -6825,23 +6419,23 @@ const createConvolverNodeRendererFactory = (createNativeConvolverNode, getNative
       renderedNativeConvolverNodes.set(nativeOfflineAudioContext, nativeConvolverNode);
 
       if ((0, _nativeAudioNodeFaker.isNativeAudioNodeFaker)(nativeConvolverNode)) {
-        await renderInputsOfAudioNode(proxy, nativeOfflineAudioContext, nativeConvolverNode.inputs[0], trace);
+        await renderInputsOfAudioNode(proxy, nativeOfflineAudioContext, nativeConvolverNode.inputs[0]);
       } else {
-        await renderInputsOfAudioNode(proxy, nativeOfflineAudioContext, nativeConvolverNode, trace);
+        await renderInputsOfAudioNode(proxy, nativeOfflineAudioContext, nativeConvolverNode);
       }
 
       return nativeConvolverNode;
     };
 
     return {
-      render(proxy, nativeOfflineAudioContext, trace) {
+      render(proxy, nativeOfflineAudioContext) {
         const renderedNativeConvolverNode = renderedNativeConvolverNodes.get(nativeOfflineAudioContext);
 
         if (renderedNativeConvolverNode !== undefined) {
           return Promise.resolve(renderedNativeConvolverNode);
         }
 
-        return createConvolverNode(proxy, nativeOfflineAudioContext, trace);
+        return createConvolverNode(proxy, nativeOfflineAudioContext);
       }
 
     };
@@ -6850,7 +6444,7 @@ const createConvolverNodeRendererFactory = (createNativeConvolverNode, getNative
 
 exports.createConvolverNodeRendererFactory = createConvolverNodeRendererFactory;
 
-},{"../guards/native-audio-node-faker":209,"../helpers/is-owned-by-context":249}],75:[function(require,module,exports){
+},{"../guards/native-audio-node-faker":203,"../helpers/is-owned-by-context":243}],69:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -6879,7 +6473,7 @@ const createCreateNativeOfflineAudioContext = (createNotSupportedError, nativeOf
 
 exports.createCreateNativeOfflineAudioContext = createCreateNativeOfflineAudioContext;
 
-},{}],76:[function(require,module,exports){
+},{}],70:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -6891,7 +6485,7 @@ const createDataCloneError = () => new DOMException('', 'DataCloneError');
 
 exports.createDataCloneError = createDataCloneError;
 
-},{}],77:[function(require,module,exports){
+},{}],71:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -6905,7 +6499,7 @@ var _wrapAudioBufferGetChannelDataMethod = require("../helpers/wrap-audio-buffer
 
 const createDecodeAudioData = (audioBufferStore, cacheTestResult, createDataCloneError, createEncodingError, detachedArrayBuffers, getNativeContext, isNativeContext, testAudioBufferCopyChannelMethodsOutOfBoundsSupport, testPromiseSupport, wrapAudioBufferCopyChannelMethods, wrapAudioBufferCopyChannelMethodsOutOfBounds) => {
   return (anyContext, audioData) => {
-    const nativeContext = isNativeContext(anyContext) ? anyContext : getNativeContext(anyContext); // Bug #43: Only Chrome, Edge and Opera do throw a DataCloneError.
+    const nativeContext = isNativeContext(anyContext) ? anyContext : getNativeContext(anyContext); // Bug #43: Only Chrome and Edge do throw a DataCloneError.
 
     if (detachedArrayBuffers.has(audioData)) {
       const err = createDataCloneError();
@@ -6979,7 +6573,7 @@ const createDecodeAudioData = (audioBufferStore, cacheTestResult, createDataClon
 
 exports.createDecodeAudioData = createDecodeAudioData;
 
-},{"../helpers/detach-array-buffer":233,"../helpers/wrap-audio-buffer-get-channel-data-method":279}],78:[function(require,module,exports){
+},{"../helpers/detach-array-buffer":227,"../helpers/wrap-audio-buffer-get-channel-data-method":273}],72:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -7027,7 +6621,7 @@ const createDecrementCycleCounter = (connectNativeAudioNodeToNativeAudioNode, cy
 
 exports.createDecrementCycleCounter = createDecrementCycleCounter;
 
-},{"../guards/audio-node-output-connection":202}],79:[function(require,module,exports){
+},{"../guards/audio-node-output-connection":196}],73:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -7066,7 +6660,7 @@ const createDelayNodeConstructor = (audioNodeConstructor, createAudioParam, crea
 
 exports.createDelayNodeConstructor = createDelayNodeConstructor;
 
-},{}],80:[function(require,module,exports){
+},{}],74:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -7080,7 +6674,7 @@ const createDelayNodeRendererFactory = (connectAudioParam, createNativeDelayNode
   return maxDelayTime => {
     const renderedNativeDelayNodes = new WeakMap();
 
-    const createDelayNode = async (proxy, nativeOfflineAudioContext, trace) => {
+    const createDelayNode = async (proxy, nativeOfflineAudioContext) => {
       let nativeDelayNode = getNativeAudioNode(proxy); // If the initially used nativeDelayNode was not constructed on the same OfflineAudioContext it needs to be created again.
 
       const nativeDelayNodeIsOwnedByContext = (0, _isOwnedByContext.isOwnedByContext)(nativeDelayNode, nativeOfflineAudioContext);
@@ -7099,24 +6693,24 @@ const createDelayNodeRendererFactory = (connectAudioParam, createNativeDelayNode
       renderedNativeDelayNodes.set(nativeOfflineAudioContext, nativeDelayNode);
 
       if (!nativeDelayNodeIsOwnedByContext) {
-        await renderAutomation(nativeOfflineAudioContext, proxy.delayTime, nativeDelayNode.delayTime, trace);
+        await renderAutomation(nativeOfflineAudioContext, proxy.delayTime, nativeDelayNode.delayTime);
       } else {
-        await connectAudioParam(nativeOfflineAudioContext, proxy.delayTime, nativeDelayNode.delayTime, trace);
+        await connectAudioParam(nativeOfflineAudioContext, proxy.delayTime, nativeDelayNode.delayTime);
       }
 
-      await renderInputsOfAudioNode(proxy, nativeOfflineAudioContext, nativeDelayNode, trace);
+      await renderInputsOfAudioNode(proxy, nativeOfflineAudioContext, nativeDelayNode);
       return nativeDelayNode;
     };
 
     return {
-      render(proxy, nativeOfflineAudioContext, trace) {
+      render(proxy, nativeOfflineAudioContext) {
         const renderedNativeDelayNode = renderedNativeDelayNodes.get(nativeOfflineAudioContext);
 
         if (renderedNativeDelayNode !== undefined) {
           return Promise.resolve(renderedNativeDelayNode);
         }
 
-        return createDelayNode(proxy, nativeOfflineAudioContext, trace);
+        return createDelayNode(proxy, nativeOfflineAudioContext);
       }
 
     };
@@ -7125,7 +6719,7 @@ const createDelayNodeRendererFactory = (connectAudioParam, createNativeDelayNode
 
 exports.createDelayNodeRendererFactory = createDelayNodeRendererFactory;
 
-},{"../helpers/is-owned-by-context":249}],81:[function(require,module,exports){
+},{"../helpers/is-owned-by-context":243}],75:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -7141,7 +6735,7 @@ const createDeleteActiveInputConnectionToAudioNode = pickElementFromSet => {
 
 exports.createDeleteActiveInputConnectionToAudioNode = createDeleteActiveInputConnectionToAudioNode;
 
-},{}],82:[function(require,module,exports){
+},{}],76:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -7157,7 +6751,7 @@ const createDeleteUnrenderedAudioWorkletNode = getUnrenderedAudioWorkletNodes =>
 
 exports.createDeleteUnrenderedAudioWorkletNode = createDeleteUnrenderedAudioWorkletNode;
 
-},{}],83:[function(require,module,exports){
+},{}],77:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -7194,7 +6788,7 @@ const createDetectCycles = (audioParamAudioNodeStore, getAudioNodeConnections, g
 
 exports.createDetectCycles = createDetectCycles;
 
-},{"../guards/audio-node":203,"../guards/delay-node":207}],84:[function(require,module,exports){
+},{"../guards/audio-node":197,"../guards/delay-node":201}],78:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -7246,7 +6840,7 @@ const createDisconnectMultipleOutputs = createIndexSizeError => {
 
 exports.createDisconnectMultipleOutputs = createDisconnectMultipleOutputs;
 
-},{"../guards/native-audio-node":210}],85:[function(require,module,exports){
+},{"../guards/native-audio-node":204}],79:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -7303,7 +6897,7 @@ const createDynamicsCompressorNodeConstructor = (audioNodeConstructor, createAud
       }
     }
     /*
-     * Bug #109: Only Chrome, Firefox and Opera disallow a channelCountMode of 'max' yet which is why the getter and setter needs to be
+     * Bug #109: Only Chrome and Firefox disallow a channelCountMode of 'max' yet which is why the getter and setter needs to be
      * overwritten here.
      */
 
@@ -7352,7 +6946,7 @@ const createDynamicsCompressorNodeConstructor = (audioNodeConstructor, createAud
 
 exports.createDynamicsCompressorNodeConstructor = createDynamicsCompressorNodeConstructor;
 
-},{}],86:[function(require,module,exports){
+},{}],80:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -7366,7 +6960,7 @@ const createDynamicsCompressorNodeRendererFactory = (connectAudioParam, createNa
   return () => {
     const renderedNativeDynamicsCompressorNodes = new WeakMap();
 
-    const createDynamicsCompressorNode = async (proxy, nativeOfflineAudioContext, trace) => {
+    const createDynamicsCompressorNode = async (proxy, nativeOfflineAudioContext) => {
       let nativeDynamicsCompressorNode = getNativeAudioNode(proxy);
       /*
        * If the initially used nativeDynamicsCompressorNode was not constructed on the same OfflineAudioContext it needs to be
@@ -7392,32 +6986,32 @@ const createDynamicsCompressorNodeRendererFactory = (connectAudioParam, createNa
       renderedNativeDynamicsCompressorNodes.set(nativeOfflineAudioContext, nativeDynamicsCompressorNode);
 
       if (!nativeDynamicsCompressorNodeIsOwnedByContext) {
-        await renderAutomation(nativeOfflineAudioContext, proxy.attack, nativeDynamicsCompressorNode.attack, trace);
-        await renderAutomation(nativeOfflineAudioContext, proxy.knee, nativeDynamicsCompressorNode.knee, trace);
-        await renderAutomation(nativeOfflineAudioContext, proxy.ratio, nativeDynamicsCompressorNode.ratio, trace);
-        await renderAutomation(nativeOfflineAudioContext, proxy.release, nativeDynamicsCompressorNode.release, trace);
-        await renderAutomation(nativeOfflineAudioContext, proxy.threshold, nativeDynamicsCompressorNode.threshold, trace);
+        await renderAutomation(nativeOfflineAudioContext, proxy.attack, nativeDynamicsCompressorNode.attack);
+        await renderAutomation(nativeOfflineAudioContext, proxy.knee, nativeDynamicsCompressorNode.knee);
+        await renderAutomation(nativeOfflineAudioContext, proxy.ratio, nativeDynamicsCompressorNode.ratio);
+        await renderAutomation(nativeOfflineAudioContext, proxy.release, nativeDynamicsCompressorNode.release);
+        await renderAutomation(nativeOfflineAudioContext, proxy.threshold, nativeDynamicsCompressorNode.threshold);
       } else {
-        await connectAudioParam(nativeOfflineAudioContext, proxy.attack, nativeDynamicsCompressorNode.attack, trace);
-        await connectAudioParam(nativeOfflineAudioContext, proxy.knee, nativeDynamicsCompressorNode.knee, trace);
-        await connectAudioParam(nativeOfflineAudioContext, proxy.ratio, nativeDynamicsCompressorNode.ratio, trace);
-        await connectAudioParam(nativeOfflineAudioContext, proxy.release, nativeDynamicsCompressorNode.release, trace);
-        await connectAudioParam(nativeOfflineAudioContext, proxy.threshold, nativeDynamicsCompressorNode.threshold, trace);
+        await connectAudioParam(nativeOfflineAudioContext, proxy.attack, nativeDynamicsCompressorNode.attack);
+        await connectAudioParam(nativeOfflineAudioContext, proxy.knee, nativeDynamicsCompressorNode.knee);
+        await connectAudioParam(nativeOfflineAudioContext, proxy.ratio, nativeDynamicsCompressorNode.ratio);
+        await connectAudioParam(nativeOfflineAudioContext, proxy.release, nativeDynamicsCompressorNode.release);
+        await connectAudioParam(nativeOfflineAudioContext, proxy.threshold, nativeDynamicsCompressorNode.threshold);
       }
 
-      await renderInputsOfAudioNode(proxy, nativeOfflineAudioContext, nativeDynamicsCompressorNode, trace);
+      await renderInputsOfAudioNode(proxy, nativeOfflineAudioContext, nativeDynamicsCompressorNode);
       return nativeDynamicsCompressorNode;
     };
 
     return {
-      render(proxy, nativeOfflineAudioContext, trace) {
+      render(proxy, nativeOfflineAudioContext) {
         const renderedNativeDynamicsCompressorNode = renderedNativeDynamicsCompressorNodes.get(nativeOfflineAudioContext);
 
         if (renderedNativeDynamicsCompressorNode !== undefined) {
           return Promise.resolve(renderedNativeDynamicsCompressorNode);
         }
 
-        return createDynamicsCompressorNode(proxy, nativeOfflineAudioContext, trace);
+        return createDynamicsCompressorNode(proxy, nativeOfflineAudioContext);
       }
 
     };
@@ -7426,7 +7020,7 @@ const createDynamicsCompressorNodeRendererFactory = (connectAudioParam, createNa
 
 exports.createDynamicsCompressorNodeRendererFactory = createDynamicsCompressorNodeRendererFactory;
 
-},{"../helpers/is-owned-by-context":249}],87:[function(require,module,exports){
+},{"../helpers/is-owned-by-context":243}],81:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -7438,7 +7032,7 @@ const createEncodingError = () => new DOMException('', 'EncodingError');
 
 exports.createEncodingError = createEncodingError;
 
-},{}],88:[function(require,module,exports){
+},{}],82:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -7449,7 +7043,7 @@ exports.createEvaluateSource = void 0;
 const createEvaluateSource = window => {
   return source => new Promise((resolve, reject) => {
     if (window === null) {
-      // Bug #182 Chrome, Edge and Opera do throw an instance of a SyntaxError instead of a DOMException.
+      // Bug #182 Chrome and Edge do throw an instance of a SyntaxError instead of a DOMException.
       reject(new SyntaxError());
       return;
     }
@@ -7457,7 +7051,7 @@ const createEvaluateSource = window => {
     const head = window.document.head;
 
     if (head === null) {
-      // Bug #182 Chrome, Edge and Opera do throw an instance of a SyntaxError instead of a DOMException.
+      // Bug #182 Chrome and Edge do throw an instance of a SyntaxError instead of a DOMException.
       reject(new SyntaxError());
     } else {
       const script = window.document.createElement('script'); // @todo Safari doesn't like URLs with a type of 'application/javascript; charset=utf-8'.
@@ -7487,7 +7081,7 @@ const createEvaluateSource = window => {
       };
 
       script.onerror = () => {
-        removeErrorEventListenerAndRevokeUrl(); // Bug #182 Chrome, Edge and Opera do throw an instance of a SyntaxError instead of a DOMException.
+        removeErrorEventListenerAndRevokeUrl(); // Bug #182 Chrome and Edge do throw an instance of a SyntaxError instead of a DOMException.
 
         reject(new SyntaxError());
       };
@@ -7506,7 +7100,7 @@ const createEvaluateSource = window => {
 
 exports.createEvaluateSource = createEvaluateSource;
 
-},{}],89:[function(require,module,exports){
+},{}],83:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -7552,7 +7146,7 @@ const createEventTargetConstructor = wrapEventListener => {
 
 exports.createEventTargetConstructor = createEventTargetConstructor;
 
-},{}],90:[function(require,module,exports){
+},{}],84:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -7594,7 +7188,7 @@ const createExposeCurrentFrameAndCurrentTime = window => {
 
 exports.createExposeCurrentFrameAndCurrentTime = createExposeCurrentFrameAndCurrentTime;
 
-},{}],91:[function(require,module,exports){
+},{}],85:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -7620,7 +7214,7 @@ const createFetchSource = createAbortError => {
 
 exports.createFetchSource = createFetchSource;
 
-},{}],92:[function(require,module,exports){
+},{}],86:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -7661,7 +7255,7 @@ const createGainNodeConstructor = (audioNodeConstructor, createAudioParam, creat
 
 exports.createGainNodeConstructor = createGainNodeConstructor;
 
-},{"../constants":35}],93:[function(require,module,exports){
+},{"../constants":29}],87:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -7675,7 +7269,7 @@ const createGainNodeRendererFactory = (connectAudioParam, createNativeGainNode, 
   return () => {
     const renderedNativeGainNodes = new WeakMap();
 
-    const createGainNode = async (proxy, nativeOfflineAudioContext, trace) => {
+    const createGainNode = async (proxy, nativeOfflineAudioContext) => {
       let nativeGainNode = getNativeAudioNode(proxy); // If the initially used nativeGainNode was not constructed on the same OfflineAudioContext it needs to be created again.
 
       const nativeGainNodeIsOwnedByContext = (0, _isOwnedByContext.isOwnedByContext)(nativeGainNode, nativeOfflineAudioContext);
@@ -7693,24 +7287,24 @@ const createGainNodeRendererFactory = (connectAudioParam, createNativeGainNode, 
       renderedNativeGainNodes.set(nativeOfflineAudioContext, nativeGainNode);
 
       if (!nativeGainNodeIsOwnedByContext) {
-        await renderAutomation(nativeOfflineAudioContext, proxy.gain, nativeGainNode.gain, trace);
+        await renderAutomation(nativeOfflineAudioContext, proxy.gain, nativeGainNode.gain);
       } else {
-        await connectAudioParam(nativeOfflineAudioContext, proxy.gain, nativeGainNode.gain, trace);
+        await connectAudioParam(nativeOfflineAudioContext, proxy.gain, nativeGainNode.gain);
       }
 
-      await renderInputsOfAudioNode(proxy, nativeOfflineAudioContext, nativeGainNode, trace);
+      await renderInputsOfAudioNode(proxy, nativeOfflineAudioContext, nativeGainNode);
       return nativeGainNode;
     };
 
     return {
-      render(proxy, nativeOfflineAudioContext, trace) {
+      render(proxy, nativeOfflineAudioContext) {
         const renderedNativeGainNode = renderedNativeGainNodes.get(nativeOfflineAudioContext);
 
         if (renderedNativeGainNode !== undefined) {
           return Promise.resolve(renderedNativeGainNode);
         }
 
-        return createGainNode(proxy, nativeOfflineAudioContext, trace);
+        return createGainNode(proxy, nativeOfflineAudioContext);
       }
 
     };
@@ -7719,7 +7313,7 @@ const createGainNodeRendererFactory = (connectAudioParam, createNativeGainNode, 
 
 exports.createGainNodeRendererFactory = createGainNodeRendererFactory;
 
-},{"../helpers/is-owned-by-context":249}],94:[function(require,module,exports){
+},{"../helpers/is-owned-by-context":243}],88:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -7733,7 +7327,7 @@ const createGetActiveAudioWorkletNodeInputs = (activeAudioWorkletNodeInputsStore
 
 exports.createGetActiveAudioWorkletNodeInputs = createGetActiveAudioWorkletNodeInputs;
 
-},{}],95:[function(require,module,exports){
+},{}],89:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -7755,7 +7349,7 @@ const createGetAudioNodeRenderer = getAudioNodeConnections => {
 
 exports.createGetAudioNodeRenderer = createGetAudioNodeRenderer;
 
-},{}],96:[function(require,module,exports){
+},{}],90:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -7773,7 +7367,7 @@ const createGetAudioNodeTailTime = audioNodeTailTimeStore => {
 
 exports.createGetAudioNodeTailTime = createGetAudioNodeTailTime;
 
-},{}],97:[function(require,module,exports){
+},{}],91:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -7795,7 +7389,7 @@ const createGetAudioParamRenderer = getAudioParamConnections => {
 
 exports.createGetAudioParamRenderer = createGetAudioParamRenderer;
 
-},{}],98:[function(require,module,exports){
+},{}],92:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -7811,7 +7405,7 @@ const createGetBackupOfflineAudioContext = backupOfflineAudioContextStore => {
 
 exports.createGetBackupOfflineAudioContext = createGetBackupOfflineAudioContext;
 
-},{}],99:[function(require,module,exports){
+},{}],93:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -7835,7 +7429,7 @@ const createGetNativeContext = contextStore => {
 
 exports.createGetNativeContext = createGetNativeContext;
 
-},{"./invalid-state-error":107}],100:[function(require,module,exports){
+},{"./invalid-state-error":101}],94:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -7864,7 +7458,7 @@ const createGetOrCreateBackupOfflineAudioContext = (backupOfflineAudioContextSto
 
 exports.createGetOrCreateBackupOfflineAudioContext = createGetOrCreateBackupOfflineAudioContext;
 
-},{}],101:[function(require,module,exports){
+},{}],95:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -7886,7 +7480,7 @@ const createGetUnrenderedAudioWorkletNodes = unrenderedAudioWorkletNodeStore => 
 
 exports.createGetUnrenderedAudioWorkletNodes = createGetUnrenderedAudioWorkletNodes;
 
-},{}],102:[function(require,module,exports){
+},{}],96:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -7930,7 +7524,7 @@ const createIIRFilterNodeConstructor = (audioNodeConstructor, createNativeIIRFil
 
 exports.createIIRFilterNodeConstructor = createIIRFilterNodeConstructor;
 
-},{"../helpers/wrap-iir-filter-node-get-frequency-response-method":288}],103:[function(require,module,exports){
+},{"../helpers/wrap-iir-filter-node-get-frequency-response-method":282}],97:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -7981,7 +7575,7 @@ const createIIRFilterNodeRendererFactory = (createNativeAudioBufferSourceNode, g
     const renderedNativeAudioNodes = new WeakMap();
     let filteredBufferPromise = null;
 
-    const createAudioNode = async (proxy, nativeOfflineAudioContext, trace) => {
+    const createAudioNode = async (proxy, nativeOfflineAudioContext) => {
       let nativeAudioBufferSourceNode = null;
       let nativeIIRFilterNode = getNativeAudioNode(proxy); // If the initially used nativeIIRFilterNode was not constructed on the same OfflineAudioContext it needs to be created again.
 
@@ -8016,7 +7610,7 @@ const createIIRFilterNodeRendererFactory = (createNativeAudioBufferSourceNode, g
           proxy.context.length, nativeOfflineAudioContext.sampleRate);
 
           filteredBufferPromise = (async () => {
-            await renderInputsOfAudioNode(proxy, partialOfflineAudioContext, partialOfflineAudioContext.destination, trace);
+            await renderInputsOfAudioNode(proxy, partialOfflineAudioContext, partialOfflineAudioContext.destination);
             const renderedBuffer = await renderNativeOfflineAudioContext(partialOfflineAudioContext);
             return filterFullBuffer(renderedBuffer, nativeOfflineAudioContext, feedback, feedforward);
           })();
@@ -8028,19 +7622,19 @@ const createIIRFilterNodeRendererFactory = (createNativeAudioBufferSourceNode, g
         return nativeAudioBufferSourceNode;
       }
 
-      await renderInputsOfAudioNode(proxy, nativeOfflineAudioContext, nativeIIRFilterNode, trace);
+      await renderInputsOfAudioNode(proxy, nativeOfflineAudioContext, nativeIIRFilterNode);
       return nativeIIRFilterNode;
     };
 
     return {
-      render(proxy, nativeOfflineAudioContext, trace) {
+      render(proxy, nativeOfflineAudioContext) {
         const renderedNativeAudioNode = renderedNativeAudioNodes.get(nativeOfflineAudioContext);
 
         if (renderedNativeAudioNode !== undefined) {
           return Promise.resolve(renderedNativeAudioNode);
         }
 
-        return createAudioNode(proxy, nativeOfflineAudioContext, trace);
+        return createAudioNode(proxy, nativeOfflineAudioContext);
       }
 
     };
@@ -8049,7 +7643,7 @@ const createIIRFilterNodeRendererFactory = (createNativeAudioBufferSourceNode, g
 
 exports.createIIRFilterNodeRendererFactory = createIIRFilterNodeRendererFactory;
 
-},{"../helpers/filter-buffer":235,"../helpers/is-owned-by-context":249}],104:[function(require,module,exports){
+},{"../helpers/filter-buffer":229,"../helpers/is-owned-by-context":243}],98:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -8092,7 +7686,7 @@ const createIncrementCycleCounterFactory = (cycleCounters, disconnectNativeAudio
 
 exports.createIncrementCycleCounterFactory = createIncrementCycleCounterFactory;
 
-},{"../guards/audio-node-output-connection":202}],105:[function(require,module,exports){
+},{"../guards/audio-node-output-connection":196}],99:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -8104,7 +7698,7 @@ const createIndexSizeError = () => new DOMException('', 'IndexSizeError');
 
 exports.createIndexSizeError = createIndexSizeError;
 
-},{}],106:[function(require,module,exports){
+},{}],100:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -8116,7 +7710,7 @@ const createInvalidAccessError = () => new DOMException('', 'InvalidAccessError'
 
 exports.createInvalidAccessError = createInvalidAccessError;
 
-},{}],107:[function(require,module,exports){
+},{}],101:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -8128,7 +7722,7 @@ const createInvalidStateError = () => new DOMException('', 'InvalidStateError');
 
 exports.createInvalidStateError = createInvalidStateError;
 
-},{}],108:[function(require,module,exports){
+},{}],102:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -8145,7 +7739,7 @@ const createIsAnyAudioContext = (contextStore, isNativeAudioContext) => {
 
 exports.createIsAnyAudioContext = createIsAnyAudioContext;
 
-},{}],109:[function(require,module,exports){
+},{}],103:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -8159,7 +7753,7 @@ const createIsAnyAudioNode = (audioNodeStore, isNativeAudioNode) => {
 
 exports.createIsAnyAudioNode = createIsAnyAudioNode;
 
-},{}],110:[function(require,module,exports){
+},{}],104:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -8173,7 +7767,7 @@ const createIsAnyAudioParam = (audioParamStore, isNativeAudioParam) => {
 
 exports.createIsAnyAudioParam = createIsAnyAudioParam;
 
-},{}],111:[function(require,module,exports){
+},{}],105:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -8190,7 +7784,7 @@ const createIsAnyOfflineAudioContext = (contextStore, isNativeOfflineAudioContex
 
 exports.createIsAnyOfflineAudioContext = createIsAnyOfflineAudioContext;
 
-},{}],112:[function(require,module,exports){
+},{}],106:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -8206,7 +7800,7 @@ const createIsNativeAudioContext = nativeAudioContextConstructor => {
 
 exports.createIsNativeAudioContext = createIsNativeAudioContext;
 
-},{}],113:[function(require,module,exports){
+},{}],107:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -8222,7 +7816,7 @@ const createIsNativeAudioNode = window => {
 
 exports.createIsNativeAudioNode = createIsNativeAudioNode;
 
-},{}],114:[function(require,module,exports){
+},{}],108:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -8238,7 +7832,7 @@ const createIsNativeAudioParam = window => {
 
 exports.createIsNativeAudioParam = createIsNativeAudioParam;
 
-},{}],115:[function(require,module,exports){
+},{}],109:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -8254,7 +7848,7 @@ const createIsNativeContext = (isNativeAudioContext, isNativeOfflineAudioContext
 
 exports.createIsNativeContext = createIsNativeContext;
 
-},{}],116:[function(require,module,exports){
+},{}],110:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -8270,7 +7864,7 @@ const createIsNativeOfflineAudioContext = nativeOfflineAudioContextConstructor =
 
 exports.createIsNativeOfflineAudioContext = createIsNativeOfflineAudioContext;
 
-},{}],117:[function(require,module,exports){
+},{}],111:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -8282,7 +7876,7 @@ const createIsSecureContext = window => window !== null && window.isSecureContex
 
 exports.createIsSecureContext = createIsSecureContext;
 
-},{}],118:[function(require,module,exports){
+},{}],112:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -8301,7 +7895,7 @@ const createIsSupportedPromise = async (cacheTestResult, testAudioBufferCopyChan
 
 exports.createIsSupportedPromise = createIsSupportedPromise;
 
-},{}],119:[function(require,module,exports){
+},{}],113:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -8332,7 +7926,7 @@ const createMediaElementAudioSourceNodeConstructor = (audioNodeConstructor, crea
 
 exports.createMediaElementAudioSourceNodeConstructor = createMediaElementAudioSourceNodeConstructor;
 
-},{}],120:[function(require,module,exports){
+},{}],114:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -8371,7 +7965,7 @@ const createMediaStreamAudioDestinationNodeConstructor = (audioNodeConstructor, 
 
 exports.createMediaStreamAudioDestinationNodeConstructor = createMediaStreamAudioDestinationNodeConstructor;
 
-},{}],121:[function(require,module,exports){
+},{}],115:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -8402,7 +7996,7 @@ const createMediaStreamAudioSourceNodeConstructor = (audioNodeConstructor, creat
 
 exports.createMediaStreamAudioSourceNodeConstructor = createMediaStreamAudioSourceNodeConstructor;
 
-},{}],122:[function(require,module,exports){
+},{}],116:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -8423,7 +8017,7 @@ const createMediaStreamTrackAudioSourceNodeConstructor = (audioNodeConstructor, 
 
 exports.createMediaStreamTrackAudioSourceNodeConstructor = createMediaStreamTrackAudioSourceNodeConstructor;
 
-},{}],123:[function(require,module,exports){
+},{}],117:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -8458,7 +8052,7 @@ const createMinimalAudioContextConstructor = (createInvalidStateError, createNot
 
       if (nativeAudioContext === null) {
         throw createUnknownError();
-      } // Bug #51 Only Chrome Edge, and Opera throw an error if the given latencyHint is invalid.
+      } // Bug #51 Only Chrome and Edge throw an error if the given latencyHint is invalid.
 
 
       if (!(0, _isValidLatencyHint.isValidLatencyHint)(options.latencyHint)) {
@@ -8501,8 +8095,8 @@ const createMinimalAudioContextConstructor = (createInvalidStateError, createNot
 
       this._state = null;
       /*
-       * Bug #34: Chrome, Edge and Opera pretend to be running right away, but fire an onstatechange event when the state actually
-       * changes to 'running'.
+       * Bug #34: Chrome and Edge pretend to be running right away, but fire an onstatechange event when the state actually changes
+       * to 'running'.
        */
 
       if (nativeAudioContext.state === 'running') {
@@ -8572,7 +8166,7 @@ const createMinimalAudioContextConstructor = (createInvalidStateError, createNot
       }
 
       return this._nativeAudioContext.resume().catch(err => {
-        // Bug #55: Chrome, Edge and Opera do throw an InvalidAccessError instead of an InvalidStateError.
+        // Bug #55: Chrome and Edge do throw an InvalidAccessError instead of an InvalidStateError.
         // Bug #56: Safari invokes the catch handler but without an error.
         if (err === undefined || err.code === 15) {
           throw createInvalidStateError();
@@ -8598,7 +8192,7 @@ const createMinimalAudioContextConstructor = (createInvalidStateError, createNot
 
 exports.createMinimalAudioContextConstructor = createMinimalAudioContextConstructor;
 
-},{"../helpers/deactivate-audio-graph":227,"../helpers/is-valid-latency-hint":252}],124:[function(require,module,exports){
+},{"../helpers/deactivate-audio-graph":221,"../helpers/is-valid-latency-hint":246}],118:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -8661,7 +8255,7 @@ const createMinimalBaseAudioContextConstructor = (audioDestinationNodeConstructo
 
 exports.createMinimalBaseAudioContextConstructor = createMinimalBaseAudioContextConstructor;
 
-},{"../globals":200}],125:[function(require,module,exports){
+},{"../globals":194}],119:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -8758,7 +8352,7 @@ const createMinimalOfflineAudioContextConstructor = (cacheTestResult, createInva
 
 exports.createMinimalOfflineAudioContextConstructor = createMinimalOfflineAudioContextConstructor;
 
-},{"../helpers/deactivate-audio-graph":227,"../helpers/test-promise-support":275}],126:[function(require,module,exports){
+},{"../helpers/deactivate-audio-graph":221,"../helpers/test-promise-support":269}],120:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -8771,7 +8365,7 @@ const createMonitorConnections = (insertElementInSet, isNativeAudioNode) => {
     const connections = new Set();
 
     nativeAudioNode.connect = (connect => {
-      // tslint:disable-next-line:invalid-void
+      // tslint:disable-next-line:invalid-void no-inferrable-types
       return (destination, output = 0, input = 0) => {
         const wasDisconnected = connections.size === 0;
 
@@ -8844,7 +8438,7 @@ const createMonitorConnections = (insertElementInSet, isNativeAudioNode) => {
 
 exports.createMonitorConnections = createMonitorConnections;
 
-},{}],127:[function(require,module,exports){
+},{}],121:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -8885,7 +8479,7 @@ const createNativeAnalyserNodeFactory = (cacheTestResult, createIndexSizeError) 
 
 exports.createNativeAnalyserNodeFactory = createNativeAnalyserNodeFactory;
 
-},{"../helpers/assign-native-audio-node-option":216,"../helpers/assign-native-audio-node-options":217,"../helpers/test-analyser-node-get-float-time-domain-data-method-support":263,"../helpers/wrap-analyser-node-get-float-time-domain-data-method":278}],128:[function(require,module,exports){
+},{"../helpers/assign-native-audio-node-option":210,"../helpers/assign-native-audio-node-options":211,"../helpers/test-analyser-node-get-float-time-domain-data-method-support":257,"../helpers/wrap-analyser-node-get-float-time-domain-data-method":272}],122:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -8907,7 +8501,7 @@ const createNativeAudioBufferConstructor = window => {
 
 exports.createNativeAudioBufferConstructor = createNativeAudioBufferConstructor;
 
-},{}],129:[function(require,module,exports){
+},{}],123:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -8975,7 +8569,7 @@ const createNativeAudioBufferSourceNodeFactory = (addSilentConnection, cacheTest
 
 exports.createNativeAudioBufferSourceNodeFactory = createNativeAudioBufferSourceNodeFactory;
 
-},{"../helpers/assign-native-audio-node-audio-param-value":215,"../helpers/assign-native-audio-node-option":216,"../helpers/assign-native-audio-node-options":217,"../helpers/wrap-audio-buffer-source-node-start-method-consecutive-calls":280,"../helpers/wrap-audio-scheduled-source-node-start-method-negative-parameters":283,"../helpers/wrap-audio-scheduled-source-node-stop-method-negative-parameters":285}],130:[function(require,module,exports){
+},{"../helpers/assign-native-audio-node-audio-param-value":209,"../helpers/assign-native-audio-node-option":210,"../helpers/assign-native-audio-node-options":211,"../helpers/wrap-audio-buffer-source-node-start-method-consecutive-calls":274,"../helpers/wrap-audio-scheduled-source-node-start-method-negative-parameters":277,"../helpers/wrap-audio-scheduled-source-node-stop-method-negative-parameters":279}],124:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -8997,7 +8591,7 @@ const createNativeAudioContextConstructor = window => {
 
 exports.createNativeAudioContextConstructor = createNativeAudioContextConstructor;
 
-},{}],131:[function(require,module,exports){
+},{}],125:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -9066,7 +8660,7 @@ const createNativeAudioDestinationNodeFactory = (createNativeGainNode, overwrite
 
 exports.createNativeAudioDestinationNodeFactory = createNativeAudioDestinationNodeFactory;
 
-},{}],132:[function(require,module,exports){
+},{}],126:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -9084,7 +8678,7 @@ const createNativeAudioWorkletNodeConstructor = window => {
 
 exports.createNativeAudioWorkletNodeConstructor = createNativeAudioWorkletNodeConstructor;
 
-},{}],133:[function(require,module,exports){
+},{}],127:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -9147,7 +8741,7 @@ const createNativeAudioWorkletNodeFactory = (createInvalidStateError, createNati
                   args[1] = patchedEventListener;
                 } else {
                   args[1] = event => {
-                    // Bug #178: Chrome, Edge and Opera do fire an event of type error.
+                    // Bug #178: Chrome and Edge do fire an event of type error.
                     if (event.type === 'error') {
                       Object.defineProperties(event, {
                         type: {
@@ -9164,7 +8758,7 @@ const createNativeAudioWorkletNodeFactory = (createInvalidStateError, createNati
                   patchedEventListeners.set(unpatchedEventListener, args[1]);
                 }
               }
-            } // Bug #178: Chrome, Edge and Opera do fire an event of type error.
+            } // Bug #178: Chrome and Edge do fire an event of type error.
 
 
             addEventListener.call(nativeAudioWorkletNode, 'error', args[1], args[2]);
@@ -9181,7 +8775,7 @@ const createNativeAudioWorkletNodeFactory = (createInvalidStateError, createNati
                 patchedEventListeners.delete(args[1]);
                 args[1] = patchedEventListener;
               }
-            } // Bug #178: Chrome, Edge and Opera do fire an event of type error.
+            } // Bug #178: Chrome and Edge do fire an event of type error.
 
 
             removeEventListener.call(nativeAudioWorkletNode, 'error', args[1], args[2]);
@@ -9213,14 +8807,14 @@ const createNativeAudioWorkletNodeFactory = (createInvalidStateError, createNati
 
         return nativeAudioWorkletNode;
       } catch (err) {
-        // Bug #60: Chrome, Edge & Opera throw an InvalidStateError instead of a NotSupportedError.
+        // Bug #60: Chrome & Edge throw an InvalidStateError instead of a NotSupportedError.
         if (err.code === 11) {
           throw createNotSupportedError();
         }
 
         throw err;
       }
-    } // Bug #61: Only Chrome & Opera have an implementation of the AudioWorkletNode yet.
+    } // Bug #61: Only Chrome & Edge have an implementation of the AudioWorkletNode yet.
 
 
     if (processorConstructor === undefined) {
@@ -9234,7 +8828,7 @@ const createNativeAudioWorkletNodeFactory = (createInvalidStateError, createNati
 
 exports.createNativeAudioWorkletNodeFactory = createNativeAudioWorkletNodeFactory;
 
-},{"../helpers/test-clonability-of-audio-worklet-node-options":273}],134:[function(require,module,exports){
+},{"../helpers/test-clonability-of-audio-worklet-node-options":267}],128:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -9724,7 +9318,7 @@ const createNativeAudioWorkletNodeFakerFactory = (connectMultipleOutputs, create
 
 exports.createNativeAudioWorkletNodeFakerFactory = createNativeAudioWorkletNodeFakerFactory;
 
-},{"../constants":35,"../helpers/compute-buffer-size":219,"../helpers/copy-from-channel":221,"../helpers/copy-to-channel":222,"../helpers/create-audio-worklet-processor":224,"../helpers/create-nested-arrays":225,"../read-only-map":375}],135:[function(require,module,exports){
+},{"../constants":29,"../helpers/compute-buffer-size":213,"../helpers/copy-from-channel":215,"../helpers/copy-to-channel":216,"../helpers/create-audio-worklet-processor":218,"../helpers/create-nested-arrays":219,"../read-only-map":369}],129:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -9751,7 +9345,7 @@ const createNativeBiquadFilterNode = (nativeContext, options) => {
 
 exports.createNativeBiquadFilterNode = createNativeBiquadFilterNode;
 
-},{"../helpers/assign-native-audio-node-audio-param-value":215,"../helpers/assign-native-audio-node-option":216,"../helpers/assign-native-audio-node-options":217}],136:[function(require,module,exports){
+},{"../helpers/assign-native-audio-node-audio-param-value":209,"../helpers/assign-native-audio-node-option":210,"../helpers/assign-native-audio-node-options":211}],130:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -9781,7 +9375,7 @@ const createNativeChannelMergerNodeFactory = (nativeAudioContextConstructor, wra
 
 exports.createNativeChannelMergerNodeFactory = createNativeChannelMergerNodeFactory;
 
-},{"../helpers/assign-native-audio-node-options":217}],137:[function(require,module,exports){
+},{"../helpers/assign-native-audio-node-options":211}],131:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -9798,7 +9392,7 @@ const createNativeChannelSplitterNode = (nativeContext, options) => {
   // Bug #29: Safari does not have the correct channelCountMode.
   // Bug #31: Safari does not have the correct channelInterpretation.
 
-  (0, _assignNativeAudioNodeOptions.assignNativeAudioNodeOptions)(nativeChannelSplitterNode, options); // Bug #29, #30, #31, #32, #96 & #97: Only Chrome, Edge, Firefox & Opera partially support the spec yet.
+  (0, _assignNativeAudioNodeOptions.assignNativeAudioNodeOptions)(nativeChannelSplitterNode, options); // Bug #29, #30, #31, #32, #96 & #97: Only Chrome, Edge & Firefox partially support the spec yet.
 
   (0, _wrapChannelSplitterNode.wrapChannelSplitterNode)(nativeChannelSplitterNode);
   return nativeChannelSplitterNode;
@@ -9806,7 +9400,7 @@ const createNativeChannelSplitterNode = (nativeContext, options) => {
 
 exports.createNativeChannelSplitterNode = createNativeChannelSplitterNode;
 
-},{"../helpers/assign-native-audio-node-options":217,"../helpers/wrap-channel-splitter-node":286}],138:[function(require,module,exports){
+},{"../helpers/assign-native-audio-node-options":211,"../helpers/wrap-channel-splitter-node":280}],132:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -9850,7 +9444,7 @@ const createNativeConstantSourceNodeFactory = (addSilentConnection, cacheTestRes
 
 exports.createNativeConstantSourceNodeFactory = createNativeConstantSourceNodeFactory;
 
-},{"../helpers/assign-native-audio-node-audio-param-value":215,"../helpers/assign-native-audio-node-options":217,"../helpers/wrap-audio-scheduled-source-node-start-method-negative-parameters":283,"../helpers/wrap-audio-scheduled-source-node-stop-method-negative-parameters":285}],139:[function(require,module,exports){
+},{"../helpers/assign-native-audio-node-audio-param-value":209,"../helpers/assign-native-audio-node-options":211,"../helpers/wrap-audio-scheduled-source-node-start-method-negative-parameters":277,"../helpers/wrap-audio-scheduled-source-node-stop-method-negative-parameters":279}],133:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -9977,7 +9571,7 @@ const createNativeConstantSourceNodeFakerFactory = (addSilentConnection, createN
 
 exports.createNativeConstantSourceNodeFakerFactory = createNativeConstantSourceNodeFakerFactory;
 
-},{"../helpers/intercept-connections":245}],140:[function(require,module,exports){
+},{"../helpers/intercept-connections":239}],134:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -10029,7 +9623,7 @@ const createNativeConvolverNodeFactory = (createNotSupportedError, overwriteAcce
 
 exports.createNativeConvolverNodeFactory = createNativeConvolverNodeFactory;
 
-},{"../helpers/assign-native-audio-node-option":216,"../helpers/assign-native-audio-node-options":217}],141:[function(require,module,exports){
+},{"../helpers/assign-native-audio-node-option":210,"../helpers/assign-native-audio-node-options":211}],135:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -10050,7 +9644,7 @@ const createNativeDelayNode = (nativeContext, options) => {
 
 exports.createNativeDelayNode = createNativeDelayNode;
 
-},{"../helpers/assign-native-audio-node-audio-param-value":215,"../helpers/assign-native-audio-node-options":217}],142:[function(require,module,exports){
+},{"../helpers/assign-native-audio-node-audio-param-value":209,"../helpers/assign-native-audio-node-options":211}],136:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -10069,7 +9663,7 @@ const createNativeDynamicsCompressorNodeFactory = createNotSupportedError => {
 
     if (options.channelCount > 2) {
       throw createNotSupportedError();
-    } // Bug #109: Only Chrome, Firefox and Opera disallow a channelCountMode of 'max'.
+    } // Bug #109: Only Chrome and Firefox disallow a channelCountMode of 'max'.
 
 
     if (options.channelCountMode === 'max') {
@@ -10087,7 +9681,7 @@ const createNativeDynamicsCompressorNodeFactory = createNotSupportedError => {
 
 exports.createNativeDynamicsCompressorNodeFactory = createNativeDynamicsCompressorNodeFactory;
 
-},{"../helpers/assign-native-audio-node-audio-param-value":215,"../helpers/assign-native-audio-node-options":217}],143:[function(require,module,exports){
+},{"../helpers/assign-native-audio-node-audio-param-value":209,"../helpers/assign-native-audio-node-options":211}],137:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -10108,7 +9702,7 @@ const createNativeGainNode = (nativeContext, options) => {
 
 exports.createNativeGainNode = createNativeGainNode;
 
-},{"../helpers/assign-native-audio-node-audio-param-value":215,"../helpers/assign-native-audio-node-options":217}],144:[function(require,module,exports){
+},{"../helpers/assign-native-audio-node-audio-param-value":209,"../helpers/assign-native-audio-node-options":211}],138:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -10134,7 +9728,7 @@ const createNativeIIRFilterNodeFactory = createNativeIIRFilterNodeFaker => {
 
 exports.createNativeIIRFilterNodeFactory = createNativeIIRFilterNodeFactory;
 
-},{"../helpers/assign-native-audio-node-options":217}],145:[function(require,module,exports){
+},{"../helpers/assign-native-audio-node-options":211}],139:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -10325,7 +9919,7 @@ const createNativeIIRFilterNodeFakerFactory = (createInvalidAccessError, createI
 
 exports.createNativeIIRFilterNodeFakerFactory = createNativeIIRFilterNodeFakerFactory;
 
-},{"../helpers/compute-buffer-size":219,"../helpers/filter-buffer":235,"../helpers/intercept-connections":245}],146:[function(require,module,exports){
+},{"../helpers/compute-buffer-size":213,"../helpers/filter-buffer":229,"../helpers/intercept-connections":239}],140:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -10339,7 +9933,7 @@ const createNativeMediaElementAudioSourceNode = (nativeAudioContext, options) =>
 
 exports.createNativeMediaElementAudioSourceNode = createNativeMediaElementAudioSourceNode;
 
-},{}],147:[function(require,module,exports){
+},{}],141:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -10364,7 +9958,7 @@ const createNativeMediaStreamAudioDestinationNode = (nativeAudioContext, options
 
 exports.createNativeMediaStreamAudioDestinationNode = createNativeMediaStreamAudioDestinationNode;
 
-},{"../helpers/assign-native-audio-node-options":217}],148:[function(require,module,exports){
+},{"../helpers/assign-native-audio-node-options":211}],142:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -10397,7 +9991,7 @@ const createNativeMediaStreamAudioSourceNode = (nativeAudioContext, {
 
 exports.createNativeMediaStreamAudioSourceNode = createNativeMediaStreamAudioSourceNode;
 
-},{}],149:[function(require,module,exports){
+},{}],143:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -10432,7 +10026,7 @@ const createNativeMediaStreamTrackAudioSourceNodeFactory = (createInvalidStateEr
 
 exports.createNativeMediaStreamTrackAudioSourceNodeFactory = createNativeMediaStreamTrackAudioSourceNodeFactory;
 
-},{}],150:[function(require,module,exports){
+},{}],144:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -10454,7 +10048,7 @@ const createNativeOfflineAudioContextConstructor = window => {
 
 exports.createNativeOfflineAudioContextConstructor = createNativeOfflineAudioContextConstructor;
 
-},{}],151:[function(require,module,exports){
+},{}],145:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -10483,7 +10077,7 @@ const createNativeOscillatorNodeFactory = (addSilentConnection, cacheTestResult,
       nativeOscillatorNode.setPeriodicWave(options.periodicWave);
     } else {
       (0, _assignNativeAudioNodeOption.assignNativeAudioNodeOption)(nativeOscillatorNode, options, 'type');
-    } // Bug #44: Only Chrome, Edge & Opera throw a RangeError yet.
+    } // Bug #44: Only Chrome & Edge throw a RangeError yet.
 
 
     if (!cacheTestResult(testAudioScheduledSourceNodeStartMethodNegativeParametersSupport, () => testAudioScheduledSourceNodeStartMethodNegativeParametersSupport(nativeContext))) {
@@ -10508,7 +10102,7 @@ const createNativeOscillatorNodeFactory = (addSilentConnection, cacheTestResult,
 
 exports.createNativeOscillatorNodeFactory = createNativeOscillatorNodeFactory;
 
-},{"../helpers/assign-native-audio-node-audio-param-value":215,"../helpers/assign-native-audio-node-option":216,"../helpers/assign-native-audio-node-options":217,"../helpers/wrap-audio-scheduled-source-node-start-method-negative-parameters":283,"../helpers/wrap-audio-scheduled-source-node-stop-method-negative-parameters":285}],152:[function(require,module,exports){
+},{"../helpers/assign-native-audio-node-audio-param-value":209,"../helpers/assign-native-audio-node-option":210,"../helpers/assign-native-audio-node-options":211,"../helpers/wrap-audio-scheduled-source-node-start-method-negative-parameters":277,"../helpers/wrap-audio-scheduled-source-node-stop-method-negative-parameters":279}],146:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -10551,7 +10145,7 @@ const createNativePannerNodeFactory = createNativePannerNodeFaker => {
 
 exports.createNativePannerNodeFactory = createNativePannerNodeFactory;
 
-},{"../helpers/assign-native-audio-node-audio-param-value":215,"../helpers/assign-native-audio-node-option":216,"../helpers/assign-native-audio-node-options":217}],153:[function(require,module,exports){
+},{"../helpers/assign-native-audio-node-audio-param-value":209,"../helpers/assign-native-audio-node-option":210,"../helpers/assign-native-audio-node-options":211}],147:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -10950,7 +10544,7 @@ const createNativePannerNodeFakerFactory = (connectNativeAudioNodeToNativeAudioN
 
 exports.createNativePannerNodeFakerFactory = createNativePannerNodeFakerFactory;
 
-},{"../helpers/assign-native-audio-node-options":217,"../helpers/intercept-connections":245}],154:[function(require,module,exports){
+},{"../helpers/assign-native-audio-node-options":211,"../helpers/intercept-connections":239}],148:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -10981,7 +10575,7 @@ const createNativePeriodicWaveFactory = createIndexSizeError => {
 
 exports.createNativePeriodicWaveFactory = createNativePeriodicWaveFactory;
 
-},{}],155:[function(require,module,exports){
+},{}],149:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -10990,12 +10584,12 @@ Object.defineProperty(exports, "__esModule", {
 exports.createNativeScriptProcessorNode = void 0;
 
 const createNativeScriptProcessorNode = (nativeContext, bufferSize, numberOfInputChannels, numberOfOutputChannels) => {
-  return nativeContext.createScriptProcessor(bufferSize, numberOfInputChannels, numberOfOutputChannels);
+  return nativeContext.createScriptProcessor(bufferSize, numberOfInputChannels, numberOfOutputChannels); // tslint:disable-line deprecation
 };
 
 exports.createNativeScriptProcessorNode = createNativeScriptProcessorNode;
 
-},{}],156:[function(require,module,exports){
+},{}],150:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -11046,7 +10640,7 @@ const createNativeStereoPannerNodeFactory = (createNativeStereoPannerNodeFaker, 
 
 exports.createNativeStereoPannerNodeFactory = createNativeStereoPannerNodeFactory;
 
-},{"../helpers/assign-native-audio-node-audio-param-value":215,"../helpers/assign-native-audio-node-options":217}],157:[function(require,module,exports){
+},{"../helpers/assign-native-audio-node-audio-param-value":209,"../helpers/assign-native-audio-node-options":211}],151:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -11387,7 +10981,7 @@ const createNativeStereoPannerNodeFakerFactory = (createNativeChannelMergerNode,
 
 exports.createNativeStereoPannerNodeFakerFactory = createNativeStereoPannerNodeFakerFactory;
 
-},{"../helpers/intercept-connections":245}],158:[function(require,module,exports){
+},{"../helpers/intercept-connections":239}],152:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -11414,7 +11008,7 @@ const createNativeWaveShaperNodeFactory = (createConnectedNativeAudioBufferSourc
     }
 
     (0, _assignNativeAudioNodeOptions.assignNativeAudioNodeOptions)(nativeWaveShaperNode, options);
-    const curve = options.curve === null || options.curve instanceof Float32Array ? options.curve : new Float32Array(options.curve); // Bug #104: Chrome, Edge and Opera will throw an InvalidAccessError when the curve has less than two samples.
+    const curve = options.curve === null || options.curve instanceof Float32Array ? options.curve : new Float32Array(options.curve); // Bug #104: Chrome and Edge will throw an InvalidAccessError when the curve has less than two samples.
 
     if (curve !== null && curve.length < 2) {
       throw createInvalidStateError();
@@ -11465,7 +11059,7 @@ const createNativeWaveShaperNodeFactory = (createConnectedNativeAudioBufferSourc
 
 exports.createNativeWaveShaperNodeFactory = createNativeWaveShaperNodeFactory;
 
-},{"../helpers/assign-native-audio-node-option":216,"../helpers/assign-native-audio-node-options":217}],159:[function(require,module,exports){
+},{"../helpers/assign-native-audio-node-option":210,"../helpers/assign-native-audio-node-options":211}],153:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -11672,7 +11266,7 @@ const createNativeWaveShaperNodeFakerFactory = (createConnectedNativeAudioBuffer
 
 exports.createNativeWaveShaperNodeFakerFactory = createNativeWaveShaperNodeFakerFactory;
 
-},{"../helpers/assign-native-audio-node-options":217,"../helpers/intercept-connections":245}],160:[function(require,module,exports){
+},{"../helpers/assign-native-audio-node-options":211,"../helpers/intercept-connections":239}],154:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -11684,7 +11278,7 @@ const createNotSupportedError = () => new DOMException('', 'NotSupportedError');
 
 exports.createNotSupportedError = createNotSupportedError;
 
-},{}],161:[function(require,module,exports){
+},{}],155:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -11795,7 +11389,7 @@ const createOfflineAudioContextConstructor = (baseAudioContextConstructor, cache
 
 exports.createOfflineAudioContextConstructor = createOfflineAudioContextConstructor;
 
-},{"../helpers/deactivate-audio-graph":227,"../helpers/test-promise-support":275}],162:[function(require,module,exports){
+},{"../helpers/deactivate-audio-graph":221,"../helpers/test-promise-support":269}],156:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -11918,7 +11512,7 @@ const createOscillatorNodeConstructor = (audioNodeConstructor, createAudioParam,
 
 exports.createOscillatorNodeConstructor = createOscillatorNodeConstructor;
 
-},{"../helpers/is-active-audio-node":246,"../helpers/set-internal-state-to-active":258,"../helpers/set-internal-state-to-passive":260}],163:[function(require,module,exports){
+},{"../helpers/is-active-audio-node":240,"../helpers/set-internal-state-to-active":252,"../helpers/set-internal-state-to-passive":254}],157:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -11935,7 +11529,7 @@ const createOscillatorNodeRendererFactory = (connectAudioParam, createNativeOsci
     let start = null;
     let stop = null;
 
-    const createOscillatorNode = async (proxy, nativeOfflineAudioContext, trace) => {
+    const createOscillatorNode = async (proxy, nativeOfflineAudioContext) => {
       let nativeOscillatorNode = getNativeAudioNode(proxy); // If the initially used nativeOscillatorNode was not constructed on the same OfflineAudioContext it needs to be created again.
 
       const nativeOscillatorNodeIsOwnedByContext = (0, _isOwnedByContext.isOwnedByContext)(nativeOscillatorNode, nativeOfflineAudioContext);
@@ -11964,14 +11558,14 @@ const createOscillatorNodeRendererFactory = (connectAudioParam, createNativeOsci
       renderedNativeOscillatorNodes.set(nativeOfflineAudioContext, nativeOscillatorNode);
 
       if (!nativeOscillatorNodeIsOwnedByContext) {
-        await renderAutomation(nativeOfflineAudioContext, proxy.detune, nativeOscillatorNode.detune, trace);
-        await renderAutomation(nativeOfflineAudioContext, proxy.frequency, nativeOscillatorNode.frequency, trace);
+        await renderAutomation(nativeOfflineAudioContext, proxy.detune, nativeOscillatorNode.detune);
+        await renderAutomation(nativeOfflineAudioContext, proxy.frequency, nativeOscillatorNode.frequency);
       } else {
-        await connectAudioParam(nativeOfflineAudioContext, proxy.detune, nativeOscillatorNode.detune, trace);
-        await connectAudioParam(nativeOfflineAudioContext, proxy.frequency, nativeOscillatorNode.frequency, trace);
+        await connectAudioParam(nativeOfflineAudioContext, proxy.detune, nativeOscillatorNode.detune);
+        await connectAudioParam(nativeOfflineAudioContext, proxy.frequency, nativeOscillatorNode.frequency);
       }
 
-      await renderInputsOfAudioNode(proxy, nativeOfflineAudioContext, nativeOscillatorNode, trace);
+      await renderInputsOfAudioNode(proxy, nativeOfflineAudioContext, nativeOscillatorNode);
       return nativeOscillatorNode;
     };
 
@@ -11988,14 +11582,14 @@ const createOscillatorNodeRendererFactory = (connectAudioParam, createNativeOsci
         stop = value;
       },
 
-      render(proxy, nativeOfflineAudioContext, trace) {
+      render(proxy, nativeOfflineAudioContext) {
         const renderedNativeOscillatorNode = renderedNativeOscillatorNodes.get(nativeOfflineAudioContext);
 
         if (renderedNativeOscillatorNode !== undefined) {
           return Promise.resolve(renderedNativeOscillatorNode);
         }
 
-        return createOscillatorNode(proxy, nativeOfflineAudioContext, trace);
+        return createOscillatorNode(proxy, nativeOfflineAudioContext);
       }
 
     };
@@ -12004,7 +11598,7 @@ const createOscillatorNodeRendererFactory = (connectAudioParam, createNativeOsci
 
 exports.createOscillatorNodeRendererFactory = createOscillatorNodeRendererFactory;
 
-},{"../helpers/is-owned-by-context":249}],164:[function(require,module,exports){
+},{"../helpers/is-owned-by-context":243}],158:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -12150,7 +11744,7 @@ const createPannerNodeConstructor = (audioNodeConstructor, createAudioParam, cre
 
 exports.createPannerNodeConstructor = createPannerNodeConstructor;
 
-},{"../constants":35}],165:[function(require,module,exports){
+},{"../constants":29}],159:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -12167,7 +11761,7 @@ const createPannerNodeRendererFactory = (connectAudioParam, createNativeChannelM
     const renderedNativeAudioNodes = new WeakMap();
     let renderedBufferPromise = null;
 
-    const createAudioNode = async (proxy, nativeOfflineAudioContext, trace) => {
+    const createAudioNode = async (proxy, nativeOfflineAudioContext) => {
       let nativeGainNode = null;
       let nativePannerNode = getNativeAudioNode(proxy);
       const commonAudioNodeOptions = {
@@ -12230,7 +11824,7 @@ const createPannerNodeRendererFactory = (connectAudioParam, createNativeChannelM
                 channelInterpretation: 'discrete',
                 offset: index === 0 ? 1 : 0
               });
-              await renderAutomation(partialOfflineAudioContext, audioParam, nativeConstantSourceNode.offset, trace);
+              await renderAutomation(partialOfflineAudioContext, audioParam, nativeConstantSourceNode.offset);
               return nativeConstantSourceNode;
             }));
 
@@ -12247,7 +11841,7 @@ const createPannerNodeRendererFactory = (connectAudioParam, createNativeChannelM
         const inputGainNode = createNativeGainNode(nativeOfflineAudioContext, { ...commonAudioNodeOptions,
           gain: 1
         });
-        await renderInputsOfAudioNode(proxy, nativeOfflineAudioContext, inputGainNode, trace);
+        await renderInputsOfAudioNode(proxy, nativeOfflineAudioContext, inputGainNode);
         const channelDatas = [];
 
         for (let i = 0; i < renderedBuffer.numberOfChannels; i += 1) {
@@ -12300,39 +11894,39 @@ const createPannerNodeRendererFactory = (connectAudioParam, createNativeChannelM
       }
 
       if (!nativePannerNodeIsOwnedByContext) {
-        await renderAutomation(nativeOfflineAudioContext, proxy.orientationX, nativePannerNode.orientationX, trace);
-        await renderAutomation(nativeOfflineAudioContext, proxy.orientationY, nativePannerNode.orientationY, trace);
-        await renderAutomation(nativeOfflineAudioContext, proxy.orientationZ, nativePannerNode.orientationZ, trace);
-        await renderAutomation(nativeOfflineAudioContext, proxy.positionX, nativePannerNode.positionX, trace);
-        await renderAutomation(nativeOfflineAudioContext, proxy.positionY, nativePannerNode.positionY, trace);
-        await renderAutomation(nativeOfflineAudioContext, proxy.positionZ, nativePannerNode.positionZ, trace);
+        await renderAutomation(nativeOfflineAudioContext, proxy.orientationX, nativePannerNode.orientationX);
+        await renderAutomation(nativeOfflineAudioContext, proxy.orientationY, nativePannerNode.orientationY);
+        await renderAutomation(nativeOfflineAudioContext, proxy.orientationZ, nativePannerNode.orientationZ);
+        await renderAutomation(nativeOfflineAudioContext, proxy.positionX, nativePannerNode.positionX);
+        await renderAutomation(nativeOfflineAudioContext, proxy.positionY, nativePannerNode.positionY);
+        await renderAutomation(nativeOfflineAudioContext, proxy.positionZ, nativePannerNode.positionZ);
       } else {
-        await connectAudioParam(nativeOfflineAudioContext, proxy.orientationX, nativePannerNode.orientationX, trace);
-        await connectAudioParam(nativeOfflineAudioContext, proxy.orientationY, nativePannerNode.orientationY, trace);
-        await connectAudioParam(nativeOfflineAudioContext, proxy.orientationZ, nativePannerNode.orientationZ, trace);
-        await connectAudioParam(nativeOfflineAudioContext, proxy.positionX, nativePannerNode.positionX, trace);
-        await connectAudioParam(nativeOfflineAudioContext, proxy.positionY, nativePannerNode.positionY, trace);
-        await connectAudioParam(nativeOfflineAudioContext, proxy.positionZ, nativePannerNode.positionZ, trace);
+        await connectAudioParam(nativeOfflineAudioContext, proxy.orientationX, nativePannerNode.orientationX);
+        await connectAudioParam(nativeOfflineAudioContext, proxy.orientationY, nativePannerNode.orientationY);
+        await connectAudioParam(nativeOfflineAudioContext, proxy.orientationZ, nativePannerNode.orientationZ);
+        await connectAudioParam(nativeOfflineAudioContext, proxy.positionX, nativePannerNode.positionX);
+        await connectAudioParam(nativeOfflineAudioContext, proxy.positionY, nativePannerNode.positionY);
+        await connectAudioParam(nativeOfflineAudioContext, proxy.positionZ, nativePannerNode.positionZ);
       }
 
       if ((0, _nativeAudioNodeFaker.isNativeAudioNodeFaker)(nativePannerNode)) {
-        await renderInputsOfAudioNode(proxy, nativeOfflineAudioContext, nativePannerNode.inputs[0], trace);
+        await renderInputsOfAudioNode(proxy, nativeOfflineAudioContext, nativePannerNode.inputs[0]);
       } else {
-        await renderInputsOfAudioNode(proxy, nativeOfflineAudioContext, nativePannerNode, trace);
+        await renderInputsOfAudioNode(proxy, nativeOfflineAudioContext, nativePannerNode);
       }
 
       return nativePannerNode;
     };
 
     return {
-      render(proxy, nativeOfflineAudioContext, trace) {
+      render(proxy, nativeOfflineAudioContext) {
         const renderedNativeGainNodeOrNativePannerNode = renderedNativeAudioNodes.get(nativeOfflineAudioContext);
 
         if (renderedNativeGainNodeOrNativePannerNode !== undefined) {
           return Promise.resolve(renderedNativeGainNodeOrNativePannerNode);
         }
 
-        return createAudioNode(proxy, nativeOfflineAudioContext, trace);
+        return createAudioNode(proxy, nativeOfflineAudioContext);
       }
 
     };
@@ -12341,7 +11935,7 @@ const createPannerNodeRendererFactory = (connectAudioParam, createNativeChannelM
 
 exports.createPannerNodeRendererFactory = createPannerNodeRendererFactory;
 
-},{"../guards/native-audio-node-faker":209,"../helpers/is-owned-by-context":249}],166:[function(require,module,exports){
+},{"../guards/native-audio-node-faker":203,"../helpers/is-owned-by-context":243}],160:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -12374,7 +11968,7 @@ const createPeriodicWaveConstructor = (createNativePeriodicWave, getNativeContex
 
 exports.createPeriodicWaveConstructor = createPeriodicWaveConstructor;
 
-},{}],167:[function(require,module,exports){
+},{}],161:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -12383,16 +11977,16 @@ Object.defineProperty(exports, "__esModule", {
 exports.createRenderAutomation = void 0;
 
 const createRenderAutomation = (getAudioParamRenderer, renderInputsOfAudioParam) => {
-  return (nativeOfflineAudioContext, audioParam, nativeAudioParam, trace) => {
+  return (nativeOfflineAudioContext, audioParam, nativeAudioParam) => {
     const audioParamRenderer = getAudioParamRenderer(audioParam);
     audioParamRenderer.replay(nativeAudioParam);
-    return renderInputsOfAudioParam(audioParam, nativeOfflineAudioContext, nativeAudioParam, trace);
+    return renderInputsOfAudioParam(audioParam, nativeOfflineAudioContext, nativeAudioParam);
   };
 };
 
 exports.createRenderAutomation = createRenderAutomation;
 
-},{}],168:[function(require,module,exports){
+},{}],162:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -12401,12 +11995,11 @@ Object.defineProperty(exports, "__esModule", {
 exports.createRenderInputsOfAudioNode = void 0;
 
 const createRenderInputsOfAudioNode = (getAudioNodeConnections, getAudioNodeRenderer, isPartOfACycle) => {
-  return async (audioNode, nativeOfflineAudioContext, nativeAudioNode, trace) => {
+  return async (audioNode, nativeOfflineAudioContext, nativeAudioNode) => {
     const audioNodeConnections = getAudioNodeConnections(audioNode);
-    const nextTrace = [...trace, audioNode];
-    await Promise.all(audioNodeConnections.activeInputs.map((connections, input) => Array.from(connections).filter(([source]) => !nextTrace.includes(source)).map(async ([source, output]) => {
+    await Promise.all(audioNodeConnections.activeInputs.map((connections, input) => Array.from(connections).map(async ([source, output]) => {
       const audioNodeRenderer = getAudioNodeRenderer(source);
-      const renderedNativeAudioNode = await audioNodeRenderer.render(source, nativeOfflineAudioContext, nextTrace);
+      const renderedNativeAudioNode = await audioNodeRenderer.render(source, nativeOfflineAudioContext);
       const destination = audioNode.context.destination;
 
       if (!isPartOfACycle(source) && (audioNode !== destination || !isPartOfACycle(audioNode))) {
@@ -12418,7 +12011,7 @@ const createRenderInputsOfAudioNode = (getAudioNodeConnections, getAudioNodeRend
 
 exports.createRenderInputsOfAudioNode = createRenderInputsOfAudioNode;
 
-},{}],169:[function(require,module,exports){
+},{}],163:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -12427,11 +12020,11 @@ Object.defineProperty(exports, "__esModule", {
 exports.createRenderInputsOfAudioParam = void 0;
 
 const createRenderInputsOfAudioParam = (getAudioNodeRenderer, getAudioParamConnections, isPartOfACycle) => {
-  return async (audioParam, nativeOfflineAudioContext, nativeAudioParam, trace) => {
+  return async (audioParam, nativeOfflineAudioContext, nativeAudioParam) => {
     const audioParamConnections = getAudioParamConnections(audioParam);
     await Promise.all(Array.from(audioParamConnections.activeInputs).map(async ([source, output]) => {
       const audioNodeRenderer = getAudioNodeRenderer(source);
-      const renderedNativeAudioNode = await audioNodeRenderer.render(source, nativeOfflineAudioContext, trace);
+      const renderedNativeAudioNode = await audioNodeRenderer.render(source, nativeOfflineAudioContext);
 
       if (!isPartOfACycle(source)) {
         renderedNativeAudioNode.connect(nativeAudioParam, output);
@@ -12442,7 +12035,7 @@ const createRenderInputsOfAudioParam = (getAudioNodeRenderer, getAudioParamConne
 
 exports.createRenderInputsOfAudioParam = createRenderInputsOfAudioParam;
 
-},{}],170:[function(require,module,exports){
+},{}],164:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -12499,7 +12092,7 @@ const createRenderNativeOfflineAudioContext = (cacheTestResult, createNativeGain
 
 exports.createRenderNativeOfflineAudioContext = createRenderNativeOfflineAudioContext;
 
-},{"../helpers/test-promise-support":275}],171:[function(require,module,exports){
+},{"../helpers/test-promise-support":269}],165:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -12515,7 +12108,7 @@ const createSetActiveAudioWorkletNodeInputs = activeAudioWorkletNodeInputsStore 
 
 exports.createSetActiveAudioWorkletNodeInputs = createSetActiveAudioWorkletNodeInputs;
 
-},{}],172:[function(require,module,exports){
+},{}],166:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -12529,7 +12122,7 @@ const createSetAudioNodeTailTime = audioNodeTailTimeStore => {
 
 exports.createSetAudioNodeTailTime = createSetAudioNodeTailTime;
 
-},{}],173:[function(require,module,exports){
+},{}],167:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -12540,13 +12133,12 @@ exports.createStartRendering = void 0;
 var _wrapAudioBufferGetChannelDataMethod = require("../helpers/wrap-audio-buffer-get-channel-data-method");
 
 const createStartRendering = (audioBufferStore, cacheTestResult, getAudioNodeRenderer, getUnrenderedAudioWorkletNodes, renderNativeOfflineAudioContext, testAudioBufferCopyChannelMethodsOutOfBoundsSupport, wrapAudioBufferCopyChannelMethods, wrapAudioBufferCopyChannelMethodsOutOfBounds) => {
-  const trace = [];
-  return (destination, nativeOfflineAudioContext) => getAudioNodeRenderer(destination).render(destination, nativeOfflineAudioContext, trace)
+  return (destination, nativeOfflineAudioContext) => getAudioNodeRenderer(destination).render(destination, nativeOfflineAudioContext)
   /*
    * Bug #86 & #87: Invoking the renderer of an AudioWorkletNode might be necessary if it has no direct or indirect connection to the
    * destination.
    */
-  .then(() => Promise.all(Array.from(getUnrenderedAudioWorkletNodes(nativeOfflineAudioContext)).map(audioWorkletNode => getAudioNodeRenderer(audioWorkletNode).render(audioWorkletNode, nativeOfflineAudioContext, trace)))).then(() => renderNativeOfflineAudioContext(nativeOfflineAudioContext)).then(audioBuffer => {
+  .then(() => Promise.all(Array.from(getUnrenderedAudioWorkletNodes(nativeOfflineAudioContext)).map(audioWorkletNode => getAudioNodeRenderer(audioWorkletNode).render(audioWorkletNode, nativeOfflineAudioContext)))).then(() => renderNativeOfflineAudioContext(nativeOfflineAudioContext)).then(audioBuffer => {
     // Bug #5: Safari does not support copyFromChannel() and copyToChannel().
     // Bug #100: Safari does throw a wrong error when calling getChannelData() with an out-of-bounds value.
     if (typeof audioBuffer.copyFromChannel !== 'function') {
@@ -12563,7 +12155,7 @@ const createStartRendering = (audioBufferStore, cacheTestResult, getAudioNodeRen
 
 exports.createStartRendering = createStartRendering;
 
-},{"../helpers/wrap-audio-buffer-get-channel-data-method":279}],174:[function(require,module,exports){
+},{"../helpers/wrap-audio-buffer-get-channel-data-method":273}],168:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -12605,7 +12197,7 @@ const createStereoPannerNodeConstructor = (audioNodeConstructor, createAudioPara
 
 exports.createStereoPannerNodeConstructor = createStereoPannerNodeConstructor;
 
-},{}],175:[function(require,module,exports){
+},{}],169:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -12621,7 +12213,7 @@ const createStereoPannerNodeRendererFactory = (connectAudioParam, createNativeSt
   return () => {
     const renderedNativeStereoPannerNodes = new WeakMap();
 
-    const createStereoPannerNode = async (proxy, nativeOfflineAudioContext, trace) => {
+    const createStereoPannerNode = async (proxy, nativeOfflineAudioContext) => {
       let nativeStereoPannerNode = getNativeAudioNode(proxy);
       /*
        * If the initially used nativeStereoPannerNode was not constructed on the same OfflineAudioContext it needs to be created
@@ -12643,29 +12235,29 @@ const createStereoPannerNodeRendererFactory = (connectAudioParam, createNativeSt
       renderedNativeStereoPannerNodes.set(nativeOfflineAudioContext, nativeStereoPannerNode);
 
       if (!nativeStereoPannerNodeIsOwnedByContext) {
-        await renderAutomation(nativeOfflineAudioContext, proxy.pan, nativeStereoPannerNode.pan, trace);
+        await renderAutomation(nativeOfflineAudioContext, proxy.pan, nativeStereoPannerNode.pan);
       } else {
-        await connectAudioParam(nativeOfflineAudioContext, proxy.pan, nativeStereoPannerNode.pan, trace);
+        await connectAudioParam(nativeOfflineAudioContext, proxy.pan, nativeStereoPannerNode.pan);
       }
 
       if ((0, _nativeAudioNodeFaker.isNativeAudioNodeFaker)(nativeStereoPannerNode)) {
-        await renderInputsOfAudioNode(proxy, nativeOfflineAudioContext, nativeStereoPannerNode.inputs[0], trace);
+        await renderInputsOfAudioNode(proxy, nativeOfflineAudioContext, nativeStereoPannerNode.inputs[0]);
       } else {
-        await renderInputsOfAudioNode(proxy, nativeOfflineAudioContext, nativeStereoPannerNode, trace);
+        await renderInputsOfAudioNode(proxy, nativeOfflineAudioContext, nativeStereoPannerNode);
       }
 
       return nativeStereoPannerNode;
     };
 
     return {
-      render(proxy, nativeOfflineAudioContext, trace) {
+      render(proxy, nativeOfflineAudioContext) {
         const renderedNativeStereoPannerNode = renderedNativeStereoPannerNodes.get(nativeOfflineAudioContext);
 
         if (renderedNativeStereoPannerNode !== undefined) {
           return Promise.resolve(renderedNativeStereoPannerNode);
         }
 
-        return createStereoPannerNode(proxy, nativeOfflineAudioContext, trace);
+        return createStereoPannerNode(proxy, nativeOfflineAudioContext);
       }
 
     };
@@ -12674,7 +12266,7 @@ const createStereoPannerNodeRendererFactory = (connectAudioParam, createNativeSt
 
 exports.createStereoPannerNodeRendererFactory = createStereoPannerNodeRendererFactory;
 
-},{"../guards/native-audio-node-faker":209,"../helpers/is-owned-by-context":249}],176:[function(require,module,exports){
+},{"../guards/native-audio-node-faker":203,"../helpers/is-owned-by-context":243}],170:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -12704,7 +12296,7 @@ const createTestAudioBufferConstructorSupport = nativeAudioBufferConstructor => 
 
 exports.createTestAudioBufferConstructorSupport = createTestAudioBufferConstructorSupport;
 
-},{}],177:[function(require,module,exports){
+},{}],171:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -12743,7 +12335,7 @@ const createTestAudioBufferCopyChannelMethodsSubarraySupport = nativeOfflineAudi
 
 exports.createTestAudioBufferCopyChannelMethodsSubarraySupport = createTestAudioBufferCopyChannelMethodsSubarraySupport;
 
-},{}],178:[function(require,module,exports){
+},{}],172:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -12776,7 +12368,7 @@ const createTestAudioContextCloseMethodSupport = nativeAudioContextConstructor =
 
 exports.createTestAudioContextCloseMethodSupport = createTestAudioContextCloseMethodSupport;
 
-},{}],179:[function(require,module,exports){
+},{}],173:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -12819,7 +12411,7 @@ const createTestAudioContextDecodeAudioDataMethodTypeErrorSupport = nativeOfflin
 
 
       if (promise !== undefined) {
-        // Bug #6: Chrome, Edge, Firefox and Opera do not call the errorCallback.
+        // Bug #6: Chrome, Edge and Firefox do not call the errorCallback.
         promise.catch(resolvePromise);
       }
     });
@@ -12828,7 +12420,7 @@ const createTestAudioContextDecodeAudioDataMethodTypeErrorSupport = nativeOfflin
 
 exports.createTestAudioContextDecodeAudioDataMethodTypeErrorSupport = createTestAudioContextDecodeAudioDataMethodTypeErrorSupport;
 
-},{}],180:[function(require,module,exports){
+},{}],174:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -12859,7 +12451,7 @@ const createTestAudioContextOptionsSupport = nativeAudioContextConstructor => {
 
 exports.createTestAudioContextOptionsSupport = createTestAudioContextOptionsSupport;
 
-},{}],181:[function(require,module,exports){
+},{}],175:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -12884,7 +12476,7 @@ const createTestAudioNodeConnectMethodSupport = nativeOfflineAudioContextConstru
 
 exports.createTestAudioNodeConnectMethodSupport = createTestAudioNodeConnectMethodSupport;
 
-},{}],182:[function(require,module,exports){
+},{}],176:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -12952,7 +12544,7 @@ const createTestAudioWorkletProcessorNoOutputsSupport = (nativeAudioWorkletNodeC
 
 exports.createTestAudioWorkletProcessorNoOutputsSupport = createTestAudioWorkletProcessorNoOutputsSupport;
 
-},{}],183:[function(require,module,exports){
+},{}],177:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -13006,7 +12598,7 @@ const createTestAudioWorkletProcessorPostMessageSupport = (nativeAudioWorkletNod
 
 exports.createTestAudioWorkletProcessorPostMessageSupport = createTestAudioWorkletProcessorPostMessageSupport;
 
-},{}],184:[function(require,module,exports){
+},{}],178:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -13046,7 +12638,7 @@ const createTestChannelMergerNodeChannelCountSupport = nativeOfflineAudioContext
 
 exports.createTestChannelMergerNodeChannelCountSupport = createTestChannelMergerNodeChannelCountSupport;
 
-},{}],185:[function(require,module,exports){
+},{}],179:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -13078,7 +12670,7 @@ const createTestConstantSourceNodeAccurateSchedulingSupport = nativeOfflineAudio
 
 exports.createTestConstantSourceNodeAccurateSchedulingSupport = createTestConstantSourceNodeAccurateSchedulingSupport;
 
-},{}],186:[function(require,module,exports){
+},{}],180:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -13109,7 +12701,7 @@ const createTestConvolverNodeBufferReassignabilitySupport = nativeOfflineAudioCo
 
 exports.createTestConvolverNodeBufferReassignabilitySupport = createTestConvolverNodeBufferReassignabilitySupport;
 
-},{}],187:[function(require,module,exports){
+},{}],181:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -13139,7 +12731,7 @@ const createTestConvolverNodeChannelCountSupport = nativeOfflineAudioContextCons
 
 exports.createTestConvolverNodeChannelCountSupport = createTestConvolverNodeChannelCountSupport;
 
-},{}],188:[function(require,module,exports){
+},{}],182:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -13153,7 +12745,7 @@ const createTestIsSecureContextSupport = window => {
 
 exports.createTestIsSecureContextSupport = createTestIsSecureContextSupport;
 
-},{}],189:[function(require,module,exports){
+},{}],183:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -13183,7 +12775,7 @@ const createTestMediaStreamAudioSourceNodeMediaStreamWithoutAudioTrackSupport = 
 
 exports.createTestMediaStreamAudioSourceNodeMediaStreamWithoutAudioTrackSupport = createTestMediaStreamAudioSourceNodeMediaStreamWithoutAudioTrackSupport;
 
-},{}],190:[function(require,module,exports){
+},{}],184:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -13219,7 +12811,7 @@ const createTestOfflineAudioContextCurrentTimeSupport = (createNativeGainNode, n
 
 exports.createTestOfflineAudioContextCurrentTimeSupport = createTestOfflineAudioContextCurrentTimeSupport;
 
-},{}],191:[function(require,module,exports){
+},{}],185:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -13264,7 +12856,7 @@ const createTestStereoPannerNodeDefaultValueSupport = nativeOfflineAudioContextC
 
 exports.createTestStereoPannerNodeDefaultValueSupport = createTestStereoPannerNodeDefaultValueSupport;
 
-},{}],192:[function(require,module,exports){
+},{}],186:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -13276,7 +12868,7 @@ const createUnknownError = () => new DOMException('', 'UnknownError');
 
 exports.createUnknownError = createUnknownError;
 
-},{}],193:[function(require,module,exports){
+},{}],187:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -13324,7 +12916,7 @@ const createWaveShaperNodeConstructor = (audioNodeConstructor, createInvalidStat
         this._nativeWaveShaperNode.curve = new Float32Array([0, 0]);
       } else {
         // Bug #102: Safari does not throw an InvalidStateError when the curve has less than two samples.
-        // Bug #104: Chrome, Edge and Opera will throw an InvalidAccessError when the curve has less than two samples.
+        // Bug #104: Chrome and Edge will throw an InvalidAccessError when the curve has less than two samples.
         if (value.length < 2) {
           throw createInvalidStateError();
         }
@@ -13347,7 +12939,7 @@ const createWaveShaperNodeConstructor = (audioNodeConstructor, createInvalidStat
 
 exports.createWaveShaperNodeConstructor = createWaveShaperNodeConstructor;
 
-},{}],194:[function(require,module,exports){
+},{}],188:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -13363,7 +12955,7 @@ const createWaveShaperNodeRendererFactory = (createNativeWaveShaperNode, getNati
   return () => {
     const renderedNativeWaveShaperNodes = new WeakMap();
 
-    const createWaveShaperNode = async (proxy, nativeOfflineAudioContext, trace) => {
+    const createWaveShaperNode = async (proxy, nativeOfflineAudioContext) => {
       let nativeWaveShaperNode = getNativeAudioNode(proxy); // If the initially used nativeWaveShaperNode was not constructed on the same OfflineAudioContext it needs to be created again.
 
       const nativeWaveShaperNodeIsOwnedByContext = (0, _isOwnedByContext.isOwnedByContext)(nativeWaveShaperNode, nativeOfflineAudioContext);
@@ -13382,23 +12974,23 @@ const createWaveShaperNodeRendererFactory = (createNativeWaveShaperNode, getNati
       renderedNativeWaveShaperNodes.set(nativeOfflineAudioContext, nativeWaveShaperNode);
 
       if ((0, _nativeAudioNodeFaker.isNativeAudioNodeFaker)(nativeWaveShaperNode)) {
-        await renderInputsOfAudioNode(proxy, nativeOfflineAudioContext, nativeWaveShaperNode.inputs[0], trace);
+        await renderInputsOfAudioNode(proxy, nativeOfflineAudioContext, nativeWaveShaperNode.inputs[0]);
       } else {
-        await renderInputsOfAudioNode(proxy, nativeOfflineAudioContext, nativeWaveShaperNode, trace);
+        await renderInputsOfAudioNode(proxy, nativeOfflineAudioContext, nativeWaveShaperNode);
       }
 
       return nativeWaveShaperNode;
     };
 
     return {
-      render(proxy, nativeOfflineAudioContext, trace) {
+      render(proxy, nativeOfflineAudioContext) {
         const renderedNativeWaveShaperNode = renderedNativeWaveShaperNodes.get(nativeOfflineAudioContext);
 
         if (renderedNativeWaveShaperNode !== undefined) {
           return Promise.resolve(renderedNativeWaveShaperNode);
         }
 
-        return createWaveShaperNode(proxy, nativeOfflineAudioContext, trace);
+        return createWaveShaperNode(proxy, nativeOfflineAudioContext);
       }
 
     };
@@ -13407,7 +12999,7 @@ const createWaveShaperNodeRendererFactory = (createNativeWaveShaperNode, getNati
 
 exports.createWaveShaperNodeRendererFactory = createWaveShaperNodeRendererFactory;
 
-},{"../guards/native-audio-node-faker":209,"../helpers/is-owned-by-context":249}],195:[function(require,module,exports){
+},{"../guards/native-audio-node-faker":203,"../helpers/is-owned-by-context":243}],189:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -13419,7 +13011,7 @@ const createWindow = () => typeof window === 'undefined' ? null : window;
 
 exports.createWindow = createWindow;
 
-},{}],196:[function(require,module,exports){
+},{}],190:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -13455,7 +13047,7 @@ const createWrapAudioBufferCopyChannelMethodsOutOfBounds = convertNumberToUnsign
 
 exports.createWrapAudioBufferCopyChannelMethodsOutOfBounds = createWrapAudioBufferCopyChannelMethodsOutOfBounds;
 
-},{}],197:[function(require,module,exports){
+},{}],191:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -13503,7 +13095,7 @@ const createWrapAudioBufferCopyChannelMethods = (convertNumberToUnsignedLong, cr
 
 exports.createWrapAudioBufferCopyChannelMethods = createWrapAudioBufferCopyChannelMethods;
 
-},{}],198:[function(require,module,exports){
+},{}],192:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -13530,7 +13122,7 @@ const createWrapAudioBufferSourceNodeStopMethodNullifiedBuffer = overwriteAccess
 
 exports.createWrapAudioBufferSourceNodeStopMethodNullifiedBuffer = createWrapAudioBufferSourceNodeStopMethodNullifiedBuffer;
 
-},{}],199:[function(require,module,exports){
+},{}],193:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -13575,13 +13167,13 @@ const createWrapChannelMergerNode = (createInvalidStateError, monitorConnections
 
 exports.createWrapChannelMergerNode = createWrapChannelMergerNode;
 
-},{}],200:[function(require,module,exports){
+},{}],194:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.NODE_TO_PROCESSOR_MAPS = exports.NODE_NAME_TO_PROCESSOR_CONSTRUCTOR_MAPS = exports.CYCLE_COUNTERS = exports.EVENT_LISTENERS = exports.CONTEXT_STORE = exports.AUDIO_PARAM_STORE = exports.AUDIO_PARAM_CONNECTIONS_STORE = exports.AUDIO_NODE_STORE = exports.AUDIO_NODE_CONNECTIONS_STORE = exports.ACTIVE_AUDIO_NODE_STORE = void 0;
+exports.NODE_TO_PROCESSOR_MAPS = exports.NODE_NAME_TO_PROCESSOR_CONSTRUCTOR_MAPS = exports.EVENT_LISTENERS = exports.CYCLE_COUNTERS = exports.CONTEXT_STORE = exports.AUDIO_PARAM_STORE = exports.AUDIO_PARAM_CONNECTIONS_STORE = exports.AUDIO_NODE_STORE = exports.AUDIO_NODE_CONNECTIONS_STORE = exports.ACTIVE_AUDIO_NODE_STORE = void 0;
 const ACTIVE_AUDIO_NODE_STORE = new WeakSet();
 exports.ACTIVE_AUDIO_NODE_STORE = ACTIVE_AUDIO_NODE_STORE;
 const AUDIO_NODE_CONNECTIONS_STORE = new WeakMap();
@@ -13604,7 +13196,7 @@ exports.NODE_NAME_TO_PROCESSOR_CONSTRUCTOR_MAPS = NODE_NAME_TO_PROCESSOR_CONSTRU
 const NODE_TO_PROCESSOR_MAPS = new WeakMap();
 exports.NODE_TO_PROCESSOR_MAPS = NODE_TO_PROCESSOR_MAPS;
 
-},{}],201:[function(require,module,exports){
+},{}],195:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -13618,7 +13210,7 @@ const isAudioBufferSourceNode = audioNode => {
 
 exports.isAudioBufferSourceNode = isAudioBufferSourceNode;
 
-},{}],202:[function(require,module,exports){
+},{}],196:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -13634,7 +13226,7 @@ const isAudioNodeOutputConnection = outputConnection => {
 
 exports.isAudioNodeOutputConnection = isAudioNodeOutputConnection;
 
-},{"./audio-node":203}],203:[function(require,module,exports){
+},{"./audio-node":197}],197:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -13648,7 +13240,7 @@ const isAudioNode = audioNodeOrAudioParam => {
 
 exports.isAudioNode = isAudioNode;
 
-},{}],204:[function(require,module,exports){
+},{}],198:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -13662,7 +13254,7 @@ const isAudioWorkletNode = audioNode => {
 
 exports.isAudioWorkletNode = isAudioWorkletNode;
 
-},{}],205:[function(require,module,exports){
+},{}],199:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -13676,7 +13268,7 @@ const isBiquadFilterNode = audioNode => {
 
 exports.isBiquadFilterNode = isBiquadFilterNode;
 
-},{}],206:[function(require,module,exports){
+},{}],200:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -13690,7 +13282,7 @@ const isConstantSourceNode = audioNode => {
 
 exports.isConstantSourceNode = isConstantSourceNode;
 
-},{}],207:[function(require,module,exports){
+},{}],201:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -13704,7 +13296,7 @@ const isDelayNode = audioNode => {
 
 exports.isDelayNode = isDelayNode;
 
-},{}],208:[function(require,module,exports){
+},{}],202:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -13718,7 +13310,7 @@ const isGainNode = audioNode => {
 
 exports.isGainNode = isGainNode;
 
-},{}],209:[function(require,module,exports){
+},{}],203:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -13732,7 +13324,7 @@ const isNativeAudioNodeFaker = nativeAudioNodeOrNativeAudioNodeFaker => {
 
 exports.isNativeAudioNodeFaker = isNativeAudioNodeFaker;
 
-},{}],210:[function(require,module,exports){
+},{}],204:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -13746,7 +13338,7 @@ const isNativeAudioNode = nativeAudioNodeOrAudioParam => {
 
 exports.isNativeAudioNode = isNativeAudioNode;
 
-},{}],211:[function(require,module,exports){
+},{}],205:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -13760,7 +13352,7 @@ const isOscillatorNode = audioNode => {
 
 exports.isOscillatorNode = isOscillatorNode;
 
-},{}],212:[function(require,module,exports){
+},{}],206:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -13774,7 +13366,7 @@ const isStereoPannerNode = audioNode => {
 
 exports.isStereoPannerNode = isStereoPannerNode;
 
-},{}],213:[function(require,module,exports){
+},{}],207:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -13790,7 +13382,7 @@ const addActiveInputConnectionToAudioParam = (activeInputs, source, [output, eve
 
 exports.addActiveInputConnectionToAudioParam = addActiveInputConnectionToAudioParam;
 
-},{"./insert-element-in-set":244}],214:[function(require,module,exports){
+},{"./insert-element-in-set":238}],208:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -13812,7 +13404,7 @@ const addPassiveInputConnectionToAudioParam = (passiveInputs, [source, output, e
 
 exports.addPassiveInputConnectionToAudioParam = addPassiveInputConnectionToAudioParam;
 
-},{"./insert-element-in-set":244}],215:[function(require,module,exports){
+},{"./insert-element-in-set":238}],209:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -13830,7 +13422,7 @@ const assignNativeAudioNodeAudioParamValue = (nativeAudioNode, options, audioPar
 
 exports.assignNativeAudioNodeAudioParamValue = assignNativeAudioNodeAudioParamValue;
 
-},{}],216:[function(require,module,exports){
+},{}],210:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -13848,7 +13440,7 @@ const assignNativeAudioNodeOption = (nativeAudioNode, options, option) => {
 
 exports.assignNativeAudioNodeOption = assignNativeAudioNodeOption;
 
-},{}],217:[function(require,module,exports){
+},{}],211:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -13866,7 +13458,7 @@ const assignNativeAudioNodeOptions = (nativeAudioNode, options) => {
 
 exports.assignNativeAudioNodeOptions = assignNativeAudioNodeOptions;
 
-},{"./assign-native-audio-node-option":216}],218:[function(require,module,exports){
+},{"./assign-native-audio-node-option":210}],212:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -13904,7 +13496,7 @@ const cloneAudioWorkletNodeOptions = audioWorkletNodeOptions => {
 
 exports.cloneAudioWorkletNodeOptions = cloneAudioWorkletNodeOptions;
 
-},{}],219:[function(require,module,exports){
+},{}],213:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -13922,7 +13514,7 @@ const computeBufferSize = (baseLatency, sampleRate) => {
 
 exports.computeBufferSize = computeBufferSize;
 
-},{}],220:[function(require,module,exports){
+},{}],214:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -13945,7 +13537,7 @@ const connectNativeAudioNodeToNativeAudioNode = (nativeSourceAudioNode, nativeDe
 
 exports.connectNativeAudioNodeToNativeAudioNode = connectNativeAudioNodeToNativeAudioNode;
 
-},{"../guards/native-audio-node-faker":209}],221:[function(require,module,exports){
+},{"../guards/native-audio-node-faker":203}],215:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -13974,7 +13566,7 @@ parent, key, channelNumber, bufferOffset) {
   }
 }
 
-},{}],222:[function(require,module,exports){
+},{}],216:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -13999,7 +13591,7 @@ const copyToChannel = (audioBuffer, parent, key, channelNumber, bufferOffset) =>
 
 exports.copyToChannel = copyToChannel;
 
-},{}],223:[function(require,module,exports){
+},{}],217:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -14016,7 +13608,7 @@ const createAudioWorkletProcessorPromise = async (processorConstructor, audioWor
 
 exports.createAudioWorkletProcessorPromise = createAudioWorkletProcessorPromise;
 
-},{"./clone-audio-worklet-node-options":218}],224:[function(require,module,exports){
+},{"./clone-audio-worklet-node-options":212}],218:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -14044,7 +13636,7 @@ const createAudioWorkletProcessor = (nativeContext, nativeAudioWorkletNode, proc
 
 exports.createAudioWorkletProcessor = createAudioWorkletProcessor;
 
-},{"../globals":200,"./create-audio-worklet-processor-promise":223}],225:[function(require,module,exports){
+},{"../globals":194,"./create-audio-worklet-processor-promise":217}],219:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -14071,7 +13663,7 @@ const createNestedArrays = (x, y) => {
 
 exports.createNestedArrays = createNestedArrays;
 
-},{}],226:[function(require,module,exports){
+},{}],220:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -14128,7 +13720,7 @@ const deactivateActiveAudioNodeInputConnections = (audioNode, trace) => {
 
 exports.deactivateActiveAudioNodeInputConnections = deactivateActiveAudioNodeInputConnections;
 
-},{"../guards/audio-buffer-source-node":201,"../guards/audio-worklet-node":204,"../guards/biquad-filter-node":205,"../guards/constant-source-node":206,"../guards/gain-node":208,"../guards/oscillator-node":211,"../guards/stereo-panner-node":212,"./get-audio-node-connections":236,"./get-audio-param-connections":237,"./is-active-audio-node":246,"./set-internal-state-to-passive":260}],227:[function(require,module,exports){
+},{"../guards/audio-buffer-source-node":195,"../guards/audio-worklet-node":198,"../guards/biquad-filter-node":199,"../guards/constant-source-node":200,"../guards/gain-node":202,"../guards/oscillator-node":205,"../guards/stereo-panner-node":206,"./get-audio-node-connections":230,"./get-audio-param-connections":231,"./is-active-audio-node":240,"./set-internal-state-to-passive":254}],221:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -14144,7 +13736,7 @@ const deactivateAudioGraph = context => {
 
 exports.deactivateAudioGraph = deactivateAudioGraph;
 
-},{"./deactivate-active-audio-node-input-connections":226}],228:[function(require,module,exports){
+},{"./deactivate-active-audio-node-input-connections":220}],222:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -14160,7 +13752,7 @@ const deleteActiveInputConnectionToAudioParam = (activeInputs, source, output) =
 
 exports.deleteActiveInputConnectionToAudioParam = deleteActiveInputConnectionToAudioParam;
 
-},{"./pick-element-from-set":254}],229:[function(require,module,exports){
+},{"./pick-element-from-set":248}],223:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -14181,7 +13773,7 @@ const deleteActiveInputConnection = (activeInputConnections, source, output) => 
 
 exports.deleteActiveInputConnection = deleteActiveInputConnection;
 
-},{}],230:[function(require,module,exports){
+},{}],224:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -14201,7 +13793,7 @@ const deleteEventListenerOfAudioNode = (audioNode, eventListener) => {
 
 exports.deleteEventListenerOfAudioNode = deleteEventListenerOfAudioNode;
 
-},{"./get-event-listeners-of-audio-node":239}],231:[function(require,module,exports){
+},{"./get-event-listeners-of-audio-node":233}],225:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -14226,7 +13818,7 @@ const deletePassiveInputConnectionToAudioNode = (passiveInputs, source, output, 
 
 exports.deletePassiveInputConnectionToAudioNode = deletePassiveInputConnectionToAudioNode;
 
-},{"./get-value-for-key":243,"./pick-element-from-set":254}],232:[function(require,module,exports){
+},{"./get-value-for-key":237,"./pick-element-from-set":248}],226:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -14251,7 +13843,7 @@ const deletePassiveInputConnectionToAudioParam = (passiveInputs, source, output)
 
 exports.deletePassiveInputConnectionToAudioParam = deletePassiveInputConnectionToAudioParam;
 
-},{"./get-value-for-key":243,"./pick-element-from-set":254}],233:[function(require,module,exports){
+},{"./get-value-for-key":237,"./pick-element-from-set":248}],227:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -14284,7 +13876,7 @@ const detachArrayBuffer = arrayBuffer => {
 
 exports.detachArrayBuffer = detachArrayBuffer;
 
-},{}],234:[function(require,module,exports){
+},{}],228:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -14304,7 +13896,7 @@ const disconnectNativeAudioNodeFromNativeAudioNode = (nativeSourceAudioNode, nat
 
 exports.disconnectNativeAudioNodeFromNativeAudioNode = disconnectNativeAudioNodeFromNativeAudioNode;
 
-},{"../guards/native-audio-node-faker":209}],235:[function(require,module,exports){
+},{"../guards/native-audio-node-faker":203}],229:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -14349,7 +13941,7 @@ const filterBuffer = (feedback, feedbackLength, feedforward, feedforwardLength, 
 
 exports.filterBuffer = filterBuffer;
 
-},{}],236:[function(require,module,exports){
+},{}],230:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -14367,7 +13959,7 @@ const getAudioNodeConnections = audioNode => {
 
 exports.getAudioNodeConnections = getAudioNodeConnections;
 
-},{"../globals":200,"./get-value-for-key":243}],237:[function(require,module,exports){
+},{"../globals":194,"./get-value-for-key":237}],231:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -14385,7 +13977,7 @@ const getAudioParamConnections = audioParam => {
 
 exports.getAudioParamConnections = getAudioParamConnections;
 
-},{"../globals":200,"./get-value-for-key":243}],238:[function(require,module,exports){
+},{"../globals":194,"./get-value-for-key":237}],232:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -14407,7 +13999,7 @@ const getAudioWorkletProcessor = (nativeOfflineAudioContext, proxy) => {
 
 exports.getAudioWorkletProcessor = getAudioWorkletProcessor;
 
-},{"../globals":200,"./get-native-audio-node":241,"./get-value-for-key":243}],239:[function(require,module,exports){
+},{"../globals":194,"./get-native-audio-node":235,"./get-value-for-key":237}],233:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -14425,7 +14017,7 @@ const getEventListenersOfAudioNode = audioNode => {
 
 exports.getEventListenersOfAudioNode = getEventListenersOfAudioNode;
 
-},{"../globals":200,"./get-value-for-key":243}],240:[function(require,module,exports){
+},{"../globals":194,"./get-value-for-key":237}],234:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -14445,7 +14037,7 @@ const getFirstSample = (audioBuffer, buffer, channelNumber) => {
 
 exports.getFirstSample = getFirstSample;
 
-},{}],241:[function(require,module,exports){
+},{}],235:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -14463,7 +14055,7 @@ const getNativeAudioNode = audioNode => {
 
 exports.getNativeAudioNode = getNativeAudioNode;
 
-},{"../globals":200,"./get-value-for-key":243}],242:[function(require,module,exports){
+},{"../globals":194,"./get-value-for-key":237}],236:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -14481,7 +14073,7 @@ const getNativeAudioParam = audioParam => {
 
 exports.getNativeAudioParam = getNativeAudioParam;
 
-},{"../globals":200,"./get-value-for-key":243}],243:[function(require,module,exports){
+},{"../globals":194,"./get-value-for-key":237}],237:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -14501,7 +14093,7 @@ const getValueForKey = (map, key) => {
 
 exports.getValueForKey = getValueForKey;
 
-},{}],244:[function(require,module,exports){
+},{}],238:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -14526,7 +14118,7 @@ const insertElementInSet = (set, element, predicate, ignoreDuplicates) => {
 
 exports.insertElementInSet = insertElementInSet;
 
-},{}],245:[function(require,module,exports){
+},{}],239:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -14542,7 +14134,7 @@ const interceptConnections = (original, interceptor) => {
 
 exports.interceptConnections = interceptConnections;
 
-},{}],246:[function(require,module,exports){
+},{}],240:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -14556,7 +14148,7 @@ const isActiveAudioNode = audioNode => _globals.ACTIVE_AUDIO_NODE_STORE.has(audi
 
 exports.isActiveAudioNode = isActiveAudioNode;
 
-},{"../globals":200}],247:[function(require,module,exports){
+},{"../globals":194}],241:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -14583,7 +14175,7 @@ const isConstructible = constructible => {
 
 exports.isConstructible = isConstructible;
 
-},{}],248:[function(require,module,exports){
+},{}],242:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -14607,7 +14199,7 @@ const isDCCurve = curve => {
 
 exports.isDCCurve = isDCCurve;
 
-},{}],249:[function(require,module,exports){
+},{}],243:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -14621,7 +14213,7 @@ const isOwnedByContext = (nativeAudioNode, nativeContext) => {
 
 exports.isOwnedByContext = isOwnedByContext;
 
-},{}],250:[function(require,module,exports){
+},{}],244:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -14637,7 +14229,7 @@ const isPartOfACycle = audioNode => {
 
 exports.isPartOfACycle = isPartOfACycle;
 
-},{"../globals":200}],251:[function(require,module,exports){
+},{"../globals":194}],245:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -14653,7 +14245,7 @@ const isPassiveAudioNode = audioNode => {
 
 exports.isPassiveAudioNode = isPassiveAudioNode;
 
-},{"../globals":200}],252:[function(require,module,exports){
+},{"../globals":194}],246:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -14667,7 +14259,7 @@ const isValidLatencyHint = latencyHint => {
 
 exports.isValidLatencyHint = isValidLatencyHint;
 
-},{}],253:[function(require,module,exports){
+},{}],247:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -14694,7 +14286,7 @@ const overwriteAccessors = (object, property, createGetter, createSetter) => {
 
 exports.overwriteAccessors = overwriteAccessors;
 
-},{}],254:[function(require,module,exports){
+},{}],248:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -14720,7 +14312,7 @@ const pickElementFromSet = (set, predicate) => {
 
 exports.pickElementFromSet = pickElementFromSet;
 
-},{}],255:[function(require,module,exports){
+},{}],249:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -14744,7 +14336,7 @@ const sanitizeAudioWorkletNodeOptions = options => {
 
 exports.sanitizeAudioWorkletNodeOptions = sanitizeAudioWorkletNodeOptions;
 
-},{}],256:[function(require,module,exports){
+},{}],250:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -14760,7 +14352,7 @@ const sanitizeChannelSplitterOptions = options => {
 
 exports.sanitizeChannelSplitterOptions = sanitizeChannelSplitterOptions;
 
-},{}],257:[function(require,module,exports){
+},{}],251:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -14803,7 +14395,7 @@ const sanitizePeriodicWaveOptions = options => {
 
 exports.sanitizePeriodicWaveOptions = sanitizePeriodicWaveOptions;
 
-},{}],258:[function(require,module,exports){
+},{}],252:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -14827,7 +14419,7 @@ const setInternalStateToActive = audioNode => {
 
 exports.setInternalStateToActive = setInternalStateToActive;
 
-},{"../globals":200,"./get-event-listeners-of-audio-node":239}],259:[function(require,module,exports){
+},{"../globals":194,"./get-event-listeners-of-audio-node":233}],253:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -14848,7 +14440,7 @@ const setInternalStateToPassiveWhenNecessary = (audioNode, activeInputs) => {
 
 exports.setInternalStateToPassiveWhenNecessary = setInternalStateToPassiveWhenNecessary;
 
-},{"../guards/audio-worklet-node":204,"./set-internal-state-to-passive":260}],260:[function(require,module,exports){
+},{"../guards/audio-worklet-node":198,"./set-internal-state-to-passive":254}],254:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -14872,7 +14464,7 @@ const setInternalStateToPassive = audioNode => {
 
 exports.setInternalStateToPassive = setInternalStateToPassive;
 
-},{"../globals":200,"./get-event-listeners-of-audio-node":239}],261:[function(require,module,exports){
+},{"../globals":194,"./get-event-listeners-of-audio-node":233}],255:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -14894,7 +14486,7 @@ const setValueAtTimeUntilPossible = (audioParam, value, startTime) => {
 
 exports.setValueAtTimeUntilPossible = setValueAtTimeUntilPossible;
 
-},{}],262:[function(require,module,exports){
+},{}],256:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -14934,7 +14526,7 @@ const splitImportStatements = (source, url) => {
 
 exports.splitImportStatements = splitImportStatements;
 
-},{}],263:[function(require,module,exports){
+},{}],257:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -14948,7 +14540,7 @@ const testAnalyserNodeGetFloatTimeDomainDataMethodSupport = nativeAnalyserNode =
 
 exports.testAnalyserNodeGetFloatTimeDomainDataMethodSupport = testAnalyserNodeGetFloatTimeDomainDataMethodSupport;
 
-},{}],264:[function(require,module,exports){
+},{}],258:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -14968,7 +14560,7 @@ const testAudioBufferCopyChannelMethodsOutOfBoundsSupport = nativeAudioBuffer =>
 
 exports.testAudioBufferCopyChannelMethodsOutOfBoundsSupport = testAudioBufferCopyChannelMethodsOutOfBoundsSupport;
 
-},{}],265:[function(require,module,exports){
+},{}],259:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -14991,7 +14583,7 @@ const testAudioBufferSourceNodeStartMethodConsecutiveCallsSupport = nativeContex
 
 exports.testAudioBufferSourceNodeStartMethodConsecutiveCallsSupport = testAudioBufferSourceNodeStartMethodConsecutiveCallsSupport;
 
-},{}],266:[function(require,module,exports){
+},{}],260:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -15015,7 +14607,7 @@ const testAudioBufferSourceNodeStartMethodOffsetClampingSupport = nativeContext 
 
 exports.testAudioBufferSourceNodeStartMethodOffsetClampingSupport = testAudioBufferSourceNodeStartMethodOffsetClampingSupport;
 
-},{}],267:[function(require,module,exports){
+},{}],261:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -15038,7 +14630,7 @@ const testAudioBufferSourceNodeStopMethodNullifiedBufferSupport = nativeContext 
 
 exports.testAudioBufferSourceNodeStopMethodNullifiedBufferSupport = testAudioBufferSourceNodeStopMethodNullifiedBufferSupport;
 
-},{}],268:[function(require,module,exports){
+},{}],262:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -15046,45 +14638,54 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.testAudioNodeDisconnectMethodSupport = void 0;
 
-const testAudioNodeDisconnectMethodSupport = nativeAudioContext => {
+const testAudioNodeDisconnectMethodSupport = (nativeAudioContext, nativeAudioWorkletNodeConstructor) => {
   return new Promise(resolve => {
-    const analyzer = nativeAudioContext.createScriptProcessor(256, 1, 1);
-    const dummy = nativeAudioContext.createGain(); // Bug #95: Safari does not play one sample buffers.
+    /*
+     * This bug existed in Safari up until v14.0.2. Since AudioWorklets were not supported in Safari until v14.1 the presence of the
+     * constructor for an AudioWorkletNode can be used here to skip the test.
+     */
+    if (nativeAudioWorkletNodeConstructor !== null) {
+      resolve(true);
+    } else {
+      const analyzer = nativeAudioContext.createScriptProcessor(256, 1, 1); // tslint:disable-line deprecation
 
-    const ones = nativeAudioContext.createBuffer(1, 2, 44100);
-    const channelData = ones.getChannelData(0);
-    channelData[0] = 1;
-    channelData[1] = 1;
-    const source = nativeAudioContext.createBufferSource();
-    source.buffer = ones;
-    source.loop = true;
-    source.connect(analyzer).connect(nativeAudioContext.destination);
-    source.connect(dummy);
-    source.disconnect(dummy); // tslint:disable-next-line:deprecation
+      const dummy = nativeAudioContext.createGain(); // Bug #95: Safari does not play one sample buffers.
 
-    analyzer.onaudioprocess = event => {
-      const chnnlDt = event.inputBuffer.getChannelData(0);
+      const ones = nativeAudioContext.createBuffer(1, 2, 44100);
+      const channelData = ones.getChannelData(0);
+      channelData[0] = 1;
+      channelData[1] = 1;
+      const source = nativeAudioContext.createBufferSource();
+      source.buffer = ones;
+      source.loop = true;
+      source.connect(analyzer).connect(nativeAudioContext.destination);
+      source.connect(dummy);
+      source.disconnect(dummy); // tslint:disable-next-line:deprecation
 
-      if (Array.prototype.some.call(chnnlDt, sample => sample === 1)) {
-        resolve(true);
-      } else {
-        resolve(false);
-      }
+      analyzer.onaudioprocess = event => {
+        const chnnlDt = event.inputBuffer.getChannelData(0); // tslint:disable-line deprecation
 
-      source.stop();
-      analyzer.onaudioprocess = null; // tslint:disable-line:deprecation
+        if (Array.prototype.some.call(chnnlDt, sample => sample === 1)) {
+          resolve(true);
+        } else {
+          resolve(false);
+        }
 
-      source.disconnect(analyzer);
-      analyzer.disconnect(nativeAudioContext.destination);
-    };
+        source.stop();
+        analyzer.onaudioprocess = null; // tslint:disable-line:deprecation
 
-    source.start();
+        source.disconnect(analyzer);
+        analyzer.disconnect(nativeAudioContext.destination);
+      };
+
+      source.start();
+    }
   });
 };
 
 exports.testAudioNodeDisconnectMethodSupport = testAudioNodeDisconnectMethodSupport;
 
-},{}],269:[function(require,module,exports){
+},{}],263:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -15106,7 +14707,7 @@ const testAudioScheduledSourceNodeStartMethodNegativeParametersSupport = nativeC
 
 exports.testAudioScheduledSourceNodeStartMethodNegativeParametersSupport = testAudioScheduledSourceNodeStartMethodNegativeParametersSupport;
 
-},{}],270:[function(require,module,exports){
+},{}],264:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -15131,7 +14732,7 @@ const testAudioScheduledSourceNodeStopMethodConsecutiveCallsSupport = nativeCont
 
 exports.testAudioScheduledSourceNodeStopMethodConsecutiveCallsSupport = testAudioScheduledSourceNodeStopMethodConsecutiveCallsSupport;
 
-},{}],271:[function(require,module,exports){
+},{}],265:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -15153,7 +14754,7 @@ const testAudioScheduledSourceNodeStopMethodNegativeParametersSupport = nativeCo
 
 exports.testAudioScheduledSourceNodeStopMethodNegativeParametersSupport = testAudioScheduledSourceNodeStopMethodNegativeParametersSupport;
 
-},{}],272:[function(require,module,exports){
+},{}],266:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -15178,7 +14779,7 @@ const testAudioWorkletNodeOptionsClonability = audioWorkletNodeOptions => {
 
 exports.testAudioWorkletNodeOptionsClonability = testAudioWorkletNodeOptionsClonability;
 
-},{}],273:[function(require,module,exports){
+},{}],267:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -15201,7 +14802,7 @@ const testClonabilityOfAudioWorkletNodeOptions = audioWorkletNodeOptions => {
 
 exports.testClonabilityOfAudioWorkletNodeOptions = testClonabilityOfAudioWorkletNodeOptions;
 
-},{}],274:[function(require,module,exports){
+},{}],268:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -15251,7 +14852,7 @@ const testDomExceptionConstructorSupport = () => {
 
 exports.testDomExceptionConstructorSupport = testDomExceptionConstructorSupport;
 
-},{}],275:[function(require,module,exports){
+},{}],269:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -15283,7 +14884,7 @@ const testPromiseSupport = nativeContext => {
 
 exports.testPromiseSupport = testPromiseSupport;
 
-},{}],276:[function(require,module,exports){
+},{}],270:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -15308,7 +14909,7 @@ const testTransferablesSupport = () => new Promise(resolve => {
 
 exports.testTransferablesSupport = testTransferablesSupport;
 
-},{}],277:[function(require,module,exports){
+},{}],271:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -15331,7 +14932,7 @@ const visitEachAudioNodeOnce = (cycles, visitor) => {
 
 exports.visitEachAudioNodeOnce = visitEachAudioNodeOnce;
 
-},{}],278:[function(require,module,exports){
+},{}],272:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -15355,7 +14956,7 @@ const wrapAnalyserNodeGetFloatTimeDomainDataMethod = nativeAnalyserNode => {
 
 exports.wrapAnalyserNodeGetFloatTimeDomainDataMethod = wrapAnalyserNodeGetFloatTimeDomainDataMethod;
 
-},{}],279:[function(require,module,exports){
+},{}],273:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -15383,7 +14984,7 @@ const wrapAudioBufferGetChannelDataMethod = audioBuffer => {
 
 exports.wrapAudioBufferGetChannelDataMethod = wrapAudioBufferGetChannelDataMethod;
 
-},{"../factories/index-size-error":105}],280:[function(require,module,exports){
+},{"../factories/index-size-error":99}],274:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -15409,7 +15010,7 @@ const wrapAudioBufferSourceNodeStartMethodConsecutiveCalls = nativeAudioBufferSo
 
 exports.wrapAudioBufferSourceNodeStartMethodConsecutiveCalls = wrapAudioBufferSourceNodeStartMethodConsecutiveCalls;
 
-},{"../factories/invalid-state-error":107}],281:[function(require,module,exports){
+},{"../factories/invalid-state-error":101}],275:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -15435,7 +15036,7 @@ const wrapAudioBufferSourceNodeStartMethodOffsetClamping = nativeAudioBufferSour
 
 exports.wrapAudioBufferSourceNodeStartMethodOffsetClamping = wrapAudioBufferSourceNodeStartMethodOffsetClamping;
 
-},{}],282:[function(require,module,exports){
+},{}],276:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -15449,7 +15050,7 @@ const wrapAudioNodeDisconnectMethod = nativeAudioNode => {
   const connections = new Map();
 
   nativeAudioNode.connect = (connect => {
-    // tslint:disable-next-line:invalid-void
+    // tslint:disable-next-line:invalid-void no-inferrable-types
     return (destination, output = 0, input = 0) => {
       const returnValue = (0, _nativeAudioNode.isNativeAudioNode)(destination) ? connect(destination, output, input) : connect(destination, output); // Save the new connection only if the calls to connect above didn't throw an error.
 
@@ -15522,7 +15123,7 @@ const wrapAudioNodeDisconnectMethod = nativeAudioNode => {
 
 exports.wrapAudioNodeDisconnectMethod = wrapAudioNodeDisconnectMethod;
 
-},{"../guards/native-audio-node":210}],283:[function(require,module,exports){
+},{"../guards/native-audio-node":204}],277:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -15545,7 +15146,7 @@ const wrapAudioScheduledSourceNodeStartMethodNegativeParameters = nativeAudioSch
 
 exports.wrapAudioScheduledSourceNodeStartMethodNegativeParameters = wrapAudioScheduledSourceNodeStartMethodNegativeParameters;
 
-},{}],284:[function(require,module,exports){
+},{}],278:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -15589,7 +15190,7 @@ const wrapAudioScheduledSourceNodeStopMethodConsecutiveCalls = (nativeAudioSched
 
 exports.wrapAudioScheduledSourceNodeStopMethodConsecutiveCalls = wrapAudioScheduledSourceNodeStopMethodConsecutiveCalls;
 
-},{"./intercept-connections":245}],285:[function(require,module,exports){
+},{"./intercept-connections":239}],279:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -15611,7 +15212,7 @@ const wrapAudioScheduledSourceNodeStopMethodNegativeParameters = nativeAudioSche
 
 exports.wrapAudioScheduledSourceNodeStopMethodNegativeParameters = wrapAudioScheduledSourceNodeStopMethodNegativeParameters;
 
-},{}],286:[function(require,module,exports){
+},{}],280:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -15654,7 +15255,7 @@ const wrapChannelSplitterNode = channelSplitterNode => {
 
 exports.wrapChannelSplitterNode = wrapChannelSplitterNode;
 
-},{"../factories/invalid-state-error":107}],287:[function(require,module,exports){
+},{"../factories/invalid-state-error":101}],281:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -15682,7 +15283,7 @@ const wrapEventListener = (target, eventListener) => {
 
 exports.wrapEventListener = wrapEventListener;
 
-},{}],288:[function(require,module,exports){
+},{}],282:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -15706,106 +15307,106 @@ const wrapIIRFilterNodeGetFrequencyResponseMethod = nativeIIRFilterNode => {
 
 exports.wrapIIRFilterNodeGetFrequencyResponseMethod = wrapIIRFilterNodeGetFrequencyResponseMethod;
 
-},{"../factories/invalid-access-error":106}],289:[function(require,module,exports){
+},{"../factories/invalid-access-error":100}],283:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-},{}],290:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],291:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],292:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],293:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],294:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],295:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],296:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],297:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],298:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],299:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],300:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],301:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],302:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],303:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],304:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],305:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],306:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],307:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],308:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],309:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],310:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],311:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],312:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],313:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],314:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],315:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],316:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],317:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],318:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],319:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],320:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],321:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],322:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],323:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],324:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],325:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],326:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],327:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],328:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],329:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],330:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],331:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],332:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],333:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],334:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],335:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],336:[function(require,module,exports){
+},{}],284:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],285:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],286:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],287:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],288:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],289:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],290:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],291:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],292:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],293:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],294:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],295:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],296:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],297:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],298:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],299:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],300:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],301:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],302:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],303:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],304:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],305:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],306:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],307:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],308:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],309:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],310:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],311:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],312:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],313:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],314:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],315:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],316:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],317:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],318:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],319:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],320:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],321:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],322:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],323:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],324:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],325:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],326:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],327:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],328:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],329:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],330:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -16904,81 +16505,81 @@ Object.keys(_workletOptions).forEach(function (key) {
   });
 });
 
-},{"./analyser-node":289,"./analyser-options":290,"./audio-buffer":295,"./audio-buffer-options":291,"./audio-buffer-source-node":293,"./audio-buffer-source-node-renderer":292,"./audio-buffer-source-options":294,"./audio-context":297,"./audio-context-options":296,"./audio-destination-node":298,"./audio-listener":299,"./audio-node":302,"./audio-node-options":300,"./audio-node-renderer":301,"./audio-param":305,"./audio-param-descriptor":303,"./audio-param-renderer":304,"./audio-scheduled-source-node":307,"./audio-scheduled-source-node-event-map":306,"./audio-worklet":313,"./audio-worklet-node":310,"./audio-worklet-node-event-map":308,"./audio-worklet-node-options":309,"./audio-worklet-processor":312,"./audio-worklet-processor-constructor":311,"./automation":314,"./base-audio-context":315,"./biquad-filter-node":316,"./biquad-filter-options":317,"./channel-merger-options":318,"./channel-splitter-options":319,"./common-audio-context":320,"./common-offline-audio-context":321,"./constant-source-node":323,"./constant-source-node-renderer":322,"./constant-source-options":324,"./convolver-node":325,"./convolver-options":326,"./delay-node":327,"./delay-options":328,"./dynamics-compressor-node":329,"./dynamics-compressor-options":330,"./event-target":331,"./gain-node":332,"./gain-options":333,"./iir-filter-node":334,"./iir-filter-options":335,"./media-element-audio-source-node":337,"./media-element-audio-source-options":338,"./media-stream-audio-destination-node":339,"./media-stream-audio-source-node":340,"./media-stream-audio-source-options":341,"./media-stream-track-audio-source-node":342,"./media-stream-track-audio-source-options":343,"./minimal-audio-context":344,"./minimal-base-audio-context":346,"./minimal-base-audio-context-event-map":345,"./minimal-offline-audio-context":347,"./native-audio-node-faker":348,"./native-audio-worklet-node-faker":349,"./native-constant-source-node-faker":350,"./native-convolver-node-faker":351,"./native-iir-filter-node-faker":352,"./native-panner-node-faker":353,"./native-stereo-panner-node-faker":354,"./native-wave-shaper-node-faker":355,"./offline-audio-completion-event":356,"./offline-audio-context":359,"./offline-audio-context-constructor":357,"./offline-audio-context-options":358,"./oscillator-node":361,"./oscillator-node-renderer":360,"./oscillator-options":362,"./panner-node":363,"./panner-options":364,"./periodic-wave":367,"./periodic-wave-constraints":365,"./periodic-wave-options":366,"./read-only-map":368,"./stereo-panner-node":369,"./stereo-panner-options":370,"./wave-shaper-node":371,"./wave-shaper-options":372,"./worklet-options":373}],337:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],338:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],339:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],340:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],341:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],342:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],343:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],344:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],345:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],346:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],347:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],348:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],349:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],350:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],351:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],352:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],353:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],354:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],355:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],356:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],357:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],358:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],359:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],360:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],361:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],362:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],363:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],364:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],365:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],366:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],367:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],368:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],369:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],370:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],371:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],372:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],373:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],374:[function(require,module,exports){
+},{"./analyser-node":283,"./analyser-options":284,"./audio-buffer":289,"./audio-buffer-options":285,"./audio-buffer-source-node":287,"./audio-buffer-source-node-renderer":286,"./audio-buffer-source-options":288,"./audio-context":291,"./audio-context-options":290,"./audio-destination-node":292,"./audio-listener":293,"./audio-node":296,"./audio-node-options":294,"./audio-node-renderer":295,"./audio-param":299,"./audio-param-descriptor":297,"./audio-param-renderer":298,"./audio-scheduled-source-node":301,"./audio-scheduled-source-node-event-map":300,"./audio-worklet":307,"./audio-worklet-node":304,"./audio-worklet-node-event-map":302,"./audio-worklet-node-options":303,"./audio-worklet-processor":306,"./audio-worklet-processor-constructor":305,"./automation":308,"./base-audio-context":309,"./biquad-filter-node":310,"./biquad-filter-options":311,"./channel-merger-options":312,"./channel-splitter-options":313,"./common-audio-context":314,"./common-offline-audio-context":315,"./constant-source-node":317,"./constant-source-node-renderer":316,"./constant-source-options":318,"./convolver-node":319,"./convolver-options":320,"./delay-node":321,"./delay-options":322,"./dynamics-compressor-node":323,"./dynamics-compressor-options":324,"./event-target":325,"./gain-node":326,"./gain-options":327,"./iir-filter-node":328,"./iir-filter-options":329,"./media-element-audio-source-node":331,"./media-element-audio-source-options":332,"./media-stream-audio-destination-node":333,"./media-stream-audio-source-node":334,"./media-stream-audio-source-options":335,"./media-stream-track-audio-source-node":336,"./media-stream-track-audio-source-options":337,"./minimal-audio-context":338,"./minimal-base-audio-context":340,"./minimal-base-audio-context-event-map":339,"./minimal-offline-audio-context":341,"./native-audio-node-faker":342,"./native-audio-worklet-node-faker":343,"./native-constant-source-node-faker":344,"./native-convolver-node-faker":345,"./native-iir-filter-node-faker":346,"./native-panner-node-faker":347,"./native-stereo-panner-node-faker":348,"./native-wave-shaper-node-faker":349,"./offline-audio-completion-event":350,"./offline-audio-context":353,"./offline-audio-context-constructor":351,"./offline-audio-context-options":352,"./oscillator-node":355,"./oscillator-node-renderer":354,"./oscillator-options":356,"./panner-node":357,"./panner-options":358,"./periodic-wave":361,"./periodic-wave-constraints":359,"./periodic-wave-options":360,"./read-only-map":362,"./stereo-panner-node":363,"./stereo-panner-options":364,"./wave-shaper-node":365,"./wave-shaper-options":366,"./worklet-options":367}],331:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],332:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],333:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],334:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],335:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],336:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],337:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],338:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],339:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],340:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],341:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],342:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],343:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],344:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],345:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],346:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],347:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],348:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],349:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],350:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],351:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],352:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],353:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],354:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],355:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],356:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],357:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],358:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],359:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],360:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],361:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],362:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],363:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],364:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],365:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],366:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],367:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],368:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -17019,7 +16620,7 @@ var _exportNames = {
   isAnyOfflineAudioContext: true,
   isSupported: true
 };
-exports.isSupported = exports.isAnyOfflineAudioContext = exports.isAnyAudioParam = exports.isAnyAudioNode = exports.isAnyAudioContext = exports.WaveShaperNode = exports.StereoPannerNode = exports.PeriodicWave = exports.PannerNode = exports.OscillatorNode = exports.OfflineAudioContext = exports.MinimalOfflineAudioContext = exports.MinimalAudioContext = exports.MediaStreamTrackAudioSourceNode = exports.MediaStreamAudioSourceNode = exports.MediaStreamAudioDestinationNode = exports.MediaElementAudioSourceNode = exports.IIRFilterNode = exports.GainNode = exports.DynamicsCompressorNode = exports.DelayNode = exports.ConstantSourceNode = exports.ConvolverNode = exports.ChannelSplitterNode = exports.ChannelMergerNode = exports.BiquadFilterNode = exports.AudioWorkletNode = exports.AudioContext = exports.decodeAudioData = exports.addAudioWorkletModule = exports.AudioBufferSourceNode = exports.AudioBuffer = exports.AnalyserNode = void 0;
+exports.isSupported = exports.isAnyOfflineAudioContext = exports.isAnyAudioParam = exports.isAnyAudioNode = exports.isAnyAudioContext = exports.decodeAudioData = exports.addAudioWorkletModule = exports.WaveShaperNode = exports.StereoPannerNode = exports.PeriodicWave = exports.PannerNode = exports.OscillatorNode = exports.OfflineAudioContext = exports.MinimalOfflineAudioContext = exports.MinimalAudioContext = exports.MediaStreamTrackAudioSourceNode = exports.MediaStreamAudioSourceNode = exports.MediaStreamAudioDestinationNode = exports.MediaElementAudioSourceNode = exports.IIRFilterNode = exports.GainNode = exports.DynamicsCompressorNode = exports.DelayNode = exports.ConvolverNode = exports.ConstantSourceNode = exports.ChannelSplitterNode = exports.ChannelMergerNode = exports.BiquadFilterNode = exports.AudioWorkletNode = exports.AudioContext = exports.AudioBufferSourceNode = exports.AudioBuffer = exports.AnalyserNode = void 0;
 
 var _automationEvents = require("automation-events");
 
@@ -17473,7 +17074,8 @@ const nativeAudioContextConstructor = (0, _nativeAudioContextConstructor.createN
 const isNativeAudioContext = (0, _isNativeAudioContext.createIsNativeAudioContext)(nativeAudioContextConstructor);
 const isNativeAudioNode = (0, _isNativeAudioNode.createIsNativeAudioNode)(window);
 const isNativeAudioParam = (0, _isNativeAudioParam.createIsNativeAudioParam)(window);
-const audioNodeConstructor = (0, _audioNodeConstructor.createAudioNodeConstructor)((0, _addAudioNodeConnections.createAddAudioNodeConnections)(_globals.AUDIO_NODE_CONNECTIONS_STORE), (0, _addConnectionToAudioNode.createAddConnectionToAudioNode)(addActiveInputConnectionToAudioNode, addPassiveInputConnectionToAudioNode, _connectNativeAudioNodeToNativeAudioNode.connectNativeAudioNodeToNativeAudioNode, deleteActiveInputConnectionToAudioNode, _disconnectNativeAudioNodeFromNativeAudioNode.disconnectNativeAudioNodeFromNativeAudioNode, _getAudioNodeConnections.getAudioNodeConnections, getAudioNodeTailTime, _getEventListenersOfAudioNode.getEventListenersOfAudioNode, _getNativeAudioNode.getNativeAudioNode, _insertElementInSet.insertElementInSet, _isActiveAudioNode.isActiveAudioNode, _isPartOfACycle.isPartOfACycle, _isPassiveAudioNode.isPassiveAudioNode), cacheTestResult, (0, _incrementCycleCounterFactory.createIncrementCycleCounterFactory)(_globals.CYCLE_COUNTERS, _disconnectNativeAudioNodeFromNativeAudioNode.disconnectNativeAudioNodeFromNativeAudioNode, _getAudioNodeConnections.getAudioNodeConnections, _getNativeAudioNode.getNativeAudioNode, _getNativeAudioParam.getNativeAudioParam, _isActiveAudioNode.isActiveAudioNode), _indexSizeError.createIndexSizeError, _invalidAccessError.createInvalidAccessError, _notSupportedError.createNotSupportedError, (0, _decrementCycleCounter.createDecrementCycleCounter)(_connectNativeAudioNodeToNativeAudioNode.connectNativeAudioNodeToNativeAudioNode, _globals.CYCLE_COUNTERS, _getAudioNodeConnections.getAudioNodeConnections, _getNativeAudioNode.getNativeAudioNode, _getNativeAudioParam.getNativeAudioParam, getNativeContext, _isActiveAudioNode.isActiveAudioNode, isNativeOfflineAudioContext), (0, _detectCycles.createDetectCycles)(audioParamAudioNodeStore, _getAudioNodeConnections.getAudioNodeConnections, _getValueForKey.getValueForKey), eventTargetConstructor, getNativeContext, isNativeAudioContext, isNativeAudioNode, isNativeAudioParam, isNativeOfflineAudioContext);
+const nativeAudioWorkletNodeConstructor = (0, _nativeAudioWorkletNodeConstructor.createNativeAudioWorkletNodeConstructor)(window);
+const audioNodeConstructor = (0, _audioNodeConstructor.createAudioNodeConstructor)((0, _addAudioNodeConnections.createAddAudioNodeConnections)(_globals.AUDIO_NODE_CONNECTIONS_STORE), (0, _addConnectionToAudioNode.createAddConnectionToAudioNode)(addActiveInputConnectionToAudioNode, addPassiveInputConnectionToAudioNode, _connectNativeAudioNodeToNativeAudioNode.connectNativeAudioNodeToNativeAudioNode, deleteActiveInputConnectionToAudioNode, _disconnectNativeAudioNodeFromNativeAudioNode.disconnectNativeAudioNodeFromNativeAudioNode, _getAudioNodeConnections.getAudioNodeConnections, getAudioNodeTailTime, _getEventListenersOfAudioNode.getEventListenersOfAudioNode, _getNativeAudioNode.getNativeAudioNode, _insertElementInSet.insertElementInSet, _isActiveAudioNode.isActiveAudioNode, _isPartOfACycle.isPartOfACycle, _isPassiveAudioNode.isPassiveAudioNode), cacheTestResult, (0, _incrementCycleCounterFactory.createIncrementCycleCounterFactory)(_globals.CYCLE_COUNTERS, _disconnectNativeAudioNodeFromNativeAudioNode.disconnectNativeAudioNodeFromNativeAudioNode, _getAudioNodeConnections.getAudioNodeConnections, _getNativeAudioNode.getNativeAudioNode, _getNativeAudioParam.getNativeAudioParam, _isActiveAudioNode.isActiveAudioNode), _indexSizeError.createIndexSizeError, _invalidAccessError.createInvalidAccessError, _notSupportedError.createNotSupportedError, (0, _decrementCycleCounter.createDecrementCycleCounter)(_connectNativeAudioNodeToNativeAudioNode.connectNativeAudioNodeToNativeAudioNode, _globals.CYCLE_COUNTERS, _getAudioNodeConnections.getAudioNodeConnections, _getNativeAudioNode.getNativeAudioNode, _getNativeAudioParam.getNativeAudioParam, getNativeContext, _isActiveAudioNode.isActiveAudioNode, isNativeOfflineAudioContext), (0, _detectCycles.createDetectCycles)(audioParamAudioNodeStore, _getAudioNodeConnections.getAudioNodeConnections, _getValueForKey.getValueForKey), eventTargetConstructor, getNativeContext, isNativeAudioContext, isNativeAudioNode, isNativeAudioParam, isNativeOfflineAudioContext, nativeAudioWorkletNodeConstructor);
 const analyserNodeConstructor = (0, _analyserNodeConstructor.createAnalyserNodeConstructor)(audioNodeConstructor, createAnalyserNodeRenderer, _indexSizeError.createIndexSizeError, createNativeAnalyserNode, getNativeContext, isNativeOfflineAudioContext);
 exports.AnalyserNode = analyserNodeConstructor;
 const audioBufferStore = new WeakSet();
@@ -17560,8 +17162,7 @@ exports.WaveShaperNode = waveShaperNodeConstructor;
 const isSecureContext = (0, _isSecureContext.createIsSecureContext)(window);
 const exposeCurrentFrameAndCurrentTime = (0, _exposeCurrentFrameAndCurrentTime.createExposeCurrentFrameAndCurrentTime)(window);
 const backupOfflineAudioContextStore = new WeakMap();
-const getOrCreateBackupOfflineAudioContext = (0, _getOrCreateBackupOfflineAudioContext.createGetOrCreateBackupOfflineAudioContext)(backupOfflineAudioContextStore, nativeOfflineAudioContextConstructor);
-const nativeAudioWorkletNodeConstructor = (0, _nativeAudioWorkletNodeConstructor.createNativeAudioWorkletNodeConstructor)(window); // The addAudioWorkletModule() function is only available in a SecureContext.
+const getOrCreateBackupOfflineAudioContext = (0, _getOrCreateBackupOfflineAudioContext.createGetOrCreateBackupOfflineAudioContext)(backupOfflineAudioContextStore, nativeOfflineAudioContextConstructor); // The addAudioWorkletModule() function is only available in a SecureContext.
 
 const addAudioWorkletModule = isSecureContext ? (0, _addAudioWorkletModule.createAddAudioWorkletModule)(cacheTestResult, _notSupportedError.createNotSupportedError, (0, _evaluateSource.createEvaluateSource)(window), exposeCurrentFrameAndCurrentTime, (0, _fetchSource.createFetchSource)(_abortError.createAbortError), getNativeContext, getOrCreateBackupOfflineAudioContext, isNativeOfflineAudioContext, nativeAudioWorkletNodeConstructor, new WeakMap(), new WeakMap(), (0, _testAudioWorkletProcessorPostMessageSupport.createTestAudioWorkletProcessorPostMessageSupport)(nativeAudioWorkletNodeConstructor, nativeOfflineAudioContextConstructor), // @todo window is guaranteed to be defined because isSecureContext checks that as well.
 window) : undefined;
@@ -17617,7 +17218,7 @@ const isSupported = () => (0, _isSupportedPromise.createIsSupportedPromise)(cach
 
 exports.isSupported = isSupported;
 
-},{"./factories/abort-error":36,"./factories/add-active-input-connection-to-audio-node":37,"./factories/add-audio-node-connections":38,"./factories/add-audio-param-connections":39,"./factories/add-audio-worklet-module":40,"./factories/add-connection-to-audio-node":41,"./factories/add-passive-input-connection-to-audio-node":42,"./factories/add-silent-connection":43,"./factories/add-unrendered-audio-worklet-node":44,"./factories/analyser-node-constructor":45,"./factories/analyser-node-renderer-factory":46,"./factories/audio-buffer-constructor":47,"./factories/audio-buffer-source-node-constructor":48,"./factories/audio-buffer-source-node-renderer-factory":49,"./factories/audio-context-constructor":50,"./factories/audio-destination-node-constructor":51,"./factories/audio-destination-node-renderer-factory":52,"./factories/audio-listener-factory":53,"./factories/audio-node-constructor":54,"./factories/audio-param-factory":55,"./factories/audio-param-renderer":56,"./factories/audio-worklet-node-constructor":57,"./factories/audio-worklet-node-renderer-factory":58,"./factories/base-audio-context-constructor":59,"./factories/biquad-filter-node-constructor":60,"./factories/biquad-filter-node-renderer-factory":61,"./factories/cache-test-result":62,"./factories/channel-merger-node-constructor":63,"./factories/channel-merger-node-renderer-factory":64,"./factories/channel-splitter-node-constructor":65,"./factories/channel-splitter-node-renderer-factory":66,"./factories/connect-audio-param":67,"./factories/connect-multiple-outputs":68,"./factories/connected-native-audio-buffer-source-node-factory":69,"./factories/constant-source-node-constructor":70,"./factories/constant-source-node-renderer-factory":71,"./factories/convert-number-to-unsigned-long":72,"./factories/convolver-node-constructor":73,"./factories/convolver-node-renderer-factory":74,"./factories/create-native-offline-audio-context":75,"./factories/data-clone-error":76,"./factories/decode-audio-data":77,"./factories/decrement-cycle-counter":78,"./factories/delay-node-constructor":79,"./factories/delay-node-renderer-factory":80,"./factories/delete-active-input-connection-to-audio-node":81,"./factories/delete-unrendered-audio-worklet-node":82,"./factories/detect-cycles":83,"./factories/disconnect-multiple-outputs":84,"./factories/dynamics-compressor-node-constructor":85,"./factories/dynamics-compressor-node-renderer-factory":86,"./factories/encoding-error":87,"./factories/evaluate-source":88,"./factories/event-target-constructor":89,"./factories/expose-current-frame-and-current-time":90,"./factories/fetch-source":91,"./factories/gain-node-constructor":92,"./factories/gain-node-renderer-factory":93,"./factories/get-active-audio-worklet-node-inputs":94,"./factories/get-audio-node-renderer":95,"./factories/get-audio-node-tail-time":96,"./factories/get-audio-param-renderer":97,"./factories/get-backup-offline-audio-context":98,"./factories/get-native-context":99,"./factories/get-or-create-backup-offline-audio-context":100,"./factories/get-unrendered-audio-worklet-nodes":101,"./factories/iir-filter-node-constructor":102,"./factories/iir-filter-node-renderer-factory":103,"./factories/increment-cycle-counter-factory":104,"./factories/index-size-error":105,"./factories/invalid-access-error":106,"./factories/invalid-state-error":107,"./factories/is-any-audio-context":108,"./factories/is-any-audio-node":109,"./factories/is-any-audio-param":110,"./factories/is-any-offline-audio-context":111,"./factories/is-native-audio-context":112,"./factories/is-native-audio-node":113,"./factories/is-native-audio-param":114,"./factories/is-native-context":115,"./factories/is-native-offline-audio-context":116,"./factories/is-secure-context":117,"./factories/is-supported-promise":118,"./factories/media-element-audio-source-node-constructor":119,"./factories/media-stream-audio-destination-node-constructor":120,"./factories/media-stream-audio-source-node-constructor":121,"./factories/media-stream-track-audio-source-node-constructor":122,"./factories/minimal-audio-context-constructor":123,"./factories/minimal-base-audio-context-constructor":124,"./factories/minimal-offline-audio-context-constructor":125,"./factories/monitor-connections":126,"./factories/native-analyser-node-factory":127,"./factories/native-audio-buffer-constructor":128,"./factories/native-audio-buffer-source-node-factory":129,"./factories/native-audio-context-constructor":130,"./factories/native-audio-destination-node":131,"./factories/native-audio-worklet-node-constructor":132,"./factories/native-audio-worklet-node-factory":133,"./factories/native-audio-worklet-node-faker-factory":134,"./factories/native-biquad-filter-node":135,"./factories/native-channel-merger-node-factory":136,"./factories/native-channel-splitter-node":137,"./factories/native-constant-source-node-factory":138,"./factories/native-constant-source-node-faker-factory":139,"./factories/native-convolver-node-factory":140,"./factories/native-delay-node":141,"./factories/native-dynamics-compressor-node-factory":142,"./factories/native-gain-node":143,"./factories/native-iir-filter-node-factory":144,"./factories/native-iir-filter-node-faker-factory":145,"./factories/native-media-element-audio-source-node":146,"./factories/native-media-stream-audio-destination-node":147,"./factories/native-media-stream-audio-source-node":148,"./factories/native-media-stream-track-audio-source-node-factory":149,"./factories/native-offline-audio-context-constructor":150,"./factories/native-oscillator-node-factory":151,"./factories/native-panner-node-factory":152,"./factories/native-panner-node-faker-factory":153,"./factories/native-periodic-wave-factory":154,"./factories/native-script-processor-node":155,"./factories/native-stereo-panner-node-factory":156,"./factories/native-stereo-panner-node-faker-factory":157,"./factories/native-wave-shaper-node-factory":158,"./factories/native-wave-shaper-node-faker-factory":159,"./factories/not-supported-error":160,"./factories/offline-audio-context-constructor":161,"./factories/oscillator-node-constructor":162,"./factories/oscillator-node-renderer-factory":163,"./factories/panner-node-constructor":164,"./factories/panner-node-renderer-factory":165,"./factories/periodic-wave-constructor":166,"./factories/render-automation":167,"./factories/render-inputs-of-audio-node":168,"./factories/render-inputs-of-audio-param":169,"./factories/render-native-offline-audio-context":170,"./factories/set-active-audio-worklet-node-inputs":171,"./factories/set-audio-node-tail-time":172,"./factories/start-rendering":173,"./factories/stereo-panner-node-constructor":174,"./factories/stereo-panner-node-renderer-factory":175,"./factories/test-audio-buffer-constructor-support":176,"./factories/test-audio-buffer-copy-channel-methods-subarray-support":177,"./factories/test-audio-context-close-method-support":178,"./factories/test-audio-context-decode-audio-data-method-type-error-support":179,"./factories/test-audio-context-options-support":180,"./factories/test-audio-node-connect-method-support":181,"./factories/test-audio-worklet-processor-no-outputs-support":182,"./factories/test-audio-worklet-processor-post-message-support":183,"./factories/test-channel-merger-node-channel-count-support":184,"./factories/test-constant-source-node-accurate-scheduling-support":185,"./factories/test-convolver-node-buffer-reassignability-support":186,"./factories/test-convolver-node-channel-count-support":187,"./factories/test-is-secure-context-support":188,"./factories/test-media-stream-audio-source-node-media-stream-without-audio-track-support":189,"./factories/test-offline-audio-context-current-time-support":190,"./factories/test-stereo-panner-node-default-value-support":191,"./factories/unknown-error":192,"./factories/wave-shaper-node-constructor":193,"./factories/wave-shaper-node-renderer-factory":194,"./factories/window":195,"./factories/wrap-audio-buffer-copy-channel-methods":197,"./factories/wrap-audio-buffer-copy-channel-methods-out-of-bounds":196,"./factories/wrap-audio-buffer-source-node-stop-method-nullified-buffer":198,"./factories/wrap-channel-merger-node":199,"./globals":200,"./helpers/connect-native-audio-node-to-native-audio-node":220,"./helpers/disconnect-native-audio-node-from-native-audio-node":234,"./helpers/get-audio-node-connections":236,"./helpers/get-audio-param-connections":237,"./helpers/get-event-listeners-of-audio-node":239,"./helpers/get-first-sample":240,"./helpers/get-native-audio-node":241,"./helpers/get-native-audio-param":242,"./helpers/get-value-for-key":243,"./helpers/insert-element-in-set":244,"./helpers/is-active-audio-node":246,"./helpers/is-dc-curve":248,"./helpers/is-part-of-a-cycle":250,"./helpers/is-passive-audio-node":251,"./helpers/overwrite-accessors":253,"./helpers/pick-element-from-set":254,"./helpers/sanitize-audio-worklet-node-options":255,"./helpers/sanitize-channel-splitter-options":256,"./helpers/sanitize-periodic-wave-options":257,"./helpers/set-value-at-time-until-possible":261,"./helpers/test-audio-buffer-copy-channel-methods-out-of-bounds-support":264,"./helpers/test-audio-buffer-source-node-start-method-consecutive-calls-support":265,"./helpers/test-audio-buffer-source-node-start-method-offset-clamping-support":266,"./helpers/test-audio-buffer-source-node-stop-method-nullified-buffer-support":267,"./helpers/test-audio-scheduled-source-node-start-method-negative-parameters-support":269,"./helpers/test-audio-scheduled-source-node-stop-method-consecutive-calls-support":270,"./helpers/test-audio-scheduled-source-node-stop-method-negative-parameters-support":271,"./helpers/test-audio-worklet-node-options-clonability":272,"./helpers/test-dom-exception-constructor-support":274,"./helpers/test-promise-support":275,"./helpers/test-transferables-support":276,"./helpers/wrap-audio-buffer-source-node-start-method-offset-clamping":281,"./helpers/wrap-audio-scheduled-source-node-stop-method-consecutive-calls":284,"./helpers/wrap-event-listener":287,"./interfaces/index":336,"./types/index":555,"automation-events":25}],375:[function(require,module,exports){
+},{"./factories/abort-error":30,"./factories/add-active-input-connection-to-audio-node":31,"./factories/add-audio-node-connections":32,"./factories/add-audio-param-connections":33,"./factories/add-audio-worklet-module":34,"./factories/add-connection-to-audio-node":35,"./factories/add-passive-input-connection-to-audio-node":36,"./factories/add-silent-connection":37,"./factories/add-unrendered-audio-worklet-node":38,"./factories/analyser-node-constructor":39,"./factories/analyser-node-renderer-factory":40,"./factories/audio-buffer-constructor":41,"./factories/audio-buffer-source-node-constructor":42,"./factories/audio-buffer-source-node-renderer-factory":43,"./factories/audio-context-constructor":44,"./factories/audio-destination-node-constructor":45,"./factories/audio-destination-node-renderer-factory":46,"./factories/audio-listener-factory":47,"./factories/audio-node-constructor":48,"./factories/audio-param-factory":49,"./factories/audio-param-renderer":50,"./factories/audio-worklet-node-constructor":51,"./factories/audio-worklet-node-renderer-factory":52,"./factories/base-audio-context-constructor":53,"./factories/biquad-filter-node-constructor":54,"./factories/biquad-filter-node-renderer-factory":55,"./factories/cache-test-result":56,"./factories/channel-merger-node-constructor":57,"./factories/channel-merger-node-renderer-factory":58,"./factories/channel-splitter-node-constructor":59,"./factories/channel-splitter-node-renderer-factory":60,"./factories/connect-audio-param":61,"./factories/connect-multiple-outputs":62,"./factories/connected-native-audio-buffer-source-node-factory":63,"./factories/constant-source-node-constructor":64,"./factories/constant-source-node-renderer-factory":65,"./factories/convert-number-to-unsigned-long":66,"./factories/convolver-node-constructor":67,"./factories/convolver-node-renderer-factory":68,"./factories/create-native-offline-audio-context":69,"./factories/data-clone-error":70,"./factories/decode-audio-data":71,"./factories/decrement-cycle-counter":72,"./factories/delay-node-constructor":73,"./factories/delay-node-renderer-factory":74,"./factories/delete-active-input-connection-to-audio-node":75,"./factories/delete-unrendered-audio-worklet-node":76,"./factories/detect-cycles":77,"./factories/disconnect-multiple-outputs":78,"./factories/dynamics-compressor-node-constructor":79,"./factories/dynamics-compressor-node-renderer-factory":80,"./factories/encoding-error":81,"./factories/evaluate-source":82,"./factories/event-target-constructor":83,"./factories/expose-current-frame-and-current-time":84,"./factories/fetch-source":85,"./factories/gain-node-constructor":86,"./factories/gain-node-renderer-factory":87,"./factories/get-active-audio-worklet-node-inputs":88,"./factories/get-audio-node-renderer":89,"./factories/get-audio-node-tail-time":90,"./factories/get-audio-param-renderer":91,"./factories/get-backup-offline-audio-context":92,"./factories/get-native-context":93,"./factories/get-or-create-backup-offline-audio-context":94,"./factories/get-unrendered-audio-worklet-nodes":95,"./factories/iir-filter-node-constructor":96,"./factories/iir-filter-node-renderer-factory":97,"./factories/increment-cycle-counter-factory":98,"./factories/index-size-error":99,"./factories/invalid-access-error":100,"./factories/invalid-state-error":101,"./factories/is-any-audio-context":102,"./factories/is-any-audio-node":103,"./factories/is-any-audio-param":104,"./factories/is-any-offline-audio-context":105,"./factories/is-native-audio-context":106,"./factories/is-native-audio-node":107,"./factories/is-native-audio-param":108,"./factories/is-native-context":109,"./factories/is-native-offline-audio-context":110,"./factories/is-secure-context":111,"./factories/is-supported-promise":112,"./factories/media-element-audio-source-node-constructor":113,"./factories/media-stream-audio-destination-node-constructor":114,"./factories/media-stream-audio-source-node-constructor":115,"./factories/media-stream-track-audio-source-node-constructor":116,"./factories/minimal-audio-context-constructor":117,"./factories/minimal-base-audio-context-constructor":118,"./factories/minimal-offline-audio-context-constructor":119,"./factories/monitor-connections":120,"./factories/native-analyser-node-factory":121,"./factories/native-audio-buffer-constructor":122,"./factories/native-audio-buffer-source-node-factory":123,"./factories/native-audio-context-constructor":124,"./factories/native-audio-destination-node":125,"./factories/native-audio-worklet-node-constructor":126,"./factories/native-audio-worklet-node-factory":127,"./factories/native-audio-worklet-node-faker-factory":128,"./factories/native-biquad-filter-node":129,"./factories/native-channel-merger-node-factory":130,"./factories/native-channel-splitter-node":131,"./factories/native-constant-source-node-factory":132,"./factories/native-constant-source-node-faker-factory":133,"./factories/native-convolver-node-factory":134,"./factories/native-delay-node":135,"./factories/native-dynamics-compressor-node-factory":136,"./factories/native-gain-node":137,"./factories/native-iir-filter-node-factory":138,"./factories/native-iir-filter-node-faker-factory":139,"./factories/native-media-element-audio-source-node":140,"./factories/native-media-stream-audio-destination-node":141,"./factories/native-media-stream-audio-source-node":142,"./factories/native-media-stream-track-audio-source-node-factory":143,"./factories/native-offline-audio-context-constructor":144,"./factories/native-oscillator-node-factory":145,"./factories/native-panner-node-factory":146,"./factories/native-panner-node-faker-factory":147,"./factories/native-periodic-wave-factory":148,"./factories/native-script-processor-node":149,"./factories/native-stereo-panner-node-factory":150,"./factories/native-stereo-panner-node-faker-factory":151,"./factories/native-wave-shaper-node-factory":152,"./factories/native-wave-shaper-node-faker-factory":153,"./factories/not-supported-error":154,"./factories/offline-audio-context-constructor":155,"./factories/oscillator-node-constructor":156,"./factories/oscillator-node-renderer-factory":157,"./factories/panner-node-constructor":158,"./factories/panner-node-renderer-factory":159,"./factories/periodic-wave-constructor":160,"./factories/render-automation":161,"./factories/render-inputs-of-audio-node":162,"./factories/render-inputs-of-audio-param":163,"./factories/render-native-offline-audio-context":164,"./factories/set-active-audio-worklet-node-inputs":165,"./factories/set-audio-node-tail-time":166,"./factories/start-rendering":167,"./factories/stereo-panner-node-constructor":168,"./factories/stereo-panner-node-renderer-factory":169,"./factories/test-audio-buffer-constructor-support":170,"./factories/test-audio-buffer-copy-channel-methods-subarray-support":171,"./factories/test-audio-context-close-method-support":172,"./factories/test-audio-context-decode-audio-data-method-type-error-support":173,"./factories/test-audio-context-options-support":174,"./factories/test-audio-node-connect-method-support":175,"./factories/test-audio-worklet-processor-no-outputs-support":176,"./factories/test-audio-worklet-processor-post-message-support":177,"./factories/test-channel-merger-node-channel-count-support":178,"./factories/test-constant-source-node-accurate-scheduling-support":179,"./factories/test-convolver-node-buffer-reassignability-support":180,"./factories/test-convolver-node-channel-count-support":181,"./factories/test-is-secure-context-support":182,"./factories/test-media-stream-audio-source-node-media-stream-without-audio-track-support":183,"./factories/test-offline-audio-context-current-time-support":184,"./factories/test-stereo-panner-node-default-value-support":185,"./factories/unknown-error":186,"./factories/wave-shaper-node-constructor":187,"./factories/wave-shaper-node-renderer-factory":188,"./factories/window":189,"./factories/wrap-audio-buffer-copy-channel-methods":191,"./factories/wrap-audio-buffer-copy-channel-methods-out-of-bounds":190,"./factories/wrap-audio-buffer-source-node-stop-method-nullified-buffer":192,"./factories/wrap-channel-merger-node":193,"./globals":194,"./helpers/connect-native-audio-node-to-native-audio-node":214,"./helpers/disconnect-native-audio-node-from-native-audio-node":228,"./helpers/get-audio-node-connections":230,"./helpers/get-audio-param-connections":231,"./helpers/get-event-listeners-of-audio-node":233,"./helpers/get-first-sample":234,"./helpers/get-native-audio-node":235,"./helpers/get-native-audio-param":236,"./helpers/get-value-for-key":237,"./helpers/insert-element-in-set":238,"./helpers/is-active-audio-node":240,"./helpers/is-dc-curve":242,"./helpers/is-part-of-a-cycle":244,"./helpers/is-passive-audio-node":245,"./helpers/overwrite-accessors":247,"./helpers/pick-element-from-set":248,"./helpers/sanitize-audio-worklet-node-options":249,"./helpers/sanitize-channel-splitter-options":250,"./helpers/sanitize-periodic-wave-options":251,"./helpers/set-value-at-time-until-possible":255,"./helpers/test-audio-buffer-copy-channel-methods-out-of-bounds-support":258,"./helpers/test-audio-buffer-source-node-start-method-consecutive-calls-support":259,"./helpers/test-audio-buffer-source-node-start-method-offset-clamping-support":260,"./helpers/test-audio-buffer-source-node-stop-method-nullified-buffer-support":261,"./helpers/test-audio-scheduled-source-node-start-method-negative-parameters-support":263,"./helpers/test-audio-scheduled-source-node-stop-method-consecutive-calls-support":264,"./helpers/test-audio-scheduled-source-node-stop-method-negative-parameters-support":265,"./helpers/test-audio-worklet-node-options-clonability":266,"./helpers/test-dom-exception-constructor-support":268,"./helpers/test-promise-support":269,"./helpers/test-transferables-support":270,"./helpers/wrap-audio-buffer-source-node-start-method-offset-clamping":275,"./helpers/wrap-audio-scheduled-source-node-stop-method-consecutive-calls":278,"./helpers/wrap-event-listener":281,"./interfaces/index":330,"./types/index":549,"automation-events":28}],369:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -17662,365 +17263,365 @@ class ReadOnlyMap {
 
 exports.ReadOnlyMap = ReadOnlyMap;
 
-},{}],376:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],377:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],378:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],379:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],380:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],381:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],382:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],383:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],384:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],385:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],386:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],387:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],388:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],389:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],390:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],391:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],392:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],393:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],394:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],395:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],396:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],397:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],398:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],399:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],400:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],401:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],402:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],403:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],404:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],405:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],406:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],407:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],408:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],409:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],410:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],411:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],412:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],413:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],414:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],415:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],416:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],417:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],418:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],419:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],420:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],421:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],422:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],423:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],424:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],425:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],426:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],427:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],428:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],429:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],430:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],431:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],432:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],433:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],434:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],435:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],436:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],437:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],438:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],439:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],440:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],441:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],442:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],443:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],444:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],445:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],446:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],447:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],448:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],449:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],450:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],451:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],452:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],453:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],454:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],455:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],456:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],457:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],458:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],459:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],460:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],461:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],462:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],463:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],464:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],465:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],466:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],467:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],468:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],469:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],470:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],471:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],472:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],473:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],474:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],475:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],476:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],477:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],478:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],479:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],480:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],481:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],482:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],483:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],484:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],485:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],486:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],487:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],488:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],489:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],490:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],491:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],492:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],493:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],494:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],495:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],496:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],497:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],498:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],499:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],500:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],501:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],502:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],503:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],504:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],505:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],506:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],507:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],508:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],509:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],510:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],511:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],512:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],513:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],514:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],515:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],516:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],517:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],518:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],519:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],520:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],521:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],522:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],523:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],524:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],525:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],526:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],527:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],528:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],529:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],530:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],531:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],532:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],533:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],534:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],535:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],536:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],537:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],538:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],539:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],540:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],541:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],542:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],543:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],544:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],545:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],546:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],547:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],548:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],549:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],550:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],551:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],552:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],553:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],554:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],555:[function(require,module,exports){
+},{}],370:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],371:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],372:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],373:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],374:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],375:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],376:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],377:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],378:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],379:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],380:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],381:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],382:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],383:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],384:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],385:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],386:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],387:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],388:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],389:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],390:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],391:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],392:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],393:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],394:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],395:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],396:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],397:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],398:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],399:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],400:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],401:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],402:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],403:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],404:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],405:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],406:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],407:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],408:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],409:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],410:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],411:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],412:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],413:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],414:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],415:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],416:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],417:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],418:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],419:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],420:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],421:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],422:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],423:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],424:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],425:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],426:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],427:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],428:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],429:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],430:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],431:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],432:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],433:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],434:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],435:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],436:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],437:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],438:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],439:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],440:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],441:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],442:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],443:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],444:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],445:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],446:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],447:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],448:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],449:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],450:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],451:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],452:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],453:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],454:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],455:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],456:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],457:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],458:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],459:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],460:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],461:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],462:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],463:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],464:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],465:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],466:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],467:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],468:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],469:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],470:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],471:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],472:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],473:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],474:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],475:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],476:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],477:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],478:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],479:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],480:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],481:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],482:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],483:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],484:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],485:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],486:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],487:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],488:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],489:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],490:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],491:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],492:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],493:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],494:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],495:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],496:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],497:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],498:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],499:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],500:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],501:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],502:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],503:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],504:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],505:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],506:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],507:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],508:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],509:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],510:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],511:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],512:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],513:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],514:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],515:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],516:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],517:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],518:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],519:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],520:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],521:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],522:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],523:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],524:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],525:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],526:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],527:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],528:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],529:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],530:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],531:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],532:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],533:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],534:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],535:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],536:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],537:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],538:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],539:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],540:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],541:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],542:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],543:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],544:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],545:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],546:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],547:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],548:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],549:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -23162,439 +22763,439 @@ Object.keys(_wrapEventListenerFunction).forEach(function (key) {
   });
 });
 
-},{"./abort-error-factory":376,"./active-audio-worklet-node-inputs-store":377,"./active-input-connection":378,"./add-active-input-connection-to-audio-node-factory":379,"./add-active-input-connection-to-audio-node-function":380,"./add-audio-node-connections-factory":381,"./add-audio-node-connections-function":382,"./add-audio-param-connections-factory":383,"./add-audio-param-connections-function":384,"./add-audio-worklet-module-factory":385,"./add-audio-worklet-module-function":386,"./add-connection-to-audio-node-factory":387,"./add-connection-to-audio-node-function":388,"./add-passive-input-connection-to-audio-node-factory":389,"./add-passive-input-connection-to-audio-node-function":390,"./add-silent-connection-factory":391,"./add-silent-connection-function":392,"./add-unrendered-audio-worklet-node-factory":393,"./add-unrendered-audio-worklet-node-function":394,"./analyser-node-constructor":396,"./analyser-node-constructor-factory":395,"./analyser-node-renderer-factory":398,"./analyser-node-renderer-factory-factory":397,"./any-audio-buffer":399,"./any-context":400,"./audio-buffer-constructor":402,"./audio-buffer-constructor-factory":401,"./audio-buffer-source-node-constructor":404,"./audio-buffer-source-node-constructor-factory":403,"./audio-buffer-source-node-renderer":407,"./audio-buffer-source-node-renderer-factory":406,"./audio-buffer-source-node-renderer-factory-factory":405,"./audio-buffer-store":408,"./audio-context-constructor":410,"./audio-context-constructor-factory":409,"./audio-context-latency-category":411,"./audio-context-state":412,"./audio-destination-node-constructor":414,"./audio-destination-node-constructor-factory":413,"./audio-destination-node-renderer-factory":415,"./audio-listener-factory":417,"./audio-listener-factory-factory":416,"./audio-node-connections":419,"./audio-node-connections-store":418,"./audio-node-constructor":421,"./audio-node-constructor-factory":420,"./audio-node-output-connection":422,"./audio-node-renderer":423,"./audio-node-store":424,"./audio-node-tail-time-store":425,"./audio-param-audio-node-store":426,"./audio-param-connections":428,"./audio-param-connections-store":427,"./audio-param-factory":430,"./audio-param-factory-factory":429,"./audio-param-map":431,"./audio-param-output-connection":432,"./audio-param-renderer-factory":433,"./audio-param-store":434,"./audio-worklet-node-constructor":436,"./audio-worklet-node-constructor-factory":435,"./audio-worklet-node-renderer-factory":438,"./audio-worklet-node-renderer-factory-factory":437,"./backup-offline-audio-context-store":439,"./base-audio-context-constructor":441,"./base-audio-context-constructor-factory":440,"./biquad-filter-node-constructor":443,"./biquad-filter-node-constructor-factory":442,"./biquad-filter-node-renderer-factory":445,"./biquad-filter-node-renderer-factory-factory":444,"./biquad-filter-type":446,"./cache-test-result-factory":447,"./cache-test-result-function":448,"./channel-count-mode":449,"./channel-interpretation":450,"./channel-merger-node-constructor":452,"./channel-merger-node-constructor-factory":451,"./channel-merger-node-renderer-factory":454,"./channel-merger-node-renderer-factory-factory":453,"./channel-splitter-node-constructor":456,"./channel-splitter-node-constructor-factory":455,"./channel-splitter-node-renderer-factory":458,"./channel-splitter-node-renderer-factory-factory":457,"./connect-audio-param-factory":459,"./connect-audio-param-function":460,"./connect-multiple-outputs-factory":461,"./connect-multiple-outputs-function":462,"./connect-native-audio-node-to-native-audio-node-function":463,"./connected-native-audio-buffer-source-node-factory":465,"./connected-native-audio-buffer-source-node-factory-factory":464,"./constant-source-node-constructor":467,"./constant-source-node-constructor-factory":466,"./constant-source-node-renderer":470,"./constant-source-node-renderer-factory":469,"./constant-source-node-renderer-factory-factory":468,"./constructor":471,"./context":473,"./context-store":472,"./convert-number-to-unsigned-long-factory":474,"./convert-number-to-unsigned-long-function":475,"./convolver-node-constructor":477,"./convolver-node-constructor-factory":476,"./convolver-node-renderer-factory":479,"./convolver-node-renderer-factory-factory":478,"./create-native-offline-audio-context-factory":480,"./create-native-offline-audio-context-function":481,"./cycle-counters":482,"./data-clone-error-factory":483,"./decode-audio-data-factory":484,"./decode-audio-data-function":485,"./decode-error-callback":486,"./decode-success-callback":487,"./decrement-cycle-counter-factory":488,"./decrement-cycle-counter-function":489,"./delay-node-constructor":491,"./delay-node-constructor-factory":490,"./delay-node-renderer-factory":493,"./delay-node-renderer-factory-factory":492,"./delete-active-input-connection-to-audio-node-factory":494,"./delete-active-input-connection-to-audio-node-function":495,"./delete-unrendered-audio-worklet-node-factory":496,"./delete-unrendered-audio-worklet-node-function":497,"./detect-cycles-factory":498,"./detect-cycles-function":499,"./disconnect-multiple-outputs-factory":500,"./disconnect-multiple-outputs-function":501,"./disconnect-native-audio-node-from-native-audio-node-function":502,"./distance-model-type":503,"./dynamics-compressor-node-constructor":505,"./dynamics-compressor-node-constructor-factory":504,"./dynamics-compressor-node-renderer-factory":507,"./dynamics-compressor-node-renderer-factory-factory":506,"./encoding-error-factory":508,"./error-event-handler":509,"./evaluate-audio-worklet-global-scope-function":510,"./evaluate-source-factory":511,"./evaluate-source-function":512,"./event-handler":513,"./event-target-constructor":515,"./event-target-constructor-factory":514,"./expose-current-frame-and-current-time-factory":516,"./expose-current-frame-and-current-time-function":517,"./fetch-source-factory":518,"./fetch-source-function":519,"./gain-node-constructor":521,"./gain-node-constructor-factory":520,"./gain-node-renderer-factory":523,"./gain-node-renderer-factory-factory":522,"./get-active-audio-worklet-node-inputs-factory":524,"./get-active-audio-worklet-node-inputs-function":525,"./get-audio-node-connections-function":526,"./get-audio-node-renderer-factory":527,"./get-audio-node-renderer-function":528,"./get-audio-node-tail-time-factory":529,"./get-audio-node-tail-time-function":530,"./get-audio-param-connections-function":531,"./get-audio-param-renderer-factory":532,"./get-audio-param-renderer-function":533,"./get-backup-offline-audio-context-factory":534,"./get-backup-offline-audio-context-function":535,"./get-event-listeners-of-audio-node-function":536,"./get-first-sample-function":537,"./get-native-audio-node-function":538,"./get-native-audio-param-function":539,"./get-native-context-factory":540,"./get-native-context-function":541,"./get-or-create-backup-offline-audio-context-factory":542,"./get-or-create-backup-offline-audio-context-function":543,"./get-unrendered-audio-worklet-nodes-factory":544,"./get-unrendered-audio-worklet-nodes-function":545,"./get-value-for-key-function":546,"./iir-filter-node-constructor":548,"./iir-filter-node-constructor-factory":547,"./iir-filter-node-renderer-factory":550,"./iir-filter-node-renderer-factory-factory":549,"./increment-cycle-counter-factory":552,"./increment-cycle-counter-factory-factory":551,"./increment-cycle-counter-function":553,"./index-size-error-factory":554,"./insert-element-in-set-function":556,"./internal-state-event-listener":557,"./invalid-access-error-factory":558,"./invalid-state-error-factory":559,"./is-active-audio-node-function":560,"./is-any-audio-context-factory":561,"./is-any-audio-context-function":562,"./is-any-audio-node-factory":563,"./is-any-audio-node-function":564,"./is-any-audio-param-factory":565,"./is-any-audio-param-function":566,"./is-any-offline-audio-context-factory":567,"./is-any-offline-audio-context-function":568,"./is-dc-curve-function":569,"./is-native-audio-context-factory":570,"./is-native-audio-context-function":571,"./is-native-audio-node-factory":572,"./is-native-audio-node-function":573,"./is-native-audio-param-factory":574,"./is-native-audio-param-function":575,"./is-native-context-factory":576,"./is-native-context-function":577,"./is-native-offline-audio-context-factory":578,"./is-native-offline-audio-context-function":579,"./is-part-of-a-cycle-function":580,"./is-passive-audio-node-function":581,"./is-secure-context-factory":582,"./is-supported-promise-factory":583,"./media-element-audio-source-node-constructor":585,"./media-element-audio-source-node-constructor-factory":584,"./media-stream-audio-destination-node-constructor":587,"./media-stream-audio-destination-node-constructor-factory":586,"./media-stream-audio-source-node-constructor":589,"./media-stream-audio-source-node-constructor-factory":588,"./media-stream-track-audio-source-node-constructor":591,"./media-stream-track-audio-source-node-constructor-factory":590,"./minimal-audio-context-constructor":593,"./minimal-audio-context-constructor-factory":592,"./minimal-base-audio-context-constructor":595,"./minimal-base-audio-context-constructor-factory":594,"./minimal-offline-audio-context-constructor":597,"./minimal-offline-audio-context-constructor-factory":596,"./monitor-connections-factory":598,"./monitor-connections-function":599,"./native-analyser-node":602,"./native-analyser-node-factory":601,"./native-analyser-node-factory-factory":600,"./native-audio-buffer":608,"./native-audio-buffer-constructor":604,"./native-audio-buffer-constructor-factory":603,"./native-audio-buffer-source-node":607,"./native-audio-buffer-source-node-factory":606,"./native-audio-buffer-source-node-factory-factory":605,"./native-audio-context":611,"./native-audio-context-constructor":610,"./native-audio-context-constructor-factory":609,"./native-audio-destination-node":614,"./native-audio-destination-node-factory":613,"./native-audio-destination-node-factory-factory":612,"./native-audio-listener":615,"./native-audio-node":616,"./native-audio-param":618,"./native-audio-param-map":617,"./native-audio-worklet":627,"./native-audio-worklet-node":626,"./native-audio-worklet-node-constructor":620,"./native-audio-worklet-node-constructor-factory":619,"./native-audio-worklet-node-factory":622,"./native-audio-worklet-node-factory-factory":621,"./native-audio-worklet-node-faker-factory":624,"./native-audio-worklet-node-faker-factory-factory":623,"./native-audio-worklet-node-options":625,"./native-biquad-filter-node":629,"./native-biquad-filter-node-factory":628,"./native-channel-merger-node":632,"./native-channel-merger-node-factory":631,"./native-channel-merger-node-factory-factory":630,"./native-channel-splitter-node":634,"./native-channel-splitter-node-factory":633,"./native-constant-source-node":639,"./native-constant-source-node-factory":636,"./native-constant-source-node-factory-factory":635,"./native-constant-source-node-faker-factory":638,"./native-constant-source-node-faker-factory-factory":637,"./native-context":640,"./native-convolver-node":643,"./native-convolver-node-factory":642,"./native-convolver-node-factory-factory":641,"./native-delay-node":645,"./native-delay-node-factory":644,"./native-dynamics-compressor-node":648,"./native-dynamics-compressor-node-factory":647,"./native-dynamics-compressor-node-factory-factory":646,"./native-event-target":649,"./native-gain-node":651,"./native-gain-node-factory":650,"./native-iir-filter-node":656,"./native-iir-filter-node-factory":653,"./native-iir-filter-node-factory-factory":652,"./native-iir-filter-node-faker-factory":655,"./native-iir-filter-node-faker-factory-factory":654,"./native-media-element-audio-source-node":658,"./native-media-element-audio-source-node-factory":657,"./native-media-stream-audio-destination-node":660,"./native-media-stream-audio-destination-node-factory":659,"./native-media-stream-audio-source-node":662,"./native-media-stream-audio-source-node-factory":661,"./native-media-stream-track-audio-source-node":665,"./native-media-stream-track-audio-source-node-factory":664,"./native-media-stream-track-audio-source-node-factory-factory":663,"./native-offline-audio-context":668,"./native-offline-audio-context-constructor":667,"./native-offline-audio-context-constructor-factory":666,"./native-oscillator-node":671,"./native-oscillator-node-factory":670,"./native-oscillator-node-factory-factory":669,"./native-panner-node":676,"./native-panner-node-factory":673,"./native-panner-node-factory-factory":672,"./native-panner-node-faker-factory":675,"./native-panner-node-faker-factory-factory":674,"./native-periodic-wave":679,"./native-periodic-wave-factory":678,"./native-periodic-wave-factory-factory":677,"./native-script-processor-node":681,"./native-script-processor-node-factory":680,"./native-stereo-panner-node":686,"./native-stereo-panner-node-factory":683,"./native-stereo-panner-node-factory-factory":682,"./native-stereo-panner-node-faker-factory":685,"./native-stereo-panner-node-faker-factory-factory":684,"./native-wave-shaper-node":691,"./native-wave-shaper-node-factory":688,"./native-wave-shaper-node-factory-factory":687,"./native-wave-shaper-node-faker-factory":690,"./native-wave-shaper-node-faker-factory-factory":689,"./not-supported-error-factory":692,"./offline-audio-context-constructor-factory":693,"./oscillator-node-constructor":695,"./oscillator-node-constructor-factory":694,"./oscillator-node-renderer":698,"./oscillator-node-renderer-factory":697,"./oscillator-node-renderer-factory-factory":696,"./oscillator-type":699,"./output-connection":700,"./over-sample-type":701,"./overwrite-accessors-function":702,"./panner-node-constructor":704,"./panner-node-constructor-factory":703,"./panner-node-renderer-factory":706,"./panner-node-renderer-factory-factory":705,"./panning-model-type":707,"./passive-audio-node-input-connection":708,"./passive-audio-param-input-connection":709,"./periodic-wave-constructor":711,"./periodic-wave-constructor-factory":710,"./pick-element-from-set-function":712,"./render-automation-factory":713,"./render-automation-function":714,"./render-inputs-of-audio-node-factory":715,"./render-inputs-of-audio-node-function":716,"./render-inputs-of-audio-param-factory":717,"./render-inputs-of-audio-param-function":718,"./render-native-offline-audio-context-factory":719,"./render-native-offline-audio-context-function":720,"./sanitize-audio-worklet-node-options-function":721,"./sanitize-channel-splitter-options-function":722,"./sanitize-periodic-wave-options-function":723,"./set-active-audio-worklet-node-inputs-factory":724,"./set-active-audio-worklet-node-inputs-function":725,"./set-audio-node-tail-time-factory":726,"./set-audio-node-tail-time-function":727,"./set-value-at-time-until-possible-function":728,"./start-rendering-factory":729,"./start-rendering-function":730,"./stereo-panner-node-constructor":732,"./stereo-panner-node-constructor-factory":731,"./stereo-panner-node-renderer-factory":734,"./stereo-panner-node-renderer-factory-factory":733,"./test-audio-buffer-constructor-support-factory":735,"./test-audio-buffer-copy-channel-methods-subarray-support-factory":736,"./test-audio-context-close-method-support-factory":737,"./test-audio-context-decode-audio-data-method-type-error-support-factory":738,"./test-audio-context-options-support-factory":739,"./test-audio-node-connect-method-support-factory":740,"./test-audio-worklet-node-options-clonability-function":741,"./test-audio-worklet-processor-no-outputs-support-factory":742,"./test-audio-worklet-processor-post-message-support-factory":743,"./test-channel-merger-node-channel-count-support-factory":744,"./test-constant-source-node-accurate-scheduling-support-factory":745,"./test-convolver-node-buffer-reassignability-support-factory":746,"./test-convolver-node-channel-count-support-factory":747,"./test-is-secure-context-support-factory":748,"./test-media-stream-audio-source-node-media-stream-without-audio-track-support":749,"./test-offline-audio-context-current-time-support-factory":750,"./test-stereo-panner-node-default-value-support-factory":751,"./unknown-error-factory":752,"./unrendered-audio-worklet-node-store":753,"./unrendered-audio-worklet-nodes":754,"./wave-shaper-node-constructor":756,"./wave-shaper-node-constructor-factory":755,"./wave-shaper-node-renderer-factory":758,"./wave-shaper-node-renderer-factory-factory":757,"./window":760,"./window-factory":759,"./wrap-audio-buffer-copy-channel-methods-factory":761,"./wrap-audio-buffer-copy-channel-methods-function":762,"./wrap-audio-buffer-copy-channel-methods-out-of-bounds-factory":763,"./wrap-audio-buffer-copy-channel-methods-out-of-bounds-function":764,"./wrap-audio-buffer-source-node-start-method-offset-clamping-function":765,"./wrap-audio-buffer-source-node-stop-method-nullified-buffer-factory":766,"./wrap-audio-buffer-source-node-stop-method-nullified-buffer-function":767,"./wrap-audio-scheduled-source-node-stop-method-consecutive-calls-function":768,"./wrap-channel-merger-node-factory":769,"./wrap-channel-merger-node-function":770,"./wrap-event-listener-function":771}],556:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],557:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],558:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],559:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],560:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],561:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],562:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],563:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],564:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],565:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],566:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],567:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],568:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],569:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],570:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],571:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],572:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],573:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],574:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],575:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],576:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],577:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],578:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],579:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],580:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],581:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],582:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],583:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],584:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],585:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],586:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],587:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],588:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],589:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],590:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],591:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],592:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],593:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],594:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],595:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],596:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],597:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],598:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],599:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],600:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],601:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],602:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],603:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],604:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],605:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],606:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],607:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],608:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],609:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],610:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],611:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],612:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],613:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],614:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],615:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],616:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],617:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],618:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],619:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],620:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],621:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],622:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],623:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],624:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],625:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],626:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],627:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],628:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],629:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],630:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],631:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],632:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],633:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],634:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],635:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],636:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],637:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],638:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],639:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],640:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],641:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],642:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],643:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],644:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],645:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],646:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],647:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],648:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],649:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],650:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],651:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],652:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],653:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],654:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],655:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],656:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],657:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],658:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],659:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],660:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],661:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],662:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],663:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],664:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],665:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],666:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],667:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],668:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],669:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],670:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],671:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],672:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],673:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],674:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],675:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],676:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],677:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],678:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],679:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],680:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],681:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],682:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],683:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],684:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],685:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],686:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],687:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],688:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],689:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],690:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],691:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],692:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],693:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],694:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],695:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],696:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],697:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],698:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],699:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],700:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],701:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],702:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],703:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],704:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],705:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],706:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],707:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],708:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],709:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],710:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],711:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],712:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],713:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],714:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],715:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],716:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],717:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],718:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],719:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],720:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],721:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],722:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],723:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],724:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],725:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],726:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],727:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],728:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],729:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],730:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],731:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],732:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],733:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],734:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],735:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],736:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],737:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],738:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],739:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],740:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],741:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],742:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],743:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],744:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],745:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],746:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],747:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],748:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],749:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],750:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],751:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],752:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],753:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],754:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],755:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],756:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],757:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],758:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],759:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],760:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],761:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],762:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],763:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],764:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],765:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],766:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],767:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],768:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],769:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],770:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],771:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],772:[function(require,module,exports){
+},{"./abort-error-factory":370,"./active-audio-worklet-node-inputs-store":371,"./active-input-connection":372,"./add-active-input-connection-to-audio-node-factory":373,"./add-active-input-connection-to-audio-node-function":374,"./add-audio-node-connections-factory":375,"./add-audio-node-connections-function":376,"./add-audio-param-connections-factory":377,"./add-audio-param-connections-function":378,"./add-audio-worklet-module-factory":379,"./add-audio-worklet-module-function":380,"./add-connection-to-audio-node-factory":381,"./add-connection-to-audio-node-function":382,"./add-passive-input-connection-to-audio-node-factory":383,"./add-passive-input-connection-to-audio-node-function":384,"./add-silent-connection-factory":385,"./add-silent-connection-function":386,"./add-unrendered-audio-worklet-node-factory":387,"./add-unrendered-audio-worklet-node-function":388,"./analyser-node-constructor":390,"./analyser-node-constructor-factory":389,"./analyser-node-renderer-factory":392,"./analyser-node-renderer-factory-factory":391,"./any-audio-buffer":393,"./any-context":394,"./audio-buffer-constructor":396,"./audio-buffer-constructor-factory":395,"./audio-buffer-source-node-constructor":398,"./audio-buffer-source-node-constructor-factory":397,"./audio-buffer-source-node-renderer":401,"./audio-buffer-source-node-renderer-factory":400,"./audio-buffer-source-node-renderer-factory-factory":399,"./audio-buffer-store":402,"./audio-context-constructor":404,"./audio-context-constructor-factory":403,"./audio-context-latency-category":405,"./audio-context-state":406,"./audio-destination-node-constructor":408,"./audio-destination-node-constructor-factory":407,"./audio-destination-node-renderer-factory":409,"./audio-listener-factory":411,"./audio-listener-factory-factory":410,"./audio-node-connections":413,"./audio-node-connections-store":412,"./audio-node-constructor":415,"./audio-node-constructor-factory":414,"./audio-node-output-connection":416,"./audio-node-renderer":417,"./audio-node-store":418,"./audio-node-tail-time-store":419,"./audio-param-audio-node-store":420,"./audio-param-connections":422,"./audio-param-connections-store":421,"./audio-param-factory":424,"./audio-param-factory-factory":423,"./audio-param-map":425,"./audio-param-output-connection":426,"./audio-param-renderer-factory":427,"./audio-param-store":428,"./audio-worklet-node-constructor":430,"./audio-worklet-node-constructor-factory":429,"./audio-worklet-node-renderer-factory":432,"./audio-worklet-node-renderer-factory-factory":431,"./backup-offline-audio-context-store":433,"./base-audio-context-constructor":435,"./base-audio-context-constructor-factory":434,"./biquad-filter-node-constructor":437,"./biquad-filter-node-constructor-factory":436,"./biquad-filter-node-renderer-factory":439,"./biquad-filter-node-renderer-factory-factory":438,"./biquad-filter-type":440,"./cache-test-result-factory":441,"./cache-test-result-function":442,"./channel-count-mode":443,"./channel-interpretation":444,"./channel-merger-node-constructor":446,"./channel-merger-node-constructor-factory":445,"./channel-merger-node-renderer-factory":448,"./channel-merger-node-renderer-factory-factory":447,"./channel-splitter-node-constructor":450,"./channel-splitter-node-constructor-factory":449,"./channel-splitter-node-renderer-factory":452,"./channel-splitter-node-renderer-factory-factory":451,"./connect-audio-param-factory":453,"./connect-audio-param-function":454,"./connect-multiple-outputs-factory":455,"./connect-multiple-outputs-function":456,"./connect-native-audio-node-to-native-audio-node-function":457,"./connected-native-audio-buffer-source-node-factory":459,"./connected-native-audio-buffer-source-node-factory-factory":458,"./constant-source-node-constructor":461,"./constant-source-node-constructor-factory":460,"./constant-source-node-renderer":464,"./constant-source-node-renderer-factory":463,"./constant-source-node-renderer-factory-factory":462,"./constructor":465,"./context":467,"./context-store":466,"./convert-number-to-unsigned-long-factory":468,"./convert-number-to-unsigned-long-function":469,"./convolver-node-constructor":471,"./convolver-node-constructor-factory":470,"./convolver-node-renderer-factory":473,"./convolver-node-renderer-factory-factory":472,"./create-native-offline-audio-context-factory":474,"./create-native-offline-audio-context-function":475,"./cycle-counters":476,"./data-clone-error-factory":477,"./decode-audio-data-factory":478,"./decode-audio-data-function":479,"./decode-error-callback":480,"./decode-success-callback":481,"./decrement-cycle-counter-factory":482,"./decrement-cycle-counter-function":483,"./delay-node-constructor":485,"./delay-node-constructor-factory":484,"./delay-node-renderer-factory":487,"./delay-node-renderer-factory-factory":486,"./delete-active-input-connection-to-audio-node-factory":488,"./delete-active-input-connection-to-audio-node-function":489,"./delete-unrendered-audio-worklet-node-factory":490,"./delete-unrendered-audio-worklet-node-function":491,"./detect-cycles-factory":492,"./detect-cycles-function":493,"./disconnect-multiple-outputs-factory":494,"./disconnect-multiple-outputs-function":495,"./disconnect-native-audio-node-from-native-audio-node-function":496,"./distance-model-type":497,"./dynamics-compressor-node-constructor":499,"./dynamics-compressor-node-constructor-factory":498,"./dynamics-compressor-node-renderer-factory":501,"./dynamics-compressor-node-renderer-factory-factory":500,"./encoding-error-factory":502,"./error-event-handler":503,"./evaluate-audio-worklet-global-scope-function":504,"./evaluate-source-factory":505,"./evaluate-source-function":506,"./event-handler":507,"./event-target-constructor":509,"./event-target-constructor-factory":508,"./expose-current-frame-and-current-time-factory":510,"./expose-current-frame-and-current-time-function":511,"./fetch-source-factory":512,"./fetch-source-function":513,"./gain-node-constructor":515,"./gain-node-constructor-factory":514,"./gain-node-renderer-factory":517,"./gain-node-renderer-factory-factory":516,"./get-active-audio-worklet-node-inputs-factory":518,"./get-active-audio-worklet-node-inputs-function":519,"./get-audio-node-connections-function":520,"./get-audio-node-renderer-factory":521,"./get-audio-node-renderer-function":522,"./get-audio-node-tail-time-factory":523,"./get-audio-node-tail-time-function":524,"./get-audio-param-connections-function":525,"./get-audio-param-renderer-factory":526,"./get-audio-param-renderer-function":527,"./get-backup-offline-audio-context-factory":528,"./get-backup-offline-audio-context-function":529,"./get-event-listeners-of-audio-node-function":530,"./get-first-sample-function":531,"./get-native-audio-node-function":532,"./get-native-audio-param-function":533,"./get-native-context-factory":534,"./get-native-context-function":535,"./get-or-create-backup-offline-audio-context-factory":536,"./get-or-create-backup-offline-audio-context-function":537,"./get-unrendered-audio-worklet-nodes-factory":538,"./get-unrendered-audio-worklet-nodes-function":539,"./get-value-for-key-function":540,"./iir-filter-node-constructor":542,"./iir-filter-node-constructor-factory":541,"./iir-filter-node-renderer-factory":544,"./iir-filter-node-renderer-factory-factory":543,"./increment-cycle-counter-factory":546,"./increment-cycle-counter-factory-factory":545,"./increment-cycle-counter-function":547,"./index-size-error-factory":548,"./insert-element-in-set-function":550,"./internal-state-event-listener":551,"./invalid-access-error-factory":552,"./invalid-state-error-factory":553,"./is-active-audio-node-function":554,"./is-any-audio-context-factory":555,"./is-any-audio-context-function":556,"./is-any-audio-node-factory":557,"./is-any-audio-node-function":558,"./is-any-audio-param-factory":559,"./is-any-audio-param-function":560,"./is-any-offline-audio-context-factory":561,"./is-any-offline-audio-context-function":562,"./is-dc-curve-function":563,"./is-native-audio-context-factory":564,"./is-native-audio-context-function":565,"./is-native-audio-node-factory":566,"./is-native-audio-node-function":567,"./is-native-audio-param-factory":568,"./is-native-audio-param-function":569,"./is-native-context-factory":570,"./is-native-context-function":571,"./is-native-offline-audio-context-factory":572,"./is-native-offline-audio-context-function":573,"./is-part-of-a-cycle-function":574,"./is-passive-audio-node-function":575,"./is-secure-context-factory":576,"./is-supported-promise-factory":577,"./media-element-audio-source-node-constructor":579,"./media-element-audio-source-node-constructor-factory":578,"./media-stream-audio-destination-node-constructor":581,"./media-stream-audio-destination-node-constructor-factory":580,"./media-stream-audio-source-node-constructor":583,"./media-stream-audio-source-node-constructor-factory":582,"./media-stream-track-audio-source-node-constructor":585,"./media-stream-track-audio-source-node-constructor-factory":584,"./minimal-audio-context-constructor":587,"./minimal-audio-context-constructor-factory":586,"./minimal-base-audio-context-constructor":589,"./minimal-base-audio-context-constructor-factory":588,"./minimal-offline-audio-context-constructor":591,"./minimal-offline-audio-context-constructor-factory":590,"./monitor-connections-factory":592,"./monitor-connections-function":593,"./native-analyser-node":596,"./native-analyser-node-factory":595,"./native-analyser-node-factory-factory":594,"./native-audio-buffer":602,"./native-audio-buffer-constructor":598,"./native-audio-buffer-constructor-factory":597,"./native-audio-buffer-source-node":601,"./native-audio-buffer-source-node-factory":600,"./native-audio-buffer-source-node-factory-factory":599,"./native-audio-context":605,"./native-audio-context-constructor":604,"./native-audio-context-constructor-factory":603,"./native-audio-destination-node":608,"./native-audio-destination-node-factory":607,"./native-audio-destination-node-factory-factory":606,"./native-audio-listener":609,"./native-audio-node":610,"./native-audio-param":612,"./native-audio-param-map":611,"./native-audio-worklet":621,"./native-audio-worklet-node":620,"./native-audio-worklet-node-constructor":614,"./native-audio-worklet-node-constructor-factory":613,"./native-audio-worklet-node-factory":616,"./native-audio-worklet-node-factory-factory":615,"./native-audio-worklet-node-faker-factory":618,"./native-audio-worklet-node-faker-factory-factory":617,"./native-audio-worklet-node-options":619,"./native-biquad-filter-node":623,"./native-biquad-filter-node-factory":622,"./native-channel-merger-node":626,"./native-channel-merger-node-factory":625,"./native-channel-merger-node-factory-factory":624,"./native-channel-splitter-node":628,"./native-channel-splitter-node-factory":627,"./native-constant-source-node":633,"./native-constant-source-node-factory":630,"./native-constant-source-node-factory-factory":629,"./native-constant-source-node-faker-factory":632,"./native-constant-source-node-faker-factory-factory":631,"./native-context":634,"./native-convolver-node":637,"./native-convolver-node-factory":636,"./native-convolver-node-factory-factory":635,"./native-delay-node":639,"./native-delay-node-factory":638,"./native-dynamics-compressor-node":642,"./native-dynamics-compressor-node-factory":641,"./native-dynamics-compressor-node-factory-factory":640,"./native-event-target":643,"./native-gain-node":645,"./native-gain-node-factory":644,"./native-iir-filter-node":650,"./native-iir-filter-node-factory":647,"./native-iir-filter-node-factory-factory":646,"./native-iir-filter-node-faker-factory":649,"./native-iir-filter-node-faker-factory-factory":648,"./native-media-element-audio-source-node":652,"./native-media-element-audio-source-node-factory":651,"./native-media-stream-audio-destination-node":654,"./native-media-stream-audio-destination-node-factory":653,"./native-media-stream-audio-source-node":656,"./native-media-stream-audio-source-node-factory":655,"./native-media-stream-track-audio-source-node":659,"./native-media-stream-track-audio-source-node-factory":658,"./native-media-stream-track-audio-source-node-factory-factory":657,"./native-offline-audio-context":662,"./native-offline-audio-context-constructor":661,"./native-offline-audio-context-constructor-factory":660,"./native-oscillator-node":665,"./native-oscillator-node-factory":664,"./native-oscillator-node-factory-factory":663,"./native-panner-node":670,"./native-panner-node-factory":667,"./native-panner-node-factory-factory":666,"./native-panner-node-faker-factory":669,"./native-panner-node-faker-factory-factory":668,"./native-periodic-wave":673,"./native-periodic-wave-factory":672,"./native-periodic-wave-factory-factory":671,"./native-script-processor-node":675,"./native-script-processor-node-factory":674,"./native-stereo-panner-node":680,"./native-stereo-panner-node-factory":677,"./native-stereo-panner-node-factory-factory":676,"./native-stereo-panner-node-faker-factory":679,"./native-stereo-panner-node-faker-factory-factory":678,"./native-wave-shaper-node":685,"./native-wave-shaper-node-factory":682,"./native-wave-shaper-node-factory-factory":681,"./native-wave-shaper-node-faker-factory":684,"./native-wave-shaper-node-faker-factory-factory":683,"./not-supported-error-factory":686,"./offline-audio-context-constructor-factory":687,"./oscillator-node-constructor":689,"./oscillator-node-constructor-factory":688,"./oscillator-node-renderer":692,"./oscillator-node-renderer-factory":691,"./oscillator-node-renderer-factory-factory":690,"./oscillator-type":693,"./output-connection":694,"./over-sample-type":695,"./overwrite-accessors-function":696,"./panner-node-constructor":698,"./panner-node-constructor-factory":697,"./panner-node-renderer-factory":700,"./panner-node-renderer-factory-factory":699,"./panning-model-type":701,"./passive-audio-node-input-connection":702,"./passive-audio-param-input-connection":703,"./periodic-wave-constructor":705,"./periodic-wave-constructor-factory":704,"./pick-element-from-set-function":706,"./render-automation-factory":707,"./render-automation-function":708,"./render-inputs-of-audio-node-factory":709,"./render-inputs-of-audio-node-function":710,"./render-inputs-of-audio-param-factory":711,"./render-inputs-of-audio-param-function":712,"./render-native-offline-audio-context-factory":713,"./render-native-offline-audio-context-function":714,"./sanitize-audio-worklet-node-options-function":715,"./sanitize-channel-splitter-options-function":716,"./sanitize-periodic-wave-options-function":717,"./set-active-audio-worklet-node-inputs-factory":718,"./set-active-audio-worklet-node-inputs-function":719,"./set-audio-node-tail-time-factory":720,"./set-audio-node-tail-time-function":721,"./set-value-at-time-until-possible-function":722,"./start-rendering-factory":723,"./start-rendering-function":724,"./stereo-panner-node-constructor":726,"./stereo-panner-node-constructor-factory":725,"./stereo-panner-node-renderer-factory":728,"./stereo-panner-node-renderer-factory-factory":727,"./test-audio-buffer-constructor-support-factory":729,"./test-audio-buffer-copy-channel-methods-subarray-support-factory":730,"./test-audio-context-close-method-support-factory":731,"./test-audio-context-decode-audio-data-method-type-error-support-factory":732,"./test-audio-context-options-support-factory":733,"./test-audio-node-connect-method-support-factory":734,"./test-audio-worklet-node-options-clonability-function":735,"./test-audio-worklet-processor-no-outputs-support-factory":736,"./test-audio-worklet-processor-post-message-support-factory":737,"./test-channel-merger-node-channel-count-support-factory":738,"./test-constant-source-node-accurate-scheduling-support-factory":739,"./test-convolver-node-buffer-reassignability-support-factory":740,"./test-convolver-node-channel-count-support-factory":741,"./test-is-secure-context-support-factory":742,"./test-media-stream-audio-source-node-media-stream-without-audio-track-support":743,"./test-offline-audio-context-current-time-support-factory":744,"./test-stereo-panner-node-default-value-support-factory":745,"./unknown-error-factory":746,"./unrendered-audio-worklet-node-store":747,"./unrendered-audio-worklet-nodes":748,"./wave-shaper-node-constructor":750,"./wave-shaper-node-constructor-factory":749,"./wave-shaper-node-renderer-factory":752,"./wave-shaper-node-renderer-factory-factory":751,"./window":754,"./window-factory":753,"./wrap-audio-buffer-copy-channel-methods-factory":755,"./wrap-audio-buffer-copy-channel-methods-function":756,"./wrap-audio-buffer-copy-channel-methods-out-of-bounds-factory":757,"./wrap-audio-buffer-copy-channel-methods-out-of-bounds-function":758,"./wrap-audio-buffer-source-node-start-method-offset-clamping-function":759,"./wrap-audio-buffer-source-node-stop-method-nullified-buffer-factory":760,"./wrap-audio-buffer-source-node-stop-method-nullified-buffer-function":761,"./wrap-audio-scheduled-source-node-stop-method-consecutive-calls-function":762,"./wrap-channel-merger-node-factory":763,"./wrap-channel-merger-node-function":764,"./wrap-event-listener-function":765}],550:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],551:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],552:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],553:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],554:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],555:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],556:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],557:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],558:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],559:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],560:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],561:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],562:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],563:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],564:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],565:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],566:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],567:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],568:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],569:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],570:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],571:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],572:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],573:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],574:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],575:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],576:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],577:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],578:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],579:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],580:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],581:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],582:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],583:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],584:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],585:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],586:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],587:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],588:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],589:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],590:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],591:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],592:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],593:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],594:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],595:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],596:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],597:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],598:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],599:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],600:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],601:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],602:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],603:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],604:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],605:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],606:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],607:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],608:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],609:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],610:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],611:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],612:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],613:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],614:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],615:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],616:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],617:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],618:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],619:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],620:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],621:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],622:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],623:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],624:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],625:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],626:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],627:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],628:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],629:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],630:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],631:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],632:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],633:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],634:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],635:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],636:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],637:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],638:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],639:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],640:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],641:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],642:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],643:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],644:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],645:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],646:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],647:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],648:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],649:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],650:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],651:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],652:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],653:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],654:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],655:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],656:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],657:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],658:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],659:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],660:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],661:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],662:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],663:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],664:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],665:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],666:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],667:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],668:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],669:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],670:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],671:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],672:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],673:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],674:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],675:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],676:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],677:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],678:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],679:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],680:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],681:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],682:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],683:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],684:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],685:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],686:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],687:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],688:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],689:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],690:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],691:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],692:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],693:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],694:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],695:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],696:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],697:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],698:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],699:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],700:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],701:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],702:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],703:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],704:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],705:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],706:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],707:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],708:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],709:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],710:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],711:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],712:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],713:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],714:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],715:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],716:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],717:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],718:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],719:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],720:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],721:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],722:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],723:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],724:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],725:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],726:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],727:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],728:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],729:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],730:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],731:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],732:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],733:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],734:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],735:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],736:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],737:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],738:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],739:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],740:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],741:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],742:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],743:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],744:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],745:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],746:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],747:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],748:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],749:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],750:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],751:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],752:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],753:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],754:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],755:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],756:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],757:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],758:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],759:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],760:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],761:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],762:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],763:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],764:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],765:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],766:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -23692,7 +23293,7 @@ Object.keys(_index7).forEach(function (key) {
   });
 });
 
-},{"./component/index":811,"./core/index":838,"./effect/index":892,"./event/index":899,"./instrument/index":915,"./signal/index":934,"./source/index":943}],773:[function(require,module,exports){
+},{"./component/index":805,"./core/index":832,"./effect/index":886,"./event/index":893,"./instrument/index":909,"./signal/index":928,"./source/index":937}],767:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -23854,7 +23455,7 @@ class Analyser extends _ToneAudioNode.ToneAudioNode {
 
 exports.Analyser = Analyser;
 
-},{"../../core/context/Gain":829,"../../core/context/ToneAudioNode":836,"../../core/util/Debug":849,"../../core/util/Defaults":851,"../channel/Split":792}],774:[function(require,module,exports){
+},{"../../core/context/Gain":823,"../../core/context/ToneAudioNode":830,"../../core/util/Debug":843,"../../core/util/Defaults":845,"../channel/Split":786}],768:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -23901,7 +23502,7 @@ class DCMeter extends _MeterBase.MeterBase {
 
 exports.DCMeter = DCMeter;
 
-},{"../../core/util/Defaults":851,"./MeterBase":778}],775:[function(require,module,exports){
+},{"../../core/util/Defaults":845,"./MeterBase":772}],769:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -23994,7 +23595,7 @@ class FFT extends _MeterBase.MeterBase {
 
 exports.FFT = FFT;
 
-},{"../../core/context/ToneAudioNode":836,"../../core/type/Conversions":839,"../../core/util/Debug":849,"../../core/util/Defaults":851,"./MeterBase":778}],776:[function(require,module,exports){
+},{"../../core/context/ToneAudioNode":830,"../../core/type/Conversions":833,"../../core/util/Debug":843,"../../core/util/Defaults":845,"./MeterBase":772}],770:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -24072,7 +23673,7 @@ class Follower extends _ToneAudioNode.ToneAudioNode {
 
 exports.Follower = Follower;
 
-},{"../../core/context/ToneAudioNode":836,"../../core/util/Defaults":851,"../../signal/Abs":916,"../filter/OnePoleFilter":809}],777:[function(require,module,exports){
+},{"../../core/context/ToneAudioNode":830,"../../core/util/Defaults":845,"../../signal/Abs":910,"../filter/OnePoleFilter":803}],771:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -24189,7 +23790,7 @@ class Meter extends _MeterBase.MeterBase {
 
 exports.Meter = Meter;
 
-},{"../../core/type/Conversions":839,"../../core/util/Debug":849,"../../core/util/Defaults":851,"./Analyser":773,"./MeterBase":778}],778:[function(require,module,exports){
+},{"../../core/type/Conversions":833,"../../core/util/Debug":843,"../../core/util/Defaults":845,"./Analyser":767,"./MeterBase":772}],772:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -24229,7 +23830,7 @@ class MeterBase extends _ToneAudioNode.ToneAudioNode {
 
 exports.MeterBase = MeterBase;
 
-},{"../../core/context/ToneAudioNode":836,"../../core/util/Defaults":851,"./Analyser":773}],779:[function(require,module,exports){
+},{"../../core/context/ToneAudioNode":830,"../../core/util/Defaults":845,"./Analyser":767}],773:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -24286,7 +23887,7 @@ class Waveform extends _MeterBase.MeterBase {
 
 exports.Waveform = Waveform;
 
-},{"../../core/util/Defaults":851,"./MeterBase":778}],780:[function(require,module,exports){
+},{"../../core/util/Defaults":845,"./MeterBase":772}],774:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -24455,7 +24056,7 @@ class Channel extends _ToneAudioNode.ToneAudioNode {
 exports.Channel = Channel;
 Channel.buses = new Map();
 
-},{"../../core/context/Gain":829,"../../core/context/ToneAudioNode":836,"../../core/util/Defaults":851,"../../core/util/Interface":854,"./PanVol":787,"./Solo":791}],781:[function(require,module,exports){
+},{"../../core/context/Gain":823,"../../core/context/ToneAudioNode":830,"../../core/util/Defaults":845,"../../core/util/Interface":848,"./PanVol":781,"./Solo":785}],775:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -24596,7 +24197,7 @@ class CrossFade extends _ToneAudioNode.ToneAudioNode {
 
 exports.CrossFade = CrossFade;
 
-},{"../../core/context/Gain":829,"../../core/context/ToneAudioNode":836,"../../core/util/Defaults":851,"../../core/util/Interface":854,"../../signal/GainToAudio":919,"../../signal/Signal":927}],782:[function(require,module,exports){
+},{"../../core/context/Gain":823,"../../core/context/ToneAudioNode":830,"../../core/util/Defaults":845,"../../core/util/Interface":848,"../../signal/GainToAudio":913,"../../signal/Signal":921}],776:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -24645,7 +24246,7 @@ class Merge extends _ToneAudioNode.ToneAudioNode {
 
 exports.Merge = Merge;
 
-},{"../../core/context/ToneAudioNode":836,"../../core/util/Defaults":851}],783:[function(require,module,exports){
+},{"../../core/context/ToneAudioNode":830,"../../core/util/Defaults":845}],777:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -24736,7 +24337,7 @@ class MidSideMerge extends _ToneAudioNode.ToneAudioNode {
 
 exports.MidSideMerge = MidSideMerge;
 
-},{"../../core/context/Gain":829,"../../core/context/ToneAudioNode":836,"../../core/util/Defaults":851,"../../signal/Add":917,"../../signal/Multiply":922,"../../signal/Subtract":929,"./Merge":782}],784:[function(require,module,exports){
+},{"../../core/context/Gain":823,"../../core/context/ToneAudioNode":830,"../../core/util/Defaults":845,"../../signal/Add":911,"../../signal/Multiply":916,"../../signal/Subtract":923,"./Merge":776}],778:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -24819,7 +24420,7 @@ class MidSideSplit extends _ToneAudioNode.ToneAudioNode {
 
 exports.MidSideSplit = MidSideSplit;
 
-},{"../../core/context/ToneAudioNode":836,"../../core/util/Defaults":851,"../../signal/Add":917,"../../signal/Multiply":922,"../../signal/Subtract":929,"./Split":792}],785:[function(require,module,exports){
+},{"../../core/context/ToneAudioNode":830,"../../core/util/Defaults":845,"../../signal/Add":911,"../../signal/Multiply":916,"../../signal/Subtract":923,"./Split":786}],779:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -24869,7 +24470,7 @@ class Mono extends _ToneAudioNode.ToneAudioNode {
 
 exports.Mono = Mono;
 
-},{"../../core/context/Gain":829,"../../core/context/ToneAudioNode":836,"../../core/util/Defaults":851,"./Merge":782}],786:[function(require,module,exports){
+},{"../../core/context/Gain":823,"../../core/context/ToneAudioNode":830,"../../core/util/Defaults":845,"./Merge":776}],780:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -25020,7 +24621,7 @@ class MultibandSplit extends _ToneAudioNode.ToneAudioNode {
 
 exports.MultibandSplit = MultibandSplit;
 
-},{"../../core/context/Gain":829,"../../core/context/ToneAudioNode":836,"../../core/util/Defaults":851,"../../core/util/Interface":854,"../../signal/Signal":927,"../filter/Filter":807}],787:[function(require,module,exports){
+},{"../../core/context/Gain":823,"../../core/context/ToneAudioNode":830,"../../core/util/Defaults":845,"../../core/util/Interface":848,"../../signal/Signal":921,"../filter/Filter":801}],781:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -25107,7 +24708,7 @@ class PanVol extends _ToneAudioNode.ToneAudioNode {
 
 exports.PanVol = PanVol;
 
-},{"../../core/context/ToneAudioNode":836,"../../core/util/Defaults":851,"../../core/util/Interface":854,"./Panner":788,"./Volume":793}],788:[function(require,module,exports){
+},{"../../core/context/ToneAudioNode":830,"../../core/util/Defaults":845,"../../core/util/Interface":848,"./Panner":782,"./Volume":787}],782:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -25182,7 +24783,7 @@ class Panner extends _ToneAudioNode.ToneAudioNode {
 
 exports.Panner = Panner;
 
-},{"../../core/context/Param":833,"../../core/context/ToneAudioNode":836,"../../core/util/Defaults":851,"../../core/util/Interface":854}],789:[function(require,module,exports){
+},{"../../core/context/Param":827,"../../core/context/ToneAudioNode":830,"../../core/util/Defaults":845,"../../core/util/Interface":848}],783:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -25406,7 +25007,7 @@ class Panner3D extends _ToneAudioNode.ToneAudioNode {
 
 exports.Panner3D = Panner3D;
 
-},{"../../core/context/Listener":830,"../../core/context/Param":833,"../../core/context/ToneAudioNode":836,"../../core/util/Defaults":851}],790:[function(require,module,exports){
+},{"../../core/context/Listener":824,"../../core/context/Param":827,"../../core/context/ToneAudioNode":830,"../../core/util/Defaults":845}],784:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -25578,7 +25179,7 @@ class Recorder extends _ToneAudioNode.ToneAudioNode {
 
 exports.Recorder = Recorder;
 
-},{"../../core/context/AudioContext":822,"../../core/context/Gain":829,"../../core/context/ToneAudioNode":836,"../../core/util/Debug":849,"../../core/util/Defaults":851,"tslib":955}],791:[function(require,module,exports){
+},{"../../core/context/AudioContext":816,"../../core/context/Gain":823,"../../core/context/ToneAudioNode":830,"../../core/util/Debug":843,"../../core/util/Defaults":845,"tslib":949}],785:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -25693,7 +25294,8 @@ class Solo extends _ToneAudioNode.ToneAudioNode {
 
   _noSolos() {
     // either does not have any soloed added
-    return !Solo._soloed.has(this.context) || Solo._soloed.has(this.context) && Solo._soloed.get(this.context).size === 0;
+    return !Solo._soloed.has(this.context) || // or has a solo set but doesn't include any items
+    Solo._soloed.has(this.context) && Solo._soloed.get(this.context).size === 0;
   }
   /**
    * Solo the current instance and unsolo all other instances.
@@ -25735,7 +25337,7 @@ Solo._allSolos = new Map();
 
 Solo._soloed = new Map();
 
-},{"../../core/context/Gain":829,"../../core/context/ToneAudioNode":836,"../../core/util/Defaults":851}],792:[function(require,module,exports){
+},{"../../core/context/Gain":823,"../../core/context/ToneAudioNode":830,"../../core/util/Defaults":845}],786:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -25782,7 +25384,7 @@ class Split extends _ToneAudioNode.ToneAudioNode {
 
 exports.Split = Split;
 
-},{"../../core/context/ToneAudioNode":836,"../../core/util/Defaults":851}],793:[function(require,module,exports){
+},{"../../core/context/ToneAudioNode":830,"../../core/util/Defaults":845}],787:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -25868,7 +25470,7 @@ class Volume extends _ToneAudioNode.ToneAudioNode {
 
 exports.Volume = Volume;
 
-},{"../../core/context/Gain":829,"../../core/context/ToneAudioNode":836,"../../core/util/Defaults":851,"../../core/util/Interface":854}],794:[function(require,module,exports){
+},{"../../core/context/Gain":823,"../../core/context/ToneAudioNode":830,"../../core/util/Defaults":845,"../../core/util/Interface":848}],788:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -25989,7 +25591,7 @@ class Compressor extends _ToneAudioNode.ToneAudioNode {
 
 exports.Compressor = Compressor;
 
-},{"../../core/context/Param":833,"../../core/context/ToneAudioNode":836,"../../core/util/Defaults":851,"../../core/util/Interface":854}],795:[function(require,module,exports){
+},{"../../core/context/Param":827,"../../core/context/ToneAudioNode":830,"../../core/util/Defaults":845,"../../core/util/Interface":848}],789:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -26094,7 +25696,7 @@ class Gate extends _ToneAudioNode.ToneAudioNode {
 
 exports.Gate = Gate;
 
-},{"../../core/context/Gain":829,"../../core/context/ToneAudioNode":836,"../../core/type/Conversions":839,"../../core/util/Defaults":851,"../../signal/GreaterThan":920,"../analysis/Follower":776}],796:[function(require,module,exports){
+},{"../../core/context/Gain":823,"../../core/context/ToneAudioNode":830,"../../core/type/Conversions":833,"../../core/util/Defaults":845,"../../signal/GreaterThan":914,"../analysis/Follower":770}],790:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -26167,7 +25769,7 @@ class Limiter extends _ToneAudioNode.ToneAudioNode {
 
 exports.Limiter = Limiter;
 
-},{"../../core/context/ToneAudioNode":836,"../../core/util/Defaults":851,"../../core/util/Interface":854,"./Compressor":794}],797:[function(require,module,exports){
+},{"../../core/context/ToneAudioNode":830,"../../core/util/Defaults":845,"../../core/util/Interface":848,"./Compressor":788}],791:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -26252,7 +25854,7 @@ class MidSideCompressor extends _ToneAudioNode.ToneAudioNode {
 
 exports.MidSideCompressor = MidSideCompressor;
 
-},{"../../core/context/ToneAudioNode":836,"../../core/util/Defaults":851,"../../core/util/Interface":854,"../channel/MidSideMerge":783,"../channel/MidSideSplit":784,"./Compressor":794}],798:[function(require,module,exports){
+},{"../../core/context/ToneAudioNode":830,"../../core/util/Defaults":845,"../../core/util/Interface":848,"../channel/MidSideMerge":777,"../channel/MidSideSplit":778,"./Compressor":788}],792:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -26363,7 +25965,7 @@ class MultibandCompressor extends _ToneAudioNode.ToneAudioNode {
 
 exports.MultibandCompressor = MultibandCompressor;
 
-},{"../../core/context/Gain":829,"../../core/context/ToneAudioNode":836,"../../core/util/Defaults":851,"../../core/util/Interface":854,"../channel/MultibandSplit":786,"./Compressor":794}],799:[function(require,module,exports){
+},{"../../core/context/Gain":823,"../../core/context/ToneAudioNode":830,"../../core/util/Defaults":845,"../../core/util/Interface":848,"../channel/MultibandSplit":780,"./Compressor":788}],793:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -26432,7 +26034,7 @@ class AmplitudeEnvelope extends _Envelope.Envelope {
 
 exports.AmplitudeEnvelope = AmplitudeEnvelope;
 
-},{"../../core/context/Gain":829,"../../core/util/Defaults":851,"./Envelope":800}],800:[function(require,module,exports){
+},{"../../core/context/Gain":823,"../../core/util/Defaults":845,"./Envelope":794}],794:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -26975,7 +26577,7 @@ const EnvelopeCurves = (() => {
   };
 })();
 
-},{"../../core/context/OfflineContext":832,"../../core/context/ToneAudioNode":836,"../../core/util/Debug":849,"../../core/util/Decorator":850,"../../core/util/Defaults":851,"../../core/util/TypeCheck":860,"../../signal/Signal":927,"tslib":955}],801:[function(require,module,exports){
+},{"../../core/context/OfflineContext":826,"../../core/context/ToneAudioNode":830,"../../core/util/Debug":843,"../../core/util/Decorator":844,"../../core/util/Defaults":845,"../../core/util/TypeCheck":854,"../../signal/Signal":921,"tslib":949}],795:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -27098,7 +26700,7 @@ class FrequencyEnvelope extends _Envelope.Envelope {
 
 exports.FrequencyEnvelope = FrequencyEnvelope;
 
-},{"../../core/util/Debug":849,"../../core/util/Defaults":851,"../../signal/Pow":924,"../../signal/Scale":925,"./Envelope":800}],802:[function(require,module,exports){
+},{"../../core/util/Debug":843,"../../core/util/Defaults":845,"../../signal/Pow":918,"../../signal/Scale":919,"./Envelope":794}],796:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -27224,7 +26826,7 @@ class BiquadFilter extends _ToneAudioNode.ToneAudioNode {
 
 exports.BiquadFilter = BiquadFilter;
 
-},{"../../core/context/Param":833,"../../core/context/ToneAudioNode":836,"../../core/util/Debug":849,"../../core/util/Defaults":851}],803:[function(require,module,exports){
+},{"../../core/context/Param":827,"../../core/context/ToneAudioNode":830,"../../core/util/Debug":843,"../../core/util/Defaults":845}],797:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -27368,7 +26970,7 @@ class Convolver extends _ToneAudioNode.ToneAudioNode {
 
 exports.Convolver = Convolver;
 
-},{"../../core/context/Gain":829,"../../core/context/ToneAudioBuffer":834,"../../core/context/ToneAudioNode":836,"../../core/util/Defaults":851,"../../core/util/Interface":854,"tslib":955}],804:[function(require,module,exports){
+},{"../../core/context/Gain":823,"../../core/context/ToneAudioBuffer":828,"../../core/context/ToneAudioNode":830,"../../core/util/Defaults":845,"../../core/util/Interface":848,"tslib":949}],798:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -27480,7 +27082,7 @@ class EQ3 extends _ToneAudioNode.ToneAudioNode {
 
 exports.EQ3 = EQ3;
 
-},{"../../core/context/Gain":829,"../../core/context/ToneAudioNode":836,"../../core/util/Defaults":851,"../../core/util/Interface":854,"../channel/MultibandSplit":786}],805:[function(require,module,exports){
+},{"../../core/context/Gain":823,"../../core/context/ToneAudioNode":830,"../../core/util/Defaults":845,"../../core/util/Interface":848,"../channel/MultibandSplit":780}],799:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -27579,7 +27181,7 @@ class FeedbackCombFilter extends _ToneAudioWorklet.ToneAudioWorklet {
 
 exports.FeedbackCombFilter = FeedbackCombFilter;
 
-},{"../../core/context/Gain":829,"../../core/context/Param":833,"../../core/context/ToneAudioNode":836,"../../core/util/Defaults":851,"../../core/util/Interface":854,"../../core/worklet/ToneAudioWorklet":863,"./FeedbackCombFilter.worklet":806}],806:[function(require,module,exports){
+},{"../../core/context/Gain":823,"../../core/context/Param":827,"../../core/context/ToneAudioNode":830,"../../core/util/Defaults":845,"../../core/util/Interface":848,"../../core/worklet/ToneAudioWorklet":857,"./FeedbackCombFilter.worklet":800}],800:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -27630,7 +27232,7 @@ const feedbackCombFilter =
 `;
 (0, _WorkletGlobalScope.registerProcessor)(workletName, feedbackCombFilter);
 
-},{"../../core/worklet/DelayLine.worklet":861,"../../core/worklet/SingleIOProcessor.worklet":862,"../../core/worklet/WorkletGlobalScope":865}],807:[function(require,module,exports){
+},{"../../core/worklet/DelayLine.worklet":855,"../../core/worklet/SingleIOProcessor.worklet":856,"../../core/worklet/WorkletGlobalScope":859}],801:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -27822,7 +27424,7 @@ class Filter extends _ToneAudioNode.ToneAudioNode {
 
 exports.Filter = Filter;
 
-},{"../../core/context/Gain":829,"../../core/context/ToneAudioNode":836,"../../core/util/Debug":849,"../../core/util/Defaults":851,"../../core/util/Interface":854,"../../core/util/TypeCheck":860,"../../signal/Signal":927,"./BiquadFilter":802}],808:[function(require,module,exports){
+},{"../../core/context/Gain":823,"../../core/context/ToneAudioNode":830,"../../core/util/Debug":843,"../../core/util/Defaults":845,"../../core/util/Interface":848,"../../core/util/TypeCheck":854,"../../signal/Signal":921,"./BiquadFilter":796}],802:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -27898,7 +27500,7 @@ class LowpassCombFilter extends _ToneAudioNode.ToneAudioNode {
 
 exports.LowpassCombFilter = LowpassCombFilter;
 
-},{"../../core/context/ToneAudioNode":836,"../../core/util/Defaults":851,"./FeedbackCombFilter":805,"./OnePoleFilter":809}],809:[function(require,module,exports){
+},{"../../core/context/ToneAudioNode":830,"../../core/util/Defaults":845,"./FeedbackCombFilter":799,"./OnePoleFilter":803}],803:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -28043,7 +27645,7 @@ class OnePoleFilter extends _ToneAudioNode.ToneAudioNode {
 
 exports.OnePoleFilter = OnePoleFilter;
 
-},{"../../core/context/Gain":829,"../../core/context/ToneAudioNode":836,"../../core/util/Defaults":851}],810:[function(require,module,exports){
+},{"../../core/context/Gain":823,"../../core/context/ToneAudioNode":830,"../../core/util/Defaults":845}],804:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -28125,7 +27727,7 @@ class PhaseShiftAllpass extends _ToneAudioNode.ToneAudioNode {
 
 exports.PhaseShiftAllpass = PhaseShiftAllpass;
 
-},{"../../core/context/Gain":829,"../../core/context/ToneAudioNode":836}],811:[function(require,module,exports){
+},{"../../core/context/Gain":823,"../../core/context/ToneAudioNode":830}],805:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -28587,7 +28189,7 @@ Object.keys(_BiquadFilter).forEach(function (key) {
   });
 });
 
-},{"./analysis/Analyser":773,"./analysis/DCMeter":774,"./analysis/FFT":775,"./analysis/Follower":776,"./analysis/Meter":777,"./analysis/Waveform":779,"./channel/Channel":780,"./channel/CrossFade":781,"./channel/Merge":782,"./channel/MidSideMerge":783,"./channel/MidSideSplit":784,"./channel/Mono":785,"./channel/MultibandSplit":786,"./channel/PanVol":787,"./channel/Panner":788,"./channel/Panner3D":789,"./channel/Recorder":790,"./channel/Solo":791,"./channel/Split":792,"./channel/Volume":793,"./dynamics/Compressor":794,"./dynamics/Gate":795,"./dynamics/Limiter":796,"./dynamics/MidSideCompressor":797,"./dynamics/MultibandCompressor":798,"./envelope/AmplitudeEnvelope":799,"./envelope/Envelope":800,"./envelope/FrequencyEnvelope":801,"./filter/BiquadFilter":802,"./filter/Convolver":803,"./filter/EQ3":804,"./filter/FeedbackCombFilter":805,"./filter/Filter":807,"./filter/LowpassCombFilter":808,"./filter/OnePoleFilter":809}],812:[function(require,module,exports){
+},{"./analysis/Analyser":767,"./analysis/DCMeter":768,"./analysis/FFT":769,"./analysis/Follower":770,"./analysis/Meter":771,"./analysis/Waveform":773,"./channel/Channel":774,"./channel/CrossFade":775,"./channel/Merge":776,"./channel/MidSideMerge":777,"./channel/MidSideSplit":778,"./channel/Mono":779,"./channel/MultibandSplit":780,"./channel/PanVol":781,"./channel/Panner":782,"./channel/Panner3D":783,"./channel/Recorder":784,"./channel/Solo":785,"./channel/Split":786,"./channel/Volume":787,"./dynamics/Compressor":788,"./dynamics/Gate":789,"./dynamics/Limiter":790,"./dynamics/MidSideCompressor":791,"./dynamics/MultibandCompressor":792,"./envelope/AmplitudeEnvelope":793,"./envelope/Envelope":794,"./envelope/FrequencyEnvelope":795,"./filter/BiquadFilter":796,"./filter/Convolver":797,"./filter/EQ3":798,"./filter/FeedbackCombFilter":799,"./filter/Filter":801,"./filter/LowpassCombFilter":802,"./filter/OnePoleFilter":803}],806:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -28681,7 +28283,7 @@ if (_AudioContext.theWindow && !_AudioContext.theWindow.TONE_SILENCE_LOGGING) {
   console.log(`%c${printString}`, "background: #000; color: #fff");
 }
 
-},{"../version":954,"./context/AudioContext":822,"./context/Context":824,"./context/DummyContext":828,"./context/OfflineContext":832,"./util/AdvancedTypeCheck":848}],813:[function(require,module,exports){
+},{"../version":948,"./context/AudioContext":816,"./context/Context":818,"./context/DummyContext":822,"./context/OfflineContext":826,"./util/AdvancedTypeCheck":842}],807:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -28795,7 +28397,7 @@ class Tone {
 exports.Tone = Tone;
 Tone.version = _version.version;
 
-},{"../version":954,"./context/AudioContext":822,"./util/Debug":849}],814:[function(require,module,exports){
+},{"../version":948,"./context/AudioContext":816,"./util/Debug":843}],808:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -29124,7 +28726,7 @@ exports.Clock = Clock;
 
 _Emitter.Emitter.mixin(Clock);
 
-},{"../context/ToneWithContext":837,"../util/Debug":849,"../util/Defaults":851,"../util/Emitter":853,"../util/Interface":854,"../util/StateTimeline":857,"./TickSource":817}],815:[function(require,module,exports){
+},{"../context/ToneWithContext":831,"../util/Debug":843,"../util/Defaults":845,"../util/Emitter":847,"../util/Interface":848,"../util/StateTimeline":851,"./TickSource":811}],809:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -29429,7 +29031,7 @@ class TickParam extends _Param.Param {
 
 exports.TickParam = TickParam;
 
-},{"../context/Param":833,"../util/Defaults":851,"../util/Timeline":858,"../util/TypeCheck":860}],816:[function(require,module,exports){
+},{"../context/Param":827,"../util/Defaults":845,"../util/Timeline":852,"../util/TypeCheck":854}],810:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -29519,7 +29121,7 @@ class TickSignal extends _Signal.Signal {
 
 exports.TickSignal = TickSignal;
 
-},{"../../signal/Signal":927,"../util/Defaults":851,"./TickParam":815}],817:[function(require,module,exports){
+},{"../../signal/Signal":921,"../util/Defaults":845,"./TickParam":809}],811:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -29908,7 +29510,7 @@ class TickSource extends _ToneWithContext.ToneWithContext {
 
 exports.TickSource = TickSource;
 
-},{"../context/ToneWithContext":837,"../util/Defaults":851,"../util/Interface":854,"../util/Math":856,"../util/StateTimeline":857,"../util/Timeline":858,"../util/TypeCheck":860,"./TickSignal":816}],818:[function(require,module,exports){
+},{"../context/ToneWithContext":831,"../util/Defaults":845,"../util/Interface":848,"../util/Math":850,"../util/StateTimeline":851,"../util/Timeline":852,"../util/TypeCheck":854,"./TickSignal":810}],812:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -30052,7 +29654,7 @@ class Ticker {
 
 exports.Ticker = Ticker;
 
-},{}],819:[function(require,module,exports){
+},{}],813:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -30794,7 +30396,7 @@ _Emitter.Emitter.mixin(Transport); //-------------------------------------
   context.transport.dispose();
 });
 
-},{"../../core/type/Time":844,"../../core/util/TimelineValue":859,"../context/ContextInitialization":825,"../context/Gain":829,"../context/ToneWithContext":837,"../type/Ticks":843,"../type/TransportTime":846,"../util/Defaults":851,"../util/Emitter":853,"../util/Interface":854,"../util/IntervalTimeline":855,"../util/Timeline":858,"../util/TypeCheck":860,"./Clock":814,"./TransportEvent":820,"./TransportRepeatEvent":821}],820:[function(require,module,exports){
+},{"../../core/type/Time":838,"../../core/util/TimelineValue":853,"../context/ContextInitialization":819,"../context/Gain":823,"../context/ToneWithContext":831,"../type/Ticks":837,"../type/TransportTime":840,"../util/Defaults":845,"../util/Emitter":847,"../util/Interface":848,"../util/IntervalTimeline":849,"../util/Timeline":852,"../util/TypeCheck":854,"./Clock":808,"./TransportEvent":814,"./TransportRepeatEvent":815}],814:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -30866,7 +30468,7 @@ class TransportEvent {
 exports.TransportEvent = TransportEvent;
 TransportEvent._eventId = 0;
 
-},{"../util/Interface":854}],821:[function(require,module,exports){
+},{"../util/Interface":848}],815:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -30992,22 +30594,23 @@ class TransportRepeatEvent extends _TransportEvent.TransportEvent {
 
 exports.TransportRepeatEvent = TransportRepeatEvent;
 
-},{"../type/Ticks":843,"./TransportEvent":820}],822:[function(require,module,exports){
+},{"../type/Ticks":837,"./TransportEvent":814}],816:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.createAudioContext = createAudioContext;
-exports.createOfflineAudioContext = createOfflineAudioContext;
 exports.createAudioWorkletNode = createAudioWorkletNode;
+exports.createOfflineAudioContext = createOfflineAudioContext;
+exports.hasAudioContext = void 0;
 Object.defineProperty(exports, "supported", {
   enumerable: true,
   get: function () {
     return _standardizedAudioContext.isSupported;
   }
 });
-exports.hasAudioContext = exports.theWindow = void 0;
+exports.theWindow = void 0;
 
 var _standardizedAudioContext = require("standardized-audio-context");
 
@@ -31056,7 +30659,7 @@ function createAudioWorkletNode(context, name, options) {
  * Taken from [standardized-audio-context](https://github.com/chrisguttandin/standardized-audio-context#issupported)
  */
 
-},{"../util/Debug":849,"../util/TypeCheck":860,"standardized-audio-context":374}],823:[function(require,module,exports){
+},{"../util/Debug":843,"../util/TypeCheck":854,"standardized-audio-context":368}],817:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -31086,7 +30689,7 @@ class BaseContext extends _Emitter.Emitter {
 
 exports.BaseContext = BaseContext;
 
-},{"../util/Emitter":853}],824:[function(require,module,exports){
+},{"../util/Emitter":847}],818:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -31696,16 +31299,16 @@ class Context extends _BaseContext.BaseContext {
 
 exports.Context = Context;
 
-},{"../clock/Ticker":818,"../util/AdvancedTypeCheck":848,"../util/Debug":849,"../util/Defaults":851,"../util/Timeline":858,"../util/TypeCheck":860,"./AudioContext":822,"./BaseContext":823,"./ContextInitialization":825,"tslib":955}],825:[function(require,module,exports){
+},{"../clock/Ticker":812,"../util/AdvancedTypeCheck":842,"../util/Debug":843,"../util/Defaults":845,"../util/Timeline":852,"../util/TypeCheck":854,"./AudioContext":816,"./BaseContext":817,"./ContextInitialization":819,"tslib":949}],819:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.onContextInit = onContextInit;
+exports.closeContext = closeContext;
 exports.initializeContext = initializeContext;
 exports.onContextClose = onContextClose;
-exports.closeContext = closeContext;
+exports.onContextInit = onContextInit;
 //-------------------------------------
 // INITIALIZING NEW CONTEXT
 //-------------------------------------
@@ -31749,7 +31352,7 @@ function closeContext(ctx) {
   notifyCloseContext.forEach(cb => cb(ctx));
 }
 
-},{}],826:[function(require,module,exports){
+},{}],820:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -31829,7 +31432,7 @@ class Delay extends _ToneAudioNode.ToneAudioNode {
 
 exports.Delay = Delay;
 
-},{"../context/Param":833,"../util/Defaults":851,"../util/Interface":854,"./ToneAudioNode":836}],827:[function(require,module,exports){
+},{"../context/Param":827,"../util/Defaults":845,"../util/Interface":848,"./ToneAudioNode":830}],821:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -31967,7 +31570,7 @@ exports.Destination = Destination;
   context.destination.dispose();
 });
 
-},{"../../component/channel/Volume":793,"../util/Defaults":851,"./ContextInitialization":825,"./Gain":829,"./ToneAudioNode":836}],828:[function(require,module,exports){
+},{"../../component/channel/Volume":787,"../util/Defaults":845,"./ContextInitialization":819,"./Gain":823,"./ToneAudioNode":830}],822:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -32159,7 +31762,7 @@ class DummyContext extends _BaseContext.BaseContext {
 
 exports.DummyContext = DummyContext;
 
-},{"./BaseContext":823,"tslib":955}],829:[function(require,module,exports){
+},{"./BaseContext":817,"tslib":949}],823:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -32238,7 +31841,7 @@ class Gain extends _ToneAudioNode.ToneAudioNode {
 
 exports.Gain = Gain;
 
-},{"../context/Param":833,"../util/Defaults":851,"../util/Interface":854,"./ToneAudioNode":836}],830:[function(require,module,exports){
+},{"../context/Param":827,"../util/Defaults":845,"../util/Interface":848,"./ToneAudioNode":830}],824:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -32343,7 +31946,7 @@ exports.Listener = Listener;
   context.listener.dispose();
 });
 
-},{"./ContextInitialization":825,"./Param":833,"./ToneAudioNode":836}],831:[function(require,module,exports){
+},{"./ContextInitialization":819,"./Param":827,"./ToneAudioNode":830}],825:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -32411,7 +32014,7 @@ function Offline(callback, duration, channels = 2, sampleRate = (0, _Global.getC
   });
 }
 
-},{"../Global":812,"./OfflineContext":832,"./ToneAudioBuffer":834,"tslib":955}],832:[function(require,module,exports){
+},{"../Global":806,"./OfflineContext":826,"./ToneAudioBuffer":828,"tslib":949}],826:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -32524,7 +32127,7 @@ class OfflineContext extends _Context.Context {
 
 exports.OfflineContext = OfflineContext;
 
-},{"../context/AudioContext":822,"../context/Context":824,"../util/AdvancedTypeCheck":848,"./ToneAudioBuffer":834,"tslib":955}],833:[function(require,module,exports){
+},{"../context/AudioContext":816,"../context/Context":818,"../util/AdvancedTypeCheck":842,"./ToneAudioBuffer":828,"tslib":949}],827:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -33062,7 +32665,7 @@ class Param extends _ToneWithContext.ToneWithContext {
 
 exports.Param = Param;
 
-},{"../type/Conversions":839,"../util/AdvancedTypeCheck":848,"../util/Debug":849,"../util/Defaults":851,"../util/Math":856,"../util/Timeline":858,"../util/TypeCheck":860,"./ToneWithContext":837}],834:[function(require,module,exports){
+},{"../type/Conversions":833,"../util/AdvancedTypeCheck":842,"../util/Debug":843,"../util/Defaults":845,"../util/Math":850,"../util/Timeline":852,"../util/TypeCheck":854,"./ToneWithContext":831}],828:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -33502,7 +33105,7 @@ ToneAudioBuffer.baseUrl = "";
 
 ToneAudioBuffer.downloads = [];
 
-},{"../Global":812,"../Tone":813,"../util/AdvancedTypeCheck":848,"../util/Debug":849,"../util/Defaults":851,"../util/Interface":854,"../util/TypeCheck":860,"tslib":955}],835:[function(require,module,exports){
+},{"../Global":806,"../Tone":807,"../util/AdvancedTypeCheck":842,"../util/Debug":843,"../util/Defaults":845,"../util/Interface":848,"../util/TypeCheck":854,"tslib":949}],829:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -33652,16 +33255,16 @@ class ToneAudioBuffers extends _Tone.Tone {
 
 exports.ToneAudioBuffers = ToneAudioBuffers;
 
-},{"../Tone":813,"../util/Debug":849,"../util/Defaults":851,"../util/Interface":854,"../util/TypeCheck":860,"./ToneAudioBuffer":834}],836:[function(require,module,exports){
+},{"../Tone":807,"../util/Debug":843,"../util/Defaults":845,"../util/Interface":848,"../util/TypeCheck":854,"./ToneAudioBuffer":828}],830:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.connectSeries = connectSeries;
-exports.connect = connect;
-exports.disconnect = disconnect;
 exports.ToneAudioNode = void 0;
+exports.connect = connect;
+exports.connectSeries = connectSeries;
+exports.disconnect = disconnect;
 
 var _AdvancedTypeCheck = require("../util/AdvancedTypeCheck");
 
@@ -34055,7 +33658,7 @@ function disconnect(srcNode, dstNode, outputNumber = 0, inputNumber = 0) {
   }
 }
 
-},{"../util/AdvancedTypeCheck":848,"../util/Debug":849,"../util/TypeCheck":860,"./Param":833,"./ToneWithContext":837}],837:[function(require,module,exports){
+},{"../util/AdvancedTypeCheck":842,"../util/Debug":843,"../util/TypeCheck":854,"./Param":827,"./ToneWithContext":831}],831:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -34259,7 +33862,7 @@ class ToneWithContext extends _Tone.Tone {
 
 exports.ToneWithContext = ToneWithContext;
 
-},{"../Global":812,"../Tone":813,"../type/Frequency":840,"../type/Time":844,"../type/TransportTime":846,"../util/Defaults":851,"../util/TypeCheck":860}],838:[function(require,module,exports){
+},{"../Global":806,"../Tone":807,"../type/Frequency":834,"../type/Time":838,"../type/TransportTime":840,"../util/Defaults":845,"../util/TypeCheck":854}],832:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -34276,10 +33879,24 @@ var _exportNames = {
   Unit: true,
   debug: true
 };
+exports.Unit = void 0;
 Object.defineProperty(exports, "dbToGain", {
   enumerable: true,
   get: function () {
     return _Conversions.dbToGain;
+  }
+});
+exports.debug = void 0;
+Object.defineProperty(exports, "defaultArg", {
+  enumerable: true,
+  get: function () {
+    return _Defaults.defaultArg;
+  }
+});
+Object.defineProperty(exports, "ftom", {
+  enumerable: true,
+  get: function () {
+    return _Conversions.ftom;
   }
 });
 Object.defineProperty(exports, "gainToDb", {
@@ -34294,12 +33911,6 @@ Object.defineProperty(exports, "intervalToFrequencyRatio", {
     return _Conversions.intervalToFrequencyRatio;
   }
 });
-Object.defineProperty(exports, "ftom", {
-  enumerable: true,
-  get: function () {
-    return _Conversions.ftom;
-  }
-});
 Object.defineProperty(exports, "mtof", {
   enumerable: true,
   get: function () {
@@ -34312,13 +33923,6 @@ Object.defineProperty(exports, "optionsFromArguments", {
     return _Defaults.optionsFromArguments;
   }
 });
-Object.defineProperty(exports, "defaultArg", {
-  enumerable: true,
-  get: function () {
-    return _Defaults.defaultArg;
-  }
-});
-exports.debug = exports.Unit = void 0;
 
 var _Clock = require("./clock/Clock");
 
@@ -34632,21 +34236,21 @@ function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "functio
 
 function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
-},{"./clock/Clock":814,"./context/BaseContext":823,"./context/Context":824,"./context/Delay":826,"./context/Gain":829,"./context/Offline":831,"./context/OfflineContext":832,"./context/Param":833,"./context/ToneAudioBuffer":834,"./context/ToneAudioBuffers":835,"./context/ToneAudioNode":836,"./type/Conversions":839,"./type/Frequency":840,"./type/Midi":841,"./type/Ticks":843,"./type/Time":844,"./type/TransportTime":846,"./type/Units":847,"./util/Debug":849,"./util/Defaults":851,"./util/Draw":852,"./util/Emitter":853,"./util/IntervalTimeline":855,"./util/StateTimeline":857,"./util/Timeline":858,"./util/TypeCheck":860}],839:[function(require,module,exports){
+},{"./clock/Clock":808,"./context/BaseContext":817,"./context/Context":818,"./context/Delay":820,"./context/Gain":823,"./context/Offline":825,"./context/OfflineContext":826,"./context/Param":827,"./context/ToneAudioBuffer":828,"./context/ToneAudioBuffers":829,"./context/ToneAudioNode":830,"./type/Conversions":833,"./type/Frequency":834,"./type/Midi":835,"./type/Ticks":837,"./type/Time":838,"./type/TransportTime":840,"./type/Units":841,"./util/Debug":843,"./util/Defaults":845,"./util/Draw":846,"./util/Emitter":847,"./util/IntervalTimeline":849,"./util/StateTimeline":851,"./util/Timeline":852,"./util/TypeCheck":854}],833:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.equalPowerScale = equalPowerScale;
 exports.dbToGain = dbToGain;
-exports.gainToDb = gainToDb;
-exports.intervalToFrequencyRatio = intervalToFrequencyRatio;
-exports.getA4 = getA4;
-exports.setA4 = setA4;
+exports.equalPowerScale = equalPowerScale;
 exports.ftom = ftom;
 exports.ftomf = ftomf;
+exports.gainToDb = gainToDb;
+exports.getA4 = getA4;
+exports.intervalToFrequencyRatio = intervalToFrequencyRatio;
 exports.mtof = mtof;
+exports.setA4 = setA4;
 
 /**
  * Equal power gain scale. Good for cross-fading.
@@ -34732,7 +34336,7 @@ function mtof(midi) {
   return A4 * Math.pow(2, (midi - 69) / 12);
 }
 
-},{}],840:[function(require,module,exports){
+},{}],834:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -35044,7 +34648,7 @@ function Frequency(value, units) {
   return new FrequencyClass((0, _Global.getContext)(), value, units);
 }
 
-},{"../Global":812,"./Conversions":839,"./Time":844}],841:[function(require,module,exports){
+},{"../Global":806,"./Conversions":833,"./Time":838}],835:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -35148,9 +34752,9 @@ function Midi(value, units) {
   return new MidiClass((0, _Global.getContext)(), value, units);
 }
 
-},{"../Global":812,"./Conversions":839,"./Frequency":840}],842:[function(require,module,exports){
-arguments[4][289][0].apply(exports,arguments)
-},{"dup":289}],843:[function(require,module,exports){
+},{"../Global":806,"./Conversions":833,"./Frequency":834}],836:[function(require,module,exports){
+arguments[4][283][0].apply(exports,arguments)
+},{"dup":283}],837:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -35239,7 +34843,7 @@ function Ticks(value, units) {
   return new TicksClass((0, _Global.getContext)(), value, units);
 }
 
-},{"../Global":812,"./TransportTime":846}],844:[function(require,module,exports){
+},{"../Global":806,"./TransportTime":840}],838:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -35424,7 +35028,7 @@ function Time(value, units) {
   return new TimeClass((0, _Global.getContext)(), value, units);
 }
 
-},{"../Global":812,"./Conversions":839,"./TimeBase":845}],845:[function(require,module,exports){
+},{"../Global":806,"./Conversions":833,"./TimeBase":839}],839:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -35727,7 +35331,7 @@ class TimeBaseClass extends _Tone.Tone {
 
 exports.TimeBaseClass = TimeBaseClass;
 
-},{"../Tone":813,"../util/TypeCheck":860}],846:[function(require,module,exports){
+},{"../Tone":807,"../util/TypeCheck":854}],840:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -35777,7 +35381,7 @@ function TransportTime(value, units) {
   return new TransportTimeClass((0, _Global.getContext)(), value, units);
 }
 
-},{"../Global":812,"./Time":844}],847:[function(require,module,exports){
+},{"../Global":806,"./Time":838}],841:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -35797,17 +35401,17 @@ Object.keys(_NoteUnits).forEach(function (key) {
   });
 });
 
-},{"./NoteUnits":842}],848:[function(require,module,exports){
+},{"./NoteUnits":836}],842:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.isAudioParam = isAudioParam;
-exports.isAudioNode = isAudioNode;
-exports.isOfflineAudioContext = isOfflineAudioContext;
-exports.isAudioContext = isAudioContext;
 exports.isAudioBuffer = isAudioBuffer;
+exports.isAudioContext = isAudioContext;
+exports.isAudioNode = isAudioNode;
+exports.isAudioParam = isAudioParam;
+exports.isOfflineAudioContext = isOfflineAudioContext;
 
 var _standardizedAudioContext = require("standardized-audio-context");
 
@@ -35850,17 +35454,17 @@ function isAudioBuffer(arg) {
   return arg instanceof AudioBuffer;
 }
 
-},{"standardized-audio-context":374}],849:[function(require,module,exports){
+},{"standardized-audio-context":368}],843:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.assert = assert;
-exports.assertRange = assertRange;
 exports.assertContextRunning = assertContextRunning;
-exports.setLogger = setLogger;
+exports.assertRange = assertRange;
 exports.log = log;
+exports.setLogger = setLogger;
 exports.warn = warn;
 
 /**
@@ -35924,7 +35528,7 @@ function warn(...args) {
   defaultLogger.warn(...args);
 }
 
-},{}],850:[function(require,module,exports){
+},{}],844:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -35977,18 +35581,18 @@ function timeRange(min, max = Infinity) {
   };
 }
 
-},{"./Debug":849}],851:[function(require,module,exports){
+},{"./Debug":843}],845:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.deepMerge = deepMerge;
 exports.deepEquals = deepEquals;
-exports.optionsFromArguments = optionsFromArguments;
-exports.getDefaultsFromInstance = getDefaultsFromInstance;
+exports.deepMerge = deepMerge;
 exports.defaultArg = defaultArg;
+exports.getDefaultsFromInstance = getDefaultsFromInstance;
 exports.omitFromObject = omitFromObject;
+exports.optionsFromArguments = optionsFromArguments;
 
 var _AdvancedTypeCheck = require("./AdvancedTypeCheck");
 
@@ -36111,7 +35715,7 @@ function omitFromObject(obj, omit) {
   return obj;
 }
 
-},{"./AdvancedTypeCheck":848,"./TypeCheck":860}],852:[function(require,module,exports){
+},{"./AdvancedTypeCheck":842,"./TypeCheck":854}],846:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -36257,7 +35861,7 @@ exports.Draw = Draw;
   context.draw.dispose();
 });
 
-},{"../context/ContextInitialization":825,"../context/ToneWithContext":837,"./Timeline":858}],853:[function(require,module,exports){
+},{"../context/ContextInitialization":819,"../context/ToneWithContext":831,"./Timeline":852}],847:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -36401,15 +36005,15 @@ class Emitter extends _Tone.Tone {
 
 exports.Emitter = Emitter;
 
-},{"../Tone":813,"./TypeCheck":860}],854:[function(require,module,exports){
+},{"../Tone":807,"./TypeCheck":854}],848:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.noOp = void 0;
 exports.readOnly = readOnly;
 exports.writable = writable;
-exports.noOp = void 0;
 
 var _TypeCheck = require("./TypeCheck");
 
@@ -36446,7 +36050,7 @@ const noOp = () => {// no operation here!
 
 exports.noOp = noOp;
 
-},{"./TypeCheck":860}],855:[function(require,module,exports){
+},{"./TypeCheck":854}],849:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -37088,16 +36692,16 @@ class IntervalNode {
 
 }
 
-},{"../Tone":813,"./Debug":849,"./TypeCheck":860}],856:[function(require,module,exports){
+},{"../Tone":807,"./Debug":843,"./TypeCheck":854}],850:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.EQ = EQ;
 exports.GT = GT;
 exports.GTE = GTE;
 exports.LT = LT;
-exports.EQ = EQ;
 exports.clamp = clamp;
 
 /**
@@ -37145,7 +36749,7 @@ function clamp(value, min, max) {
   return Math.max(Math.min(value, max), min);
 }
 
-},{}],857:[function(require,module,exports){
+},{}],851:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -37248,7 +36852,7 @@ class StateTimeline extends _Timeline.Timeline {
 
 exports.StateTimeline = StateTimeline;
 
-},{"./Debug":849,"./Timeline":858}],858:[function(require,module,exports){
+},{"./Debug":843,"./Timeline":852}],852:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -37683,7 +37287,7 @@ class Timeline extends _Tone.Tone {
 
 exports.Timeline = Timeline;
 
-},{"../Tone":813,"./Debug":849,"./Defaults":851,"./Math":856}],859:[function(require,module,exports){
+},{"../Tone":807,"./Debug":843,"./Defaults":845,"./Math":850}],853:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -37746,21 +37350,21 @@ class TimelineValue extends _Tone.Tone {
 
 exports.TimelineValue = TimelineValue;
 
-},{"../Tone":813,"./Timeline":858}],860:[function(require,module,exports){
+},{"../Tone":807,"./Timeline":852}],854:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.isUndef = isUndef;
+exports.isArray = isArray;
+exports.isBoolean = isBoolean;
 exports.isDefined = isDefined;
 exports.isFunction = isFunction;
+exports.isNote = isNote;
 exports.isNumber = isNumber;
 exports.isObject = isObject;
-exports.isBoolean = isBoolean;
-exports.isArray = isArray;
 exports.isString = isString;
-exports.isNote = isNote;
+exports.isUndef = isUndef;
 
 /**
  * Test if the arg is undefined
@@ -37834,7 +37438,7 @@ function isNote(arg) {
   return isString(arg) && /^([a-g]{1}(?:b|#|x|bb)?)(-?[0-9]+)/i.test(arg);
 }
 
-},{}],861:[function(require,module,exports){
+},{}],855:[function(require,module,exports){
 "use strict";
 
 var _WorkletGlobalScope = require("./WorkletGlobalScope");
@@ -37888,7 +37492,7 @@ const delayLine =
 `;
 (0, _WorkletGlobalScope.addToWorklet)(delayLine);
 
-},{"./WorkletGlobalScope":865}],862:[function(require,module,exports){
+},{"./WorkletGlobalScope":859}],856:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -37973,7 +37577,7 @@ const singleIOProcess =
 exports.singleIOProcess = singleIOProcess;
 (0, _WorkletGlobalScope.addToWorklet)(singleIOProcess);
 
-},{"./ToneAudioWorkletProcessor.worklet":864,"./WorkletGlobalScope":865}],863:[function(require,module,exports){
+},{"./ToneAudioWorkletProcessor.worklet":858,"./WorkletGlobalScope":859}],857:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -38038,7 +37642,7 @@ class ToneAudioWorklet extends _ToneAudioNode.ToneAudioNode {
 
 exports.ToneAudioWorklet = ToneAudioWorklet;
 
-},{"../context/ToneAudioNode":836,"../util/Interface":854,"./WorkletGlobalScope":865}],864:[function(require,module,exports){
+},{"../context/ToneAudioNode":830,"../util/Interface":848,"./WorkletGlobalScope":859}],858:[function(require,module,exports){
 "use strict";
 
 var _WorkletGlobalScope = require("./WorkletGlobalScope");
@@ -38078,15 +37682,15 @@ const toneAudioWorkletProcessor =
 `;
 (0, _WorkletGlobalScope.addToWorklet)(toneAudioWorkletProcessor);
 
-},{"./WorkletGlobalScope":865}],865:[function(require,module,exports){
+},{"./WorkletGlobalScope":859}],859:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.addToWorklet = addToWorklet;
-exports.registerProcessor = registerProcessor;
 exports.getWorkletGlobalScope = getWorkletGlobalScope;
+exports.registerProcessor = registerProcessor;
 
 /**
  * All of the classes or functions which are loaded into the AudioWorkletGlobalScope
@@ -38119,7 +37723,7 @@ function getWorkletGlobalScope() {
   return Array.from(workletContext).join("\n");
 }
 
-},{}],866:[function(require,module,exports){
+},{}],860:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -38211,7 +37815,7 @@ class AutoFilter extends _LFOEffect.LFOEffect {
 
 exports.AutoFilter = AutoFilter;
 
-},{"../component/filter/Filter":807,"../core/util/Defaults":851,"./LFOEffect":880}],867:[function(require,module,exports){
+},{"../component/filter/Filter":801,"../core/util/Defaults":845,"./LFOEffect":874}],861:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -38272,7 +37876,7 @@ class AutoPanner extends _LFOEffect.LFOEffect {
 
 exports.AutoPanner = AutoPanner;
 
-},{"../component/channel/Panner":788,"../core/util/Defaults":851,"./LFOEffect":880}],868:[function(require,module,exports){
+},{"../component/channel/Panner":782,"../core/util/Defaults":845,"./LFOEffect":874}],862:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -38452,7 +38056,7 @@ class AutoWah extends _Effect.Effect {
 
 exports.AutoWah = AutoWah;
 
-},{"../component/analysis/Follower":776,"../component/filter/Filter":807,"../core/context/Gain":829,"../core/type/Conversions":839,"../core/util/Defaults":851,"../core/util/Interface":854,"../signal/ScaleExp":926,"./Effect":874}],869:[function(require,module,exports){
+},{"../component/analysis/Follower":770,"../component/filter/Filter":801,"../core/context/Gain":823,"../core/type/Conversions":833,"../core/util/Defaults":845,"../core/util/Interface":848,"../signal/ScaleExp":920,"./Effect":868}],863:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -38570,13 +38174,13 @@ class BitCrusherWorklet extends _ToneAudioWorklet.ToneAudioWorklet {
 
 }
 
-},{"../core/context/Gain":829,"../core/context/Param":833,"../core/context/ToneAudioNode":836,"../core/util/Defaults":851,"../core/worklet/ToneAudioWorklet":863,"./BitCrusher.worklet":870,"./Effect":874}],870:[function(require,module,exports){
+},{"../core/context/Gain":823,"../core/context/Param":827,"../core/context/ToneAudioNode":830,"../core/util/Defaults":845,"../core/worklet/ToneAudioWorklet":857,"./BitCrusher.worklet":864,"./Effect":868}],864:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.bitCrusherWorklet = exports.workletName = void 0;
+exports.workletName = exports.bitCrusherWorklet = void 0;
 
 require("../core/worklet/SingleIOProcessor.worklet");
 
@@ -38609,7 +38213,7 @@ const bitCrusherWorklet =
 exports.bitCrusherWorklet = bitCrusherWorklet;
 (0, _WorkletGlobalScope.registerProcessor)(workletName, bitCrusherWorklet);
 
-},{"../core/worklet/SingleIOProcessor.worklet":862,"../core/worklet/WorkletGlobalScope":865}],871:[function(require,module,exports){
+},{"../core/worklet/SingleIOProcessor.worklet":856,"../core/worklet/WorkletGlobalScope":859}],865:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -38727,7 +38331,7 @@ class Chebyshev extends _Effect.Effect {
 
 exports.Chebyshev = Chebyshev;
 
-},{"../core/util/Defaults":851,"../signal/WaveShaper":932,"./Effect":874}],872:[function(require,module,exports){
+},{"../core/util/Defaults":845,"../signal/WaveShaper":926,"./Effect":868}],866:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -38942,7 +38546,7 @@ class Chorus extends _StereoFeedbackEffect.StereoFeedbackEffect {
 
 exports.Chorus = Chorus;
 
-},{"../core/context/Delay":826,"../core/util/Defaults":851,"../core/util/Interface":854,"../effect/StereoFeedbackEffect":887,"../source/oscillator/LFO":947}],873:[function(require,module,exports){
+},{"../core/context/Delay":820,"../core/util/Defaults":845,"../core/util/Interface":848,"../effect/StereoFeedbackEffect":881,"../source/oscillator/LFO":941}],867:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -39035,7 +38639,7 @@ class Distortion extends _Effect.Effect {
 
 exports.Distortion = Distortion;
 
-},{"../core/util/Defaults":851,"../signal/WaveShaper":932,"./Effect":874}],874:[function(require,module,exports){
+},{"../core/util/Defaults":845,"../signal/WaveShaper":926,"./Effect":868}],868:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -39141,7 +38745,7 @@ class Effect extends _ToneAudioNode.ToneAudioNode {
 
 exports.Effect = Effect;
 
-},{"../component/channel/CrossFade":781,"../core/context/Gain":829,"../core/context/ToneAudioNode":836,"../core/util/Interface":854}],875:[function(require,module,exports){
+},{"../component/channel/CrossFade":775,"../core/context/Gain":823,"../core/context/ToneAudioNode":830,"../core/util/Interface":848}],869:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -39207,7 +38811,7 @@ class FeedbackDelay extends _FeedbackEffect.FeedbackEffect {
 
 exports.FeedbackDelay = FeedbackDelay;
 
-},{"../core/context/Delay":826,"../core/util/Defaults":851,"../core/util/Interface":854,"./FeedbackEffect":876}],876:[function(require,module,exports){
+},{"../core/context/Delay":820,"../core/util/Defaults":845,"../core/util/Interface":848,"./FeedbackEffect":870}],870:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -39259,7 +38863,7 @@ class FeedbackEffect extends _Effect.Effect {
 
 exports.FeedbackEffect = FeedbackEffect;
 
-},{"../core/context/Gain":829,"../core/util/Interface":854,"./Effect":874}],877:[function(require,module,exports){
+},{"../core/context/Gain":823,"../core/util/Interface":848,"./Effect":868}],871:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -39394,7 +38998,7 @@ class Freeverb extends _StereoEffect.StereoEffect {
 
 exports.Freeverb = Freeverb;
 
-},{"../component/filter/LowpassCombFilter":808,"../core/util/Defaults":851,"../core/util/Interface":854,"../signal/Signal":927,"./StereoEffect":886}],878:[function(require,module,exports){
+},{"../component/filter/LowpassCombFilter":802,"../core/util/Defaults":845,"../core/util/Interface":848,"../signal/Signal":921,"./StereoEffect":880}],872:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -39533,7 +39137,7 @@ class FrequencyShifter extends _Effect.Effect {
 
 exports.FrequencyShifter = FrequencyShifter;
 
-},{"../component/filter/PhaseShiftAllpass":810,"../core/util/Defaults":851,"../effect/Effect":874,"../signal/Add":917,"../signal/Multiply":922,"../signal/Negate":923,"../signal/Signal":927,"../source/oscillator/Oscillator":949,"../source/oscillator/ToneOscillatorNode":953}],879:[function(require,module,exports){
+},{"../component/filter/PhaseShiftAllpass":804,"../core/util/Defaults":845,"../effect/Effect":868,"../signal/Add":911,"../signal/Multiply":916,"../signal/Negate":917,"../signal/Signal":921,"../source/oscillator/Oscillator":943,"../source/oscillator/ToneOscillatorNode":947}],873:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -39662,7 +39266,7 @@ class JCReverb extends _StereoEffect.StereoEffect {
 
 exports.JCReverb = JCReverb;
 
-},{"../component/filter/FeedbackCombFilter":805,"../core/util/Defaults":851,"../core/util/Interface":854,"../signal/Scale":925,"../signal/Signal":927,"./StereoEffect":886}],880:[function(require,module,exports){
+},{"../component/filter/FeedbackCombFilter":799,"../core/util/Defaults":845,"../core/util/Interface":848,"../signal/Scale":919,"../signal/Signal":921,"./StereoEffect":880}],874:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -39772,7 +39376,7 @@ class LFOEffect extends _Effect.Effect {
 
 exports.LFOEffect = LFOEffect;
 
-},{"../core/util/Interface":854,"../effect/Effect":874,"../source/oscillator/LFO":947}],881:[function(require,module,exports){
+},{"../core/util/Interface":848,"../effect/Effect":868,"../source/oscillator/LFO":941}],875:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -39854,7 +39458,7 @@ class MidSideEffect extends _Effect.Effect {
 
 exports.MidSideEffect = MidSideEffect;
 
-},{"../component/channel/MidSideMerge":783,"../component/channel/MidSideSplit":784,"./Effect":874}],882:[function(require,module,exports){
+},{"../component/channel/MidSideMerge":777,"../component/channel/MidSideSplit":778,"./Effect":868}],876:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -40007,7 +39611,7 @@ class Phaser extends _StereoEffect.StereoEffect {
 
 exports.Phaser = Phaser;
 
-},{"../core/util/Defaults":851,"../core/util/Interface":854,"../signal/Signal":927,"../source/oscillator/LFO":947,"./StereoEffect":886}],883:[function(require,module,exports){
+},{"../core/util/Defaults":845,"../core/util/Interface":848,"../signal/Signal":921,"../source/oscillator/LFO":941,"./StereoEffect":880}],877:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -40097,7 +39701,7 @@ class PingPongDelay extends _StereoXFeedbackEffect.StereoXFeedbackEffect {
 
 exports.PingPongDelay = PingPongDelay;
 
-},{"../core/context/Delay":826,"../core/util/Defaults":851,"../core/util/Interface":854,"../signal/Signal":927,"./StereoXFeedbackEffect":889}],884:[function(require,module,exports){
+},{"../core/context/Delay":820,"../core/util/Defaults":845,"../core/util/Interface":848,"../signal/Signal":921,"./StereoXFeedbackEffect":883}],878:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -40287,7 +39891,7 @@ class PitchShift extends _FeedbackEffect.FeedbackEffect {
 
 exports.PitchShift = PitchShift;
 
-},{"../component/channel/CrossFade":781,"../core/context/Delay":826,"../core/type/Conversions":839,"../core/util/Defaults":851,"../core/util/Interface":854,"../signal/Signal":927,"../source/oscillator/LFO":947,"./FeedbackEffect":876}],885:[function(require,module,exports){
+},{"../component/channel/CrossFade":775,"../core/context/Delay":820,"../core/type/Conversions":833,"../core/util/Defaults":845,"../core/util/Interface":848,"../signal/Signal":921,"../source/oscillator/LFO":941,"./FeedbackEffect":870}],879:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -40440,7 +40044,7 @@ class Reverb extends _Effect.Effect {
 
 exports.Reverb = Reverb;
 
-},{"../component/channel/Merge":782,"../core/context/Gain":829,"../core/context/OfflineContext":832,"../core/util/Debug":849,"../core/util/Defaults":851,"../core/util/Interface":854,"../source/Noise":935,"./Effect":874,"tslib":955}],886:[function(require,module,exports){
+},{"../component/channel/Merge":776,"../core/context/Gain":823,"../core/context/OfflineContext":826,"../core/util/Debug":843,"../core/util/Defaults":845,"../core/util/Interface":848,"../source/Noise":929,"./Effect":868,"tslib":949}],880:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -40540,7 +40144,7 @@ class StereoEffect extends _ToneAudioNode.ToneAudioNode {
 
 exports.StereoEffect = StereoEffect;
 
-},{"../component/channel/CrossFade":781,"../component/channel/Merge":782,"../component/channel/Split":792,"../core/context/Gain":829,"../core/context/ToneAudioNode":836,"../core/util/Interface":854}],887:[function(require,module,exports){
+},{"../component/channel/CrossFade":775,"../component/channel/Merge":776,"../component/channel/Split":786,"../core/context/Gain":823,"../core/context/ToneAudioNode":830,"../core/util/Interface":848}],881:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -40630,7 +40234,7 @@ class StereoFeedbackEffect extends _StereoEffect.StereoEffect {
 
 exports.StereoFeedbackEffect = StereoFeedbackEffect;
 
-},{"../component/channel/Merge":782,"../component/channel/Split":792,"../core/context/Gain":829,"../core/util/Interface":854,"../signal/Signal":927,"./StereoEffect":886}],888:[function(require,module,exports){
+},{"../component/channel/Merge":776,"../component/channel/Split":786,"../core/context/Gain":823,"../core/util/Interface":848,"../signal/Signal":921,"./StereoEffect":880}],882:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -40733,7 +40337,7 @@ class StereoWidener extends _MidSideEffect.MidSideEffect {
 
 exports.StereoWidener = StereoWidener;
 
-},{"../core/context/ToneAudioNode":836,"../core/util/Defaults":851,"../core/util/Interface":854,"../effect/MidSideEffect":881,"../signal/Multiply":922,"../signal/Signal":927,"../signal/Subtract":929}],889:[function(require,module,exports){
+},{"../core/context/ToneAudioNode":830,"../core/util/Defaults":845,"../core/util/Interface":848,"../effect/MidSideEffect":875,"../signal/Multiply":916,"../signal/Signal":921,"../signal/Subtract":923}],883:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -40778,7 +40382,7 @@ class StereoXFeedbackEffect extends _StereoFeedbackEffect.StereoFeedbackEffect {
 
 exports.StereoXFeedbackEffect = StereoXFeedbackEffect;
 
-},{"../core/util/Interface":854,"./StereoFeedbackEffect":887}],890:[function(require,module,exports){
+},{"../core/util/Interface":848,"./StereoFeedbackEffect":881}],884:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -40962,7 +40566,7 @@ class Tremolo extends _StereoEffect.StereoEffect {
 
 exports.Tremolo = Tremolo;
 
-},{"../core/context/Gain":829,"../core/util/Defaults":851,"../core/util/Interface":854,"../signal/Signal":927,"../source/oscillator/LFO":947,"./StereoEffect":886}],891:[function(require,module,exports){
+},{"../core/context/Gain":823,"../core/util/Defaults":845,"../core/util/Interface":848,"../signal/Signal":921,"../source/oscillator/LFO":941,"./StereoEffect":880}],885:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -41048,7 +40652,7 @@ class Vibrato extends _Effect.Effect {
 
 exports.Vibrato = Vibrato;
 
-},{"../core/context/Delay":826,"../core/util/Defaults":851,"../core/util/Interface":854,"../source/oscillator/LFO":947,"./Effect":874}],892:[function(require,module,exports){
+},{"../core/context/Delay":820,"../core/util/Defaults":845,"../core/util/Interface":848,"../source/oscillator/LFO":941,"./Effect":868}],886:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -41289,7 +40893,7 @@ Object.keys(_Vibrato).forEach(function (key) {
   });
 });
 
-},{"./AutoFilter":866,"./AutoPanner":867,"./AutoWah":868,"./BitCrusher":869,"./Chebyshev":871,"./Chorus":872,"./Distortion":873,"./FeedbackDelay":875,"./Freeverb":877,"./FrequencyShifter":878,"./JCReverb":879,"./Phaser":882,"./PingPongDelay":883,"./PitchShift":884,"./Reverb":885,"./StereoWidener":888,"./Tremolo":890,"./Vibrato":891}],893:[function(require,module,exports){
+},{"./AutoFilter":860,"./AutoPanner":861,"./AutoWah":862,"./BitCrusher":863,"./Chebyshev":865,"./Chorus":866,"./Distortion":867,"./FeedbackDelay":869,"./Freeverb":871,"./FrequencyShifter":872,"./JCReverb":873,"./Phaser":876,"./PingPongDelay":877,"./PitchShift":878,"./Reverb":879,"./StereoWidener":882,"./Tremolo":884,"./Vibrato":885}],887:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -41503,7 +41107,7 @@ class Loop extends _ToneWithContext.ToneWithContext {
 
 exports.Loop = Loop;
 
-},{"../core/context/ToneWithContext":837,"../core/util/Defaults":851,"../core/util/Interface":854,"./ToneEvent":898}],894:[function(require,module,exports){
+},{"../core/context/ToneWithContext":831,"../core/util/Defaults":845,"../core/util/Interface":848,"./ToneEvent":892}],888:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -42004,7 +41608,7 @@ class Part extends _ToneEvent.ToneEvent {
 
 exports.Part = Part;
 
-},{"../core/type/Ticks":843,"../core/type/TransportTime":846,"../core/util/Defaults":851,"../core/util/StateTimeline":857,"../core/util/TypeCheck":860,"./ToneEvent":898}],895:[function(require,module,exports){
+},{"../core/type/Ticks":837,"../core/type/TransportTime":840,"../core/util/Defaults":845,"../core/util/StateTimeline":851,"../core/util/TypeCheck":854,"./ToneEvent":892}],889:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -42098,7 +41702,7 @@ class Pattern extends _Loop.Loop {
 
 exports.Pattern = Pattern;
 
-},{"../core/util/Defaults":851,"../core/util/Interface":854,"./Loop":893,"./PatternGenerator":896}],896:[function(require,module,exports){
+},{"../core/util/Defaults":845,"../core/util/Interface":848,"./Loop":887,"./PatternGenerator":890}],890:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -42311,7 +41915,7 @@ function* PatternGenerator(values, pattern = "up", index = 0) {
   }
 }
 
-},{"../core/util/Debug":849,"../core/util/Math":856}],897:[function(require,module,exports){
+},{"../core/util/Debug":843,"../core/util/Math":850}],891:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -42628,7 +42232,7 @@ class Sequence extends _ToneEvent.ToneEvent {
 
 exports.Sequence = Sequence;
 
-},{"../core/type/Ticks":843,"../core/util/Defaults":851,"../core/util/TypeCheck":860,"./Part":894,"./ToneEvent":898}],898:[function(require,module,exports){
+},{"../core/type/Ticks":837,"../core/util/Defaults":845,"../core/util/TypeCheck":854,"./Part":888,"./ToneEvent":892}],892:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -43024,7 +42628,7 @@ class ToneEvent extends _ToneWithContext.ToneWithContext {
 
 exports.ToneEvent = ToneEvent;
 
-},{"../core/clock/Transport":819,"../core/context/ToneWithContext":837,"../core/type/Ticks":843,"../core/util/Defaults":851,"../core/util/Interface":854,"../core/util/StateTimeline":857,"../core/util/TypeCheck":860}],899:[function(require,module,exports){
+},{"../core/clock/Transport":813,"../core/context/ToneWithContext":831,"../core/type/Ticks":837,"../core/util/Defaults":845,"../core/util/Interface":848,"../core/util/StateTimeline":851,"../core/util/TypeCheck":854}],893:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -43096,7 +42700,7 @@ Object.keys(_ToneEvent).forEach(function (key) {
   });
 });
 
-},{"./Loop":893,"./Part":894,"./Pattern":895,"./Sequence":897,"./ToneEvent":898}],900:[function(require,module,exports){
+},{"./Loop":887,"./Part":888,"./Pattern":889,"./Sequence":891,"./ToneEvent":892}],894:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -43124,19 +42728,20 @@ var _exportNames = {
   start: true,
   supported: true
 };
-exports.now = now;
-exports.immediate = immediate;
-exports.getTransport = getTransport;
-exports.getDestination = getDestination;
-exports.getListener = getListener;
-exports.getDraw = getDraw;
-exports.loaded = loaded;
+exports.context = exports.Transport = exports.Master = exports.Listener = exports.Draw = exports.Destination = exports.Buffers = exports.BufferSource = exports.Buffer = void 0;
 Object.defineProperty(exports, "getContext", {
   enumerable: true,
   get: function () {
     return _Global.getContext;
   }
 });
+exports.getDestination = getDestination;
+exports.getDraw = getDraw;
+exports.getListener = getListener;
+exports.getTransport = getTransport;
+exports.immediate = immediate;
+exports.loaded = loaded;
+exports.now = now;
 Object.defineProperty(exports, "setContext", {
   enumerable: true,
   get: function () {
@@ -43155,7 +42760,6 @@ Object.defineProperty(exports, "supported", {
     return _AudioContext.supported;
   }
 });
-exports.BufferSource = exports.Buffers = exports.Buffer = exports.context = exports.Draw = exports.Listener = exports.Master = exports.Destination = exports.Transport = void 0;
 
 var _Global = require("./core/Global");
 
@@ -43321,7 +42925,7 @@ exports.Buffers = Buffers;
 const BufferSource = _ToneBufferSource.ToneBufferSource;
 exports.BufferSource = BufferSource;
 
-},{"./classes":772,"./core/Global":812,"./core/context/AudioContext":822,"./core/context/ToneAudioBuffer":834,"./core/context/ToneAudioBuffers":835,"./source/buffer/ToneBufferSource":942,"./version":954}],901:[function(require,module,exports){
+},{"./classes":766,"./core/Global":806,"./core/context/AudioContext":816,"./core/context/ToneAudioBuffer":828,"./core/context/ToneAudioBuffers":829,"./source/buffer/ToneBufferSource":936,"./version":948}],895:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -43377,7 +42981,7 @@ class AMSynth extends _ModulationSynth.ModulationSynth {
 
 exports.AMSynth = AMSynth;
 
-},{"../core/util/Defaults":851,"../signal/AudioToGain":918,"./ModulationSynth":907}],902:[function(require,module,exports){
+},{"../core/util/Defaults":845,"../signal/AudioToGain":912,"./ModulationSynth":901}],896:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -43554,7 +43158,7 @@ class DuoSynth extends _Monophonic.Monophonic {
 
 exports.DuoSynth = DuoSynth;
 
-},{"../core/context/Gain":829,"../core/util/Defaults":851,"../core/util/Interface":854,"../signal/Multiply":922,"../signal/Signal":927,"../source/oscillator/LFO":947,"./MonoSynth":908,"./Monophonic":909}],903:[function(require,module,exports){
+},{"../core/context/Gain":823,"../core/util/Defaults":845,"../core/util/Interface":848,"../signal/Multiply":916,"../signal/Signal":921,"../source/oscillator/LFO":941,"./MonoSynth":902,"./Monophonic":903}],897:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -43618,7 +43222,7 @@ class FMSynth extends _ModulationSynth.ModulationSynth {
 
 exports.FMSynth = FMSynth;
 
-},{"../core/util/Defaults":851,"../signal/Multiply":922,"./ModulationSynth":907}],904:[function(require,module,exports){
+},{"../core/util/Defaults":845,"../signal/Multiply":916,"./ModulationSynth":901}],898:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -43786,7 +43390,7 @@ class Instrument extends _ToneAudioNode.ToneAudioNode {
 
 exports.Instrument = Instrument;
 
-},{"../component/channel/Volume":793,"../core/context/ToneAudioNode":836,"../core/util/Defaults":851,"../core/util/Interface":854}],905:[function(require,module,exports){
+},{"../component/channel/Volume":787,"../core/context/ToneAudioNode":830,"../core/util/Defaults":845,"../core/util/Interface":848}],899:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -43873,7 +43477,7 @@ exports.MembraneSynth = MembraneSynth;
 (0, _tslib.__decorate)([(0, _Decorator.range)(0)], MembraneSynth.prototype, "octaves", void 0);
 (0, _tslib.__decorate)([(0, _Decorator.timeRange)(0)], MembraneSynth.prototype, "pitchDecay", void 0);
 
-},{"../core/type/Frequency":840,"../core/util/Decorator":850,"../core/util/Defaults":851,"../core/util/Interface":854,"./Monophonic":909,"./Synth":914,"tslib":955}],906:[function(require,module,exports){
+},{"../core/type/Frequency":834,"../core/util/Decorator":844,"../core/util/Defaults":845,"../core/util/Interface":848,"./Monophonic":903,"./Synth":908,"tslib":949}],900:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -44130,7 +43734,7 @@ class MetalSynth extends _Monophonic.Monophonic {
 
 exports.MetalSynth = MetalSynth;
 
-},{"../component/envelope/Envelope":800,"../component/filter/Filter":807,"../core/context/Gain":829,"../core/context/ToneAudioNode":836,"../core/util/Defaults":851,"../core/util/Interface":854,"../signal/Multiply":922,"../signal/Scale":925,"../signal/Signal":927,"../source/oscillator/FMOscillator":945,"./Monophonic":909}],907:[function(require,module,exports){
+},{"../component/envelope/Envelope":794,"../component/filter/Filter":801,"../core/context/Gain":823,"../core/context/ToneAudioNode":830,"../core/util/Defaults":845,"../core/util/Interface":848,"../signal/Multiply":916,"../signal/Scale":919,"../signal/Signal":921,"../source/oscillator/FMOscillator":939,"./Monophonic":903}],901:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -44281,7 +43885,7 @@ class ModulationSynth extends _Monophonic.Monophonic {
 
 exports.ModulationSynth = ModulationSynth;
 
-},{"../component/envelope/Envelope":800,"../core/context/Gain":829,"../core/context/ToneAudioNode":836,"../core/util/Defaults":851,"../core/util/Interface":854,"../signal/Multiply":922,"../signal/Signal":927,"../source/Source":937,"../source/oscillator/OmniOscillator":948,"./Monophonic":909,"./Synth":914}],908:[function(require,module,exports){
+},{"../component/envelope/Envelope":794,"../core/context/Gain":823,"../core/context/ToneAudioNode":830,"../core/util/Defaults":845,"../core/util/Interface":848,"../signal/Multiply":916,"../signal/Signal":921,"../source/Source":931,"../source/oscillator/OmniOscillator":942,"./Monophonic":903,"./Synth":908}],902:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -44429,7 +44033,7 @@ class MonoSynth extends _Monophonic.Monophonic {
 
 exports.MonoSynth = MonoSynth;
 
-},{"../component/envelope/AmplitudeEnvelope":799,"../component/envelope/Envelope":800,"../component/envelope/FrequencyEnvelope":801,"../component/filter/Filter":807,"../core/context/ToneAudioNode":836,"../core/util/Defaults":851,"../core/util/Interface":854,"../instrument/Monophonic":909,"../source/Source":937,"../source/oscillator/OmniOscillator":948}],909:[function(require,module,exports){
+},{"../component/envelope/AmplitudeEnvelope":793,"../component/envelope/Envelope":794,"../component/envelope/FrequencyEnvelope":795,"../component/filter/Filter":801,"../core/context/ToneAudioNode":830,"../core/util/Defaults":845,"../core/util/Interface":848,"../instrument/Monophonic":903,"../source/Source":931,"../source/oscillator/OmniOscillator":942}],903:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -44539,7 +44143,7 @@ class Monophonic extends _Instrument.Instrument {
 exports.Monophonic = Monophonic;
 (0, _tslib.__decorate)([(0, _Decorator.timeRange)(0)], Monophonic.prototype, "portamento", void 0);
 
-},{"../core/type/Frequency":840,"../core/util/Decorator":850,"../core/util/Defaults":851,"../core/util/Interface":854,"../instrument/Instrument":904,"tslib":955}],910:[function(require,module,exports){
+},{"../core/type/Frequency":834,"../core/util/Decorator":844,"../core/util/Defaults":845,"../core/util/Interface":848,"../instrument/Instrument":898,"tslib":949}],904:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -44662,7 +44266,7 @@ class NoiseSynth extends _Instrument.Instrument {
 
 exports.NoiseSynth = NoiseSynth;
 
-},{"../component/envelope/AmplitudeEnvelope":799,"../component/envelope/Envelope":800,"../core/context/ToneAudioNode":836,"../core/util/Defaults":851,"../source/Noise":935,"../source/Source":937,"./Instrument":904}],911:[function(require,module,exports){
+},{"../component/envelope/AmplitudeEnvelope":793,"../component/envelope/Envelope":794,"../core/context/ToneAudioNode":830,"../core/util/Defaults":845,"../source/Noise":929,"../source/Source":931,"./Instrument":898}],905:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -44776,7 +44380,7 @@ class PluckSynth extends _Instrument.Instrument {
 
 exports.PluckSynth = PluckSynth;
 
-},{"../component/filter/LowpassCombFilter":808,"../core/util/Defaults":851,"../source/Noise":935,"./Instrument":904}],912:[function(require,module,exports){
+},{"../component/filter/LowpassCombFilter":802,"../core/util/Defaults":845,"../source/Noise":929,"./Instrument":898}],906:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -45163,7 +44767,7 @@ class PolySynth extends _Instrument.Instrument {
 
 exports.PolySynth = PolySynth;
 
-},{"../core/type/Midi":841,"../core/util/Debug":849,"../core/util/Defaults":851,"../core/util/TypeCheck":860,"./Instrument":904,"./Synth":914}],913:[function(require,module,exports){
+},{"../core/type/Midi":835,"../core/util/Debug":843,"../core/util/Defaults":845,"../core/util/TypeCheck":854,"./Instrument":898,"./Synth":908}],907:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -45484,7 +45088,7 @@ exports.Sampler = Sampler;
 (0, _tslib.__decorate)([(0, _Decorator.timeRange)(0)], Sampler.prototype, "attack", void 0);
 (0, _tslib.__decorate)([(0, _Decorator.timeRange)(0)], Sampler.prototype, "release", void 0);
 
-},{"../core/context/ToneAudioBuffers":835,"../core/type/Conversions":839,"../core/type/Frequency":840,"../core/util/Debug":849,"../core/util/Decorator":850,"../core/util/Defaults":851,"../core/util/Interface":854,"../core/util/TypeCheck":860,"../instrument/Instrument":904,"../source/buffer/ToneBufferSource":942,"tslib":955}],914:[function(require,module,exports){
+},{"../core/context/ToneAudioBuffers":829,"../core/type/Conversions":833,"../core/type/Frequency":834,"../core/util/Debug":843,"../core/util/Decorator":844,"../core/util/Defaults":845,"../core/util/Interface":848,"../core/util/TypeCheck":854,"../instrument/Instrument":898,"../source/buffer/ToneBufferSource":936,"tslib":949}],908:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -45602,7 +45206,7 @@ class Synth extends _Monophonic.Monophonic {
 
 exports.Synth = Synth;
 
-},{"../component/envelope/AmplitudeEnvelope":799,"../component/envelope/Envelope":800,"../core/context/ToneAudioNode":836,"../core/util/Defaults":851,"../core/util/Interface":854,"../source/Source":937,"../source/oscillator/OmniOscillator":948,"./Monophonic":909}],915:[function(require,module,exports){
+},{"../component/envelope/AmplitudeEnvelope":793,"../component/envelope/Envelope":794,"../core/context/ToneAudioNode":830,"../core/util/Defaults":845,"../core/util/Interface":848,"../source/Source":931,"../source/oscillator/OmniOscillator":942,"./Monophonic":903}],909:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -45752,7 +45356,7 @@ Object.keys(_Synth).forEach(function (key) {
   });
 });
 
-},{"./AMSynth":901,"./DuoSynth":902,"./FMSynth":903,"./MembraneSynth":905,"./MetalSynth":906,"./MonoSynth":908,"./NoiseSynth":910,"./PluckSynth":911,"./PolySynth":912,"./Sampler":913,"./Synth":914}],916:[function(require,module,exports){
+},{"./AMSynth":895,"./DuoSynth":896,"./FMSynth":897,"./MembraneSynth":899,"./MetalSynth":900,"./MonoSynth":902,"./NoiseSynth":904,"./PluckSynth":905,"./PolySynth":906,"./Sampler":907,"./Synth":908}],910:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -45822,7 +45426,7 @@ class Abs extends _SignalOperator.SignalOperator {
 
 exports.Abs = Abs;
 
-},{"./SignalOperator":928,"./WaveShaper":932}],917:[function(require,module,exports){
+},{"./SignalOperator":922,"./WaveShaper":926}],911:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -45894,7 +45498,7 @@ class Add extends _Signal.Signal {
 
 exports.Add = Add;
 
-},{"../core/context/Gain":829,"../core/context/ToneAudioNode":836,"../core/util/Defaults":851,"./Signal":927}],918:[function(require,module,exports){
+},{"../core/context/Gain":823,"../core/context/ToneAudioNode":830,"../core/util/Defaults":845,"./Signal":921}],912:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -45951,7 +45555,7 @@ class AudioToGain extends _SignalOperator.SignalOperator {
 
 exports.AudioToGain = AudioToGain;
 
-},{"./SignalOperator":928,"./WaveShaper":932}],919:[function(require,module,exports){
+},{"./SignalOperator":922,"./WaveShaper":926}],913:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -46008,7 +45612,7 @@ class GainToAudio extends _SignalOperator.SignalOperator {
 
 exports.GainToAudio = GainToAudio;
 
-},{"./SignalOperator":928,"./WaveShaper":932}],920:[function(require,module,exports){
+},{"./SignalOperator":922,"./WaveShaper":926}],914:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -46077,7 +45681,7 @@ class GreaterThan extends _Signal.Signal {
 
 exports.GreaterThan = GreaterThan;
 
-},{"../core/util/Defaults":851,"../core/util/Interface":854,"./GreaterThanZero":921,"./Signal":927,"./Subtract":929}],921:[function(require,module,exports){
+},{"../core/util/Defaults":845,"../core/util/Interface":848,"./GreaterThanZero":915,"./Signal":921,"./Subtract":923}],915:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -46140,7 +45744,7 @@ class GreaterThanZero extends _SignalOperator.SignalOperator {
 
 exports.GreaterThanZero = GreaterThanZero;
 
-},{"../core/util/Defaults":851,"./Multiply":922,"./SignalOperator":928,"./WaveShaper":932}],922:[function(require,module,exports){
+},{"../core/util/Defaults":845,"./Multiply":916,"./SignalOperator":922,"./WaveShaper":926}],916:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -46210,7 +45814,7 @@ class Multiply extends _Signal.Signal {
 
 exports.Multiply = Multiply;
 
-},{"../core/context/Gain":829,"../core/util/Defaults":851,"./Signal":927}],923:[function(require,module,exports){
+},{"../core/context/Gain":823,"../core/util/Defaults":845,"./Signal":921}],917:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -46268,7 +45872,7 @@ class Negate extends _SignalOperator.SignalOperator {
 
 exports.Negate = Negate;
 
-},{"./Multiply":922,"./SignalOperator":928}],924:[function(require,module,exports){
+},{"./Multiply":916,"./SignalOperator":922}],918:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -46351,7 +45955,7 @@ class Pow extends _SignalOperator.SignalOperator {
 
 exports.Pow = Pow;
 
-},{"../core/util/Defaults":851,"./SignalOperator":928,"./WaveShaper":932}],925:[function(require,module,exports){
+},{"../core/util/Defaults":845,"./SignalOperator":922,"./WaveShaper":926}],919:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -46454,7 +46058,7 @@ class Scale extends _SignalOperator.SignalOperator {
 
 exports.Scale = Scale;
 
-},{"../core/util/Defaults":851,"./Add":917,"./Multiply":922,"./SignalOperator":928}],926:[function(require,module,exports){
+},{"../core/util/Defaults":845,"./Add":911,"./Multiply":916,"./SignalOperator":922}],920:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -46522,14 +46126,14 @@ class ScaleExp extends _Scale.Scale {
 
 exports.ScaleExp = ScaleExp;
 
-},{"../core/util/Defaults":851,"./Pow":924,"./Scale":925}],927:[function(require,module,exports){
+},{"../core/util/Defaults":845,"./Pow":918,"./Scale":919}],921:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.connectSignal = connectSignal;
 exports.Signal = void 0;
+exports.connectSignal = connectSignal;
 
 var _Param = require("../core/context/Param");
 
@@ -46771,7 +46375,7 @@ function connectSignal(signal, destination, outputNum, inputNum) {
   (0, _ToneAudioNode.connect)(signal, destination, outputNum, inputNum);
 }
 
-},{"../core/context/Param":833,"../core/context/ToneAudioNode":836,"../core/util/AdvancedTypeCheck":848,"../core/util/Defaults":851,"./ToneConstantSource":931}],928:[function(require,module,exports){
+},{"../core/context/Param":827,"../core/context/ToneAudioNode":830,"../core/util/AdvancedTypeCheck":842,"../core/util/Defaults":845,"./ToneConstantSource":925}],922:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -46802,7 +46406,7 @@ class SignalOperator extends _ToneAudioNode.ToneAudioNode {
 
 exports.SignalOperator = SignalOperator;
 
-},{"../core/context/ToneAudioNode":836,"../core/util/Defaults":851,"./Signal":927}],929:[function(require,module,exports){
+},{"../core/context/ToneAudioNode":830,"../core/util/Defaults":845,"./Signal":921}],923:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -46888,7 +46492,7 @@ class Subtract extends _Signal.Signal {
 
 exports.Subtract = Subtract;
 
-},{"../core/context/Gain":829,"../core/context/ToneAudioNode":836,"../core/util/Defaults":851,"../signal/Negate":923,"../signal/Signal":927}],930:[function(require,module,exports){
+},{"../core/context/Gain":823,"../core/context/ToneAudioNode":830,"../core/util/Defaults":845,"../signal/Negate":917,"../signal/Signal":921}],924:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -47052,7 +46656,7 @@ class SyncedSignal extends _Signal.Signal {
 
 exports.SyncedSignal = SyncedSignal;
 
-},{"../core/type/TransportTime":846,"../core/util/Defaults":851,"./Signal":927,"./ToneConstantSource":931}],931:[function(require,module,exports){
+},{"../core/type/TransportTime":840,"../core/util/Defaults":845,"./Signal":921,"./ToneConstantSource":925}],925:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -47140,7 +46744,7 @@ class ToneConstantSource extends _OneShotSource.OneShotSource {
 
 exports.ToneConstantSource = ToneConstantSource;
 
-},{"../core/context/Param":833,"../core/context/ToneAudioNode":836,"../core/util/Defaults":851,"../source/OneShotSource":936}],932:[function(require,module,exports){
+},{"../core/context/Param":827,"../core/context/ToneAudioNode":830,"../core/util/Defaults":845,"../source/OneShotSource":930}],926:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -47273,7 +46877,7 @@ class WaveShaper extends _SignalOperator.SignalOperator {
 
 exports.WaveShaper = WaveShaper;
 
-},{"../core/util/Debug":849,"../core/util/Defaults":851,"../core/util/TypeCheck":860,"./Signal":927,"./SignalOperator":928}],933:[function(require,module,exports){
+},{"../core/util/Debug":843,"../core/util/Defaults":845,"../core/util/TypeCheck":854,"./Signal":921,"./SignalOperator":922}],927:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -47333,7 +46937,7 @@ class Zero extends _SignalOperator.SignalOperator {
 
 exports.Zero = Zero;
 
-},{"../core/context/Gain":829,"../core/context/ToneAudioNode":836,"../core/util/Defaults":851,"./SignalOperator":928}],934:[function(require,module,exports){
+},{"../core/context/Gain":823,"../core/context/ToneAudioNode":830,"../core/util/Defaults":845,"./SignalOperator":922}],928:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -47548,7 +47152,7 @@ Object.keys(_Zero).forEach(function (key) {
   });
 });
 
-},{"./Abs":916,"./Add":917,"./AudioToGain":918,"./GainToAudio":919,"./GreaterThan":920,"./GreaterThanZero":921,"./Multiply":922,"./Negate":923,"./Pow":924,"./Scale":925,"./ScaleExp":926,"./Signal":927,"./Subtract":929,"./SyncedSignal":930,"./WaveShaper":932,"./Zero":933}],935:[function(require,module,exports){
+},{"./Abs":910,"./Add":911,"./AudioToGain":912,"./GainToAudio":913,"./GreaterThan":914,"./GreaterThanZero":915,"./Multiply":916,"./Negate":917,"./Pow":918,"./Scale":919,"./ScaleExp":920,"./Signal":921,"./Subtract":923,"./SyncedSignal":924,"./WaveShaper":926,"./Zero":927}],929:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -47839,7 +47443,7 @@ const _noiseBuffers = {
 
 };
 
-},{"../core/context/ToneAudioBuffer":834,"../core/util/Debug":849,"../core/util/Defaults":851,"../source/Source":937,"./buffer/ToneBufferSource":942}],936:[function(require,module,exports){
+},{"../core/context/ToneAudioBuffer":828,"../core/util/Debug":843,"../core/util/Defaults":845,"../source/Source":931,"./buffer/ToneBufferSource":936}],930:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -48065,7 +47669,7 @@ class OneShotSource extends _ToneAudioNode.ToneAudioNode {
 
 exports.OneShotSource = OneShotSource;
 
-},{"../core/context/Gain":829,"../core/context/ToneAudioNode":836,"../core/util/Debug":849,"../core/util/Interface":854}],937:[function(require,module,exports){
+},{"../core/context/Gain":823,"../core/context/ToneAudioNode":830,"../core/util/Debug":843,"../core/util/Interface":848}],931:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -48421,7 +48025,7 @@ class Source extends _ToneAudioNode.ToneAudioNode {
 
 exports.Source = Source;
 
-},{"../component/channel/Volume":793,"../core/clock/Transport":819,"../core/context/Destination":827,"../core/context/ToneAudioNode":836,"../core/util/Debug":849,"../core/util/Defaults":851,"../core/util/Interface":854,"../core/util/Math":856,"../core/util/StateTimeline":857,"../core/util/TypeCheck":860}],938:[function(require,module,exports){
+},{"../component/channel/Volume":787,"../core/clock/Transport":813,"../core/context/Destination":821,"../core/context/ToneAudioNode":830,"../core/util/Debug":843,"../core/util/Defaults":845,"../core/util/Interface":848,"../core/util/Math":850,"../core/util/StateTimeline":851,"../core/util/TypeCheck":854}],932:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -48681,7 +48285,7 @@ class UserMedia extends _ToneAudioNode.ToneAudioNode {
 
 exports.UserMedia = UserMedia;
 
-},{"../component/channel/Volume":793,"../core/context/ToneAudioNode":836,"../core/util/Debug":849,"../core/util/Defaults":851,"../core/util/Interface":854,"../core/util/TypeCheck":860,"tslib":955}],939:[function(require,module,exports){
+},{"../component/channel/Volume":787,"../core/context/ToneAudioNode":830,"../core/util/Debug":843,"../core/util/Defaults":845,"../core/util/Interface":848,"../core/util/TypeCheck":854,"tslib":949}],933:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -48988,7 +48592,7 @@ class GrainPlayer extends _Source.Source {
 
 exports.GrainPlayer = GrainPlayer;
 
-},{"../../core/clock/Clock":814,"../../core/context/ToneAudioBuffer":834,"../../core/type/Conversions":839,"../../core/util/Debug":849,"../../core/util/Defaults":851,"../../core/util/Interface":854,"../Source":937,"./ToneBufferSource":942}],940:[function(require,module,exports){
+},{"../../core/clock/Clock":808,"../../core/context/ToneAudioBuffer":828,"../../core/type/Conversions":833,"../../core/util/Debug":843,"../../core/util/Defaults":845,"../../core/util/Interface":848,"../Source":931,"./ToneBufferSource":936}],934:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -49422,7 +49026,7 @@ exports.Player = Player;
 (0, _tslib.__decorate)([(0, _Decorator.timeRange)(0)], Player.prototype, "fadeIn", void 0);
 (0, _tslib.__decorate)([(0, _Decorator.timeRange)(0)], Player.prototype, "fadeOut", void 0);
 
-},{"../../core/context/ToneAudioBuffer":834,"../../core/util/Debug":849,"../../core/util/Decorator":850,"../../core/util/Defaults":851,"../../core/util/Interface":854,"../../core/util/TypeCheck":860,"../Source":937,"./ToneBufferSource":942,"tslib":955}],941:[function(require,module,exports){
+},{"../../core/context/ToneAudioBuffer":828,"../../core/util/Debug":843,"../../core/util/Decorator":844,"../../core/util/Defaults":845,"../../core/util/Interface":848,"../../core/util/TypeCheck":854,"../Source":931,"./ToneBufferSource":936,"tslib":949}],935:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -49636,7 +49240,7 @@ class Players extends _ToneAudioNode.ToneAudioNode {
 
 exports.Players = Players;
 
-},{"../../component/channel/Volume":793,"../../core/context/ToneAudioBuffers":835,"../../core/context/ToneAudioNode":836,"../../core/util/Debug":849,"../../core/util/Defaults":851,"../../core/util/Interface":854,"../Source":937,"./Player":940}],942:[function(require,module,exports){
+},{"../../component/channel/Volume":787,"../../core/context/ToneAudioBuffers":829,"../../core/context/ToneAudioNode":830,"../../core/util/Debug":843,"../../core/util/Defaults":845,"../../core/util/Interface":848,"../Source":931,"./Player":934}],936:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -49898,7 +49502,7 @@ class ToneBufferSource extends _OneShotSource.OneShotSource {
 
 exports.ToneBufferSource = ToneBufferSource;
 
-},{"../../core/context/Param":833,"../../core/context/ToneAudioBuffer":834,"../../core/context/ToneAudioNode":836,"../../core/util/Debug":849,"../../core/util/Defaults":851,"../../core/util/Interface":854,"../../core/util/Math":856,"../../core/util/TypeCheck":860,"../OneShotSource":936}],943:[function(require,module,exports){
+},{"../../core/context/Param":827,"../../core/context/ToneAudioBuffer":828,"../../core/context/ToneAudioNode":830,"../../core/util/Debug":843,"../../core/util/Defaults":845,"../../core/util/Interface":848,"../../core/util/Math":850,"../../core/util/TypeCheck":854,"../OneShotSource":930}],937:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -50100,7 +49704,7 @@ Object.keys(_GrainPlayer).forEach(function (key) {
   });
 });
 
-},{"./Noise":935,"./UserMedia":938,"./buffer/GrainPlayer":939,"./buffer/Player":940,"./buffer/Players":941,"./buffer/ToneBufferSource":942,"./oscillator/AMOscillator":944,"./oscillator/FMOscillator":945,"./oscillator/FatOscillator":946,"./oscillator/LFO":947,"./oscillator/OmniOscillator":948,"./oscillator/Oscillator":949,"./oscillator/PWMOscillator":951,"./oscillator/PulseOscillator":952,"./oscillator/ToneOscillatorNode":953}],944:[function(require,module,exports){
+},{"./Noise":929,"./UserMedia":932,"./buffer/GrainPlayer":933,"./buffer/Player":934,"./buffer/Players":935,"./buffer/ToneBufferSource":936,"./oscillator/AMOscillator":938,"./oscillator/FMOscillator":939,"./oscillator/FatOscillator":940,"./oscillator/LFO":941,"./oscillator/OmniOscillator":942,"./oscillator/Oscillator":943,"./oscillator/PWMOscillator":945,"./oscillator/PulseOscillator":946,"./oscillator/ToneOscillatorNode":947}],938:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -50314,7 +49918,7 @@ class AMOscillator extends _Source.Source {
 
 exports.AMOscillator = AMOscillator;
 
-},{"../../core/context/Gain":829,"../../core/util/Defaults":851,"../../core/util/Interface":854,"../../signal/AudioToGain":918,"../../signal/Multiply":922,"../Source":937,"./Oscillator":949,"./OscillatorInterface":950,"tslib":955}],945:[function(require,module,exports){
+},{"../../core/context/Gain":823,"../../core/util/Defaults":845,"../../core/util/Interface":848,"../../signal/AudioToGain":912,"../../signal/Multiply":916,"../Source":931,"./Oscillator":943,"./OscillatorInterface":944,"tslib":949}],939:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -50541,7 +50145,7 @@ class FMOscillator extends _Source.Source {
 
 exports.FMOscillator = FMOscillator;
 
-},{"../../core/context/Gain":829,"../../core/util/Defaults":851,"../../core/util/Interface":854,"../../signal/Multiply":922,"../../signal/Signal":927,"../Source":937,"./Oscillator":949,"./OscillatorInterface":950,"tslib":955}],946:[function(require,module,exports){
+},{"../../core/context/Gain":823,"../../core/util/Defaults":845,"../../core/util/Interface":848,"../../signal/Multiply":916,"../../signal/Signal":921,"../Source":931,"./Oscillator":943,"./OscillatorInterface":944,"tslib":949}],940:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -50804,7 +50408,7 @@ class FatOscillator extends _Source.Source {
 
 exports.FatOscillator = FatOscillator;
 
-},{"../../core/util/Debug":849,"../../core/util/Defaults":851,"../../core/util/Interface":854,"../../signal/Signal":927,"../Source":937,"./Oscillator":949,"./OscillatorInterface":950,"tslib":955}],947:[function(require,module,exports){
+},{"../../core/util/Debug":843,"../../core/util/Defaults":845,"../../core/util/Interface":848,"../../signal/Signal":921,"../Source":931,"./Oscillator":943,"./OscillatorInterface":944,"tslib":949}],941:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -51124,7 +50728,7 @@ class LFO extends _ToneAudioNode.ToneAudioNode {
 
 exports.LFO = LFO;
 
-},{"../../core/context/Gain":829,"../../core/context/Param":833,"../../core/context/ToneAudioNode":836,"../../core/util/Defaults":851,"../../core/util/Interface":854,"../../signal/AudioToGain":918,"../../signal/Scale":925,"../../signal/Signal":927,"../../signal/Zero":933,"./Oscillator":949}],948:[function(require,module,exports){
+},{"../../core/context/Gain":823,"../../core/context/Param":827,"../../core/context/ToneAudioNode":830,"../../core/util/Defaults":845,"../../core/util/Interface":848,"../../signal/AudioToGain":912,"../../signal/Scale":919,"../../signal/Signal":921,"../../signal/Zero":927,"./Oscillator":943}],942:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -51541,7 +51145,7 @@ class OmniOscillator extends _Source.Source {
 
 exports.OmniOscillator = OmniOscillator;
 
-},{"../../core/util/Defaults":851,"../../core/util/Interface":854,"../../core/util/TypeCheck":860,"../../signal/Signal":927,"../Source":937,"./AMOscillator":944,"./FMOscillator":945,"./FatOscillator":946,"./Oscillator":949,"./OscillatorInterface":950,"./PWMOscillator":951,"./PulseOscillator":952,"tslib":955}],949:[function(require,module,exports){
+},{"../../core/util/Defaults":845,"../../core/util/Interface":848,"../../core/util/TypeCheck":854,"../../signal/Signal":921,"../Source":931,"./AMOscillator":938,"./FMOscillator":939,"./FatOscillator":940,"./Oscillator":943,"./OscillatorInterface":944,"./PWMOscillator":945,"./PulseOscillator":946,"tslib":949}],943:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -52005,7 +51609,7 @@ class Oscillator extends _Source.Source {
 exports.Oscillator = Oscillator;
 Oscillator._periodicWaveCache = [];
 
-},{"../../core/util/Debug":849,"../../core/util/Defaults":851,"../../core/util/Interface":854,"../../core/util/Math":856,"../../core/util/TypeCheck":860,"../../signal/Signal":927,"../Source":937,"./OscillatorInterface":950,"./ToneOscillatorNode":953,"tslib":955}],950:[function(require,module,exports){
+},{"../../core/util/Debug":843,"../../core/util/Defaults":845,"../../core/util/Interface":848,"../../core/util/Math":850,"../../core/util/TypeCheck":854,"../../signal/Signal":921,"../Source":931,"./OscillatorInterface":944,"./ToneOscillatorNode":947,"tslib":949}],944:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -52037,7 +51641,7 @@ function generateWaveform(instance, length) {
   });
 }
 
-},{"../../core/context/OfflineContext":832,"tslib":955}],951:[function(require,module,exports){
+},{"../../core/context/OfflineContext":826,"tslib":949}],945:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -52225,7 +51829,7 @@ class PWMOscillator extends _Source.Source {
 
 exports.PWMOscillator = PWMOscillator;
 
-},{"../../core/util/Defaults":851,"../../core/util/Interface":854,"../../signal/Multiply":922,"../Source":937,"./Oscillator":949,"./OscillatorInterface":950,"./PulseOscillator":952,"tslib":955}],952:[function(require,module,exports){
+},{"../../core/util/Defaults":845,"../../core/util/Interface":848,"../../signal/Multiply":916,"../Source":931,"./Oscillator":943,"./OscillatorInterface":944,"./PulseOscillator":946,"tslib":949}],946:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -52457,7 +52061,7 @@ class PulseOscillator extends _Source.Source {
 
 exports.PulseOscillator = PulseOscillator;
 
-},{"../../core/context/Gain":829,"../../core/util/Defaults":851,"../../core/util/Interface":854,"../../signal/Signal":927,"../../signal/WaveShaper":932,"../Source":937,"./Oscillator":949,"./OscillatorInterface":950,"tslib":955}],953:[function(require,module,exports){
+},{"../../core/context/Gain":823,"../../core/util/Defaults":845,"../../core/util/Interface":848,"../../signal/Signal":921,"../../signal/WaveShaper":926,"../Source":931,"./Oscillator":943,"./OscillatorInterface":944,"tslib":949}],947:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -52582,7 +52186,7 @@ class ToneOscillatorNode extends _OneShotSource.OneShotSource {
 
 exports.ToneOscillatorNode = ToneOscillatorNode;
 
-},{"../../core/context/Param":833,"../../core/context/ToneAudioNode":836,"../../core/util/Defaults":851,"../../core/util/Interface":854,"../OneShotSource":936}],954:[function(require,module,exports){
+},{"../../core/context/Param":827,"../../core/context/ToneAudioNode":830,"../../core/util/Defaults":845,"../../core/util/Interface":848,"../OneShotSource":930}],948:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -52592,37 +52196,39 @@ exports.version = void 0;
 const version = "14.7.77";
 exports.version = version;
 
-},{}],955:[function(require,module,exports){
+},{}],949:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.__extends = __extends;
-exports.__rest = __rest;
-exports.__decorate = __decorate;
-exports.__param = __param;
-exports.__metadata = __metadata;
-exports.__awaiter = __awaiter;
-exports.__generator = __generator;
-exports.__exportStar = __exportStar;
-exports.__values = __values;
-exports.__read = __read;
-exports.__spread = __spread;
-exports.__spreadArrays = __spreadArrays;
-exports.__spreadArray = __spreadArray;
-exports.__await = __await;
-exports.__asyncGenerator = __asyncGenerator;
+exports.__assign = void 0;
 exports.__asyncDelegator = __asyncDelegator;
+exports.__asyncGenerator = __asyncGenerator;
 exports.__asyncValues = __asyncValues;
-exports.__makeTemplateObject = __makeTemplateObject;
-exports.__importStar = __importStar;
-exports.__importDefault = __importDefault;
+exports.__await = __await;
+exports.__awaiter = __awaiter;
 exports.__classPrivateFieldGet = __classPrivateFieldGet;
+exports.__classPrivateFieldIn = __classPrivateFieldIn;
 exports.__classPrivateFieldSet = __classPrivateFieldSet;
-exports.__createBinding = exports.__assign = void 0;
+exports.__createBinding = void 0;
+exports.__decorate = __decorate;
+exports.__exportStar = __exportStar;
+exports.__extends = __extends;
+exports.__generator = __generator;
+exports.__importDefault = __importDefault;
+exports.__importStar = __importStar;
+exports.__makeTemplateObject = __makeTemplateObject;
+exports.__metadata = __metadata;
+exports.__param = __param;
+exports.__read = __read;
+exports.__rest = __rest;
+exports.__spread = __spread;
+exports.__spreadArray = __spreadArray;
+exports.__spreadArrays = __spreadArrays;
+exports.__values = __values;
 
-/*! *****************************************************************************
+/******************************************************************************
 Copyright (c) Microsoft Corporation.
 
 Permission to use, copy, modify, and/or distribute this software for any
@@ -52849,12 +52455,18 @@ function __generator(thisArg, body) {
 
 var __createBinding = Object.create ? function (o, m, k, k2) {
   if (k2 === undefined) k2 = k;
-  Object.defineProperty(o, k2, {
-    enumerable: true,
-    get: function () {
-      return m[k];
-    }
-  });
+  var desc = Object.getOwnPropertyDescriptor(m, k);
+
+  if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+    desc = {
+      enumerable: true,
+      get: function () {
+        return m[k];
+      }
+    };
+  }
+
+  Object.defineProperty(o, k2, desc);
 } : function (o, m, k, k2) {
   if (k2 === undefined) k2 = k;
   o[k2] = m[k];
@@ -53078,7 +52690,12 @@ function __classPrivateFieldSet(receiver, state, value, kind, f) {
   return kind === "a" ? f.call(receiver, value) : f ? f.value = value : state.set(receiver, value), value;
 }
 
-},{}],956:[function(require,module,exports){
+function __classPrivateFieldIn(state, receiver) {
+  if (receiver === null || typeof receiver !== "object" && typeof receiver !== "function") throw new TypeError("Cannot use 'in' operator on non-object");
+  return typeof state === "function" ? receiver === state : state.has(receiver);
+}
+
+},{}],950:[function(require,module,exports){
 /*
 
 WebMidi v2.5.3
